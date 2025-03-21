@@ -43,12 +43,13 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="relative"
             >
-              <div className="aspect-square bg-blue-50 rounded-2xl"></div>
+              <div className="aspect-square bg-blue-50 rounded-2xl">
               <img
-                src="/hero.svg"
+                src="/hero.webp"
                 alt="AI business solutions illustration"
                 className="w-full h-full object-cover"
               />
+              </div>
             </motion.div>
           </div>
         </div>
