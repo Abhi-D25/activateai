@@ -44,7 +44,11 @@ export default function Home() {
               className="relative"
             >
               <div className="aspect-square bg-blue-50 rounded-2xl"></div>
-              {/* Placeholder for hero image */}
+              <img
+                src="/hero.svg"
+                alt="AI business solutions illustration"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </div>
         </div>
