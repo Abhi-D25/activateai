@@ -135,8 +135,8 @@ export default function Contact() {
             >
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
-                <p className="text-slate-600 mb-8">
-                  Have questions about our services? We're here to help. Reach out to us through any of the following channels.
+                <p className="text-slate-600 mb-4">
+                  &quot;We&apos;re here to help you transform your business with AI. Let&apos;s discuss how we can work together.&quot;
                 </p>
               </div>
 

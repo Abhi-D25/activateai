@@ -20,7 +20,7 @@ export default function CaseStudies() {
               Success Stories
             </h1>
             <p className="text-xl text-slate-600">
-              See how we've helped businesses transform their operations with AI
+              See how we&apos;ve helped businesses transform their operations with AI
             </p>
           </motion.div>
         </div>
@@ -135,7 +135,7 @@ export default function CaseStudies() {
                 ))}
               </div>
               <p className="text-slate-600 mb-4">
-                "ActivateAI transformed our business operations. Their AI solutions helped us streamline our processes and increase efficiency significantly."
+                &quot;ActivateAI transformed our business operations. Their AI solutions helped us streamline our processes and increase efficiency significantly.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-blue-100 rounded-full mr-3"></div>
@@ -156,7 +156,7 @@ export default function CaseStudies() {
                 ))}
               </div>
               <p className="text-slate-600 mb-4">
-                "The team at ActivateAI is professional and knowledgeable. They took the time to understand our needs and delivered exactly what we needed."
+                &quot;The team at ActivateAI is professional and knowledgeable. They took the time to understand our needs and delivered exactly what we needed.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-blue-100 rounded-full mr-3"></div>
@@ -177,7 +177,7 @@ export default function CaseStudies() {
                 ))}
               </div>
               <p className="text-slate-600 mb-4">
-                "The ROI we've seen from implementing ActivateAI's solutions has been incredible. Highly recommended for any business looking to modernize."
+                &quot;The ROI we&apos;ve seen from implementing ActivateAI&apos;s solutions has been incredible. Highly recommended for any business looking to modernize.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-blue-100 rounded-full mr-3"></div>

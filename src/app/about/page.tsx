@@ -24,7 +24,7 @@ export default function About() {
               About ActivateAI
             </h1>
             <p className="text-xl text-slate-600">
-              We're on a mission to make AI accessible and practical for small and medium businesses, helping them thrive in the digital age.
+              We are on a mission to make AI accessible and practical for small and medium businesses, helping them thrive in the digital age.
             </p>
           </motion.div>
         </div>
@@ -44,7 +44,10 @@ export default function About() {
                 At ActivateAI, we believe that artificial intelligence should be accessible to businesses of all sizes. Our mission is to help small and medium businesses leverage AI technology to improve their operations, increase efficiency, and drive growth.
               </p>
               <p className="text-lg text-slate-600">
-                We understand that implementing AI can be overwhelming for non-technical business owners. That's why we focus on making the process simple, practical, and results-driven.
+                We understand that implementing AI can be overwhelming for non-technical business owners. That&apos;s why we focus on making the process simple, practical, and results-driven.
+              </p>
+              <p className="text-slate-600 mb-4">
+                &quot;We&apos;re passionate about helping businesses leverage the power of AI to transform their operations and drive growth.&quot;
               </p>
             </motion.div>
             <motion.div
