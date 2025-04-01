@@ -31,9 +31,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-black">
       {/* Hero Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -187,7 +187,7 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="aspect-video bg-blue-100 rounded-2xl">
             {/* Placeholder for map */}

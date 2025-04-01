@@ -5,15 +5,16 @@
 :root {
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
-  --secondary: #64748b;
+  --secondary: #94a3b8;
   --accent: #3b82f6;
-  --background: #ffffff;
-  --text: #1e293b;
+  --background: #000000;
+  --text: #ffffff;
+  --text-secondary: #94a3b8;
 }
 
 @layer base {
   body {
-    @apply bg-white text-slate-800;
+    @apply bg-black text-white;
   }
 }
 
@@ -27,14 +28,14 @@
   }
   
   .btn-secondary {
-    @apply bg-slate-100 text-slate-800 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-colors duration-200;
+    @apply bg-slate-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200;
   }
   
   .section-title {
-    @apply text-3xl font-bold text-slate-900 mb-6;
+    @apply text-3xl font-bold text-white mb-6;
   }
   
   .section-subtitle {
-    @apply text-lg text-slate-600 mb-8;
+    @apply text-lg text-slate-300 mb-8;
   }
 } 
