@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   ChartBarIcon, 
   SparklesIcon, 
@@ -114,11 +115,13 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="relative"
             >
-              <div className="aspect-square bg-blue-50 rounded-2xl">
-                <img
+              <div className="aspect-square bg-blue-50 rounded-2xl relative">
+                <Image
                   src="/hero.webp"
                   alt="AI business solutions illustration"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover rounded-2xl"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             </motion.div>

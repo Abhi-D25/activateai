@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 interface CaseStudyModalProps {
   isOpen: boolean;
@@ -80,11 +81,13 @@ export default function CaseStudyModal({ isOpen, onClose, caseStudy }: CaseStudy
 
               {/* Image if available */}
               {caseStudy.image && (
-                <div className="mb-6">
-                  <img
+                <div className="relative w-full h-64 mb-6">
+                  <Image
                     src={caseStudy.image}
                     alt={caseStudy.title}
-                    className="w-full h-64 object-cover rounded-lg"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               )}

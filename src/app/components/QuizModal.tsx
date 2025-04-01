@@ -149,7 +149,7 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                 >
                   <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
                   <p className="text-slate-300">
-                    We're analyzing your responses to provide personalized recommendations.
+                    We&apos;re analyzing your responses to provide personalized recommendations.
                   </p>
                 </motion.div>
               ) : (

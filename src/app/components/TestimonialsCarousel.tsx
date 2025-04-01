@@ -63,7 +63,7 @@ export default function TestimonialsCarousel() {
                 ))}
               </div>
               <p className="text-slate-300 text-lg mb-6">
-                "{testimonials[currentIndex].content}"
+                &ldquo;{testimonials[currentIndex].content}&rdquo;
               </p>
               <div>
                 <p className="text-white font-semibold">{testimonials[currentIndex].name}</p>
