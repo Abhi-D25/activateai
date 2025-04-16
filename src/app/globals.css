@@ -35,6 +35,12 @@
     overscroll-behavior-y: contain;
   }
 
+  /* Apply word wrap globally on mobile */
+  * {
+    overflow-wrap: break-word;
+    word-wrap: break-word; /* Legacy fallback */
+  }
+
   /* Larger touch targets */
   button, a {
     min-height: 44px;
@@ -119,7 +125,7 @@
   p, .text-slate-300, .text-slate-400 {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
+    hyphens: auto; /* Keep hyphens for specific elements if desired */
   }
   
   /* Adjust container padding for better mobile spacing */
