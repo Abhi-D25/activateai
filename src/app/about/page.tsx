@@ -23,12 +23,32 @@ export default function AboutPage() {
               className="text-4xl sm:text-5xl font-bold text-white mb-6"
               glowColor="#3b82f6"
             />
-            <FuturisticText
-              text="We&apos;re on a mission to democratize AI for small and medium businesses"
-              className="text-xl text-slate-300"
-              glowColor="#60a5fa"
-              delay={0.3}
-            />
+            <motion.div
+              initial={{ 
+                opacity: 0,
+                y: 20,
+                filter: 'blur(8px)'
+              }}
+              animate={{ 
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)'
+              }}
+              transition={{ 
+                duration: 1.2,
+                delay: 0.3,
+                opacity: { duration: 0.8 },
+                y: { 
+                  type: "spring",
+                  damping: 20,
+                  stiffness: 100
+                },
+                filter: { duration: 1 }
+              }}
+              className="text-xl text-slate-300 mr-24"
+            >
+              We&apos;re on a mission to democratize AI for small and medium businesses
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
