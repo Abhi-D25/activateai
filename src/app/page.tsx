@@ -75,7 +75,7 @@ export default function Home() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl font-bold text-blue-400 mb-16 md:hidden"
+              className="text-4xl font-bold text-blue-400 mb-32 md:hidden"
             >
               ActivateAI
             </motion.h1>

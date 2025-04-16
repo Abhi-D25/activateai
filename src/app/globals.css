@@ -127,6 +127,59 @@
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
   }
+
+  .animate-mobile {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Reduce or disable animations/transitions for better performance */
+  .reduce-motion {
+    transition-duration: 0.2s !important; /* Faster transitions */
+    animation-duration: 0.2s !important; /* Faster animations */
+  }
+  
+  /* If system prefers reduced motion, minimize all animations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Optimize rendering for scrolling areas on mobile */
+  .mobile-scroll-optimize {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Reduce motion for background particles */
+  canvas {
+    opacity: 0.6; /* Reduce opacity of particles */
+  }
+  
+  /* Make glow effects more subtle on mobile for performance */
+  [class*="glow"], [style*="text-shadow"] {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.2) !important;
+  }
+  
+  /* Disable hover effects on mobile for better performance */
+  [class*="hover:"] {
+    transition: none !important;
+  }
+  
+  /* Optimize rendering in general */
+  * {
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  }
+  
+  /* Use simpler box-shadows */
+  [class*="shadow-"] {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  }
 }
 
 /* Mobile animations */

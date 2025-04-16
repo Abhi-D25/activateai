@@ -86,10 +86,24 @@ const services = [
 interface ServicesSectionProps {
   showAll?: boolean;
   noContainer?: boolean;
+  isMobile?: boolean;
 }
 
-export default function ServicesSection({ showAll = false, noContainer = false }: ServicesSectionProps) {
+export default function ServicesSection({ 
+  showAll = false, 
+  noContainer = false,
+  isMobile = false // Add default value 
+}: ServicesSectionProps) {
   const displayedServices = showAll ? services : services.slice(0, 2);
+
+  // Modify animations for mobile
+  const cardHoverAnimation = isMobile 
+    ? { scale: 1.01, rotateX: 2, rotateY: -2 } // Less dramatic hover effect on mobile
+    : { scale: 1.02, rotateX: 5, rotateY: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)" };
+  
+  const cardTransition = isMobile
+    ? { type: "spring", stiffness: 200, damping: 25 } // Quicker, less bouncy on mobile 
+    : { type: "spring", stiffness: 300, damping: 20 };
 
   const content = (
     <>
@@ -106,20 +120,11 @@ export default function ServicesSection({ showAll = false, noContainer = false }
         {displayedServices.map((service, index) => (
           <motion.div
             key={index}
-            className="bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            initial={{ opacity: 0, y: 20 }}
+            className={`bg-slate-800/${isMobile ? '95' : '80'} ${!isMobile ? 'backdrop-blur-sm' : ''} p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300`}
+            initial={{ opacity: 0, y: isMobile ? 10 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            whileHover={{ 
-              scale: 1.02,
-              rotateX: 5,
-              rotateY: -5,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)"
-            }}
-            transition={{ 
-              type: "spring",
-              stiffness: 300,
-              damping: 20
-            }}
+            whileHover={cardHoverAnimation}
+            transition={cardTransition}
           >
             <div className="flex items-center mb-6">
               <service.icon className="h-12 w-12 text-blue-400 mr-4" />

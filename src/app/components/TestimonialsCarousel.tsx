@@ -77,8 +77,8 @@ export default function TestimonialsCarousel() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${  
-                  index === currentIndex ? 'bg-blue-400 w-3' : 'bg-slate-600'
+                className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${  
+                  index === currentIndex ? 'bg-blue-400 w-1' : 'bg-slate-600'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
