@@ -42,7 +42,7 @@ const MobileParticleBackground = () => {
         size: Math.random() * 2 + 1,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.3 + 0.1,
       }));
     };
     initParticles();
