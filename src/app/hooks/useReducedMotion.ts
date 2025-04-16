@@ -65,18 +65,12 @@ export const useReducedMotion = () => {
  * Returns simplified animation properties for devices that should use reduced motion
  */
 export const getSimplifiedAnimation = (
-  fullAnimation: any, 
-  reducedAnimation: any = null
+  fullAnimation: any,
+  reducedAnimation: any = null,
+  shouldReduceMotion: boolean
 ) => {
-  const [shouldApplyReducedMotion, setShouldApplyReducedMotion] = useState(false);
-  
-  useEffect(() => {
-    const { shouldReduceMotion } = useReducedMotion();
-    setShouldApplyReducedMotion(shouldReduceMotion);
-  }, []);
-  
-  // If reduced animation is not provided, create a simpler version of the full animation
-  if (!reducedAnimation && shouldApplyReducedMotion) {
+  // Use the passed-in shouldReduceMotion value directly
+  if (!reducedAnimation && shouldReduceMotion) {
     // Create a simplified version by removing transforms if possible
     return {
       ...fullAnimation,
@@ -87,6 +81,6 @@ export const getSimplifiedAnimation = (
       // Keep opacity transitions as they're less performance-intensive
     };
   }
-  
-  return shouldApplyReducedMotion ? reducedAnimation : fullAnimation;
+
+  return shouldReduceMotion ? reducedAnimation : fullAnimation;
 };
