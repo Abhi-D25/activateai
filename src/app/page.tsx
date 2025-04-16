@@ -25,7 +25,15 @@ export default function Home() {
       <section id="home" className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-50" />
         <ParticleBackground />
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 min-h-screen flex items-center">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 min-h-screen flex flex-col items-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl font-bold text-blue-400 mb-16 md:hidden"
+          >
+            ActivateAI
+          </motion.h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
             <div>
               <FuturisticText

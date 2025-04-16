@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+import MobileLayout from "./components/MobileLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,10 +11,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navigation />
-        <main className="pt-16">{children}</main>
-        <Footer />
+      <body className={`${inter.className} mobile-scroll`}>
+        <MobileLayout>
+          {children}
+        </MobileLayout>
       </body>
     </html>
   );
