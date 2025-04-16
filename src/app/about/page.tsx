@@ -54,7 +54,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
             <div className="relative aspect-square">
               <Image
-                src=""
+                src="/team.webp"
                 alt="ActivateAI team"
                 fill
                 className="object-cover rounded-2xl"
