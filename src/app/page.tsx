@@ -83,7 +83,7 @@ export default function Home() {
               <div>
                 <FuturisticText
                   text="Activate Your Business Today"
-                  className="text-3xl sm:text-4xl font-bold text-white mb-6"
+                  className="text-3xl sm:text-4xl font-bold text-white mb-8 mr-14"
                   glowColor="#3b82f6"
                 />
                 <motion.p
