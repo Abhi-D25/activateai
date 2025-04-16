@@ -2,18 +2,20 @@
 
 import { useState } from 'react';
 import QuizModal from './QuizModal';
+import ButtonAnimation from './ButtonAnimation';
 
 export default function QuizButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button 
+      <ButtonAnimation 
         onClick={() => setIsOpen(true)} 
-        className="btn-primary text-lg px-8 py-4"
+        className="text-lg px-8 py-4"
+        variant="secondary"
       >
         Get Started
-      </button>
+      </ButtonAnimation>
       <QuizModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}

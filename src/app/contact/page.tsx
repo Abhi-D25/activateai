@@ -7,6 +7,7 @@ import {
   PhoneIcon, 
   MapPinIcon 
 } from '@heroicons/react/24/outline';
+import ButtonAnimation from '../components/ButtonAnimation';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -86,9 +87,9 @@ export default function Contact() {
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn-primary w-full">
+              <ButtonAnimation type="submit" className="w-full" variant="secondary">
                 Send Message
-              </button>
+              </ButtonAnimation>
             </form>
           </div>
 

@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import AnimatedProgress from './AnimatedProgress';
+import ButtonAnimation from './ButtonAnimation';
 
 interface QuizModalProps {
   isOpen: boolean;
@@ -93,6 +95,8 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
 
   if (!isOpen) return null;
 
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+
   return (
     <AnimatePresence>
       <motion.div
@@ -119,25 +123,26 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
               {!isComplete ? (
                 <>
                   <div className="mb-8">
-                    <div className="h-2 bg-slate-700 rounded-full">
-                      <div
-                        className="h-full bg-blue-400 rounded-full transition-all duration-300"
-                        style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-                      />
-                    </div>
+                    <AnimatedProgress 
+                      percentage={progress}
+                      height={6}
+                      color="#60a5fa"
+                      backgroundColor="#334155"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-6">
                     {questions[currentQuestion].question}
                   </h3>
                   <div className="space-y-4">
                     {questions[currentQuestion].options.map((option, index) => (
-                      <button
+                      <ButtonAnimation
                         key={index}
                         onClick={() => handleAnswer(option)}
-                        className="w-full p-4 text-left bg-slate-700 hover:bg-slate-600 rounded-lg text-white transition-colors"
+                        className="w-full p-4 text-left"
+                        variant="secondary"
                       >
                         {option}
-                      </button>
+                      </ButtonAnimation>
                     ))}
                   </div>
                 </>
@@ -212,12 +217,13 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                       className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                   </div>
-                  <button
+                  <ButtonAnimation
                     type="submit"
-                    className="w-full btn-primary"
+                    className="w-full"
+                    variant="primary"
                   >
                     Get Your AI Solution
-                  </button>
+                  </ButtonAnimation>
                 </motion.form>
               )}
             </div>
