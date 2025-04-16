@@ -17,10 +17,10 @@ export default function AboutPage() {
     <div className="bg-black min-h-screen">
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-16 px-4">
             <FuturisticText
               text="About ActivateAI"
-              className="text-4xl sm:text-5xl font-bold text-white mb-6"
+              className="text-3xl sm:text-5xl font-bold text-white mb-6" // Smaller text on mobile
               glowColor="#3b82f6"
             />
             <motion.div
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 },
                 filter: { duration: 1 }
               }}
-              className="text-xl text-slate-300 mr-24"
+              className="text-xl text-slate-300 mx-auto px-4" // Removed mr-24 and added mx-auto with padding
             >
               We&apos;re on a mission to democratize AI for small and medium businesses
             </motion.div>

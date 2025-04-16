@@ -100,15 +100,33 @@
     animation: none !important; /* Disable the animation */
   }
   
-  /* If you still want a subtle effect but not the blue, you could use */
-  /* .gradient-bg {
-    background: linear-gradient(
-      130deg,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.7)
-    ) !important;
-  } */
+  .section-title {
+    @apply text-2xl !important; /* Override the default size for mobile */
+  }
+  
+  /* Fix for text that might be overflowing its container */
+  .text-xl {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Improved spacing for mobile headings */
+  h1, h2, h3, .text-3xl, .text-4xl, .text-5xl {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Ensure proper text wrapping on small screens */
+  p, .text-slate-300, .text-slate-400 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Adjust container padding for better mobile spacing */
+  .container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
 }
 
 /* Mobile animations */

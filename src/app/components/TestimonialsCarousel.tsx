@@ -72,13 +72,13 @@ export default function TestimonialsCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-8 space-x-1"> 
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-blue-400 w-4' : 'bg-slate-600'
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${  
+                  index === currentIndex ? 'bg-blue-400 w-3' : 'bg-slate-600'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
