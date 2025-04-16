@@ -51,6 +51,10 @@ const MobileParticleBackground = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
 
+      // Explicitly set black background before clearing
+      ctx.fillStyle = '#000000'; 
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
