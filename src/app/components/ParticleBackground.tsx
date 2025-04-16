@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -11,7 +11,6 @@ interface Particle {
 
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>();
 
@@ -39,7 +38,7 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3, // Slightly slower movement
+          vx: (Math.random() - 0.5) * 0.3,
           vy: (Math.random() - 0.5) * 0.3,
         });
       }
@@ -56,21 +55,11 @@ const ParticleBackground = () => {
 
       // Update and draw particles
       const particles = particlesRef.current;
-      const { x: mouseX, y: mouseY } = mousePosition;
       
       particles.forEach((particle, i) => {
         // Update position
         particle.x += particle.vx;
         particle.y += particle.vy;
-
-        // Mouse interaction
-        const dx = mouseX - particle.x;
-        const dy = mouseY - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 100) {
-          particle.x += (dx / distance) * 0.2;
-          particle.y += (dy / distance) * 0.2;
-        }
 
         // Bounce off walls
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
@@ -103,25 +92,18 @@ const ParticleBackground = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    // Handle mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
     // Initialize and start animation
     initParticles();
     animate();
-    window.addEventListener('mousemove', handleMouseMove);
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [mousePosition]);
+  }, []);
 
   return (
     <canvas

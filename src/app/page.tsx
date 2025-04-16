@@ -16,7 +16,7 @@ import CaseStudiesSection from './components/CaseStudiesSection';
 import ServicesSection from './components/ServicesSection';
 import QuizButton from './components/QuizButton';
 import FuturisticText from './components/FuturisticText';
-import ParticleBackground from '../components/ParticleBackground';
+import ParticleBackground from '../app/components/ParticleBackground';
 
 export default function Home() {
   return (

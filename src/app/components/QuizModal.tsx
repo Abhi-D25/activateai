@@ -103,25 +103,30 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 overflow-y-auto"
+        className="fixed inset-0 z-50 overflow-y-auto backdrop-blur-sm bg-black/30"
       >
         <div className="flex min-h-screen items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="relative w-full max-w-2xl bg-slate-800 rounded-xl shadow-xl"
+            className={`relative bg-slate-800 rounded-xl shadow-xl ${
+              isComplete && !showLeadForm 
+                ? "w-full max-w-2xl min-h-[150px]" 
+                : "w-full max-w-3xl min-h-[450px]"
+            }`}
           >
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 text-slate-400 hover:text-white transition-colors"
-            >
-              <XMarkIcon className="h-6 w-6" />
-            </button>
-
             <div className="p-8">
               {!isComplete ? (
                 <>
+                  <div className="flex justify-end mb-4">
+                    <button
+                      onClick={onClose}
+                      className="text-slate-400 hover:text-white transition-colors"
+                    >
+                      <XMarkIcon className="h-6 w-6" />
+                    </button>
+                  </div>
                   <div className="mb-8">
                     <AnimatedProgress 
                       percentage={progress}
@@ -130,10 +135,10 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                       backgroundColor="#334155"
                     />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-6 min-h-[32px]">
                     {questions[currentQuestion].question}
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-4 flex-grow flex flex-col justify-center">
                     {questions[currentQuestion].options.map((option, index) => (
                       <ButtonAnimation
                         key={index}
@@ -146,23 +151,12 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                     ))}
                   </div>
                 </>
-              ) : !showLeadForm ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center"
-                >
-                  <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
-                  <p className="text-slate-300">
-                    We&apos;re analyzing your responses to provide personalized recommendations.
-                  </p>
-                </motion.div>
-              ) : (
+              ) : showLeadForm ? (
                 <motion.form
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   onSubmit={handleSubmit}
-                  className="space-y-6"
+                  className="space-y-6 flex-grow flex flex-col justify-center"
                 >
                   <h3 className="text-2xl font-bold text-white mb-6">Get Your Personalized AI Solution</h3>
                   <div>
@@ -225,6 +219,17 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                     Get Your AI Solution
                   </ButtonAnimation>
                 </motion.form>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center"
+                >
+                  <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
+                  <p className="text-slate-300">
+                    We&apos;re analyzing your responses to provide personalized recommendations.
+                  </p>
+                </motion.div>
               )}
             </div>
           </motion.div>
