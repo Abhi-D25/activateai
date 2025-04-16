@@ -94,6 +94,21 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
+
+  .gradient-bg {
+    background: none !important; /* Override the gradient background */
+    animation: none !important; /* Disable the animation */
+  }
+  
+  /* If you still want a subtle effect but not the blue, you could use */
+  /* .gradient-bg {
+    background: linear-gradient(
+      130deg,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.7)
+    ) !important;
+  } */
 }
 
 /* Mobile animations */
