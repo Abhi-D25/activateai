@@ -112,7 +112,7 @@ export default function FAQSection() {
           <div className="text-center mt-16">
             <p className="text-slate-400 mb-8">Still have questions? Get personalized answers for your business</p>
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
             >
               Contact Us
