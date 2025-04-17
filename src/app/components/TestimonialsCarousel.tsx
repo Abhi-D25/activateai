@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const testimonials = [
   {
@@ -28,6 +29,52 @@ const testimonials = [
   }
 ];
 
+// Define types for the pagination components
+interface PaginationDotsProps {
+  currentIndex: number;
+  setCurrentIndex: (index: number) => void;
+}
+
+// Mobile-specific pagination dots component
+const MobilePaginationDots: React.FC<PaginationDotsProps> = ({ currentIndex, setCurrentIndex }) => {
+  return (
+    <div className="flex space-x-1 sm:hidden"> 
+      {testimonials.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => setCurrentIndex(index)}
+          className={`rounded-full transition-all duration-300 ${  
+            index === currentIndex 
+              ? 'bg-blue-400 w-1 h-1' 
+              : 'bg-slate-600 w-0.5 h-0.5'
+          }`}
+          aria-label={`Go to testimonial ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Desktop pagination dots component
+const DesktopPaginationDots: React.FC<PaginationDotsProps> = ({ currentIndex, setCurrentIndex }) => {
+  return (
+    <div className="hidden sm:flex space-x-2"> 
+      {testimonials.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => setCurrentIndex(index)}
+          className={`rounded-full transition-all duration-300 ${  
+            index === currentIndex 
+              ? 'bg-blue-400 w-3 h-3.5' 
+              : 'bg-slate-600 w-3.5 h-3.5'
+          }`}
+          aria-label={`Go to testimonial ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -38,6 +85,14 @@ export default function TestimonialsCarousel() {
 
     return () => clearInterval(timer);
   }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
 
   return (
     <section className="py-16 bg-slate-900">
@@ -72,19 +127,29 @@ export default function TestimonialsCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex justify-center mt-8 space-x-1"> 
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`rounded-full transition-all duration-300 ${  
-                  index === currentIndex 
-                    ? 'bg-blue-400 w-2.5 h-2.5 sm:w-3 sm:h-3.5' 
-                    : 'bg-slate-600 w-2 h-2 sm:w-3.5 sm:h-3.5'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-center mt-8 space-x-4">
+            {/* Previous Button */}
+            <button
+              onClick={goToPrevious}
+              className="p-1.5 sm:p-2 rounded-full bg-slate-700 hover:bg-slate-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeftIcon className="h-4 w-4 sm:h-5 sm:w-5 text-slate-300" />
+            </button>
+            
+            {/* Pagination Dots - Mobile and Desktop versions */}
+            <MobilePaginationDots currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+            <DesktopPaginationDots currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+            
+            {/* Next Button */}
+            <button
+              onClick={goToNext}
+              className="p-1.5 sm:p-2 rounded-full bg-slate-700 hover:bg-slate-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+              aria-label="Next testimonial"
+            >
+              <ChevronRightIcon className="h-4 w-4 sm:h-5 sm:w-5 text-slate-300" />
+            </button>
           </div>
         </div>
       </div>

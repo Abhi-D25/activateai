@@ -67,30 +67,30 @@ export default function Home() {
       </Helmet>
       <div className="bg-black">
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen overflow-hidden">
+        <section id="home" className="relative h-screen overflow-hidden">
           <div className="absolute inset-0 gradient-bg opacity-50" />
           <ParticleBackground />
-          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 min-h-screen flex flex-col items-center">
+          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 h-full flex flex-col items-center md:mt-24 lg:mt-32">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl font-bold text-blue-400 mb-32 md:hidden"
+              className="text-4xl font-bold text-blue-400 mb-32 md:hidden max-sm:text-center max-sm:mb-40"
             >
               ActivateAI
             </motion.h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-              <div>
+              <div className="max-sm:text-center">
                 <FuturisticText
                   text="Activate Your Business Today"
-                  className="text-3xl sm:text-4xl font-bold text-white mb-8 mr-14"
+                  className="text-3xl sm:text-4xl font-bold text-white mb-8 mr-14 max-sm:mr-0"
                   glowColor="#3b82f6"
                 />
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  className="text-xl text-slate-300 mb-8"
+                  className="text-xl text-slate-300 mb-8 max-sm:max-w-md max-sm:mx-auto"
                 >
                   At ActivateAI, we make artificial intelligence accessible to small and medium sized businesses. Our mission is to simplify AI adoption with tailored, practical solutions that improve efficiency, cut costs, and drive growth.
                 </motion.p>
@@ -104,7 +104,7 @@ export default function Home() {
                 </motion.div>
               </div>
               <motion.div
-                className="relative"
+                className="relative max-sm:w-full max-sm:max-w-md max-sm:mx-auto"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
@@ -120,6 +120,7 @@ export default function Home() {
                     fill
                     className="object-cover rounded-2xl"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority
                   />
                 </motion.div>
               </motion.div>
