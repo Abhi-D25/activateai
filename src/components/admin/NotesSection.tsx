@@ -6,9 +6,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Edit, Trash2 } from 'lucide-react';
 import { deleteNote } from '@/lib/supabase';
 import ConfirmationModal from './ConfirmationModal';
+import { Database } from '@/types/database.types';
 
-export default function NotesSection({ notes, onDelete }) {
-  const [selectedNote, setSelectedNote] = useState(null);
+type Note = Database['public']['Tables']['notes']['Row'];
+
+interface NotesSectionProps {
+  notes: Note[];
+  onDelete: (noteId: string) => void;
+}
+
+export default function NotesSection({ notes, onDelete }: NotesSectionProps) {
+  const [selectedNote, setSelectedNote] = useState<string | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const handleDeleteNote = async () => {

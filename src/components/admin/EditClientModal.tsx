@@ -1,57 +1,81 @@
-// src/components/admin/NewClientModal.tsx
 'use client';
 
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { addClient } from '@/lib/supabase';
+import { updateClient } from '@/lib/supabase';
 import { toast } from 'react-hot-toast';
 import { Database } from '@/types/database.types';
 
 type Client = Database['public']['Tables']['clients']['Row'];
-type ClientInsert = Database['public']['Tables']['clients']['Insert'];
+type ClientUpdate = Database['public']['Tables']['clients']['Update'];
 
-interface NewClientModalProps {
+type ClientFormData = {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  status: Client['status'];
+  lead_source: string;
+  notes: string;
+};
+
+interface EditClientModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onClientAdded: (client: Client) => void;
+  client: Client | null;
+  onClientUpdated: (client: Client) => void;
 }
 
-export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewClientModalProps) {
-  const [formData, setFormData] = useState<ClientInsert>({
+export default function EditClientModal({ isOpen, onClose, client, onClientUpdated }: EditClientModalProps) {
+  const [formData, setFormData] = useState<ClientFormData>({
     name: '',
     email: '',
-    phone: null,
-    company: null,
+    phone: '',
+    company: '',
     status: 'potential',
-    lead_source: 'manual',
-    notes: null,
-    next_session: null
+    lead_source: '',
+    notes: ''
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    if (client) {
+      setFormData({
+        name: client.name || '',
+        email: client.email || '',
+        phone: client.phone || '',
+        company: client.company || '',
+        status: client.status || 'potential',
+        lead_source: client.lead_source || 'manual',
+        notes: client.notes || ''
+      });
+    }
+  }, [client]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value === '' ? null : value
+      [name]: value
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!client) return;
     
     try {
       setIsSubmitting(true);
-      const newClient = await addClient(formData);
+      const updatedClient = await updateClient(client.id, formData as ClientUpdate);
       
-      toast.success('Client added successfully');
-      onClientAdded(newClient);
+      toast.success('Client updated successfully');
+      onClientUpdated(updatedClient);
       onClose();
     } catch (error) {
-      console.error('Error adding client:', error);
-      toast.error('Failed to add client');
+      console.error('Error updating client:', error);
+      toast.error('Failed to update client');
     } finally {
       setIsSubmitting(false);
     }
@@ -85,7 +109,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                   {/* Header */}
                   <div className="bg-slate-700 px-4 py-3 sm:px-6">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">Add New Client</h3>
+                      <h3 className="text-lg font-medium text-white">Edit Client</h3>
                       <button
                         onClick={onClose}
                         className="rounded-md bg-slate-700 text-slate-400 hover:text-white"
@@ -137,7 +161,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                             type="tel"
                             id="phone"
                             name="phone"
-                            value={formData.phone || ''}
+                            value={formData.phone}
                             onChange={handleChange}
                             className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
@@ -151,7 +175,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                             type="text"
                             id="company"
                             name="company"
-                            value={formData.company || ''}
+                            value={formData.company}
                             onChange={handleChange}
                             className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
@@ -170,7 +194,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                           >
                             <option value="potential">Potential</option>
                             <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="completed">Completed</option>
                           </select>
                         </div>
 
@@ -201,7 +225,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                             id="notes"
                             name="notes"
                             rows={3}
-                            value={formData.notes || ''}
+                            value={formData.notes}
                             onChange={handleChange}
                             className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
@@ -218,7 +242,7 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
                           isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                       >
-                        {isSubmitting ? 'Adding...' : 'Add Client'}
+                        {isSubmitting ? 'Updating...' : 'Update Client'}
                       </button>
                       <button
                         type="button"
@@ -237,4 +261,4 @@ export default function NewClientModal({ isOpen, onClose, onClientAdded }: NewCl
       )}
     </AnimatePresence>
   );
-}
+} 

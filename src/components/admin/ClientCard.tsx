@@ -14,35 +14,55 @@ import {
   Clock
 } from 'lucide-react';
 import { updateClientStatus, deleteClient } from '@/lib/supabase';
+import { toast } from 'react-hot-toast';
+import { Database } from '@/types/database.types';
 import ConfirmationModal from './ConfirmationModal';
 
-export default function ClientCard({ client, onViewDetails, onDelete }) {
+type Client = Database['public']['Tables']['clients']['Row'] & {
+  quiz_results?: {
+    questions: Array<{
+      question: string;
+      answer: string;
+    }>;
+    completed_at: string;
+  };
+  quiz_date?: string;
+};
+
+interface ClientCardProps {
+  client: Client;
+  onViewDetails: (clientId: string) => void;
+  onDelete: () => void;
+}
+
+export default function ClientCard({ client, onViewDetails, onDelete }: ClientCardProps) {
   const [showMenu, setShowMenu] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: Client['status']) => {
     switch (status) {
       case 'active':
         return 'bg-green-500/20 text-green-400 border-green-500/30';
       case 'potential':
         return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'completed':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      case 'inactive':
+        return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
       default:
         return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
     }
   };
 
-  const handleStatusChange = async (e) => {
+  const handleStatusChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.stopPropagation();
-    const newStatus = e.target.value;
+    const newStatus = e.target.value as Client['status'];
     try {
       setIsUpdating(true);
       await updateClientStatus(client.id, newStatus);
-      onDelete(); // Refresh client list
-    } catch (err) {
-      console.error('Error updating status:', err);
+      toast.success('Status updated successfully');
+    } catch (error) {
+      console.error('Error updating status:', error);
+      toast.error('Failed to update status');
     } finally {
       setIsUpdating(false);
     }
@@ -56,6 +76,12 @@ export default function ClientCard({ client, onViewDetails, onDelete }) {
       console.error('Error deleting client:', err);
     } finally {
       setShowDeleteConfirm(false);
+    }
+  };
+
+  const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (showMenu && !(e.target as HTMLElement).closest('.menu-container')) {
+      setShowMenu(false);
     }
   };
 

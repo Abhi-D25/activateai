@@ -1,10 +1,11 @@
 // src/app/admin/login/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 import { AlertCircle } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,15 +19,15 @@ export default function LoginPage() {
     setError('');
     setIsLoading(true);
     
-    console.log('Attempting to sign in with:', { email });
-    
     try {
-      console.log('Calling signIn function...');
+      // Pass credentials as an object, which matches your AuthContext type
       await signIn(email, password);
-      console.log('Sign in successful, redirecting...');
       
-      // Force a hard refresh to ensure cookies are properly set
-      window.location.href = '/admin/dashboard';
+      console.log("Login successful, waiting for session to be saved...");
+      setTimeout(() => {
+        console.log("Redirecting to dashboard now...");
+        window.location.href = '/admin/dashboard';
+      }, 1000);
     } catch (error: any) {
       console.error('Login error:', error);
       setError(error.message || 'Login failed. Please try again.');
@@ -34,6 +35,26 @@ export default function LoginPage() {
       setIsLoading(false);
     }
   };
+
+  const testSupabaseConnection = async () => {
+    try {
+      console.log("Testing Supabase connection...");
+      const { data, error } = await supabase.from('clients').select('count()', { count: 'exact' });
+      
+      if (error) {
+        console.error("Supabase connection error:", error);
+      } else {
+        console.log("Supabase connection successful, client count:", data);
+      }
+    } catch (err) {
+      console.error("Supabase test failed:", err);
+    }
+  };
+  
+  // Call this in useEffect or add a test button
+  useEffect(() => {
+    testSupabaseConnection();
+  }, []);
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4 z-50 relative">

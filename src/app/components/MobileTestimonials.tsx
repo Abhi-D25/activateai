@@ -3,6 +3,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { useMobile } from '../hooks/useMobile';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface Testimonial {
   id: number;
@@ -55,11 +57,14 @@ const MobileTestimonials = ({ testimonials }: MobileTestimonialsProps) => {
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center mb-4">
               {testimonials[currentIndex].image && (
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="w-12 h-12 rounded-full mr-4"
-                />
+                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 mr-4">
+                  <Image
+                    src={testimonials[currentIndex].image}
+                    alt={testimonials[currentIndex].name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               )}
               <div>
                 <h3 className="font-semibold text-lg">

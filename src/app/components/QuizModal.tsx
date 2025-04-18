@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import AnimatedProgress from './AnimatedProgress';
 import ButtonAnimation from './ButtonAnimation';
-import { supabase } from '@/lib/supabase';
+import type { QuizFormData, ApiResponse } from '@/types/forms';
 
 interface QuizModalProps {
   isOpen: boolean;
@@ -68,7 +68,8 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
   const [answers, setAnswers] = useState<string[]>([]);
   const [isComplete, setIsComplete] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
-  const [formData, setFormData] = useState({
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [formData, setFormData] = useState<Omit<QuizFormData, 'answers'>>({
     name: '',
     email: '',
     phone: '',
@@ -85,7 +86,7 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsComplete(true);
-      setTimeout(() => setShowLeadForm(true), 2000);
+      setShowLeadForm(true);
     }
   };
 
@@ -109,47 +110,44 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
     setFormError('');
     
     try {
-      // Format quiz results for saving
-      const quizResults = {
-        questions: questions.map((q, index) => ({
+      // Format quiz data for API
+      const quizData: QuizFormData = {
+        ...formData,
+        answers: questions.map((q, index) => ({
           question: q.question,
           answer: answers[index] || 'Not answered'
-        })),
-        completed_at: new Date().toISOString()
+        }))
       };
-      
-      // Save to Supabase
-      const { data, error } = await supabase
-        .from('clients')
-        .upsert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          company: formData.company || null,
-          quiz_results: quizResults,
-          quiz_date: new Date().toISOString(),
-          lead_source: 'quiz',
-          status: 'potential',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }, {
-          onConflict: 'email',
-          ignoreDuplicates: false
-        })
-        .select();
+
+      const response = await fetch('/api/quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quizData),
+      });
+
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit quiz');
+      }
+
+      if (data.success) {
+        // Show thank you message after successful submission
+        setShowLeadForm(false);
+        setShowThankYou(true);
         
-      if (error) {
-        console.error('Error saving quiz results:', error);
-        setFormError('Failed to submit. Please try again.');
+        // Close the modal after a delay
+        setTimeout(() => {
+          onClose();
+        }, 3000);
       } else {
-        console.log('Quiz results saved successfully:', data);
-        
-        // Close the modal after successful submission
-        onClose();
+        setFormError(data.message || 'Failed to submit quiz');
       }
     } catch (err) {
       console.error('Error submitting quiz:', err);
-      setFormError('An unexpected error occurred. Please try again.');
+      setFormError(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -173,7 +171,7 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             className={`relative bg-slate-800 rounded-xl shadow-xl ${
-              isComplete && !showLeadForm 
+              showThankYou
                 ? "w-full max-w-2xl min-h-[150px]" 
                 : "w-full max-w-3xl min-h-[450px]"
             }`}
@@ -213,7 +211,16 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                     ))}
                   </div>
                 </>
-              ) : showLeadForm ? (
+              ) : showThankYou ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-8"
+                >
+                  <h3 className="text-2xl font-bold text-white mb-4">Thank you for completing the quiz!</h3>
+                  <p className="text-slate-300">We&apos;ll analyze your responses and prepare a personalized solution for your business.</p>
+                </motion.div>
+              ) : (
                 <motion.div>
                   <div className="flex justify-end mb-4">
                     <button
@@ -248,12 +255,13 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
+                    
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                        Email Address <span className="text-red-500">*</span>
+                        Email <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="email"
@@ -261,62 +269,45 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
+                    
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-                        Phone Number
+                        Phone
                       </label>
                       <input
                         type="tel"
                         id="phone"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
+                    
                     <div>
                       <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
-                        Company Name
+                        Company
                       </label>
                       <input
                         type="text"
                         id="company"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
+                    
                     <ButtonAnimation
                       type="submit"
                       className="w-full"
-                      variant="primary"
+                      variant="secondary"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Processing...' : 'Get Your AI Solution'}
+                      {isSubmitting ? 'Submitting...' : 'Get Your Results'}
                     </ButtonAnimation>
                   </motion.form>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center"
-                >
-                  <div className="flex justify-end mb-4">
-                    <button
-                      onClick={onClose}
-                      className="text-slate-400 hover:text-white transition-colors"
-                    >
-                      <XMarkIcon className="h-6 w-6" />
-                    </button>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
-                  <p className="text-slate-300">
-                    We're analyzing your responses to provide personalized recommendations.
-                  </p>
                 </motion.div>
               )}
             </div>

@@ -4,6 +4,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
+interface ConfirmationModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  confirmText?: string;
+  cancelText?: string;
+  onConfirm: () => void;
+  onClose: () => void;
+  variant?: 'danger' | 'warning' | 'info';
+}
+
 export default function ConfirmationModal({
   isOpen,
   title,
@@ -12,8 +23,8 @@ export default function ConfirmationModal({
   cancelText = 'Cancel',
   onConfirm,
   onClose,
-  variant = 'danger' // 'danger', 'warning', 'info'
-}) {
+  variant = 'danger'
+}: ConfirmationModalProps) {
   const getVariantStyles = () => {
     switch (variant) {
       case 'danger':

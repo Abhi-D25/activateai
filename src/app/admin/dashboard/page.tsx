@@ -67,92 +67,25 @@ export default function Dashboard() {
   useEffect(() => {
     async function loadDashboardData() {
       try {
-        // TEMPORARY: Use mock data instead of fetching from Supabase
-        console.log('TEMPORARY: Using mock data for dashboard');
+        setIsLoading(true);
         
-        // Mock data
-        const mockClients = [
-          { 
-            id: '1', 
-            name: 'John Doe', 
-            email: 'john@example.com', 
-            status: 'active' as const, 
-            lead_source: 'referral', 
-            created_at: '2023-01-15', 
-            updated_at: '2023-01-15',
-            phone: null,
-            company: 'Acme Inc',
-            notes: 'Interested in AI solutions',
-            next_session: '2023-02-01' 
-          },
-          { 
-            id: '2', 
-            name: 'Jane Smith', 
-            email: 'jane@example.com', 
-            status: 'potential' as const, 
-            lead_source: 'website', 
-            created_at: '2023-01-20', 
-            updated_at: '2023-01-20',
-            phone: '555-123-4567',
-            company: null,
-            notes: null,
-            next_session: null 
-          },
-          { 
-            id: '3', 
-            name: 'Bob Johnson', 
-            email: 'bob@example.com', 
-            status: 'active' as const, 
-            lead_source: 'direct', 
-            created_at: '2023-01-25', 
-            updated_at: '2023-01-25',
-            phone: null,
-            company: 'Tech Corp',
-            notes: 'Looking for automation solutions',
-            next_session: '2023-02-10' 
-          },
-          { 
-            id: '4', 
-            name: 'Alice Brown', 
-            email: 'alice@example.com', 
-            status: 'inactive' as const, 
-            lead_source: 'referral', 
-            created_at: '2023-01-30', 
-            updated_at: '2023-01-30',
-            phone: '555-987-6543',
-            company: 'Startup Inc',
-            notes: 'Not interested at this time',
-            next_session: null 
-          },
-          { 
-            id: '5', 
-            name: 'Charlie Wilson', 
-            email: 'charlie@example.com', 
-            status: 'active' as const, 
-            lead_source: 'website', 
-            created_at: '2023-02-01', 
-            updated_at: '2023-02-01',
-            phone: null,
-            company: null,
-            notes: null,
-            next_session: '2023-02-15' 
-          },
-        ];
+        // Fetch real clients from Supabase
+        const clients = await fetchClients();
         
         // Calculate stats
-        const active = mockClients.filter(c => c.status === 'active').length;
-        const potential = mockClients.filter(c => c.status === 'potential').length;
-        const withSessions = mockClients.filter(c => c.next_session).length;
+        const active = clients.filter((c: { status: string; }) => c.status === 'active').length;
+        const potential = clients.filter((c: { status: string; }) => c.status === 'potential').length;
+        const withSessions = clients.filter((c: { next_session: any; }) => c.next_session).length;
         
         setStats({
-          totalClients: mockClients.length,
+          totalClients: clients.length,
           activeClients: active,
           potentialClients: potential,
           upcomingSessions: withSessions
         });
         
-        // Get recent clients
-        setRecentClients(mockClients);
+        // Get recent clients (latest 5)
+        setRecentClients(clients.slice(0, 5));
         
         setIsLoading(false);
       } catch (error) {
@@ -161,7 +94,7 @@ export default function Dashboard() {
         setIsLoading(false);
       }
     }
-
+  
     loadDashboardData();
   }, []);
 

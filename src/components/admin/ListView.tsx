@@ -13,46 +13,60 @@ import {
 } from 'lucide-react';
 import { updateClientStatus, deleteClient } from '@/lib/supabase';
 import ConfirmationModal from './ConfirmationModal';
+import { Database } from '@/types/database.types';
 
-export default function ListView({ clients, onView, onRefresh }) {
-  const [selectedClient, setSelectedClient] = useState(null);
+type Client = Database['public']['Tables']['clients']['Row'];
+type ClientStatus = Client['status'];
+
+interface ListViewProps {
+  clients: Client[];
+  onView: (clientId: string) => void;
+  onRefresh: () => void;
+}
+
+export default function ListView({ clients, onView, onRefresh }: ListViewProps) {
+  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [showMenu, setShowMenu] = useState(null);
+  const [showMenu, setShowMenu] = useState<string | null>(null);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: ClientStatus) => {
     switch (status) {
       case 'active':
         return 'bg-green-500/20 text-green-400 border-green-500/30';
       case 'potential':
         return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'completed':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      case 'inactive':
+        return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
       default:
         return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
     }
   };
 
-  const handleStatusChange = async (clientId, newStatus) => {
+  const handleStatusChange = async (clientId: string, newStatus: ClientStatus) => {
     try {
       await updateClientStatus(clientId, newStatus);
       onRefresh();
-    } catch (err) {
-      console.error('Error updating status:', err);
+    } catch (error) {
+      console.error('Error updating status:', error);
     }
   };
 
-  const handleDeleteClient = async () => {
-    if (!selectedClient) return;
-    
-    try {
-      await deleteClient(selectedClient);
-      onRefresh();
-    } catch (err) {
-      console.error('Error deleting client:', err);
-    } finally {
-      setSelectedClient(null);
-      setShowDeleteConfirm(false);
+  const handleDelete = async (client: Client) => {
+    setSelectedClient(client);
+    setShowDeleteConfirm(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (selectedClient) {
+      try {
+        await deleteClient(selectedClient.id);
+        onRefresh();
+      } catch (error) {
+        console.error('Error deleting client:', error);
+      }
     }
+    setShowDeleteConfirm(false);
+    setSelectedClient(null);
   };
 
   return (
@@ -94,7 +108,7 @@ export default function ListView({ clients, onView, onRefresh }) {
                     value={client.status}
                     onChange={(e) => {
                       e.stopPropagation();
-                      handleStatusChange(client.id, e.target.value);
+                      handleStatusChange(client.id, e.target.value as ClientStatus);
                     }}
                     onClick={(e) => e.stopPropagation()}
                     className={`text-xs px-2 py-1 rounded-full ${getStatusColor(client.status)} bg-transparent border focus:outline-none cursor-pointer`}
@@ -170,8 +184,7 @@ export default function ListView({ clients, onView, onRefresh }) {
                             onClick={(e) => {
                               e.stopPropagation();
                               setShowMenu(null);
-                              setSelectedClient(client.id);
-                              setShowDeleteConfirm(true);
+                              handleDelete(client);
                             }}
                           >
                             <Trash2 size={14} className="mr-2" />
@@ -195,7 +208,7 @@ export default function ListView({ clients, onView, onRefresh }) {
         message="Are you sure you want to delete this client? This action cannot be undone."
         confirmText="Delete"
         cancelText="Cancel"
-        onConfirm={handleDeleteClient}
+        onConfirm={handleConfirmDelete}
         onClose={() => {
           setSelectedClient(null);
           setShowDeleteConfirm(false);

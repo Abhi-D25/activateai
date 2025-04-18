@@ -1,7 +1,7 @@
 // src/app/admin/dashboard/clients/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -16,11 +16,14 @@ import { fetchClients } from '@/lib/supabase';
 import ClientCard from '@/components/admin/ClientCard';
 import ListView from '@/components/admin/ListView';
 import NewClientModal from '@/components/admin/NewClientModal';
+import { Database } from '@/types/database.types';
+
+type Client = Database['public']['Tables']['clients']['Row'];
 
 export default function ClientsPage() {
   const router = useRouter();
-  const [clients, setClients] = useState([]);
-  const [filteredClients, setFilteredClients] = useState([]);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [filteredClients, setFilteredClients] = useState<Client[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -28,13 +31,51 @@ export default function ClientsPage() {
   const [viewMode, setViewMode] = useState('grid');
   const [isNewModalOpen, setIsNewModalOpen] = useState(false);
 
-  useEffect(() => {
-    loadClients();
-  }, []);
+  const filterClients = useCallback(() => {
+    let filtered = [...clients];
+
+    // Apply search filter
+    if (searchTerm) {
+      filtered = filtered.filter(client => 
+        client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        client.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (client.company && client.company.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+
+    // Apply status filter
+    if (statusFilter !== 'all') {
+      filtered = filtered.filter(client => client.status === statusFilter);
+    }
+
+    // Apply source filter
+    if (sourceFilter !== 'all') {
+      filtered = filtered.filter(client => client.lead_source === sourceFilter);
+    }
+
+    setFilteredClients(filtered);
+  }, [clients, searchTerm, statusFilter, sourceFilter]);
 
   useEffect(() => {
     filterClients();
-  }, [clients, searchTerm, statusFilter, sourceFilter]);
+  }, [clients, searchTerm, statusFilter, sourceFilter, filterClients]);
+
+  useEffect(() => {
+    async function loadClients() {
+      try {
+        setIsLoading(true);
+        const data = await fetchClients();
+        console.log("Fetched clients:", data);
+        setClients(data || []);
+      } catch (err) {
+        console.error('Error loading clients:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  
+    loadClients();
+  }, []);
 
   const loadClients = async () => {
     try {
@@ -48,31 +89,7 @@ export default function ClientsPage() {
     }
   };
 
-  const filterClients = () => {
-    let filtered = [...clients];
-    
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(client => 
-        client.name?.toLowerCase().includes(term) || 
-        client.email?.toLowerCase().includes(term) || 
-        client.phone?.includes(term) ||
-        client.company?.toLowerCase().includes(term)
-      );
-    }
-    
-    if (statusFilter !== 'all') {
-      filtered = filtered.filter(client => client.status === statusFilter);
-    }
-    
-    if (sourceFilter !== 'all') {
-      filtered = filtered.filter(client => client.lead_source === sourceFilter);
-    }
-    
-    setFilteredClients(filtered);
-  };
-
-  const handleViewDetails = (clientId) => {
+  const handleViewDetails = (clientId: string) => {
     router.push(`/admin/dashboard/clients/${clientId}`);
   };
 
@@ -81,8 +98,8 @@ export default function ClientsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
@@ -93,7 +110,7 @@ export default function ClientsPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Client Management</h1>
-          <p className="text-slate-300">Manage and track your clients' progress</p>
+          <p className="text-slate-300">Manage and track your clients&apos; progress</p>
         </div>
         
         <button
@@ -120,68 +137,55 @@ export default function ClientsPage() {
               />
             </div>
           </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative">
+
+          <div className="flex gap-4">
+            <div>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="appearance-none w-full pl-4 pr-10 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Status</option>
-                <option value="active">Active</option>
                 <option value="potential">Potential</option>
+                <option value="active">Active</option>
                 <option value="completed">Completed</option>
               </select>
-              <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
             </div>
-            
-            <div className="relative">
+
+            <div>
               <select
                 value={sourceFilter}
                 onChange={(e) => setSourceFilter(e.target.value)}
-                className="appearance-none w-full pl-4 pr-10 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Sources</option>
-                {leadSources.filter(s => s !== 'all').map(source => (
-                  <option key={source} value={source}>{source.charAt(0).toUpperCase() + source.slice(1)}</option>
-                ))}
+                <option value="manual">Manual Entry</option>
+                <option value="contact_form">Contact Form</option>
+                <option value="quiz">Quiz</option>
+                <option value="referral">Referral</option>
+                <option value="other">Other</option>
               </select>
-              <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+            </div>
+
+            <div className="flex items-center gap-2 bg-slate-700 rounded-lg p-1">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-slate-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              >
+                <LayoutGrid size={20} />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`p-2 rounded ${viewMode === 'list' ? 'bg-slate-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              >
+                <List size={20} />
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* View Toggle */}
-      <div className="flex justify-end">
-        <div className="flex p-1 bg-slate-800 rounded-lg border border-slate-700">
-          <button
-            onClick={() => setViewMode('grid')}
-            className={`p-2 rounded ${
-              viewMode === 'grid' 
-                ? 'bg-blue-600 text-white' 
-                : 'text-slate-400 hover:text-white'
-            }`}
-            aria-label="Grid View"
-          >
-            <LayoutGrid size={20} />
-          </button>
-          <button
-            onClick={() => setViewMode('list')}
-            className={`p-2 rounded ${
-              viewMode === 'list' 
-                ? 'bg-blue-600 text-white' 
-                : 'text-slate-400 hover:text-white'
-            }`}
-            aria-label="List View"
-          >
-            <List size={20} />
-          </button>
-        </div>
-      </div>
-
-      {/* Clients List */}
+      {/* Client List */}
       <AnimatePresence mode="wait">
         {filteredClients.length > 0 ? (
           <motion.div

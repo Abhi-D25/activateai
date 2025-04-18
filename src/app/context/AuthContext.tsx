@@ -10,7 +10,8 @@ import { toast } from 'react-hot-toast';
 type AuthContextType = {
   user: User | null;
   session: Session | null;
-  signIn: (credentials: { email: string; password: string }) => Promise<void>;
+  // Update return type to match actual implementation
+  signIn: (credentials: { email: string; password: string }) => Promise<any>;
   signOut: () => Promise<void>;
   isLoading: boolean;
 };
@@ -26,7 +27,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const getInitialSession = async () => {
       try {
+        console.log('Checking initial session...');
         const { data: { session } } = await supabase.auth.getSession();
+        console.log('Initial session:', session ? 'Found' : 'None');
         setSession(session);
         setUser(session?.user ?? null);
       } catch (error) {
@@ -35,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setIsLoading(false);
       }
     };
-
+  
     // Call the function
     getInitialSession();
 
@@ -56,12 +59,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const handleSignIn = async (credentials: { email: string; password: string }) => {
     try {
       setIsLoading(true);
-      const { error } = await supabase.auth.signInWithPassword(credentials);
       
-      if (error) throw error;
+      // Sign in with password
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: credentials.email,
+        password: credentials.password,
+      });
+      
+      if (error) {
+        console.error("Auth error:", error);
+        throw error;
+      }
+      
+      console.log("Sign in successful, user:", data.user?.id);
+      console.log("Session established:", !!data.session);
+      
+      // Update local state
+      setUser(data.user);
+      setSession(data.session);
       
       toast.success('Successfully signed in');
-      router.push('/admin/dashboard');
+      return data;
     } catch (error: any) {
       console.error('Error signing in:', error);
       toast.error(error.message || 'Failed to sign in');

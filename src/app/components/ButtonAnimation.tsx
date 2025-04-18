@@ -9,6 +9,7 @@ interface ButtonAnimationProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary';
+  disabled?: boolean;
 }
 
 export default function ButtonAnimation({
@@ -16,7 +17,8 @@ export default function ButtonAnimation({
   className = '',
   onClick,
   type = 'button',
-  variant = 'primary'
+  variant = 'primary',
+  disabled = false
 }: ButtonAnimationProps) {
   const baseClassName = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
   
@@ -24,25 +26,26 @@ export default function ButtonAnimation({
     <motion.button
       type={type}
       onClick={onClick}
-      className={`${baseClassName} ${className}`}
-      whileHover={{ 
+      className={`${baseClassName} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      whileHover={!disabled ? { 
         scale: 1.02,
         transition: { 
           duration: 0.2,
           ease: "easeOut"
         }
-      }}
-      whileTap={{ 
+      } : undefined}
+      whileTap={!disabled ? { 
         scale: 0.98,
         transition: {
           duration: 0.1,
           ease: "easeIn"
         }
-      }}
+      } : undefined}
       initial={false}
       style={{
         transformOrigin: 'center'
       }}
+      disabled={disabled}
     >
       {children}
     </motion.button>

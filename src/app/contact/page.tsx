@@ -9,10 +9,10 @@ import {
   MapPinIcon 
 } from '@heroicons/react/24/outline';
 import ButtonAnimation from '../components/ButtonAnimation';
-import { supabase } from '@/lib/supabase';
+import type { ContactFormData, ApiResponse } from '@/types/forms';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     phone: '',
@@ -53,32 +53,22 @@ export default function Contact() {
     setFormSuccess('');
     
     try {
-      // Save to Supabase CRM
-      const { data, error } = await supabase
-        .from('clients')
-        .upsert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          company: formData.company || null,
-          notes: formData.message,
-          lead_source: 'contact_form',
-          status: 'potential',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }, {
-          onConflict: 'email',
-          ignoreDuplicates: false
-        })
-        .select();
-        
-      if (error) {
-        console.error('Error saving contact form:', error);
-        setFormError('Failed to submit your message. Please try again.');
-      } else {
-        console.log('Contact form saved successfully:', data);
-        setFormSuccess('Thank you for your message! We will get back to you soon.');
-        
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit form');
+      }
+
+      if (data.success) {
+        setFormSuccess(data.message);
         // Reset form data
         setFormData({
           name: '',
@@ -87,10 +77,12 @@ export default function Contact() {
           company: '',
           message: ''
         });
+      } else {
+        setFormError(data.message || 'Failed to submit form');
       }
     } catch (err) {
       console.error('Error submitting contact form:', err);
-      setFormError('An unexpected error occurred. Please try again.');
+      setFormError(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

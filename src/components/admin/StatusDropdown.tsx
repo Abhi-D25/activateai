@@ -2,31 +2,39 @@
 'use client';
 
 import { useState } from 'react';
+import { Database } from '@/types/database.types';
 
-export default function StatusDropdown({ currentStatus, onStatusChange }) {
+type ClientStatus = Database['public']['Tables']['clients']['Row']['status'];
+
+interface StatusDropdownProps {
+  currentStatus: ClientStatus;
+  onStatusChange: (status: ClientStatus) => void;
+}
+
+export default function StatusDropdown({ currentStatus, onStatusChange }: StatusDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: ClientStatus) => {
     switch (status) {
       case 'active':
         return 'bg-green-500/20 text-green-400 border-green-500/30';
       case 'potential':
         return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'completed':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      case 'inactive':
+        return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
       default:
         return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
     }
   };
 
-  const getStatusLabel = (status) => {
+  const getStatusLabel = (status: ClientStatus) => {
     switch (status) {
       case 'active':
         return 'Active';
       case 'potential':
         return 'Potential';
-      case 'completed':
-        return 'Completed';
+      case 'inactive':
+        return 'Inactive';
       default:
         return 'Unknown';
     }
@@ -79,12 +87,12 @@ export default function StatusDropdown({ currentStatus, onStatusChange }) {
             </button>
             <button
               onClick={() => {
-                onStatusChange('completed');
+                onStatusChange('inactive');
                 setIsOpen(false);
               }}
-              className="block w-full px-4 py-2 text-sm text-left text-blue-400 hover:bg-slate-700"
+              className="block w-full px-4 py-2 text-sm text-left text-slate-400 hover:bg-slate-700"
             >
-              Completed
+              Inactive
             </button>
           </div>
         </div>
