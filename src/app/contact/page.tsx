@@ -1,3 +1,4 @@
+// src/app/contact/page.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -8,19 +9,20 @@ import {
   MapPinIcon 
 } from '@heroicons/react/24/outline';
 import ButtonAnimation from '../components/ButtonAnimation';
+import { supabase } from '@/lib/supabase';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    company: '',
     message: ''
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
+  const [formSuccess, setFormSuccess] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,6 +30,70 @@ export default function Contact() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormError('Name, email and message are required');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setFormError('Please enter a valid email address');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setFormError('');
+    setFormSuccess('');
+    
+    try {
+      // Save to Supabase CRM
+      const { data, error } = await supabase
+        .from('clients')
+        .upsert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          company: formData.company || null,
+          notes: formData.message,
+          lead_source: 'contact_form',
+          status: 'potential',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: 'email',
+          ignoreDuplicates: false
+        })
+        .select();
+        
+      if (error) {
+        console.error('Error saving contact form:', error);
+        setFormError('Failed to submit your message. Please try again.');
+      } else {
+        console.log('Contact form saved successfully:', data);
+        setFormSuccess('Thank you for your message! We will get back to you soon.');
+        
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: ''
+        });
+      }
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      setFormError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,10 +110,30 @@ export default function Contact() {
           </div>
 
           <div className="max-w-2xl mx-auto">
+            {formSuccess && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-center"
+              >
+                {formSuccess}
+              </motion.div>
+            )}
+            
+            {formError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-center"
+              >
+                {formError}
+              </motion.div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                  Name
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -61,7 +147,7 @@ export default function Contact() {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -74,8 +160,34 @@ export default function Contact() {
                 />
               </div>
               <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                />
+              </div>
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+                  Company
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                />
+              </div>
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -87,8 +199,13 @@ export default function Contact() {
                   required
                 ></textarea>
               </div>
-              <ButtonAnimation type="submit" className="w-full" variant="secondary">
-                Send Message
+              <ButtonAnimation 
+                type="submit" 
+                className="w-full" 
+                variant="secondary"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </ButtonAnimation>
             </form>
           </div>
@@ -111,4 +228,4 @@ export default function Contact() {
       </section>
     </div>
   );
-} 
+}

@@ -1,10 +1,12 @@
+import type { Metadata } from 'next';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MobileLayout from "./components/MobileLayout";
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://activateai.com'),
   title: {
     default: 'ActivateAI - AI Solutions for Small & Medium Businesses',
@@ -55,9 +57,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} mobile-scroll`}>
-        <MobileLayout>
-          {children}
-        </MobileLayout>
+        <Providers>
+          <MobileLayout>
+            {children}
+          </MobileLayout>
+        </Providers>
       </body>
     </html>
   );

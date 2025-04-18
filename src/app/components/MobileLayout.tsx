@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import MobileNav from './MobileNav';
 import MobileParticleBackground from './MobileParticleBackground';
 import Footer from './Footer';
+import { usePathname } from 'next/navigation';
 
 interface MobileLayoutProps {
   children: ReactNode;
@@ -13,6 +14,12 @@ interface MobileLayoutProps {
 
 const MobileLayout = ({ children }: MobileLayoutProps) => {
   const { isMobile } = useMobile();
+  const pathname = usePathname();
+  
+  // Don't render the mobile layout for admin pages
+  if (pathname?.startsWith('/admin')) {
+    return <>{children}</>;
+  }
 
   return (
     <>
