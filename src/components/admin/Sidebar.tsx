@@ -35,7 +35,7 @@ export default function Sidebar({ onWidthChange }: SidebarProps) {
   const menuItems = [
     { title: 'Dashboard', href: '/admin/dashboard', icon: HomeIcon },
     { title: 'Clients', href: '/admin/dashboard/clients', icon: UsersIcon },
-    { title: 'Calendar', href: '/admin/dashboard/calendar', icon: CalendarIcon },
+    { title: 'Sessions', href: '/admin/dashboard/sessions', icon: CalendarIcon },
     { title: 'Analytics', href: '/admin/dashboard/analytics', icon: ChartBarIcon },
   ];
 

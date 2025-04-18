@@ -13,12 +13,19 @@ import {
   CalendarClock,
   AlertCircle
 } from 'lucide-react';
-import { fetchClients } from '@/lib/supabase';
+import { fetchClients, fetchSessions } from '@/lib/supabase';
 import Link from 'next/link';
 import type { Database } from '@/types/database.types';
 import { useAuth } from '@/context/AuthContext';
 
 type Client = Database['public']['Tables']['clients']['Row'];
+type Session = Database['public']['Tables']['sessions']['Row'] & {
+  clients: {
+    id: string;
+    name: string;
+    email: string;
+  };
+};
 
 interface StatsCardProps {
   title: string;
@@ -62,6 +69,7 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [recentClients, setRecentClients] = useState<Client[]>([]);
+  const [upcomingSessions, setUpcomingSessions] = useState<Session[]>([]);
 
   // Load dashboard data
   useEffect(() => {
@@ -86,6 +94,16 @@ export default function Dashboard() {
         
         // Get recent clients (latest 5)
         setRecentClients(clients.slice(0, 5));
+        
+        // Fetch upcoming sessions
+        const sessions = await fetchSessions();
+        const now = new Date();
+        const upcoming = sessions
+          .filter(session => new Date(session.start_time) > now && session.status === 'scheduled')
+          .sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime())
+          .slice(0, 5);
+        
+        setUpcomingSessions(upcoming);
         
         setIsLoading(false);
       } catch (error) {
@@ -298,19 +316,86 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="py-12 text-center">
-          <CalendarClock className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-          <p className="text-slate-400">
-            Your scheduled sessions will appear here.
-          </p>
-          <Link 
-            href="/admin/dashboard/sessions"
-            className="mt-4 inline-flex items-center text-blue-400 hover:text-blue-300"
-          >
-            <CalendarPlus className="h-4 w-4 mr-2" />
-            <span>Schedule a Session</span>
-          </Link>
-        </div>
+        {isLoading ? (
+          <div className="py-12 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+            <p className="mt-4 text-slate-400">Loading sessions...</p>
+          </div>
+        ) : upcomingSessions.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="text-left border-b border-slate-700">
+                  <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Client</th>
+                  <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Date & Time</th>
+                  <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Duration</th>
+                  <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-700">
+                {upcomingSessions.map((session) => (
+                  <tr key={session.id} className="hover:bg-slate-700/50">
+                    <td className="py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="h-8 w-8 rounded-full bg-slate-600 flex items-center justify-center">
+                          <span className="text-sm font-medium text-slate-300">
+                            {session.clients.name.charAt(0)}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-medium text-white">{session.clients.name}</div>
+                          <div className="text-sm text-slate-400">{session.clients.email}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-4">
+                      <div className="text-white">
+                        {new Date(session.start_time).toLocaleDateString()}
+                      </div>
+                      <div className="text-sm text-slate-400">
+                        {new Date(session.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </div>
+                    </td>
+                    <td className="py-4 text-white">
+                      {Math.round(
+                        (new Date(session.end_time).getTime() - new Date(session.start_time).getTime()) /
+                          60000
+                      )}{' '}
+                      min
+                    </td>
+                    <td className="py-4">
+                      <span
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
+                          session.status === 'scheduled'
+                            ? 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+                            : session.status === 'completed'
+                            ? 'bg-green-500/10 text-green-500 border-green-500/20'
+                            : 'bg-red-500/10 text-red-500 border-red-500/20'
+                        }`}
+                      >
+                        {session.status.charAt(0).toUpperCase() + session.status.slice(1)}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="py-12 text-center">
+            <CalendarClock className="h-12 w-12 text-slate-500 mx-auto mb-4" />
+            <p className="text-slate-400">
+              No upcoming sessions scheduled.
+            </p>
+            <Link 
+              href="/admin/dashboard/sessions"
+              className="mt-4 inline-flex items-center text-blue-400 hover:text-blue-300"
+            >
+              <CalendarPlus className="h-4 w-4 mr-2" />
+              <span>Schedule a Session</span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

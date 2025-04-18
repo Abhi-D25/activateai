@@ -29,16 +29,40 @@ export interface Database {
       sessions: {
         Row: {
           id: string
-          created_at: string
-          updated_at: string
           client_id: string
+          title: string | null
           start_time: string
           end_time: string
           status: 'scheduled' | 'completed' | 'cancelled'
           notes: string | null
+          created_at: string
+          updated_at: string
+          google_calendar_event_id: string | null
         }
-        Insert: Omit<Database['public']['Tables']['sessions']['Row'], 'id' | 'created_at' | 'updated_at'>
-        Update: Partial<Database['public']['Tables']['sessions']['Insert']>
+        Insert: {
+          id?: string
+          client_id: string
+          title?: string | null
+          start_time: string
+          end_time: string
+          status?: 'scheduled' | 'completed' | 'cancelled'
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+          google_calendar_event_id?: string | null
+        }
+        Update: {
+          id?: string
+          client_id?: string
+          title?: string | null
+          start_time?: string
+          end_time?: string
+          status?: 'scheduled' | 'completed' | 'cancelled'
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+          google_calendar_event_id?: string | null
+        }
       }
       notes: {
         Row: {

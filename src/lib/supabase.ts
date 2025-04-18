@@ -361,24 +361,23 @@ export async function deleteSession(id: string): Promise<boolean> {
   }
 }
 
-export async function fetchSessions(): Promise<(Session & { clients: Pick<Client, 'id' | 'name' | 'email'> })[]> {
-  try {
-    const { data, error } = await supabase
-      .from('sessions')
-      .select(`
-        *,
-        clients (id, name, email)
-      `)
-      .order('start_time', { ascending: true });
+export async function fetchSessions() {
+  const { data, error } = await supabase
+    .from('sessions')
+    .select(`
+      *,
+      clients:client_id (
+        id,
+        name,
+        email
+      )
+    `)
+    .order('start_time', { ascending: true });
 
-    if (error) {
-      console.error('Error fetching sessions:', error);
-      throw error;
-    }
-
-    return data || [];
-  } catch (error) {
-    console.error('Error in fetchSessions:', error);
+  if (error) {
+    console.error('Error fetching sessions:', error);
     throw error;
   }
+
+  return data;
 }
