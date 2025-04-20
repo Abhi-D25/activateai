@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, Mail, Phone, Building, Calendar, Clock, Edit2, Trash2, FileText, ClipboardCheck } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, Building, Calendar, Clock, Edit2, Trash2, FileText, ClipboardCheck, MessageSquare } from 'lucide-react';
 import { fetchClientById, updateClientStatus, deleteClient } from '@/lib/supabase';
 import { toast } from 'react-hot-toast';
 import { Database } from '@/types/database.types';
@@ -29,17 +29,26 @@ type Note = {
 
 type Client = Database['public']['Tables']['clients']['Row'];
 
+// Updated type to handle both string notes and array of notes
 type ClientWithRelations = Omit<Client, 'notes'> & {
-  notes: Note[];
-  quiz_results?: QuizResults;
+  notes?: Note[] | null;
+  contactFormNote?: string | null;
+  quiz_results?: QuizResults | null;
+  nextSession?: {
+    id: string;
+    title: string;
+    start_time: string;
+    end_time: string;
+    status: string;
+  } | null;
 };
 
 // Helper function to convert ClientWithRelations to Client
 const toClient = (client: ClientWithRelations): Client => {
-  const { notes, quiz_results, ...clientData } = client;
+  const { notes, quiz_results, contactFormNote, ...clientData } = client;
   return {
     ...clientData,
-    notes: null // Set notes to null since we handle them separately
+    notes: contactFormNote || null // Use contact form note for the notes field in Client
   };
 };
 
@@ -55,8 +64,21 @@ export default function ClientDetailPage() {
   useEffect(() => {
     const loadClient = async () => {
       try {
+        setIsLoading(true);
         const clientData = await fetchClientById(params.id as string);
-        setClient(clientData as ClientWithRelations);
+        
+        // Process the client data to include both types of notes
+        const processedClient: ClientWithRelations = {
+          ...clientData,
+          // String notes from the clients table (from Contact Form)
+          contactFormNote: typeof clientData.notes === 'string' ? clientData.notes : null,
+          // Array notes from the dedicated notes table
+          notes: clientData.clientNotes || [],
+          // Next session data
+          nextSession: clientData.nextSession || null
+        };
+        
+        setClient(processedClient);
       } catch (error) {
         console.error('Error loading client:', error);
         toast.error('Failed to load client details');
@@ -64,7 +86,7 @@ export default function ClientDetailPage() {
         setIsLoading(false);
       }
     };
-
+  
     loadClient();
   }, [params.id]);
 
@@ -96,12 +118,13 @@ export default function ClientDetailPage() {
   };
 
   const handleClientUpdated = (updatedClient: Client) => {
-    // Preserve the notes array when updating the client
+    // Preserve the notes array and quiz results when updating the client
     setClient(prev => {
       if (!prev) return null;
       return {
         ...updatedClient,
         notes: prev.notes,
+        contactFormNote: updatedClient.notes || prev.contactFormNote,
         quiz_results: prev.quiz_results
       };
     });
@@ -137,8 +160,6 @@ export default function ClientDetailPage() {
         return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
     }
   };
-
-  const isQuizClient = client.lead_source === 'quiz';
 
   return (
     <div className="min-h-screen bg-slate-900 text-white p-6">
@@ -221,7 +242,7 @@ export default function ClientDetailPage() {
             </div>
 
             {/* Quiz Results Card */}
-            {isQuizClient && client.quiz_results && (
+            {client.quiz_results && (
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -243,7 +264,23 @@ export default function ClientDetailPage() {
               </div>
             )}
 
-            {/* Notes History */}
+            {/* Contact Form Note */}
+            {client.contactFormNote && (
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-semibold text-white">Contact Form Message</h2>
+                  <MessageSquare className="h-5 w-5 text-blue-400" />
+                </div>
+                <div className="space-y-2">
+                  <p className="text-slate-300 whitespace-pre-wrap">{client.contactFormNote}</p>
+                  <p className="text-xs text-slate-500 mt-2">
+                    Submitted on {new Date(client.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Notes from dedicated notes table */}
             {client.notes && client.notes.length > 0 && (
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Notes History</h2>
@@ -273,12 +310,30 @@ export default function ClientDetailPage() {
             </div>
 
             {/* Next Session Card */}
-            {client.next_session && (
+            {client.nextSession && (
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Next Session</h2>
-                <div className="flex items-center text-slate-300">
-                  <Calendar className="h-5 w-5 mr-3 text-slate-400" />
-                  <p>{new Date(client.next_session).toLocaleDateString()}</p>
+                <div className="space-y-3">
+                  {client.nextSession.title && (
+                    <div className="text-slate-300 mb-2">
+                      <span className="font-medium">{client.nextSession.title}</span>
+                    </div>
+                  )}
+                  <div className="flex items-center text-slate-300">
+                    <Calendar className="h-5 w-5 mr-3 text-slate-400" />
+                    <p>{new Date(client.nextSession.start_time).toLocaleDateString()}</p>
+                  </div>
+                  <div className="flex items-center text-slate-300">
+                    <Clock className="h-5 w-5 mr-3 text-slate-400" />
+                    <p>{new Date(client.nextSession.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                  </div>
+                  <div className="flex items-center text-slate-300">
+                    <span className="text-sm">
+                      Duration: {Math.round(
+                        (new Date(client.nextSession.end_time).getTime() - new Date(client.nextSession.start_time).getTime()) / 60000
+                      )} min
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
@@ -304,4 +359,4 @@ export default function ClientDetailPage() {
       />
     </div>
   );
-} 
+}

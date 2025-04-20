@@ -91,40 +91,92 @@ export async function signOut(): Promise<void> {
 // Client management functions
 export async function fetchClients(): Promise<Client[]> {
   try {
-    const { data, error } = await supabase
+    // First, get all clients
+    const { data: clients, error: clientsError } = await supabase
       .from('clients')
       .select('*')
       .order('created_at', { ascending: false });
     
-    if (error) {
-      console.error('Error fetching clients:', error);
-      throw error;
+    if (clientsError) {
+      console.error('Error fetching clients:', clientsError);
+      throw clientsError;
     }
     
-    return data || [];
+    // For each client, find their next upcoming session
+    for (const client of clients || []) {
+      const { data: sessions, error: sessionsError } = await supabase
+        .from('sessions')
+        .select('start_time, title')
+        .eq('client_id', client.id)
+        .eq('status', 'scheduled')
+        .gt('start_time', new Date().toISOString())
+        .order('start_time', { ascending: true })
+        .limit(1);
+      
+      if (!sessionsError && sessions && sessions.length > 0) {
+        // Update the next_session field directly
+        client.next_session = sessions[0].start_time;
+        
+        // You might want to add the session title as well
+        client.next_session_title = sessions[0].title;
+      } else {
+        client.next_session = null;
+      }
+    }
+    
+    return clients || [];
   } catch (error) {
     console.error('Error in fetchClients:', error);
     throw error;
   }
 }
 
-export async function fetchClientById(id: string): Promise<Client & { notes: Note[] }> {
+export async function fetchClientById(id: string): Promise<Client & { clientNotes?: Note[], nextSession?: any }> {
   try {
-    const { data, error } = await supabase
+    // First, fetch the client data
+    const { data: clientData, error: clientError } = await supabase
       .from('clients')
-      .select(`
-        *,
-        notes (*)
-      `)
+      .select('*')
       .eq('id', id)
       .single();
 
-    if (error) {
-      console.error('Error fetching client:', error);
-      throw error;
+    if (clientError) {
+      console.error('Error fetching client:', clientError);
+      throw clientError;
     }
 
-    return data;
+    // Then, fetch related notes from the notes table
+    const { data: notesData, error: notesError } = await supabase
+      .from('notes')
+      .select('*')
+      .eq('client_id', id);
+
+    if (notesError) {
+      console.error('Error fetching notes:', notesError);
+      // Don't throw here, we can continue with client data
+    }
+    
+    // Fetch the client's next session
+    const { data: sessionData, error: sessionError } = await supabase
+      .from('sessions')
+      .select('*')
+      .eq('client_id', id)
+      .eq('status', 'scheduled')
+      .gt('start_time', new Date().toISOString())
+      .order('start_time', { ascending: true })
+      .limit(1);
+      
+    if (sessionError) {
+      console.error('Error fetching next session:', sessionError);
+      // Don't throw here, we can continue with client data
+    }
+
+    // Combine the data
+    return {
+      ...clientData,
+      clientNotes: notesData || [],
+      nextSession: sessionData && sessionData.length > 0 ? sessionData[0] : null
+    };
   } catch (error) {
     console.error('Error in fetchClientById:', error);
     throw error;
@@ -380,4 +432,87 @@ export async function fetchSessions() {
   }
 
   return data;
+}
+
+// Add this function to your supabase.ts file
+export async function deleteSessionAndUpdateClient(sessionId: string): Promise<boolean> {
+  try {
+    // First, get the session details to know which client to update
+    const { data: session, error: getError } = await supabase
+      .from('sessions')
+      .select('client_id, start_time')
+      .eq('id', sessionId)
+      .single();
+      
+    if (getError) {
+      console.error('Error getting session before deletion:', getError);
+      throw getError;
+    }
+    
+    // Delete the session
+    const { error: deleteError } = await supabase
+      .from('sessions')
+      .delete()
+      .eq('id', sessionId);
+      
+    if (deleteError) {
+      console.error('Error deleting session:', deleteError);
+      throw deleteError;
+    }
+    
+    // Now update the client's next_session field if this was their next session
+    if (session && session.client_id) {
+      // Get the client to check their current next_session date
+      const { data: client, error: clientError } = await supabase
+        .from('clients')
+        .select('next_session')
+        .eq('id', session.client_id)
+        .single();
+        
+      if (clientError) {
+        console.error('Error getting client data:', clientError);
+        // Don't throw here, we can continue
+      }
+      
+      // Only update if the deleted session matches the client's next_session
+      if (client && client.next_session === session.start_time) {
+        // Find the next upcoming session for this client, if any
+        const { data: nextSessions, error: nextSessionError } = await supabase
+          .from('sessions')
+          .select('start_time')
+          .eq('client_id', session.client_id)
+          .eq('status', 'scheduled')
+          .gt('start_time', new Date().toISOString())
+          .order('start_time', { ascending: true })
+          .limit(1);
+          
+        if (nextSessionError) {
+          console.error('Error finding next session:', nextSessionError);
+          // Don't throw here, we can continue
+        }
+        
+        // Update the client's next_session field
+        const { error: updateError } = await supabase
+          .from('clients')
+          .update({
+            next_session: nextSessions && nextSessions.length > 0 
+              ? nextSessions[0].start_time  // Set to the next upcoming session
+              : null,                       // Or null if no more sessions
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', session.client_id);
+          
+        if (updateError) {
+          console.error('Error updating client next_session:', updateError);
+          // Don't throw here, we've already deleted the session
+        }
+      }
+    }
+    
+    // Success - session deleted and client updated
+    return true;
+  } catch (error) {
+    console.error('Error in deleteSessionAndUpdateClient:', error);
+    throw error;
+  }
 }

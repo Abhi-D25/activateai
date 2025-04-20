@@ -244,39 +244,110 @@ export default function NewSessionModal({ isOpen, onClose, onSessionCreated }: N
                     </div>
 
                     {/* Date and Time */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
+                      <div className="space-y-4">
                         <label className="block text-sm font-medium text-slate-300 mb-2">
-                          Date
+                          Session Date & Time
                         </label>
-                        <div className="relative">
-                          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-                          <input
-                            type="date"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            min={new Date().toISOString().split('T')[0]}
-                            className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                          />
+                        
+                        {/* Date picker with better UI */}
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                              Date
+                            </label>
+                            <div className="relative">
+                              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                              <input
+                                type="date"
+                                value={startDate}
+                                onChange={(e) => setStartDate(e.target.value)}
+                                min={new Date().toISOString().split('T')[0]}
+                                className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+                                required
+                                style={{
+                                  colorScheme: 'dark',
+                                  // Add these styles to make the date picker look better
+                                  background: 'var(--slate-700, #334155)',
+                                  cursor: 'pointer'
+                                }}
+                              />
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                              Time
+                            </label>
+                            <div className="relative">
+                              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                              <input
+                                type="time"
+                                value={startTime}
+                                onChange={(e) => setStartTime(e.target.value)}
+                                className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+                                required
+                                style={{
+                                  colorScheme: 'dark',
+                                  // Add these styles to make the time picker look better
+                                  background: 'var(--slate-700, #334155)',
+                                  cursor: 'pointer'
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Time presets */}
+                        <div>
+                          <label className="block text-sm font-medium text-slate-300 mb-2">
+                            Common Times
+                          </label>
+                          <div className="grid grid-cols-4 gap-2">
+                            {['9:00', '12:00', '15:00', '18:00'].map((time) => (
+                              <button
+                                key={time}
+                                type="button"
+                                onClick={() => setStartTime(time)}
+                                className={`py-2 rounded-lg border ${
+                                  startTime === time
+                                    ? 'bg-blue-500 border-blue-400 text-white'
+                                    : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
+                                }`}
+                              >
+                                {time}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        {/* Date presets */}
+                        <div>
+                          <label className="block text-sm font-medium text-slate-300 mb-2">
+                            Quick Dates
+                          </label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { label: 'Today', value: new Date().toISOString().split('T')[0] },
+                              { label: 'Tomorrow', value: new Date(Date.now() + 86400000).toISOString().split('T')[0] },
+                              { label: 'Next Week', value: new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0] }
+                            ].map((date) => (
+                              <button
+                                key={date.label}
+                                type="button"
+                                onClick={() => setStartDate(date.value)}
+                                className={`py-2 rounded-lg border ${
+                                  startDate === date.value
+                                    ? 'bg-blue-500 border-blue-400 text-white'
+                                    : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
+                                }`}
+                              >
+                                {date.label}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                      <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
-                          Time
-                        </label>
-                        <div className="relative">
-                          <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-                          <input
-                            type="time"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
+
 
                     {/* Duration */}
                     <div>

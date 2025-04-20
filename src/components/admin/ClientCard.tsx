@@ -35,6 +35,26 @@ interface ClientCardProps {
   onDelete: () => void;
 }
 
+const Tooltip = ({ text, children }: { text: string, children: React.ReactNode }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  
+  return (
+    <div 
+      className="relative"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      {children}
+      {showTooltip && (
+        <div className="absolute z-10 px-2 py-1 text-xs text-white bg-slate-700 rounded-md 
+                       -translate-y-full -translate-x-1/2 left-1/2 -mt-1 whitespace-nowrap">
+          {text}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function ClientCard({ client, onViewDetails, onDelete }: ClientCardProps) {
   const [showMenu, setShowMenu] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -107,7 +127,9 @@ export default function ClientCard({ client, onViewDetails, onDelete }: ClientCa
               }}
               className="p-1 text-slate-400 hover:text-white rounded-full hover:bg-slate-700"
             >
-              <MoreVertical size={18} />
+              <Tooltip text="Options">
+                <MoreVertical size={18} />
+              </Tooltip>
             </button>
             
             {showMenu && (
@@ -141,37 +163,49 @@ export default function ClientCard({ client, onViewDetails, onDelete }: ClientCa
 
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-slate-300">
-            <Mail className="h-4 w-4 mr-2 text-slate-400" />
+            <Tooltip text="Email">
+              <Mail className="h-4 w-4 mr-2 text-slate-400" />
+            </Tooltip>
             <span className="text-sm truncate">{client.email}</span>
           </div>
           
           {client.phone && (
             <div className="flex items-center text-slate-300">
-              <Phone className="h-4 w-4 mr-2 text-slate-400" />
+              <Tooltip text="Phone">
+                <Phone className="h-4 w-4 mr-2 text-slate-400" />
+              </Tooltip>
               <span className="text-sm">{client.phone}</span>
             </div>
           )}
           
           {client.company && (
             <div className="flex items-center text-slate-300">
-              <Building className="h-4 w-4 mr-2 text-slate-400" />
+              <Tooltip text="Company">
+                <Building className="h-4 w-4 mr-2 text-slate-400" />
+              </Tooltip>
               <span className="text-sm">{client.company}</span>
             </div>
           )}
           
           {client.next_session && (
             <div className="flex items-center text-slate-300">
-              <Calendar className="h-4 w-4 mr-2 text-slate-400" />
-              <span className="text-sm">
-                {new Date(client.next_session).toLocaleDateString()}
-              </span>
+              <Tooltip text="Next Session">
+                <Calendar className="h-4 w-4 mr-2 text-slate-400" />
+              </Tooltip>
+              <div>
+                <span className="text-sm">
+                  {new Date(client.next_session).toLocaleDateString()}
+                </span>
+              </div>
             </div>
           )}
         </div>
 
         <div className="flex items-center justify-between border-t border-slate-700 pt-4">
           <div className="flex items-center text-slate-400 text-xs">
-            <Clock size={14} className="mr-1" />
+          <Tooltip text="Created Date">
+              <Clock size={14} className="mr-1" />
+            </Tooltip>
             <span>
               {new Date(client.created_at).toLocaleDateString()}
             </span>

@@ -16,7 +16,7 @@ import {
   Edit,
   Trash2
 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { deleteSessionAndUpdateClient, supabase } from '@/lib/supabase';
 import { Database } from '@/types/database.types';
 import NewSessionModal from '@/components/admin/NewSessionModal';
 import { toast } from 'react-hot-toast';
@@ -124,12 +124,7 @@ export default function SessionsPage() {
     if (!selectedSession) return;
 
     try {
-      const { error } = await supabase
-        .from('sessions')
-        .delete()
-        .eq('id', selectedSession.id);
-
-      if (error) throw error;
+      await deleteSessionAndUpdateClient(selectedSession.id);
 
       toast.success('Session deleted successfully');
       fetchSessions();
