@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import MobileLayout from "./components/MobileLayout";
 import { Providers } from './providers';
+import AIChat from './components/AIChat';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://activateai.com'),
+  metadataBase: new URL('https://acti-vate.ai'),
   title: {
     default: 'ActivateAI - AI Solutions for Small & Medium Businesses',
     template: '%s | ActivateAI',
@@ -60,6 +61,7 @@ export default function RootLayout({
         <Providers>
           <MobileLayout>
             {children}
+            <AIChat />
           </MobileLayout>
         </Providers>
       </body>
