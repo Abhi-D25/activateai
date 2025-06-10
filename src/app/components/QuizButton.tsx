@@ -4,7 +4,11 @@ import { useState } from 'react';
 import QuizModal from './QuizModal';
 import ButtonAnimation from './ButtonAnimation';
 
-export default function QuizButton() {
+interface QuizButtonProps {
+  text?: string;
+}
+
+export default function QuizButton({ text = "Activate my business" }: QuizButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,7 +18,7 @@ export default function QuizButton() {
         className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors bg-black"
         variant="secondary"
       >
-        See this for my business
+        {text}
       </ButtonAnimation>
       <QuizModal
         isOpen={isOpen}

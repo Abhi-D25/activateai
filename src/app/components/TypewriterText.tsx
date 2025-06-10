@@ -12,6 +12,7 @@ interface TypewriterTextProps {
 export default function TypewriterText({ text, className = '', speed = 50 }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -21,6 +22,8 @@ export default function TypewriterText({ text, className = '', speed = 50 }: Typ
       }, speed);
 
       return () => clearTimeout(timer);
+    } else {
+      setIsTypingComplete(true);
     }
   }, [currentIndex, text, speed]);
 
@@ -31,7 +34,7 @@ export default function TypewriterText({ text, className = '', speed = 50 }: Typ
       className={className}
     >
       {displayText}
-      <span className="animate-pulse">|</span>
+      {!isTypingComplete && <span className="animate-pulse">|</span>}
     </motion.h1>
   );
 } 

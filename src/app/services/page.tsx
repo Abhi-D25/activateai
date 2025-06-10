@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function ActivationsPage() {
   // Add state to detect mobile
@@ -441,6 +442,34 @@ export default function ActivationsPage() {
                   </div>
                 </motion.div>
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-900/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl font-bold text-white mb-6">
+              Ready to transform your business operations?
+            </h2>
+            <p className="text-xl text-slate-300 mb-8">
+              Let your AI concierge team handle the details while you focus on growth.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact"
+                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center"
+              >
+                Get Started
+              </Link>
             </div>
           </motion.div>
         </div>

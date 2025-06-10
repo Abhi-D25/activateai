@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import FuturisticText from '../../components/FuturisticText';
+import QuizButton from '../../components/QuizButton';
 
 export default function SoloPreneurPage() {
   return (
@@ -11,7 +12,7 @@ export default function SoloPreneurPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-50" />
-        <div className="container relative z-10 mx-auto px-4 py-32 lg:py-40">
+        <div className="container relative z-10 mx-auto px-4 py-4 lg:py-40 mt-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,7 +29,7 @@ export default function SoloPreneurPage() {
               >
                 <FuturisticText
                   text="Focus on your craft, not your calendar"
-                  className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                  className="text-4xl lg:text-5xl font-bold text-white mb-6 text-left"
                   glowColor="#60a5fa"
                 />
               </motion.div>
@@ -57,9 +58,7 @@ export default function SoloPreneurPage() {
                 <Link href="/contact" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center">
                   Free up my focus
                 </Link>
-                <Link href="/contact" className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors text-center">
-                  Start the conversation
-                </Link>
+                <QuizButton text="Start the conversation" />
               </motion.div>
             </div>
             {/* Right Content - 40% */}
@@ -375,32 +374,22 @@ export default function SoloPreneurPage() {
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             {[
               {
                 icon: '🌟',
                 title: 'Scale Beyond Yourself',
-                description: 'Finally launch that advanced certification program you&apos;ve been dreaming about. Open that second location. Build the team you&apos;ve always envisioned.'
+                description: 'Finally launch that advanced certification program you have been dreaming about. Open that second location. Build the team you have always envisioned.'
               },
               {
                 icon: '🚀',
                 title: 'Expand Your Reach',
-                description: 'Take your expertise to new cities, new markets, new audiences. When you&apos;re not tied to your phone, geography becomes opportunity.'
+                description: 'Take your expertise to new cities, new markets, new audiences. When you are not tied to your phone, geography becomes opportunity.'
               },
               {
                 icon: '💎',
                 title: 'Premium Service Delivery',
-                description: 'Offer the high-touch, high-value experiences that command premium pricing. Your clients feel the difference when you&apos;re fully present.'
-              },
-              {
-                icon: '🎯',
-                title: 'Strategic Partnerships',
-                description: 'Build relationships with other experts, venues, suppliers. Network at industry events instead of being stuck at your desk.'
-              },
-              {
-                icon: '📈',
-                title: 'Multiple Revenue Streams',
-                description: 'Launch online courses, create product lines, develop franchise opportunities. Growth ideas that seemed impossible suddenly become your next quarter&apos;s goals.'
+                description: 'Offer the high-touch, high-value experiences that command premium pricing. Your clients feel the difference when you are fully present.'
               }
             ].map((item, index) => (
               <motion.div
@@ -416,6 +405,37 @@ export default function SoloPreneurPage() {
                 <p className="text-slate-300">{item.description}</p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Second row - 2 cards centered */}
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+            <div className="lg:col-start-2 lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+              >
+                <div className="text-3xl mb-4 text-blue-400">🎯</div>
+                <h3 className="text-xl font-semibold mb-4 text-white">Strategic Partnerships</h3>
+                <p className="text-slate-300">Build relationships with other experts, venues, suppliers. Network at industry events instead of being stuck at your desk.</p>
+              </motion.div>
+            </div>
+
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+              >
+                <div className="text-3xl mb-4 text-blue-400">📈</div>
+                <h3 className="text-xl font-semibold mb-4 text-white">Multiple Revenue Streams</h3>
+                <p className="text-slate-300">Launch online courses, create product lines, develop franchise opportunities. Growth ideas that seemed impossible suddenly become goals for your next quarter.</p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

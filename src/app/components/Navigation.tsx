@@ -61,7 +61,7 @@ export default function Navigation() {
               About
             </Link>
             <Link href="/services" className="text-slate-300 hover:text-blue-400">
-              Services
+              Activations
             </Link>
             
             {/* Who We Serve Dropdown */}

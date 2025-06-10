@@ -80,7 +80,7 @@ export default function Home() {
         <section className="relative min-h-screen overflow-hidden">
           <div className="absolute inset-0 gradient-bg opacity-50" />
           <ParticleBackground />
-          <div className="container relative z-10 mx-auto px-4 py-32 lg:py-40">
+          <div className="container relative z-10 mx-auto px-4 py-12 lg:py-40">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -413,9 +413,12 @@ export default function Home() {
                         Ongoing optimization & support
                       </li>
                     </ul>
-                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    <Link 
+                      href="/contact"
+                      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block text-center"
+                    >
                       Get Started
-                    </button>
+                    </Link>
                     <p className="text-center text-slate-300 mt-4">
                       Pays for itself by capturing just one new client per month
                     </p>

@@ -7,6 +7,7 @@ import MobileNav from './MobileNav';
 import MobileParticleBackground from './MobileParticleBackground';
 import Footer from './Footer';
 import { usePathname } from 'next/navigation';
+import MobileHeader from './MobileHeader';
 
 interface MobileLayoutProps {
   children: ReactNode;
@@ -26,8 +27,9 @@ const MobileLayout = ({ children }: MobileLayoutProps) => {
       <MobileParticleBackground />
       {isMobile ? (
         <>
+          <MobileHeader />
           <MobileNav />
-          <main className="pt-16 relative z-10">{children}</main>
+          <main className="pt-24 relative z-10">{children}</main>
           <Footer />
         </>
       ) : (
