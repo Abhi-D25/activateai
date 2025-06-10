@@ -31,34 +31,42 @@ export default function Home() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "How can AI benefit my small business?",
+                "name": "How long does it take to set up?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "AI can benefit your small business by automating repetitive tasks, analyzing customer data for better insights, improving customer service through chatbots, optimizing inventory management, and providing predictive analytics for better decision-making. These improvements can lead to increased efficiency, reduced costs, and higher customer satisfaction."
+                  "text": "Most businesses are up and running within 4 hours of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What types of AI solutions does ActivateAI offer?",
+                "name": "Will it work with my existing systems?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "ActivateAI offers a comprehensive suite of AI solutions including AI integration services, data analytics, AI-powered customer support, process automation, document processing, and AI security. Each solution is tailored to meet the specific needs of small and medium-sized businesses."
+                  "text": "Yes! ActivateAI is designed to integrate with the tools you already use. We support all major calendar systems (Google, Outlook, Apple), phone systems, and can connect with most industry-specific software."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How much does it cost to implement AI in my business?",
+                "name": "What results can I expect in the first 30 days?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "The cost of implementing AI in your business varies based on your specific needs and the complexity of the solution. ActivateAI offers flexible pricing models and customized solutions to fit different budgets. We provide a free consultation to assess your needs and provide a detailed quote tailored to your business."
+                  "text": "Most businesses see immediate benefits in three areas: 1) Captured after-hours leads that would have been missed, 2) Reduced time spent on scheduling and admin tasks, and 3) Increased customer satisfaction from faster response times."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How long does it take to implement AI solutions?",
+                "name": "How does the AI know my business rules and policies?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Implementation time varies depending on the complexity of the AI solution. Simple integrations might take a few weeks, while more complex custom solutions could take a few months. We work with you to create a realistic timeline and keep you informed throughout the process."
+                  "text": "During onboarding, we gather your specific business information through our questionnaire. This includes your services, pricing, availability, cancellation policies, and communication style. We train your AI Employees on these rules so they accurately represent your business."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if the AI can't handle a situation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Your AI Employees are programmed to recognize when a situation requires human attention. For complex or unusual requests, the AI will gracefully let the customer know a team member will follow up shortly, and you'll receive an immediate notification with all relevant details."
                 }
               }
             ]
@@ -67,80 +75,429 @@ export default function Home() {
       </Helmet>
       <div className="bg-black">
         {/* Hero Section */}
-        <section id="home" className="relative h-screen overflow-hidden">
+        <section className="relative min-h-screen overflow-hidden">
           <div className="absolute inset-0 gradient-bg opacity-50" />
           <ParticleBackground />
-          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 h-full flex flex-col items-center md:mt-24 lg:mt-32">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
+          <div className="container relative z-10 mx-auto px-4 py-32 lg:py-40">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl font-bold text-blue-400 mb-32 md:hidden max-sm:text-center max-sm:mb-40"
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center"
             >
-              ActivateAI
-            </motion.h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-              <div className="max-sm:text-center">
-                <FuturisticText
-                  text="Activate Your Business Today"
-                  className="text-3xl sm:text-4xl font-bold text-white mb-8 mr-14 max-sm:mr-0"
-                  glowColor="#3b82f6"
-                />
-                <motion.p
+              {/* Left Content - 60% */}
+              <div className="lg:col-span-3">
+                <motion.h1 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  className="text-xl text-slate-300 mb-8 max-sm:max-w-md max-sm:mx-auto"
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-4xl lg:text-5xl font-bold text-white mb-6"
                 >
-                  At ActivateAI, we make artificial intelligence accessible to small and medium sized businesses. Our mission is to simplify AI adoption with tailored, practical solutions that improve efficiency, cut costs, and drive growth.
+                  We empower everyday businesses by making <br />AI outcomes accessible
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-xl text-slate-300 mb-8"
+                >
+                  Imagine running your business exactly how you've always dreamed—
+                  Where you spend your days building relationships, creating extraordinary experiences, and growing your vision. Where the repetitive tasks that drain your energy are handled by a dedicated team that represents your brand perfectly, 24/7.
                 </motion.p>
-                <motion.div
+                <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-                  className="flex justify-center sm:justify-start"
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="flex flex-col sm:flex-row gap-4 mb-12"
                 >
-                  <QuizButton />
+                  <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    Watch the transformation
+                  </button>
+                  <button className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors">
+                    See this for my business
+                  </button>
                 </motion.div>
               </div>
-              <motion.div
-                className="relative max-sm:w-full max-sm:max-w-md max-sm:mx-auto"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+              {/* Right Content - 40% */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="lg:col-span-2"
               >
-                <motion.div
-                  className="aspect-square bg-blue-50 rounded-2xl relative overflow-hidden"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  <Image
-                    src="/hero.webp"
-                    alt="AI business solutions illustration"
-                    fill
-                    className="object-cover rounded-2xl"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority
-                  />
-                </motion.div>
+                <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm">
+                  {/* Video Placeholder */}
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    [Video Placeholder]
+                  </div>
+                </div>
               </motion.div>
-            </div>
+            </motion.div>
+
+            {/* Vision Metrics Banner */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-16 bg-blue-900/30 rounded-xl p-8 backdrop-blur-sm border border-blue-500/20"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-blue-400">Your Passion</h3>
+                  <p className="text-blue-300">becomes your full-time focus</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-blue-400">Every Channel</h3>
+                  <p className="text-blue-300">handled with your brand voice</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-blue-400">Zero Changes</h3>
+                  <p className="text-blue-300">to how you already work</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-blue-400">Pure Relief</h3>
+                  <p className="text-blue-300">from daily administrative burden</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <ServicesSection />
+        {/* Problem-Solution Section */}
+        <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            {/* Problem Part */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-16"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-white mb-6 [text-shadow:_0_0_25px_rgba(239,68,68,0.6)]">
+                  Great people who get stuck doing busy work...
+                </h2>
+                <p className="text-xl text-slate-300 mb-8">
+                  Whether it's you or your talented team, too much time is consumed in operational challenges that directly hit your bottom line
+                </p>
+              </div>
+              
+              {/* First row - 3 cards */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                  <div className="text-3xl mb-4">📞</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Revenue walking out the door</h3>
+                  <p className="text-slate-300">Potential customers calling when you're unavailable or offline</p>
+                </div>
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                  <div className="text-3xl mb-4">📅</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Money lost to scheduling conflicts</h3>
+                  <p className="text-slate-300">Double-bookings, last-minute cancellations, and gaps that could have been filled</p>
+                </div>
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                  <div className="text-3xl mb-4">💻</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Repeat business slipping away</h3>
+                  <p className="text-slate-300">Follow-ups that don't happen and customers who feel forgotten</p>
+                </div>
+              </div>
 
-        {/* Case Studies Section */}
-        <CaseStudiesSection />
+              {/* Second row - 2 cards centered */}
+              <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+                <div className="lg:col-start-2 lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                  <div className="text-3xl mb-4">😤</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Growth plans on permanent hold</h3>
+                  <p className="text-slate-300">Strategic opportunities sacrificed because everyone's stuck in daily operations</p>
+                </div>
+                <div className="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                  <div className="text-3xl mb-4">💸</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Peak hours wasted on admin</h3>
+                  <p className="text-slate-300">Your highest-value time consumed by low-value tasks</p>
+                </div>
+              </div>
 
-        {/* Testimonials Section */}
-        <TestimonialsCarousel />
+              <div className="text-center mt-8">
+                <p className="text-xl text-slate-300 italic">
+                  You've accepted this as "just part of running a business." But what if it didn't have to be?
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Solution Part */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-white mb-6 [text-shadow:_0_0_25px_rgba(34,197,94,0.6)]">
+                  ...Can now focus on doing what they do best
+                </h2>
+                <p className="text-xl text-slate-300 mb-8">
+                  What if great people did great work?
+                </p>
+              </div>
+              
+              {/* First row - 3 cards */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                  <div className="text-3xl mb-4">🎨</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Creative energy unleashed</h3>
+                  <p className="text-slate-300">Time for innovation, artistry, and the work that energizes you</p>
+                </div>
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                  <div className="text-3xl mb-4">🤝</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Deeper client relationships</h3>
+                  <p className="text-slate-300">Meaningful conversations and connections that drive loyalty</p>
+                </div>
+                <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                  <div className="text-3xl mb-4">🚀</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Strategic growth initiatives</h3>
+                  <p className="text-slate-300">New services, expansion plans, and revenue opportunities</p>
+                </div>
+              </div>
+              
+              {/* Second row - 2 cards centered */}
+              <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+                <div className="lg:col-start-2 lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                  <div className="text-3xl mb-4">💡</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Problem-solving at the highest level</h3>
+                  <p className="text-slate-300">Complex challenges that require your unique expertise</p>
+                </div>
+                <div className="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                  <div className="text-3xl mb-4">🏆</div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Excellence in your craft</h3>
+                  <p className="text-slate-300">The specialized work only you and your team can deliver</p>
+                </div>
+              </div>
+              
+              <div className="text-center mt-8">
+                <p className="text-xl text-slate-300 italic">
+                  This is what becomes possible when you team up with AI.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Zero Changes Section */}
+        <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            >
+              <div>
+                <div className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
+                  {/* Demo Video Placeholder */}
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    [Demo Video Placeholder]
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-6">
+                  Zero Changes to Your Business. Maximum Relief for Your Life.
+                </h2>
+                <p className="text-xl text-slate-300 mb-8">
+                  The biggest misconception about AI? That you need to overhaul everything. The truth? Our dedicated concierge team plugs seamlessly into exactly how you work today—your phone, your calendar, your communication style—and simply lifts the burden.
+                </p>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4 text-white">What stays exactly the same:</h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Your phone number and existing phone system
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Your Google/Outlook/Apple calendar
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Your pricing, policies, and procedures
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Your brand voice and communication style
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        How you deliver your services
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4 text-white">What changes completely:</h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-blue-400 mr-2">→</span>
+                        Your stress level - No more juggling interruptions
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-blue-400 mr-2">→</span>
+                        Your focus - Deep work on what you love
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-blue-400 mr-2">→</span>
+                        Your availability - For growth and relationships
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl font-bold text-white mb-4 text-center">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="text-xl text-slate-300 mb-12 text-center max-w-3xl mx-auto">
+                One predictable monthly fee that pays for itself by capturing leads and saving time.
+              </p>
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 overflow-hidden">
+                  <div className="bg-blue-900/50 text-white p-8 text-center border-b border-blue-500/20">
+                    <h3 className="text-2xl font-bold mb-2">Complete AI Team</h3>
+                    <div className="text-4xl font-bold mb-2">$299/month</div>
+                    <p className="text-blue-200">No setup fees. Cancel anytime.</p>
+                  </div>
+                  <div className="p-8">
+                    <ul className="space-y-4 mb-8">
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        All 4 AI Employees included
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Integration with your existing tools
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        24/7 lead capture
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Unlimited appointments & scheduling
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Custom business rules & voice
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Weekly performance reports
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Ongoing optimization & support
+                      </li>
+                    </ul>
+                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                      Get Started
+                    </button>
+                    <p className="text-center text-slate-300 mt-4">
+                      Pays for itself by capturing just one new client per month
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* FAQ Section */}
-        <div className="relative z-10">
+        <section className="py-20 bg-black">
           <FAQSection />
-        </div>
+        </section>
+
+        {/* Final CTA Section */}
+        <section className="py-20 bg-blue-900/30 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Ready to grow your business with AI?
+              </h2>
+              <p className="text-xl text-slate-300 mb-8">
+                Schedule a quick demo to see how ActivateAI can work specifically for your business.
+              </p>
+              <div className="bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 p-8">
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Business Name"
+                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone"
+                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    />
+                    <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <option value="">Business Type</option>
+                      <option value="barber">Barber Shop</option>
+                      <option value="makeup">Makeup Studio</option>
+                      <option value="consultant">Consultant</option>
+                      <option value="retail">Retail Store</option>
+                    </select>
+                    <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <option value="">Current Booking/Scheduling System</option>
+                      <option value="google">Google Calendar</option>
+                      <option value="outlook">Outlook</option>
+                      <option value="apple">Apple Calendar</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <option value="">Biggest Challenge</option>
+                    <option value="leads">Missing Leads</option>
+                    <option value="time">Time Management</option>
+                    <option value="scheduling">Scheduling</option>
+                    <option value="growth">Business Growth</option>
+                  </select>
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Schedule My Demo
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </>
   );
