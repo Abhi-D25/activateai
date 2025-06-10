@@ -77,8 +77,8 @@ export default function ActivationsPage() {
             
             {/* Main container with simpler styling on mobile */}
             <div className={`relative ${isMobile ? 'bg-slate-900/90' : 'bg-slate-900/80 backdrop-blur-xl'} rounded-3xl p-8 ${!isMobile ? 'border border-blue-500/30 shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]' : ''}`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Team Cards */}
+              {/* First row - 3 cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -103,9 +103,6 @@ export default function ActivationsPage() {
                       Always-on availability
                     </li>
                   </ul>
-                  <p className="text-sm text-slate-400 italic">
-                    "$2,400 additional monthly revenue for Clean Cut Barber Shop"
-                  </p>
                 </motion.div>
 
                 <motion.div 
@@ -132,9 +129,6 @@ export default function ActivationsPage() {
                       Calendar management
                     </li>
                   </ul>
-                  <p className="text-sm text-slate-400 italic">
-                    "15 hours saved weekly on scheduling tasks"
-                  </p>
                 </motion.div>
 
                 <motion.div 
@@ -161,68 +155,66 @@ export default function ActivationsPage() {
                       Loyalty building
                     </li>
                   </ul>
-                  <p className="text-sm text-slate-400 italic">
-                    "12 new 5-star reviews per month"
-                  </p>
                 </motion.div>
+              </div>
 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50"
-                >
-                  <div className="text-3xl mb-4">📊</div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Business Analyst</h3>
-                  <p className="text-slate-300 mb-4">Provides insights and optimizations for your business growth.</p>
-                  <ul className="space-y-2 mb-4">
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Performance tracking
-                    </li>
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Growth opportunities
-                    </li>
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Weekly reports
-                    </li>
-                  </ul>
-                  <p className="text-sm text-slate-400 italic">
-                    "23% increase in booking efficiency"
-                  </p>
-                </motion.div>
+              {/* Second row - 2 cards centered */}
+              <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+                <div className="lg:col-start-2 lg:col-span-2">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50"
+                  >
+                    <div className="text-3xl mb-4">📊</div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Business Analyst</h3>
+                    <p className="text-slate-300 mb-4">Provides insights and optimizations for your business growth.</p>
+                    <ul className="space-y-2 mb-4">
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Performance tracking
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Growth opportunities
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Weekly reports
+                      </li>
+                    </ul>
+                  </motion.div>
+                </div>
 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50"
-                >
-                  <div className="text-3xl mb-4">🎯</div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Command Center</h3>
-                  <p className="text-slate-300 mb-4">Your executive assistant and the connective tissue between you and your dedicated team—providing strategic insights and coordinating all customer-facing roles to ensure seamless operation.</p>
-                  <ul className="space-y-2 mb-4">
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Strategic daily and weekly business insights
-                    </li>
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Coordinates your entire dedicated team
-                    </li>
-                    <li className="flex items-center text-slate-300">
-                      <span className="text-green-500 mr-2">✓</span>
-                      Elevates your decision-making with clear data
-                    </li>
-                  </ul>
-                  <p className="text-sm text-slate-400 italic">
-                    "23% improvement in strategic decision speed"
-                  </p>
-                </motion.div>
+                <div className="lg:col-span-2">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50"
+                  >
+                    <div className="text-3xl mb-4">🎯</div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Command Center</h3>
+                    <p className="text-slate-300 mb-4">Your executive assistant to ensure seamless operation.</p>
+                    <ul className="space-y-2 mb-4">
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Strategic business insights
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Coordinates your entire team
+                      </li>
+                      <li className="flex items-center text-slate-300">
+                        <span className="text-green-500 mr-2">✓</span>
+                        Elevates decision-making
+                      </li>
+                    </ul>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </div>
@@ -342,7 +334,7 @@ export default function ActivationsPage() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="italic text-slate-300 border-l-4 border-blue-500 pl-4"
                   >
-                    "Having my dedicated business concierge has completely transformed how I operate. Every customer gets the personal attention they deserve, and I finally have time to focus on the strategic decisions that grow my business."
+                    &quot;Having my dedicated business concierge has completely transformed how I operate. Every customer gets the personal attention they deserve, and I finally have time to focus on the strategic decisions that grow my business.&quot;
                     <footer className="mt-2 font-semibold text-white">- James, Owner</footer>
                   </motion.blockquote>
                 </motion.div>
@@ -432,7 +424,7 @@ export default function ActivationsPage() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="italic text-slate-300 border-l-4 border-blue-500 pl-4"
                   >
-                    "I was terrified about changing anything in my business—I've built systems that work. But ActivateAI didn't change anything. They just made everything I was already doing work better, without me having to be involved in every single detail."
+                    &quot;I was terrified about changing anything in my business—I&apos;ve built systems that work. But ActivateAI didn&apos;t change anything. They just made everything I was already doing work better, without me having to be involved in every single detail.&quot;
                     <footer className="mt-2 font-semibold text-white">- Sarah, Owner</footer>
                   </motion.blockquote>
                 </motion.div>

@@ -1,14 +1,51 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isWhoWeServeOpen, setIsWhoWeServeOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isWhoWeServeOpen) return;
+
+      const nav = navRef.current;
+      const dropdown = dropdownRef.current;
+      
+      if (!nav || !dropdown) return;
+
+      const navRect = nav.getBoundingClientRect();
+      const dropdownRect = dropdown.getBoundingClientRect();
+      
+      // Check if mouse is within navbar or dropdown area
+      const isInNav = e.clientY >= navRect.top && e.clientY <= navRect.bottom &&
+                     e.clientX >= navRect.left && e.clientX <= navRect.right;
+      
+      const isInDropdown = e.clientY >= dropdownRect.top && e.clientY <= dropdownRect.bottom &&
+                          e.clientX >= dropdownRect.left && e.clientX <= dropdownRect.right;
+      
+      // Close dropdown if mouse is outside both areas
+      if (!isInNav && !isInDropdown) {
+        setIsWhoWeServeOpen(false);
+      }
+    };
+
+    if (isWhoWeServeOpen) {
+      document.addEventListener('mousemove', handleMouseMove);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isWhoWeServeOpen]);
 
   return (
-    <nav className="glassmorphism shadow-sm fixed w-full z-50">
+    <nav ref={navRef} className="glassmorphism shadow-sm fixed w-full z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -26,9 +63,43 @@ export default function Navigation() {
             <Link href="/services" className="text-slate-300 hover:text-blue-400">
               Services
             </Link>
-            <Link href="/case-studies" className="text-slate-300 hover:text-blue-400">
-              Case Studies
-            </Link>
+            
+            {/* Who We Serve Dropdown */}
+            <div className="relative">
+              <Link
+                href="/case-studies"
+                className="flex items-center text-slate-300 hover:text-blue-400 transition-colors"
+                onMouseEnter={() => setIsWhoWeServeOpen(true)}
+              >
+                Who We Serve
+                <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform ${isWhoWeServeOpen ? 'rotate-180' : ''}`} />
+              </Link>
+              
+              {isWhoWeServeOpen && (
+                <div 
+                  ref={dropdownRef}
+                  className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg"
+                >
+                  <div className="py-2">
+                    <Link 
+                      href="/case-studies/solo-preneur" 
+                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhoWeServeOpen(false)}
+                    >
+                      Solo-preneur
+                    </Link>
+                    <Link 
+                      href="/case-studies/growing-business" 
+                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhoWeServeOpen(false)}
+                    >
+                      Growing Business
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             <Link href="/contact" className="text-slate-300 hover:text-blue-400">
               Contact
             </Link>
@@ -47,6 +118,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
+        
         {/* Mobile menu */}
         {isMenuOpen && (
           <div className="sm:hidden glassmorphism">
@@ -60,9 +132,28 @@ export default function Navigation() {
               <Link href="/services" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
                 Services
               </Link>
-              <Link href="/case-studies" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
-                Case Studies
-              </Link>
+              
+              {/* Mobile Who We Serve */}
+              <div className="px-3 py-2">
+                <div className="text-slate-300 font-medium mb-2">Who We Serve</div>
+                <div className="pl-4 space-y-1">
+                  <Link 
+                    href="/case-studies/solo-preneur" 
+                    className="block text-slate-400 hover:text-blue-400 py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Solo-preneur
+                  </Link>
+                  <Link 
+                    href="/case-studies/growing-business" 
+                    className="block text-slate-400 hover:text-blue-400 py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Growing Business
+                  </Link>
+                </div>
+              </div>
+              
               <Link href="/contact" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
                 Contact
               </Link>
@@ -75,4 +166,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-} 
+}

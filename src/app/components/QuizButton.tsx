@@ -11,10 +11,10 @@ export default function QuizButton() {
     <>
       <ButtonAnimation 
         onClick={() => setIsOpen(true)} 
-        className="text-lg px-8 py-4"
+        className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors bg-black"
         variant="secondary"
       >
-        Get Started
+        See this for my business
       </ButtonAnimation>
       <QuizModal
         isOpen={isOpen}

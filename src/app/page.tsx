@@ -19,6 +19,8 @@ import QuizButton from './components/QuizButton';
 import FuturisticText from './components/FuturisticText';
 import ParticleBackground from '../app/components/ParticleBackground';
 import { Helmet } from 'react-helmet';
+import TypewriterText from './components/TypewriterText';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -91,9 +93,14 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                  className="text-3xl lg:text-5xl italic text-white mb-6"
                 >
-                  We empower everyday businesses by making <br />AI outcomes accessible
+                  We empower everyday businesses by making <br />
+                  <TypewriterText 
+                    text="AI Outcomes Accessible" 
+                    className="text-4xl lg:text-5xl font-bold text-blue-600 mb-4 mt-4"
+                    speed={90}
+                  />
                 </motion.h1>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
@@ -101,7 +108,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-xl text-slate-300 mb-8"
                 >
-                  Imagine running your business exactly how you've always dreamed—
+                  Imagine running your business exactly how you&apos;ve always dreamed—
                   Where you spend your days building relationships, creating extraordinary experiences, and growing your vision. Where the repetitive tasks that drain your energy are handled by a dedicated team that represents your brand perfectly, 24/7.
                 </motion.p>
                 <motion.div 
@@ -113,9 +120,7 @@ export default function Home() {
                   <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                     Watch the transformation
                   </button>
-                  <button className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors">
-                    See this for my business
-                  </button>
+                  <QuizButton />
                 </motion.div>
               </div>
               {/* Right Content - 40% */}
@@ -179,7 +184,7 @@ export default function Home() {
                   Great people who get stuck doing busy work...
                 </h2>
                 <p className="text-xl text-slate-300 mb-8">
-                  Whether it's you or your talented team, too much time is consumed in operational challenges that directly hit your bottom line
+                  Whether it&apos;s you or your talented team, too much time is consumed in operational challenges that directly hit your bottom line
                 </p>
               </div>
               
@@ -188,7 +193,7 @@ export default function Home() {
                 <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                   <div className="text-3xl mb-4">📞</div>
                   <h3 className="text-xl font-semibold mb-2 text-white">Revenue walking out the door</h3>
-                  <p className="text-slate-300">Potential customers calling when you're unavailable or offline</p>
+                  <p className="text-slate-300">Potential customers calling when you&apos;re unavailable or offline</p>
                 </div>
                 <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                   <div className="text-3xl mb-4">📅</div>
@@ -198,7 +203,7 @@ export default function Home() {
                 <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                   <div className="text-3xl mb-4">💻</div>
                   <h3 className="text-xl font-semibold mb-2 text-white">Repeat business slipping away</h3>
-                  <p className="text-slate-300">Follow-ups that don't happen and customers who feel forgotten</p>
+                  <p className="text-slate-300">Follow-ups that don&apos;t happen and customers who feel forgotten</p>
                 </div>
               </div>
 
@@ -207,7 +212,7 @@ export default function Home() {
                 <div className="lg:col-start-2 lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                   <div className="text-3xl mb-4">😤</div>
                   <h3 className="text-xl font-semibold mb-2 text-white">Growth plans on permanent hold</h3>
-                  <p className="text-slate-300">Strategic opportunities sacrificed because everyone's stuck in daily operations</p>
+                  <p className="text-slate-300">Strategic opportunities sacrificed because everyone&apos;s stuck in daily operations</p>
                 </div>
                 <div className="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                   <div className="text-3xl mb-4">💸</div>
@@ -218,7 +223,7 @@ export default function Home() {
 
               <div className="text-center mt-8">
                 <p className="text-xl text-slate-300 italic">
-                  You've accepted this as "just part of running a business." But what if it didn't have to be?
+                  You&apos;ve accepted this as &quot;just part of running a business.&quot; But what if it didn&apos;t have to be?
                 </p>
               </div>
             </motion.div>
@@ -442,59 +447,12 @@ export default function Home() {
               <p className="text-xl text-slate-300 mb-8">
                 Schedule a quick demo to see how ActivateAI can work specifically for your business.
               </p>
-              <div className="bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 p-8">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Business Name"
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Phone"
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
-                    />
-                    <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                      <option value="">Business Type</option>
-                      <option value="barber">Barber Shop</option>
-                      <option value="makeup">Makeup Studio</option>
-                      <option value="consultant">Consultant</option>
-                      <option value="retail">Retail Store</option>
-                    </select>
-                    <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                      <option value="">Current Booking/Scheduling System</option>
-                      <option value="google">Google Calendar</option>
-                      <option value="outlook">Outlook</option>
-                      <option value="apple">Apple Calendar</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <select className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="">Biggest Challenge</option>
-                    <option value="leads">Missing Leads</option>
-                    <option value="time">Time Management</option>
-                    <option value="scheduling">Scheduling</option>
-                    <option value="growth">Business Growth</option>
-                  </select>
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    Schedule My Demo
-                  </button>
-                </form>
-              </div>
+              <Link 
+                href="/contact"
+                className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+              >
+                Schedule My Demo
+              </Link>
             </motion.div>
           </div>
         </section>
