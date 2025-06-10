@@ -121,31 +121,302 @@ export default function SoloPreneurPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="bg-slate-800/50 p-6 rounded-xl border border-green-500/30 md:col-span-2 lg:col-span-1"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30"
             >
-              <div className="text-3xl mb-4">📈</div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Multiple Revenue Streams</h3>
-              <p className="text-slate-300">
-                Launch online courses, create product lines, develop franchise opportunities. Growth ideas that seemed impossible suddenly become your next quarter&apos;s goals.
-              </p>
+              <div className="text-3xl mb-4">🗓️</div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Double-booking disasters</h3>
+              <p className="text-slate-300">Nothing kills your professional reputation faster than having to tell a client &apos;I&apos;m sorry, I made a mistake with the schedule.&apos;</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30"
+            >
+              <div className="text-3xl mb-4">😤</div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Clients left hanging</h3>
+              <p className="text-slate-300">That inquiry that came in while you were with someone else sits unanswered for hours. Your reputation for responsiveness starts to slip, one delayed response at a time.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30"
+            >
+              <div className="text-3xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Your expertise buried under admin work</h3>
+              <p className="text-slate-300">The skills that made clients choose you get crowded out by the endless tasks of running the business side.</p>
             </motion.div>
           </div>
 
-          {/* Closing Statement */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-slate-400 italic text-center mb-16"
+          >
+            You started your business to share your unique talents with the world. But talent alone isn&apos;t enough when you&apos;re drowning in everything else.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Two Paths Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-center"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
             <FuturisticText
-              text="Go build your empire."
-              className="text-4xl lg:text-5xl font-bold text-blue-400"
+              text="Two Ways to Serve, One Flexible Solution"
+              className="text-3xl font-bold text-white mb-6"
+              glowColor="#60a5fa"
+            />
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
+              Solo entrepreneurs typically serve clients in two ways—and many successful businesses blend both approaches. Your AI concierge team adapts to however you choose to structure your services.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {/* Left Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-8"
+            >
+              <div className="bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-lg p-4 mb-6">
+                <h3 className="text-2xl font-bold">🎯 One Client at a Time Excellence</h3>
+              </div>
+              <p className="text-slate-300 mb-6">
+                Deep, personalized service where every interaction is tailored to the individual client&apos;s needs.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Makeup Artists', 'Wedding Photographers', 'Massage Therapists', 'Personal Chefs', 'Tax Consultants', 'Event Planners'].map((tag) => (
+                  <span key={tag} className="bg-slate-700 rounded-full px-3 py-1 text-slate-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="text-white">
+                Complete presence and focus during each client interaction, knowing that every inquiry, booking request, and follow-up is being handled professionally while you deliver your expertise without distraction.
+              </p>
+            </motion.div>
+
+            {/* Right Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-8"
+            >
+              <div className="bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-lg p-4 mb-6">
+                <h3 className="text-2xl font-bold">👥 Group Success, Multiplied</h3>
+              </div>
+              <p className="text-slate-300 mb-6">
+                Structured programs, classes, or sessions that serve multiple clients simultaneously with consistent quality.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Dance Instructors', 'Personal Trainers', 'Music Teachers', 'Yoga Instructors', 'Academic Tutors', 'Cooking Classes'].map((tag) => (
+                  <span key={tag} className="bg-slate-700 rounded-full px-3 py-1 text-slate-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="text-white">
+                Seamless coordination of multiple schedules and communications, allowing you to focus entirely on program delivery while your enrollment, scheduling, and participant management runs smoothly in the background.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Reality Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6"
+          >
+            <h3 className="text-2xl font-bold text-blue-400 mb-4">The Reality: Most Successful Solo Entrepreneurs Do Both</h3>
+            <p className="text-slate-300">
+              A makeup artist teaches classes AND takes bridal clients. A personal trainer runs group fitness AND offers individual sessions. A photographer shoots events AND teaches workshops.
+            </p>
+            <p className="text-slate-300 mt-4">
+              This dual approach multiplies both the opportunities and the operational complexity.
+            </p>
+            <p className="text-slate-300 mt-4">
+              Imagine having a dedicated executive assistant who understands both sides of your business perfectly, handles every customer touchpoint with your level of care, and ensures you never have to choose between serving clients and managing operations again. That&apos;s exactly what your AI concierge team provides.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* AI Concierge Team Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <FuturisticText
+              text="Your AI Concierge Team in Action"
+              className="text-3xl font-bold text-white mb-6"
+              glowColor="#60a5fa"
+            />
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
+              However you choose to serve your clients—individually, in groups, or both—your dedicated concierge team adapts to your business model and handles the complexity behind the scenes.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Lead Manager Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+            >
+              <div className="text-3xl mb-4 text-blue-400">👥</div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Lead Manager</h3>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">🎨 For Individual Services:</div>
+                <p className="text-slate-300">&quot;Hi, I&apos;m interested in bridal makeup for next June...&quot; Your Lead Manager captures the details, checks your availability, and schedules a consultation—all while you&apos;re with another client.</p>
+              </div>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">💃 For Group Programs:</div>
+                <p className="text-slate-300">&quot;When does your next beginner dance class start?&quot; Your Lead Manager provides class schedules, handles enrollment, and manages the waiting list for popular sessions.</p>
+              </div>
+              
+              <p className="text-green-400">Every inquiry becomes a captured opportunity, whether it&apos;s for your premium individual services or your regular group programs.</p>
+            </motion.div>
+
+            {/* Scheduling Coordinator Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+            >
+              <div className="text-3xl mb-4 text-blue-400">📅</div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Scheduling Coordinator</h3>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">📅 Individual Appointments:</div>
+                <p className="text-slate-300">Seamlessly books your Tuesday morning bridal trial around your Thursday evening photography session, ensuring proper travel time and preparation.</p>
+              </div>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">🏃‍♀️ Group Classes:</div>
+                <p className="text-slate-300">Manages your Monday evening yoga class enrollments while coordinating individual training sessions throughout the week—no conflicts, no confusion.</p>
+              </div>
+              
+              <p className="text-green-400">A perfectly orchestrated schedule that maximizes your revenue opportunities across all service types.</p>
+            </motion.div>
+
+            {/* Customer Liaison Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+            >
+              <div className="text-3xl mb-4 text-blue-400">💌</div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Customer Liaison</h3>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">💌 Personal Follow-up:</div>
+                <p className="text-slate-300">Follows up with individual clients about their experience and gently encourages them to share reviews or book their next session.</p>
+              </div>
+              
+              <div className="mb-4">
+                <div className="text-blue-400 mb-2">📢 Group Communications:</div>
+                <p className="text-slate-300">Sends class participants information about upcoming workshops, schedule changes, or new program offerings—keeping your community engaged.</p>
+              </div>
+              
+              <p className="text-green-400">Stronger relationships that lead to repeat business, referrals, and a thriving community around your services.</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Growth Transformation Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <FuturisticText
+              text="With your free time"
+              className="text-3xl font-bold text-white mb-6"
               glowColor="#60a5fa"
             />
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: '🌟',
+                title: 'Scale Beyond Yourself',
+                description: 'Finally launch that advanced certification program you&apos;ve been dreaming about. Open that second location. Build the team you&apos;ve always envisioned.'
+              },
+              {
+                icon: '🚀',
+                title: 'Expand Your Reach',
+                description: 'Take your expertise to new cities, new markets, new audiences. When you&apos;re not tied to your phone, geography becomes opportunity.'
+              },
+              {
+                icon: '💎',
+                title: 'Premium Service Delivery',
+                description: 'Offer the high-touch, high-value experiences that command premium pricing. Your clients feel the difference when you&apos;re fully present.'
+              },
+              {
+                icon: '🎯',
+                title: 'Strategic Partnerships',
+                description: 'Build relationships with other experts, venues, suppliers. Network at industry events instead of being stuck at your desk.'
+              },
+              {
+                icon: '📈',
+                title: 'Multiple Revenue Streams',
+                description: 'Launch online courses, create product lines, develop franchise opportunities. Growth ideas that seemed impossible suddenly become your next quarter&apos;s goals.'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+              >
+                <div className="text-3xl mb-4 text-blue-400">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
+                <p className="text-slate-300">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
