@@ -36,7 +36,7 @@ export default function Home() {
                 "name": "How long does it take to set up?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Most businesses are up and running within 4 hours of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
+                  "text": "Most businesses are up and running within 2 days of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
                 }
               },
               {
@@ -85,7 +85,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center"
+              className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-center"
             >
               {/* Left Content - 60% */}
               <div className="lg:col-span-3">
@@ -108,8 +108,8 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-xl text-slate-300 mb-8"
                 >
-                  Imagine running your business exactly how you&apos;ve always dreamed—
-                  Where you spend your days building relationships, creating extraordinary experiences, and growing your vision. Where the repetitive tasks that drain your energy are handled by a dedicated team that represents your brand perfectly, 24/7.
+                  Imagine running your business exactly how you&apos;ve always dreamed. <br />
+                  Spend your days building relationships, creating extraordinary experiences, and growing your vision and let us handle the repetitive tasks that drain your energy.
                 </motion.p>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -130,11 +130,18 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="lg:col-span-2"
               >
-                <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm">
-                  {/* Video Placeholder */}
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    [Video Placeholder]
-                  </div>
+                <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm overflow-hidden">
+                  <img 
+                    src="/hero-video.jpg" 
+                    alt="Hero video thumbnail" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
                 </div>
               </motion.div>
             </motion.div>
@@ -239,9 +246,6 @@ export default function Home() {
                 <h2 className="text-4xl font-bold text-white mb-6 [text-shadow:_0_0_25px_rgba(34,197,94,0.6)]">
                   ...Can now focus on doing what they do best
                 </h2>
-                <p className="text-xl text-slate-300 mb-8">
-                  What if great people did great work?
-                </p>
               </div>
               
               {/* First row - 3 cards */}
@@ -279,7 +283,7 @@ export default function Home() {
               
               <div className="text-center mt-8">
                 <p className="text-xl text-slate-300 italic">
-                  This is what becomes possible when you team up with AI.
+                  This is what becomes possible when you team up with Activate AI.
                 </p>
               </div>
             </motion.div>
@@ -297,11 +301,18 @@ export default function Home() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             >
               <div>
-                <div className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
-                  {/* Demo Video Placeholder */}
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    [Demo Video Placeholder]
-                  </div>
+                <div className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden">
+                  <img 
+                    src="/demo-video.jpg" 
+                    alt="Demo video thumbnail" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
                 </div>
               </div>
               <div>
@@ -360,75 +371,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl font-bold text-white mb-4 text-center">
-                Simple, Transparent Pricing
-              </h2>
-              <p className="text-xl text-slate-300 mb-12 text-center max-w-3xl mx-auto">
-                One predictable monthly fee that pays for itself by capturing leads and saving time.
-              </p>
-              <div className="max-w-2xl mx-auto">
-                <div className="bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 overflow-hidden">
-                  <div className="bg-blue-900/50 text-white p-8 text-center border-b border-blue-500/20">
-                    <h3 className="text-2xl font-bold mb-2">Complete AI Team</h3>
-                    <div className="text-4xl font-bold mb-2">$299/month</div>
-                    <p className="text-blue-200">No setup fees. Cancel anytime.</p>
-                  </div>
-                  <div className="p-8">
-                    <ul className="space-y-4 mb-8">
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        All 4 AI Employees included
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        Integration with your existing tools
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        24/7 lead capture
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        Unlimited appointments & scheduling
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        Custom business rules & voice
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        Weekly performance reports
-                      </li>
-                      <li className="flex items-center text-slate-300">
-                        <span className="text-green-500 mr-2">✓</span>
-                        Ongoing optimization & support
-                      </li>
-                    </ul>
-                    <Link 
-                      href="/contact"
-                      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block text-center"
-                    >
-                      Get Started
-                    </Link>
-                    <p className="text-center text-slate-300 mt-4">
-                      Pays for itself by capturing just one new client per month
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
         {/* FAQ Section */}
         <section className="py-20 bg-black">
           <FAQSection />
@@ -454,7 +396,7 @@ export default function Home() {
                 href="/contact"
                 className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
               >
-                Schedule My Demo
+                Schedule My Consultation
               </Link>
             </motion.div>
           </div>

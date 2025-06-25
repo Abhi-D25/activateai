@@ -17,11 +17,6 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-slate-300 hover:text-blue-400">
-                  About Us
-                </Link>
-              </li>
-              <li>
                 <Link href="/services" className="text-slate-300 hover:text-blue-400">
                   Services
                 </Link>
@@ -36,8 +31,8 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-sm font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-3">
-              <li className="text-slate-300">contact@activateai.com</li>
-              <li className="text-slate-300">+1 (555) 123-4567</li>
+              <li className="text-slate-300">info@activateai.com</li>
+              <li className="text-slate-300">+1 (972) 754-1499</li>
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start">

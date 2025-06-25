@@ -9,7 +9,7 @@ import ScrollReveal from './ScrollReveal';
 const faqs = [
   {
     question: "How long does it take to set up?",
-    answer: "Most businesses are up and running within 4 hours of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
+    answer: "Most businesses are up and running within 2 days of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
   },
   {
     question: "Will it work with my existing systems?",

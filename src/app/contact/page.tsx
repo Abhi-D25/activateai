@@ -205,15 +205,15 @@ export default function Contact() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-              <p className="text-slate-300">contact@activateai.com</p>
+              <p className="text-slate-300">info@activateai.com</p>
             </div>
             <div className="text-center">
               <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-              <p className="text-slate-300">+1 (555) 123-4567</p>
+              <p className="text-slate-300">+1 (972) 754-1499</p>
             </div>
             <div className="text-center">
               <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
-              <p className="text-slate-300">San Francisco, CA</p>
+              <p className="text-slate-300">Wherever You Are</p>
             </div>
           </div>
         </div>

@@ -55,7 +55,7 @@ export default function ActivationsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={titleTransition}
             >
-              Meet Your Dedicated Business Team
+              Meet Your Own Business Team
             </motion.h1>
             <motion.p 
               className="text-xl text-slate-300"
@@ -63,7 +63,7 @@ export default function ActivationsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={descTransition}
             >
-              Each role works as an extension of your brand, providing deeply personalized customer care across every engagement channel—your always-on concierge for daily customer affairs.
+              Extend your brand with your always-on concierge for daily customer affairs.
             </motion.p>
           </div>
 
@@ -246,12 +246,19 @@ export default function ActivationsPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50"
+                  className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
                 >
-                  {/* Image Placeholder */}
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    [Barber with client image]
-                  </div>
+                  <img 
+                    src="/barber-client.jpg" 
+                    alt="Barber with client" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -335,8 +342,8 @@ export default function ActivationsPage() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="italic text-slate-300 border-l-4 border-blue-500 pl-4"
                   >
-                    &quot;Having my dedicated business concierge has completely transformed how I operate. Every customer gets the personal attention they deserve, and I finally have time to focus on the strategic decisions that grow my business.&quot;
-                    <footer className="mt-2 font-semibold text-white">- James, Owner</footer>
+                    &quot;Having my dedicated business concierge has completely transformed how I operate. Every customer gets the personal attention they deserve, and I finally have time to focus on what made me fall in love with my work.&quot;
+                    <footer className="mt-2 font-semibold text-white">- James, Barber</footer>
                   </motion.blockquote>
                 </motion.div>
               </div>
@@ -425,8 +432,8 @@ export default function ActivationsPage() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="italic text-slate-300 border-l-4 border-blue-500 pl-4"
                   >
-                    &quot;I was terrified about changing anything in my business—I&apos;ve built systems that work. But ActivateAI didn&apos;t change anything. They just made everything I was already doing work better, without me having to be involved in every single detail.&quot;
-                    <footer className="mt-2 font-semibold text-white">- Sarah, Owner</footer>
+                    &quot;I was terrified about changing anything in my business—I&apos;ve tried systems that made me change my process. But ActivateAI didn&apos;t change anything. They just made everything I was already doing work better, without me having to be involved in every single detail.&quot;
+                    <footer className="mt-2 font-semibold text-white">- Abby, Owner</footer>
                   </motion.blockquote>
                 </motion.div>
                 <motion.div 
@@ -434,12 +441,19 @@ export default function ActivationsPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50"
+                  className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
                 >
-                  {/* Image Placeholder */}
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    [Makeup artist with client image]
-                  </div>
+                  <img 
+                    src="/makeup-artist-client.jpg" 
+                    alt="Makeup artist with client" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
                 </motion.div>
               </div>
             </div>

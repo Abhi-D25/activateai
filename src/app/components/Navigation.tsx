@@ -57,9 +57,6 @@ export default function Navigation() {
             <Link href="/" className="text-slate-300 hover:text-blue-400">
               Home
             </Link>
-            <Link href="/about" className="text-slate-300 hover:text-blue-400">
-              About
-            </Link>
             <Link href="/services" className="text-slate-300 hover:text-blue-400">
               Activations
             </Link>
@@ -125,9 +122,6 @@ export default function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link href="/" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
                 Home
-              </Link>
-              <Link href="/about" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
-                About
               </Link>
               <Link href="/services" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
                 Services
