@@ -117,9 +117,9 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="flex flex-col sm:flex-row gap-4 mb-12"
                 >
-                  <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    Watch the transformation
-                  </button>
+                 <Link href="/case-studies" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    See Current Activations
+                  </Link>
                   <QuizButton />
                 </motion.div>
               </div>
