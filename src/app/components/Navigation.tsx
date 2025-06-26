@@ -49,8 +49,15 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-blue-500">
-              ActivateAI
+            <Link href="/" className="flex items-center">
+              <img 
+                src="/navbarLogo.jpg" 
+                alt="ActivateAI Logo" 
+                className="h-10 w-auto mr-4 mb-1"
+              />
+              <span className="text-2xl font-bold text-white hidden sm:block">
+                ActivateAI
+              </span>
             </Link>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
