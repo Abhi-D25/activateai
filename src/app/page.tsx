@@ -117,7 +117,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="flex flex-col sm:flex-row gap-4 mb-12"
                 >
-                 <Link href="/case-studies" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                 <Link href="/case-studies" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center font-medium whitespace-nowrap btn-primary">
                     See Current Activations
                   </Link>
                   <QuizButton />
@@ -131,20 +131,42 @@ export default function Home() {
                 className="lg:col-span-2"
               >
                 <motion.div 
-                  className="aspect-[3/2] bg-gray-900/50 rounded-lg backdrop-blur-sm overflow-hidden"
+                  className="aspect-[3/2] bg-gray-900/50 rounded-lg backdrop-blur-sm overflow-hidden mobile-hero-animate"
                   whileHover={{ 
                     scale: 1.02,
                     boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
                   }}
-                  transition={{ duration: 0.3 }}
+                  animate={{
+                    scale: [1, 1.02, 1],
+                    boxShadow: [
+                      "0 0 0px rgba(59, 130, 246, 0)",
+                      "0 0 30px rgba(59, 130, 246, 0.3)",
+                      "0 0 0px rgba(59, 130, 246, 0)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 0.3,
+                    repeat: Infinity,
+                    repeatDelay: 2,
+                    ease: "easeInOut"
+                  }}
                 >
                   <motion.img 
                     src="/hero-video.jpg" 
                     alt="Hero video thumbnail" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover mobile-hero-image-animate"
                     initial={{ scale: 1.1, opacity: 0.8 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1.2, delay: 0.6 }}
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                      opacity: 1
+                    }}
+                    transition={{ 
+                      duration: 1.2, 
+                      delay: 0.6,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
                     whileHover={{ scale: 1.05 }}
                     onError={(e) => {
                       // Fallback to placeholder if image fails to load

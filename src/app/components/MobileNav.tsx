@@ -44,14 +44,14 @@ const MobileNav = () => {
             <Link
               key={item.href}
               href={item.href}
-              className="flex flex-col items-center justify-center w-full h-full text-white"
+              className="flex flex-col items-center justify-center w-full h-full text-white px-1 mobile-nav-item"
               onClick={() => {
                 if (window.navigator.vibrate) {
                   window.navigator.vibrate(25);
                 }
               }}
             >
-              <span className="text-sm font-medium">{item.label}</span>
+              <span className={`text-xs font-medium text-center leading-tight ${item.label === 'Who We Serve' ? 'text-[0.65rem]' : ''}`}>{item.label}</span>
             </Link>
           ))}
         </div>

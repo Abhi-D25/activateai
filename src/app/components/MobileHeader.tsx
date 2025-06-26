@@ -13,7 +13,7 @@ export default function MobileHeader() {
               alt="ActivateAI Logo" 
               className="h-8 w-auto mr-2"
             />
-            <span className="text-2xl font-bold text-blue-500">
+            <span className="text-2xl font-bold text-white">
               ActivateAI
             </span>
           </Link>

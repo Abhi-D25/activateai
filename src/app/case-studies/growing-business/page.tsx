@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import FuturisticText from '../../components/FuturisticText';
 
 export default function GrowingBusinessPage() {
@@ -69,14 +70,15 @@ export default function GrowingBusinessPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="lg:col-span-2"
             >
-              <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
-                {/* Video Placeholder */}
-                <div className="w-full h-full flex items-center justify-center text-gray-400 p-4 text-center">
-                  <div>
-                    <div className="text-2xl mb-2">🎥</div>
-                    <div className="text-sm">HERO VIDEO: Growing teams collaborating seamlessly while AI handles coordination and client management</div>
-                  </div>
-                </div>
+              <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden">
+                <Image
+                  src="/growing-teams-collaboration.svg"
+                  alt="Growing teams collaborating seamlessly while AI handles coordination and client management"
+                  width={800}
+                  height={450}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
             </motion.div>
           </motion.div>

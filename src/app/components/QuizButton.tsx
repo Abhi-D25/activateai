@@ -15,7 +15,7 @@ export default function QuizButton({ text = "Activate my business" }: QuizButton
     <>
       <ButtonAnimation 
         onClick={() => setIsOpen(true)} 
-        className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors bg-black"
+        className="px-8 py-3 border-2 border-blue-600 text-blue-400 rounded-lg hover:bg-blue-900/20 transition-colors bg-black text-center font-medium whitespace-nowrap"
         variant="secondary"
       >
         {text}

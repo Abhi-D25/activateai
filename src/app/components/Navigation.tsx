@@ -136,18 +136,18 @@ export default function Navigation() {
               
               {/* Mobile Who We Serve */}
               <div className="px-3 py-2">
-                <div className="text-slate-300 font-medium mb-2">Who We Serve</div>
+                <div className="text-slate-300 font-medium mb-2 text-sm">Who We Serve</div>
                 <div className="pl-4 space-y-1">
                   <Link 
                     href="/case-studies/solo-preneur" 
-                    className="block text-slate-400 hover:text-blue-400 py-1"
+                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Solo-preneur
                   </Link>
                   <Link 
                     href="/case-studies/growing-business" 
-                    className="block text-slate-400 hover:text-blue-400 py-1"
+                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Growing Business

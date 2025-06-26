@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import FuturisticText from '../../components/FuturisticText';
 import QuizButton from '../../components/QuizButton';
 
@@ -68,15 +69,30 @@ export default function SoloPreneurPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="lg:col-span-2"
             >
-              <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
-                {/* Video Placeholder */}
-                <div className="w-full h-full flex items-center justify-center text-gray-400 p-4 text-center">
-                  <div>
-                    <div className="text-2xl mb-2">🎥</div>
-                    <div className="text-sm">HERO VIDEO: Montage of solo entrepreneurs focused on their craft while AI handles operations seamlessly</div>
-                  </div>
-                </div>
-              </div>
+              <motion.div 
+                className="aspect-[3/2] bg-gray-900/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                animate={{ 
+                  y: [0, -8, 0],
+                  boxShadow: [
+                    "0 0 0 rgba(96, 165, 250, 0)",
+                    "0 8px 32px rgba(96, 165, 250, 0.3)",
+                    "0 0 0 rgba(96, 165, 250, 0)"
+                  ]
+                }}
+                transition={{ 
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                  boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                }}
+              >
+                <Image
+                  src="/solo-preneur-hero-placeholder.jpg"
+                  alt="Solo entrepreneurs focused on their craft while AI handles operations seamlessly"
+                  width={800}
+                  height={450}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>

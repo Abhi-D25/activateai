@@ -29,7 +29,7 @@ const MobileLayout = ({ children }: MobileLayoutProps) => {
         <>
           <MobileHeader />
           <MobileNav />
-          <main className="pt-24 relative z-10">{children}</main>
+          <main className="pt-24 relative z-10 mobile-layout">{children}</main>
           <Footer />
         </>
       ) : (
