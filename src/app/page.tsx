@@ -130,11 +130,22 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="lg:col-span-2"
               >
-                <div className="aspect-video bg-gray-900/50 rounded-lg backdrop-blur-sm overflow-hidden">
-                  <img 
+                <motion.div 
+                  className="aspect-[3/2] bg-gray-900/50 rounded-lg backdrop-blur-sm overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.02,
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.img 
                     src="/hero-video.jpg" 
                     alt="Hero video thumbnail" 
                     className="w-full h-full object-cover"
+                    initial={{ scale: 1.1, opacity: 0.8 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.2, delay: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
                     onError={(e) => {
                       // Fallback to placeholder if image fails to load
                       const target = e.target as HTMLImageElement;
@@ -142,7 +153,7 @@ export default function Home() {
                       target.nextElementSibling?.classList.remove('hidden');
                     }}
                   />
-                </div>
+                </motion.div>
               </motion.div>
             </motion.div>
 

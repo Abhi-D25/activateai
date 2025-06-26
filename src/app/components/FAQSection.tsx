@@ -56,52 +56,68 @@ export default function FAQSection() {
       </Helmet>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="slideUp" className="text-center mb-16">
-          <h2 className="section-title">Frequently Asked Questions</h2>
+          <h2 
+            className="section-title italic"
+            style={{
+              textShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.1)'
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
         </ScrollReveal>
         
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <ScrollReveal
-                key={index}
-                animation="slideUp"
-                delay={index * 0.1}
-              >
-                <motion.div
-                  className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+          <div 
+            className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-8"
+            style={{
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)'
+            }}
+          >
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <ScrollReveal
+                  key={index}
+                  animation="slideUp"
+                  delay={index * 0.1}
                 >
-                  <button
-                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors"
-                    onClick={() => toggleFAQ(index)}
+                  <motion.div
+                    className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-blue-400/30 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
-                    <ChevronDownIcon
-                      className={`h-5 w-5 text-blue-400 transition-transform duration-300 ${
-                        openIndex === index ? 'transform rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openIndex === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-4 mt-4">
-                          <p className="text-slate-300">{faq.answer}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                    <button
+                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors"
+                      onClick={() => toggleFAQ(index)}
+                    >
+                      <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
+                      <ChevronDownIcon
+                        className={`h-5 w-5 text-blue-400 transition-transform duration-300 ${
+                          openIndex === index ? 'transform rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {openIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-4 mt-4">
+                            <p className="text-slate-300">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
