@@ -16,12 +16,10 @@ export const metadata: Metadata = {
   description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo.png' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logo.png' },
     ],
   },
   manifest: '/site.webmanifest',
