@@ -483,7 +483,7 @@ export default function GrowingBusinessPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-900/30 backdrop-blur-sm">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -492,20 +492,28 @@ export default function GrowingBusinessPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <FuturisticText
-              text="Ready to scale with excellence?"
-              className="text-3xl font-bold text-white mb-6"
-              glowColor="#2563eb"
-            />
-            <p className="text-xl text-slate-300 mb-8">
-              Let your AI operations team handle the complexity while your leadership team focuses on what matters most: strategic growth.
-            </p>
-            <Link 
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+            <div className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-8"
+              style={{
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)'
+              }}
             >
-              Scale Your Excellence
-            </Link>
+              <FuturisticText
+                text="Ready to scale with excellence?"
+                className="text-3xl font-bold text-white mb-6"
+                glowColor="#2563eb"
+              />
+              <p className="text-xl text-slate-300 mb-8">
+                Let your AI operations team handle the complexity while your leadership team focuses on what matters most: strategic growth.
+              </p>
+              <Link 
+                href="/contact"
+                className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+              >
+                Scale Your Excellence
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

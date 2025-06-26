@@ -462,7 +462,7 @@ export default function ActivationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-900/30 backdrop-blur-sm">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -471,19 +471,27 @@ export default function ActivationsPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Ready to transform your business operations?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8">
-              Let your AI concierge team handle the details while you focus on growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact"
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center"
-              >
-                Get Started
-              </Link>
+            <div className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-8"
+              style={{
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)'
+              }}
+            >
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Ready to transform your business operations?
+              </h2>
+              <p className="text-xl text-slate-300 mb-8">
+                Let your AI concierge team handle the details while you focus on growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/contact"
+                  className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center"
+                >
+                  Get Started
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
