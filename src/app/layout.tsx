@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/logo.png',
         width: 1200,
         height: 630,
         alt: 'ActivateAI - AI Solutions for SMBs',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: 'ActivateAI - AI Solutions for Small & Medium Businesses',
     description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
     creator: '@activateai',
-    images: ['/images/twitter-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 
