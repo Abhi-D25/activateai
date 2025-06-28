@@ -233,36 +233,6 @@
   .mobile-spacing {
     margin-bottom: 1.5rem !important;
   }
-
-  /* Mobile hero image animations */
-  .mobile-hero-animate {
-    animation: mobileHeroPulse 4s ease-in-out infinite;
-  }
-
-  .mobile-hero-image-animate {
-    animation: mobileHeroImageScale 6s ease-in-out infinite;
-  }
-
-  /* Mobile-specific animation keyframes */
-  @keyframes mobileHeroPulse {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 0 0px rgba(59, 130, 246, 0);
-    }
-    50% {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-    }
-  }
-
-  @keyframes mobileHeroImageScale {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.03);
-    }
-  }
 }
 
 /* Mobile animations */
@@ -390,6 +360,68 @@
 @layer base {
   body {
     @apply bg-black text-white;
+  }
+  
+  /* Smooth page transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Page transition animations */
+  .page-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .page-transition-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .page-transition-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* Enhanced transition performance */
+  .transition-optimized {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Mobile transition optimizations */
+  @media (max-width: 768px) {
+    .page-transition-enter,
+    .page-transition-enter-active,
+    .page-transition-exit,
+    .page-transition-exit-active {
+      transition-duration: 0.4s !important;
+    }
+    
+    .transition-optimized {
+      will-change: auto;
+    }
+  }
+  
+  /* Hero image overlay styles */
+  .hero-image-overlay {
+    position: relative;
+    background: transparent;
+  }
+  
+  .hero-image-overlay img {
+    z-index: 2;
+    position: relative;
   }
 }
 
