@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-sm font-semibold text-white mb-4">Follow Us</h4>
             <div className="flex space-x-6">
-              <a href="#" className="text-slate-300 hover:text-blue-400">
+              <a href="https://www.linkedin.com/company/acti-vateai/" className="text-slate-300 hover:text-blue-400">
                 LinkedIn
               </a>
               <a href="#" className="text-slate-300 hover:text-blue-400">
