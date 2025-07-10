@@ -22,8 +22,23 @@ import PageTransition from './components/PageTransition';
 import { Helmet } from 'react-helmet';
 import TypewriterText from './components/TypewriterText';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 2);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const showSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <PageTransition variant="fade">
       <>
@@ -350,7 +365,192 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Zero Changes Section */}
+          {/* What We Offer Section */}
+          <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
+            <div className="container mx-auto px-4">
+              {/* Container 1: Sales (Image Left, Text Right) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20"
+              >
+                <div>
+                  <motion.div 
+                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <motion.div
+                        initial={{ opacity: 0.7 }}
+                        whileHover={{ opacity: 1 }}
+                        className="relative z-10"
+                      >
+                        Sales Visual Placeholder
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                    <span className="bg-red-600/20 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                      Sales
+                    </span>
+                  </h2>
+                  <p className="text-xl text-slate-300">
+                    Following up with leads, remembering who came from where, jumping between forms and DMs—it's too much. We help make sure nothing slips, and everything moves forward. So you can focus on the conversations that actually grow your business.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Container 2: Operations (Image Right, Text Left) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20"
+              >
+                <div className="lg:order-2">
+                  <motion.div 
+                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <motion.div
+                        initial={{ opacity: 0.7 }}
+                        whileHover={{ opacity: 1 }}
+                        className="relative z-10"
+                      >
+                        Operations Visual Placeholder
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div className="lg:order-1">
+                  <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                    <span className="bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                      Operations
+                    </span>
+                  </h2>
+                  <p className="text-xl text-slate-300">
+                    There's always one more thing—rescheduling, chasing confirmations, reminding someone to do something. We help simplify the small, repeating stuff. So your day feels a little less reactive—and a lot more in control.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Container 3: Admin (Image Left, Text Right) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20"
+              >
+                <div>
+                  <motion.div 
+                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <motion.div
+                        initial={{ opacity: 0.7 }}
+                        whileHover={{ opacity: 1 }}
+                        className="relative z-10"
+                      >
+                        Admin Visual Placeholder
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                    <span className="bg-green-600/20 backdrop-blur-sm border border-green-500/30 px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                      Admin
+                    </span>
+                  </h2>
+                  <p className="text-xl text-slate-300">
+                    You know that pile of things you meant to do? The inboxes, the forms, the copy-paste chaos? We quietly take care of what drains you most. So you have space to breathe, think, and move your business forward.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Container 4: Support (Image Right, Text Left) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12"
+              >
+                <div className="lg:order-2">
+                  <motion.div 
+                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <motion.div
+                        initial={{ opacity: 0.7 }}
+                        whileHover={{ opacity: 1 }}
+                        className="relative z-10"
+                      >
+                        Support Visual Placeholder
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div className="lg:order-1">
+                  <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                    <span className="bg-yellow-600/20 backdrop-blur-sm border border-yellow-500/30 px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                      Support
+                    </span>
+                  </h2>
+                  <p className="text-xl text-slate-300">
+                    Clients reach out everywhere—email, text, Instagram—and it's hard to keep up. We help you respond faster, route requests better, and never leave someone hanging. So customers feel cared for, and you don't burn out trying.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Find out more button */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <Link 
+                  href="/services"
+                  className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                >
+                  Find out more
+                </Link>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Sales Snapshot Section */}
           <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
             <div className="container mx-auto px-4">
               <motion.div 
@@ -358,82 +558,201 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                className="max-w-6xl mx-auto"
               >
-                <div>
-                  <div className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden">
-                    <img 
-                      src="/demo-video.jpg" 
-                      alt="Demo video thumbnail" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback to placeholder if image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
+                {/* Header */}
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl font-bold text-white mb-4">
+                    From Missed Leads to Instant Demos
+                  </h2>
+                  <p className="text-xl text-slate-300 max-w-4xl mx-auto">
+                    A 5-person SaaS team was juggling a shared inbox and manual follow-ups. We automated their lead capture, routing, and demo booking—without changing a thing in their CRM.
+                  </p>
+                </div>
+
+                {/* Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+                  {/* Left Column - Content */}
+                  <div className="space-y-8">
+                    {/* What We Delivered */}
+                    <div className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/30 rounded-xl p-8 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                      <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                        What We Delivered
+                      </h3>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <span className="text-green-400 text-xl mt-1">✅</span>
+                          <p className="text-slate-300">Instant lead alert & routing</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-green-400 text-xl mt-1">✅</span>
+                          <p className="text-slate-300">Automated 3-touch follow-up (3, 7, 14 days)</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-green-400 text-xl mt-1">✅</span>
+                          <p className="text-slate-300">Calendar-integrated booking flow</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-green-400 text-xl mt-1">✅</span>
+                          <p className="text-slate-300">AI-powered pre-qualification form</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* The Results */}
+                    <div className="bg-gray-800/50 backdrop-blur-sm border border-green-500/30 rounded-xl p-8 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                      <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                        The Results
+                      </h3>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <span className="text-blue-400 text-xl mt-1">🔹</span>
+                          <p className="text-slate-300">32% more demos booked</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-blue-400 text-xl mt-1">🔹</span>
+                          <p className="text-slate-300">5–7 hours saved weekly</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-blue-400 text-xl mt-1">🔹</span>
+                          <p className="text-slate-300">100% CRM sync—zero manual entry</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <span className="text-blue-400 text-xl mt-1">🔹</span>
+                          <p className="text-slate-300">Zero new tools added</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column - Image Placeholder */}
+                  <div className="flex items-center">
+                    <motion.div 
+                      className="w-full aspect-[4/3] bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
+                      whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
                       }}
-                    />
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <motion.div
+                          initial={{ opacity: 0.7 }}
+                          whileHover={{ opacity: 1 }}
+                          className="relative z-10 text-center"
+                        >
+                          <div className="text-4xl mb-4">📊</div>
+                          <p className="text-sm">Sales Snapshot</p>
+                          <p className="text-xs text-gray-500">Case Study Visual</p>
+                        </motion.div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-white mb-6">
-                    Zero Changes to Your Business. Maximum Relief for Your Life.
-                  </h2>
-                  <p className="text-xl text-slate-300 mb-8">
-                    The biggest misconception about AI? That you need to overhaul everything. The truth? Our dedicated concierge team plugs seamlessly into exactly how you work today—your phone, your calendar, your communication style—and simply lifts the burden.
-                  </p>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4 text-white">What stays exactly the same:</h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-green-500 mr-2">✓</span>
-                          Your phone number and existing phone system
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-green-500 mr-2">✓</span>
-                          Your Google/Outlook/Apple calendar
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-green-500 mr-2">✓</span>
-                          Your pricing, policies, and procedures
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-green-500 mr-2">✓</span>
-                          Your brand voice and communication style
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-green-500 mr-2">✓</span>
-                          How you deliver your services
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4 text-white">What changes completely:</h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-blue-400 mr-2">→</span>
-                          Your stress level - No more juggling interruptions
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-blue-400 mr-2">→</span>
-                          Your focus - Deep work on what you love
-                        </li>
-                        <li className="flex items-center text-slate-300">
-                          <span className="text-blue-400 mr-2">→</span>
-                          Your availability - For growth and relationships
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+
+                {/* CTA Button */}
+                <div className="text-center">
+                  <Link 
+                    href="/case-studies"
+                    className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  >
+                    Read Full Case Study →
+                  </Link>
                 </div>
               </motion.div>
             </div>
           </section>
 
-          {/* FAQ Section */}
+          {/* Testimonial Carousel Section */}
           <section className="py-20 bg-black">
-            <FAQSection />
+            <div className="container mx-auto px-4">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="max-w-6xl mx-auto"
+              >
+                {/* Header */}
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl font-bold text-white mb-4">
+                    What Our Clients Say
+                  </h2>
+                  <p className="text-xl text-slate-300">
+                    Real results from real businesses using ActivateAI
+                  </p>
+                </div>
+
+                {/* Testimonial Carousel */}
+                <div className="relative overflow-hidden">
+                  <div 
+                    className="flex transition-transform duration-1000 ease-in-out" 
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {/* Testimonial 1 & 2 */}
+                    <div className="flex gap-6 min-w-full">
+                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-blue-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                        <div className="text-blue-400 text-2xl mb-4">"</div>
+                        <p className="text-slate-300 mb-4 italic">
+                          I didn't have to change a single thing. They worked around how I already run my business. I didn't have to install new tools or learn anything new—things just started getting done.
+                        </p>
+                        <div className="text-blue-400 font-semibold">
+                          — Maya G., Nutrition Coach
+                        </div>
+                      </div>
+                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-green-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                        <div className="text-green-400 text-2xl mb-4">"</div>
+                        <p className="text-slate-300 mb-4 italic">
+                          My leads actually get followed up now. Before ActivateAI, I'd lose track of half the people who reached out. Now it's all automated, and I just show up to the calls.
+                        </p>
+                        <div className="text-green-400 font-semibold">
+                          — Andre L., Independent Realtor
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Testimonial 3 & 4 */}
+                    <div className="flex gap-6 min-w-full">
+                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
+                        <div className="text-purple-400 text-2xl mb-4">"</div>
+                        <p className="text-slate-300 mb-4 italic">
+                          It feels like I hired an assistant—without the cost. Messages get answered, appointments get booked, and I can finally focus on the work I care about.
+                        </p>
+                        <div className="text-purple-400 font-semibold">
+                          — Serena T., Cosmetic Studio Owner
+                        </div>
+                      </div>
+                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                        <div className="text-cyan-400 text-2xl mb-4">"</div>
+                        <p className="text-slate-300 mb-4 italic">
+                          This saved me from hiring a second admin. We were drowning in follow-ups and reminders. Now it's all just handled. It feels like the business is running itself.
+                        </p>
+                        <div className="text-cyan-400 font-semibold">
+                          — Jay M., Medical Clinic Manager
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Navigation Dots */}
+                  <div className="flex justify-center mt-8 space-x-2">
+                    <button 
+                      className={`w-3 h-3 rounded-full bg-blue-500 transition-opacity duration-300 ${
+                        currentSlide === 0 ? 'opacity-100' : 'opacity-50'
+                      }`}
+                      onClick={() => showSlide(0)}
+                    ></button>
+                    <button 
+                      className={`w-3 h-3 rounded-full bg-blue-500 transition-opacity duration-300 ${
+                        currentSlide === 1 ? 'opacity-100' : 'opacity-50'
+                      }`}
+                      onClick={() => showSlide(1)}
+                    ></button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </section>
 
           {/* Final CTA Section */}
@@ -454,21 +773,27 @@ export default function Home() {
                   }}
                 >
                   <h2 className="text-3xl font-bold text-white mb-6">
-                    Ready to grow your business with AI?
+                    What Are You Ready to Offload?
                   </h2>
                   <p className="text-xl text-slate-300 mb-8">
-                    Schedule a quick demo to see how ActivateAI can work specifically for your business.
+                    Embrace convenience by activating AI for your business—on your terms, in your time. <br /> You weren't meant to do it all yourself.
                   </p>
                   <Link 
                     href="/contact"
                     className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                   >
-                    Schedule My Consultation
+                    See What's Possible →
                   </Link>
                 </div>
               </motion.div>
             </div>
           </section>
+
+          {/* FAQ Section */}
+          <section className="py-20 bg-black">
+            <FAQSection />
+          </section>
+
         </div>
       </>
     </PageTransition>
