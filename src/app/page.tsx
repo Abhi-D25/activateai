@@ -113,8 +113,16 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-3xl lg:text-5xl italic text-white mb-6"
                   >
-                    Making AI Real for Everyday Businesses—without changing a thing.
+                    Making AI Effortless for Everyday Businesses
                   </motion.h1>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-2xl lg:text-4xl italic text-white mb-6"
+                  >
+                    —without changing a thing.
+                  </motion.h2>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
