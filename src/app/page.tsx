@@ -21,6 +21,7 @@ import ParticleBackground from '../app/components/ParticleBackground';
 import PageTransition from './components/PageTransition';
 import { Helmet } from 'react-helmet';
 import TypewriterText from './components/TypewriterText';
+import ArtOfPossibleSection from './components/ArtOfPossibleSection';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -250,120 +251,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Problem-Solution Section */}
-          <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
-            <div className="container mx-auto px-4">
-              {/* Problem Part */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="mb-16"
-              >
-                <div className="text-center mb-8">
-                  <h2 className="text-4xl font-bold text-white mb-6 [text-shadow:_0_0_25px_rgba(239,68,68,0.6)]">
-                    Great people who get stuck doing busy work...
-                  </h2>
-                  <p className="text-xl text-slate-300 mb-8">
-                    Whether it&apos;s you or your talented team, too much time is consumed in operational challenges that directly hit your bottom line
-                  </p>
-                </div>
-                
-                {/* First row - 3 cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div className="text-3xl mb-4">📞</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Revenue walking out the door</h3>
-                    <p className="text-slate-300">Potential customers calling when you&apos;re unavailable or offline</p>
-                  </div>
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div className="text-3xl mb-4">📅</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Money lost to scheduling conflicts</h3>
-                    <p className="text-slate-300">Double-bookings, last-minute cancellations, and gaps that could have been filled</p>
-                  </div>
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div className="text-3xl mb-4">💻</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Repeat business slipping away</h3>
-                    <p className="text-slate-300">Follow-ups that don&apos;t happen and customers who feel forgotten</p>
-                  </div>
-                </div>
-
-                {/* Second row - 2 cards centered */}
-                <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
-                  <div className="lg:col-start-2 lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div className="text-3xl mb-4">😤</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Growth plans on permanent hold</h3>
-                    <p className="text-slate-300">Strategic opportunities sacrificed because everyone&apos;s stuck in daily operations</p>
-                  </div>
-                  <div className="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div className="text-3xl mb-4">💸</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Peak hours wasted on admin</h3>
-                    <p className="text-slate-300">Your highest-value time consumed by low-value tasks</p>
-                  </div>
-                </div>
-
-                <div className="text-center mt-8">
-                  <p className="text-xl text-slate-300 italic">
-                    You&apos;ve accepted this as &quot;just part of running a business.&quot; But what if it didn&apos;t have to be?
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Solution Part */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="text-center mb-8">
-                  <h2 className="text-4xl font-bold text-white mb-6 [text-shadow:_0_0_25px_rgba(34,197,94,0.6)]">
-                    ...Can now focus on doing what they do best
-                  </h2>
-                </div>
-                
-                {/* First row - 3 cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                    <div className="text-3xl mb-4">🎨</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Creative energy unleashed</h3>
-                    <p className="text-slate-300">Time for innovation, artistry, and the work that energizes you</p>
-                  </div>
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                    <div className="text-3xl mb-4">🤝</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Deeper client relationships</h3>
-                    <p className="text-slate-300">Meaningful conversations and connections that drive loyalty</p>
-                  </div>
-                  <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                    <div className="text-3xl mb-4">🚀</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Strategic growth initiatives</h3>
-                    <p className="text-slate-300">New services, expansion plans, and revenue opportunities</p>
-                  </div>
-                </div>
-                
-                {/* Second row - 2 cards centered */}
-                <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
-                  <div className="lg:col-start-2 lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                    <div className="text-3xl mb-4">💡</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Problem-solving at the highest level</h3>
-                    <p className="text-slate-300">Complex challenges that require your unique expertise</p>
-                  </div>
-                  <div className="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                    <div className="text-3xl mb-4">🏆</div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Excellence in your craft</h3>
-                    <p className="text-slate-300">The specialized work only you and your team can deliver</p>
-                  </div>
-                </div>
-                
-                <div className="text-center mt-8">
-                  <p className="text-xl text-slate-300 italic">
-                    This is what becomes possible when you team up with Activate AI.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          <ArtOfPossibleSection />
 
           {/* What We Offer Section */}
           <section className="py-20 bg-gray-900/50 backdrop-blur-sm">
