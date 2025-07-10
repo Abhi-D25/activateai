@@ -97,12 +97,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-3xl lg:text-5xl italic text-white mb-6"
                   >
-                    We empower everyday businesses by making <br />
-                    <TypewriterText 
-                      text="AI Outcomes Accessible" 
-                      className="text-4xl lg:text-5xl font-bold text-blue-600 mb-4 mt-4"
-                      speed={90}
-                    />
+                    Making AI Real for Everyday Businesses—without changing a thing.
                   </motion.h1>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
@@ -110,8 +105,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-xl text-slate-300 mb-8"
                   >
-                    Imagine running your business exactly how you&apos;ve always dreamed. <br />
-                    Spend your days building relationships, creating extraordinary experiences, and growing your vision and let us handle the repetitive tasks that drain your energy.
+                    We plug AI into the way you already work—no new apps, no disruption. Just less busywork, and more time for what really matters: growth.
                   </motion.p>
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -167,31 +161,76 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Vision Metrics Banner */}
+              {/* Value Props Banner - 4 Floating Bubble Cards */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="mt-16 bg-blue-900/30 rounded-xl p-8 backdrop-blur-sm border border-blue-500/20"
+                className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold text-blue-400">Your Passion</h3>
-                    <p className="text-blue-300">becomes your full-time focus</p>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold text-blue-400">Every Channel</h3>
-                    <p className="text-blue-300">handled with your brand voice</p>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold text-blue-400">Zero Changes</h3>
-                    <p className="text-blue-300">to how you already work</p>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold text-blue-400">Pure Relief</h3>
-                    <p className="text-blue-300">from daily administrative burden</p>
-                  </div>
-                </div>
+                {/* Reclaim Your Time */}
+                <motion.div 
+                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                    scale: 1.02
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
+                >
+                  <h3 className="text-lg font-semibold text-blue-400 mb-2">Reclaim Your Time</h3>
+                  <p className="text-blue-300 text-sm">Free yourself from repetitive tasks and late-night catch-up.</p>
+                </motion.div>
+
+                {/* Run Smarter, Not Harder */}
+                <motion.div 
+                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                    scale: 1.02
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.0 }}
+                >
+                 <h3 className="text-lg font-semibold text-blue-400 mb-2">Run Smarter, Not Harder</h3>
+                  <p className="text-blue-300 text-sm">Automate where it counts—without changing how you work.</p>
+                </motion.div>
+
+                {/* No Overhaul. No New Tools. */}
+                <motion.div 
+                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                    scale: 1.02
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.1 }}
+                >
+                  <h3 className="text-lg font-semibold text-blue-400 mb-2">No Overhaul. No New Tools.</h3>
+                  <p className="text-blue-300 text-sm">We plug into your existing systems and processes.</p>
+                </motion.div>
+
+                {/* Built for the Work You Love */}
+                <motion.div 
+                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                    scale: 1.02
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  <h3 className="text-lg font-semibold text-blue-400 mb-2">Built for the Work You Love</h3>
+                  <p className="text-blue-300 text-sm">You stay focused on clients, growth, and your craft—we handle the rest.</p>
+                </motion.div>
               </motion.div>
             </div>
           </section>
