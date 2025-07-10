@@ -404,7 +404,7 @@ export default function Home() {
                     </span>
                   </h2>
                   <p className="text-xl text-slate-300">
-                    Following up with leads, remembering who came from where, jumping between forms and DMs—it's too much. We help make sure nothing slips, and everything moves forward. So you can focus on the conversations that actually grow your business.
+                    Following up with leads, remembering who came from where, jumping between forms and DMs—it&apos;s too much. We help make sure nothing slips, and everything moves forward. So you can focus on the conversations that actually grow your business.
                   </p>
                 </div>
               </motion.div>
@@ -445,7 +445,7 @@ export default function Home() {
                     </span>
                   </h2>
                   <p className="text-xl text-slate-300">
-                    There's always one more thing—rescheduling, chasing confirmations, reminding someone to do something. We help simplify the small, repeating stuff. So your day feels a little less reactive—and a lot more in control.
+                    There&apos;s always one more thing—rescheduling, chasing confirmations, reminding someone to do something. We help simplify the small, repeating stuff. So your day feels a little less reactive—and a lot more in control.
                   </p>
                 </div>
               </motion.div>
@@ -527,7 +527,7 @@ export default function Home() {
                     </span>
                   </h2>
                   <p className="text-xl text-slate-300">
-                    Clients reach out everywhere—email, text, Instagram—and it's hard to keep up. We help you respond faster, route requests better, and never leave someone hanging. So customers feel cared for, and you don't burn out trying.
+                    Clients reach out everywhere—email, text, Instagram—and it&apos;s hard to keep up. We help you respond faster, route requests better, and never leave someone hanging. So customers feel cared for, and you don&apos;t burn out trying.
                   </p>
                 </div>
               </motion.div>
@@ -693,18 +693,18 @@ export default function Home() {
                     {/* Testimonial 1 & 2 */}
                     <div className="flex gap-6 min-w-full">
                       <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-blue-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                        <div className="text-blue-400 text-2xl mb-4">"</div>
+                        <div className="text-blue-400 text-2xl mb-4">&quot;</div>
                         <p className="text-slate-300 mb-4 italic">
-                          I didn't have to change a single thing. They worked around how I already run my business. I didn't have to install new tools or learn anything new—things just started getting done.
+                          I didn&apos;t have to change a single thing. They worked around how I already run my business. I didn&apos;t have to install new tools or learn anything new—things just started getting done.
                         </p>
                         <div className="text-blue-400 font-semibold">
                           — Maya G., Nutrition Coach
                         </div>
                       </div>
                       <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-green-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-                        <div className="text-green-400 text-2xl mb-4">"</div>
+                        <div className="text-green-400 text-2xl mb-4">&quot;</div>
                         <p className="text-slate-300 mb-4 italic">
-                          My leads actually get followed up now. Before ActivateAI, I'd lose track of half the people who reached out. Now it's all automated, and I just show up to the calls.
+                          My leads actually get followed up now. Before ActivateAI, I&apos;d lose track of half the people who reached out. Now it&apos;s all automated, and I just show up to the calls.
                         </p>
                         <div className="text-green-400 font-semibold">
                           — Andre L., Independent Realtor
@@ -715,7 +715,7 @@ export default function Home() {
                     {/* Testimonial 3 & 4 */}
                     <div className="flex gap-6 min-w-full">
                       <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
-                        <div className="text-purple-400 text-2xl mb-4">"</div>
+                        <div className="text-purple-400 text-2xl mb-4">&quot;</div>
                         <p className="text-slate-300 mb-4 italic">
                           It feels like I hired an assistant—without the cost. Messages get answered, appointments get booked, and I can finally focus on the work I care about.
                         </p>
@@ -724,9 +724,9 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-                        <div className="text-cyan-400 text-2xl mb-4">"</div>
+                        <div className="text-cyan-400 text-2xl mb-4">&quot;</div>
                         <p className="text-slate-300 mb-4 italic">
-                          This saved me from hiring a second admin. We were drowning in follow-ups and reminders. Now it's all just handled. It feels like the business is running itself.
+                          This saved me from hiring a second admin. We were drowning in follow-ups and reminders. Now it&apos;s all just handled. It feels like the business is running itself.
                         </p>
                         <div className="text-cyan-400 font-semibold">
                           — Jay M., Medical Clinic Manager
@@ -776,13 +776,13 @@ export default function Home() {
                     What Are You Ready to Offload?
                   </h2>
                   <p className="text-xl text-slate-300 mb-8">
-                    Embrace convenience by activating AI for your business—on your terms, in your time. <br /> You weren't meant to do it all yourself.
+                    Embrace convenience by activating AI for your business—on your terms, in your time. <br /> You weren&apos;t meant to do it all yourself.
                   </p>
                   <Link 
                     href="/contact"
                     className="inline-block bg-blue-600 text-white px-8 py-4 text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                   >
-                    See What's Possible →
+                    See What&apos;s Possible →
                   </Link>
                 </div>
               </motion.div>
