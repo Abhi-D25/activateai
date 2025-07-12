@@ -105,6 +105,7 @@ export default function Home() {
             })}
           </script>
         </Helmet>
+        
         <div className="bg-black">
           {/* Hero Section */}
           <section className="relative min-h-screen overflow-hidden">
@@ -315,8 +316,25 @@ export default function Home() {
           <ArtOfPossibleSection />
 
           {/* What We Offer Section */}
-          <section className="py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <div className="container mx-auto px-4">
+          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
+            <ParticleBackground />
+            <div className="container mx-auto px-4 relative z-10">
+              {/* Futuristic Header */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-center mb-8 md:mb-16"
+              >
+                <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 px-4">
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    Where We Can Help?
+                  </span>
+                </h1>
+                <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+              </motion.div>
+
               {/* Container 1: Sales (Image Left, Text Right) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -334,7 +352,17 @@ export default function Home() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                    <img 
+                      src="/sales-visual.jpg" 
+                      alt="Sales automation visual" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <motion.div
                         initial={{ opacity: 0.7 }}
@@ -375,7 +403,17 @@ export default function Home() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                    <img 
+                      src="/operations-visual.jpg" 
+                      alt="Operations automation visual" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <motion.div
                         initial={{ opacity: 0.7 }}
@@ -416,7 +454,17 @@ export default function Home() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                    <img 
+                      src="/admin-visual.jpg" 
+                      alt="Admin automation visual" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <motion.div
                         initial={{ opacity: 0.7 }}
@@ -457,7 +505,17 @@ export default function Home() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                    <img 
+                      src="/support-visual.jpg" 
+                      alt="Support automation visual" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <motion.div
                         initial={{ opacity: 0.7 }}
@@ -484,8 +542,9 @@ export default function Home() {
           </section>
 
           {/* Sales Snapshot Section */}
-          <section className="py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <div className="container mx-auto px-4">
+          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
+            <ParticleBackground />
+            <div className="container mx-auto px-4 relative z-10">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -568,7 +627,17 @@ export default function Home() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group">
+                      <img 
+                        src="/sales-snapshot.jpg" 
+                        alt="Sales snapshot case study visual" 
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <motion.div
                           initial={{ opacity: 0.7 }}
@@ -598,8 +667,9 @@ export default function Home() {
           </section>
 
           {/* Testimonial Carousel Section */}
-          <section className="py-12 md:py-20 bg-black">
-            <div className="container mx-auto px-4">
+          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
+            <ParticleBackground />
+            <div className="container mx-auto px-4 relative z-10">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -689,8 +759,9 @@ export default function Home() {
           </section>
 
           {/* Final CTA Section */}
-          <section className="py-8 md:py-12 bg-black">
-            <div className="container mx-auto px-4">
+          <section className="relative py-8 md:py-12 bg-gray-900/50 backdrop-blur-sm">
+            <ParticleBackground />
+            <div className="container mx-auto px-4 relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -723,8 +794,11 @@ export default function Home() {
           </section>
 
           {/* FAQ Section */}
-          <section className="py-12 md:py-20 bg-black">
-            <FAQSection />
+          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
+            <ParticleBackground />
+            <div className="relative z-10">
+              <FAQSection />
+            </div>
           </section>
 
         </div>

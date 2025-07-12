@@ -12,6 +12,7 @@ import {
   CreditCardIcon,
   DocumentDuplicateIcon
 } from '@heroicons/react/24/outline';
+import ParticleBackground from './ParticleBackground';
 
 export default function ArtOfPossibleSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -232,13 +233,14 @@ export default function ArtOfPossibleSection() {
   );
 
   return (
-    <section className="relative py-12 md:py-20 bg-black overflow-hidden min-h-[600px] md:min-h-[800px]">
+    <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm overflow-hidden min-h-[600px] md:min-h-[800px]">
+      <ParticleBackground />
       {/* Background glow effect */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 relative">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Futuristic Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
