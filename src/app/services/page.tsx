@@ -73,9 +73,9 @@ export default function ActivationsPage() {
             </motion.div>
           </div>
 
-          {/* Three-Step Process */}
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Three-Step Process - Horizontal Layout */}
+          <div className="max-w-7xl mx-auto">
+            <div className="space-y-12">
               
               {/* Step 1: Discover */}
               <motion.div 
@@ -83,36 +83,46 @@ export default function ActivationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-purple-600/10 border border-blue-500/20 rounded-xl p-6"
+                className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-purple-600/10 border border-blue-500/20 rounded-xl overflow-hidden"
               >
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">🔍</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">1. Discover</h3>
-                  <p className="text-blue-400 font-semibold">We start by listening</p>
-                </div>
-                
-                <div className="space-y-4">
-                  <p className="text-slate-300">
-                    No intake forms or audits. Just a conversation to understand how your business actually runs.
-                  </p>
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">We explore:</h4>
-                    <ul className="space-y-1 text-sm text-slate-300">
-                      <li>• What&apos;s eating your time?</li>
-                      <li>• Where are things falling through?</li>
-                      <li>• What tools do you already use?</li>
-                      <li>• What&apos;s been too annoying to fix?</li>
-                    </ul>
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                  {/* Icon and Title Section */}
+                  <div className="lg:col-span-3 p-8 text-center">
+                    <div className="text-5xl mb-4">🔍</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">1. Discover</h3>
+                    <p className="text-blue-400 font-semibold">We start by listening</p>
                   </div>
-                  <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
-                    <p className="text-slate-300 text-sm italic">
-                      &ldquo;I thought our system was fine—until I saw how much it was costing us in little inefficiencies.&rdquo;
-                      <footer className="mt-2 font-semibold text-white">- Sarah, Operations Manager</footer>
-                    </p>
+                  
+                  {/* Content Section */}
+                  <div className="lg:col-span-9 p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        <p className="text-slate-300">
+                          No intake forms or audits. Just a conversation to understand how your business actually runs.
+                        </p>
+                        <div>
+                          <h4 className="text-white font-semibold mb-2">We explore:</h4>
+                          <ul className="space-y-1 text-sm text-slate-300">
+                            <li>• What&apos;s eating your time?</li>
+                            <li>• Where are things falling through?</li>
+                            <li>• What tools do you already use?</li>
+                            <li>• What&apos;s been too annoying to fix?</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
+                          <p className="text-slate-300 text-sm italic">
+                            &ldquo;I thought our system was fine—until I saw how much it was costing us in little inefficiencies.&rdquo;
+                            <footer className="mt-2 font-semibold text-white">- Sarah, Operations Manager</footer>
+                          </p>
+                        </div>
+                        <p className="text-slate-300 text-sm">
+                          <span className="text-blue-400 font-semibold">We talk, we observe, and we listen—because every business is different.</span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-slate-300 text-sm">
-                  <span className="text-blue-400 font-semibold">We talk, we observe, and we listen—because every business is different.</span>
-                  </p>
                 </div>
               </motion.div>
 
@@ -122,47 +132,54 @@ export default function ActivationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-blue-600/10 border border-green-500/20 rounded-xl p-6"
+                className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-blue-600/10 border border-green-500/20 rounded-xl overflow-hidden"
               >
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">🛠</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">2. Connect</h3>
-                  <p className="text-green-400 font-semibold">Build AI Readiness</p>
-                </div>
-                
-                <div className="space-y-4">
-                  <p className="text-slate-300">
-                    Before jumping to AI, we build foundational automations that create immediate value.
-                  </p>
-                  
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">Smart systems that:</h4>
-                    <ul className="space-y-1 text-sm text-slate-300">
-                      <li className="flex items-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Route leads so you don&apos;t miss follow-ups
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Send reminders and updates automatically
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Keep your systems updated in real-time
-                      </li>
-                    </ul>
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                  {/* Icon and Title Section */}
+                  <div className="lg:col-span-3 p-8 text-center">
+                    <div className="text-5xl mb-4">🛠</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">2. Connect</h3>
+                    <p className="text-green-400 font-semibold">Build AI Readiness</p>
                   </div>
                   
-                  <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
-                    <p className="text-slate-300 text-sm italic">
-                      &ldquo;It felt like someone finally organized the chaos for me. I didn&apos;t even know this was possible without changing anything.&rdquo;
-                      <footer className="mt-2 font-semibold text-white">- Mike, Business Owner</footer>
-                    </p>
+                  {/* Content Section */}
+                  <div className="lg:col-span-9 p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        <p className="text-slate-300">
+                          Before jumping to AI, we build foundational automations that create immediate value.
+                        </p>
+                        <div>
+                          <h4 className="text-white font-semibold mb-2">Smart systems that:</h4>
+                          <ul className="space-y-1 text-sm text-slate-300">
+                            <li className="flex items-center">
+                              <span className="text-green-400 mr-2">✓</span>
+                              Route leads so you don&apos;t miss follow-ups
+                            </li>
+                            <li className="flex items-center">
+                              <span className="text-green-400 mr-2">✓</span>
+                              Send reminders and updates automatically
+                            </li>
+                            <li className="flex items-center">
+                              <span className="text-green-400 mr-2">✓</span>
+                              Keep your systems updated in real-time
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
+                          <p className="text-slate-300 text-sm italic">
+                            &ldquo;It felt like someone finally organized the chaos for me. I didn&apos;t even know this was possible without changing anything.&rdquo;
+                            <footer className="mt-2 font-semibold text-white">- Mike, Business Owner</footer>
+                          </p>
+                        </div>
+                        <p className="text-slate-300 text-sm">
+                          <span className="text-green-400 font-semibold">You get time back, mental load off, and a stronger foundation.</span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <p className="text-slate-300 text-sm">
-                  <span className="text-green-400 font-semibold">You get time back, mental load off, and a stronger foundation.</span>
-                  </p>
                 </div>
               </motion.div>
 
@@ -172,51 +189,58 @@ export default function ActivationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-gradient-to-br from-purple-600/10 via-purple-500/5 to-pink-600/10 border border-purple-500/20 rounded-xl p-6"
+                className="bg-gradient-to-br from-purple-600/10 via-purple-500/5 to-pink-600/10 border border-purple-500/20 rounded-xl overflow-hidden"
               >
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">🤖</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">3. AI Enablement</h3>
-                  <p className="text-purple-400 font-semibold">Layer in intelligence</p>
-                </div>
-                
-                <div className="space-y-4">
-                  <p className="text-slate-300">
-                    Once workflows are running, we add AI where it makes the biggest difference.
-                  </p>
-                  
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">AI assistants that:</h4>
-                    <ul className="space-y-1 text-sm text-slate-300">
-                      <li className="flex items-center">
-                        <span className="text-purple-400 mr-2">✓</span>
-                        Qualify leads by tone and urgency
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-400 mr-2">✓</span>
-                        Draft updates in your voice
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-400 mr-2">✓</span>
-                        Flag at-risk clients early
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-400 mr-2">✓</span>
-                        Summarize for faster responses
-                      </li>
-                    </ul>
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                  {/* Icon and Title Section */}
+                  <div className="lg:col-span-3 p-8 text-center">
+                    <div className="text-5xl mb-4">🤖</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">3. AI Enablement</h3>
+                    <p className="text-purple-400 font-semibold">Layer in intelligence</p>
                   </div>
                   
-                  <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
-                    <p className="text-slate-300 text-sm italic">
-                      &ldquo;It&apos;s like we hired an extra set of hands—but one that never sleeps or forgets.&rdquo;
-                      <footer className="mt-2 font-semibold text-white">- Ashwin, Business Manager</footer>
-                    </p>
+                  {/* Content Section */}
+                  <div className="lg:col-span-9 p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        <p className="text-slate-300">
+                          Once workflows are running, we add AI where it makes the biggest difference.
+                        </p>
+                        <div>
+                          <h4 className="text-white font-semibold mb-2">AI assistants that:</h4>
+                          <ul className="space-y-1 text-sm text-slate-300">
+                            <li className="flex items-center">
+                              <span className="text-purple-400 mr-2">✓</span>
+                              Qualify leads by tone and urgency
+                            </li>
+                            <li className="flex items-center">
+                              <span className="text-purple-400 mr-2">✓</span>
+                              Draft updates in your voice
+                            </li>
+                            <li className="flex items-center">
+                              <span className="text-purple-400 mr-2">✓</span>
+                              Flag at-risk clients early
+                            </li>
+                            <li className="flex items-center">
+                              <span className="text-purple-400 mr-2">✓</span>
+                              Summarize for faster responses
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
+                          <p className="text-slate-300 text-sm italic">
+                            &ldquo;It&apos;s like we hired an extra set of hands—but one that never sleeps or forgets.&rdquo;
+                            <footer className="mt-2 font-semibold text-white">- Ashwin, Business Manager</footer>
+                          </p>
+                        </div>
+                        <p className="text-slate-300 text-sm">
+                          <span className="text-purple-400 font-semibold">You&apos;re still in control—AI just has your back.</span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <p className="text-slate-300 text-sm">
-                    <span className="text-purple-400 font-semibold">You&apos;re still in control—AI just has your back.</span>
-                  </p>
                 </div>
               </motion.div>
             </div>
