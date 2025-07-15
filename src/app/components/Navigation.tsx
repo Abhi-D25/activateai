@@ -7,42 +7,55 @@ import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isWhoWeServeOpen, setIsWhoWeServeOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isWhatWeOfferOpen, setIsWhatWeOfferOpen] = useState(false);
+  const whoWeServeDropdownRef = useRef<HTMLDivElement>(null);
+  const whatWeOfferDropdownRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isWhoWeServeOpen) return;
+      if (!isWhoWeServeOpen && !isWhatWeOfferOpen) return;
 
       const nav = navRef.current;
-      const dropdown = dropdownRef.current;
+      const whoWeServeDropdown = whoWeServeDropdownRef.current;
+      const whatWeOfferDropdown = whatWeOfferDropdownRef.current;
       
-      if (!nav || !dropdown) return;
+      if (!nav) return;
 
       const navRect = nav.getBoundingClientRect();
-      const dropdownRect = dropdown.getBoundingClientRect();
+      const whoWeServeRect = whoWeServeDropdown?.getBoundingClientRect();
+      const whatWeOfferRect = whatWeOfferDropdown?.getBoundingClientRect();
       
-      // Check if mouse is within navbar or dropdown area
+      // Check if mouse is within navbar or dropdown areas
       const isInNav = e.clientY >= navRect.top && e.clientY <= navRect.bottom &&
                      e.clientX >= navRect.left && e.clientX <= navRect.right;
       
-      const isInDropdown = e.clientY >= dropdownRect.top && e.clientY <= dropdownRect.bottom &&
-                          e.clientX >= dropdownRect.left && e.clientX <= dropdownRect.right;
+      const isInWhoWeServe = whoWeServeRect && 
+        e.clientY >= whoWeServeRect.top && e.clientY <= whoWeServeRect.bottom &&
+        e.clientX >= whoWeServeRect.left && e.clientX <= whoWeServeRect.right;
       
-      // Close dropdown if mouse is outside both areas
-      if (!isInNav && !isInDropdown) {
+      const isInWhatWeOffer = whatWeOfferRect && 
+        e.clientY >= whatWeOfferRect.top && e.clientY <= whatWeOfferRect.bottom &&
+        e.clientX >= whatWeOfferRect.left && e.clientX <= whatWeOfferRect.right;
+      
+      // Close dropdowns if mouse is outside all areas
+      if (!isInNav && !isInWhoWeServe) {
         setIsWhoWeServeOpen(false);
+      }
+      
+      if (!isInNav && !isInWhatWeOffer) {
+        setIsWhatWeOfferOpen(false);
       }
     };
 
-    if (isWhoWeServeOpen) {
+    if (isWhoWeServeOpen || isWhatWeOfferOpen) {
       document.addEventListener('mousemove', handleMouseMove);
     }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isWhoWeServeOpen]);
+  }, [isWhoWeServeOpen, isWhatWeOfferOpen]);
 
   return (
     <nav ref={navRef} className="glassmorphism shadow-sm fixed w-full z-50">
@@ -68,6 +81,56 @@ export default function Navigation() {
               Activations
             </Link>
             
+            {/* What We Offer Dropdown */}
+            <div className="relative">
+              <Link
+                href="/what-we-offer"
+                className="flex items-center text-slate-300 hover:text-blue-400 transition-colors"
+                onMouseEnter={() => setIsWhatWeOfferOpen(true)}
+              >
+                What We Offer
+                <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform ${isWhatWeOfferOpen ? 'rotate-180' : ''}`} />
+              </Link>
+              
+              {isWhatWeOfferOpen && (
+                <div 
+                  ref={whatWeOfferDropdownRef}
+                  className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg"
+                >
+                  <div className="py-2">
+                    <Link 
+                      href="/what-we-offer/sales" 
+                      className="block px-4 py-2 text-slate-300 hover:text-yellow-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhatWeOfferOpen(false)}
+                    >
+                      Sales
+                    </Link>
+                    <Link 
+                      href="/what-we-offer/operations" 
+                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhatWeOfferOpen(false)}
+                    >
+                      Operations
+                    </Link>
+                    <Link 
+                      href="/what-we-offer/admin" 
+                      className="block px-4 py-2 text-slate-300 hover:text-purple-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhatWeOfferOpen(false)}
+                    >
+                      Admin
+                    </Link>
+                    <Link 
+                      href="/what-we-offer/support" 
+                      className="block px-4 py-2 text-slate-300 hover:text-green-400 hover:bg-slate-700 transition-colors"
+                      onClick={() => setIsWhatWeOfferOpen(false)}
+                    >
+                      Support
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             {/* Who We Serve Dropdown */}
             <div className="relative">
               <Link
@@ -81,7 +144,7 @@ export default function Navigation() {
               
               {isWhoWeServeOpen && (
                 <div 
-                  ref={dropdownRef}
+                  ref={whoWeServeDropdownRef}
                   className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg"
                 >
                   <div className="py-2">
@@ -133,6 +196,41 @@ export default function Navigation() {
               <Link href="/services" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
                 Services
               </Link>
+              
+              {/* Mobile What We Offer */}
+              <div className="px-3 py-2">
+                <div className="text-slate-300 font-medium mb-2 text-sm">What We Offer</div>
+                <div className="pl-4 space-y-1">
+                  <Link 
+                    href="/what-we-offer/sales" 
+                    className="block text-slate-400 hover:text-yellow-400 py-1 text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sales
+                  </Link>
+                  <Link 
+                    href="/what-we-offer/operations" 
+                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Operations
+                  </Link>
+                  <Link 
+                    href="/what-we-offer/admin" 
+                    className="block text-slate-400 hover:text-purple-400 py-1 text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Admin
+                  </Link>
+                  <Link 
+                    href="/what-we-offer/support" 
+                    className="block text-slate-400 hover:text-green-400 py-1 text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Support
+                  </Link>
+                </div>
+              </div>
               
               {/* Mobile Who We Serve */}
               <div className="px-3 py-2">
