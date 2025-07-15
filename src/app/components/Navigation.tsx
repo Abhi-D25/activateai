@@ -77,9 +77,6 @@ export default function Navigation() {
             <Link href="/" className="text-slate-300 hover:text-blue-400">
               Home
             </Link>
-            <Link href="/services" className="text-slate-300 hover:text-blue-400">
-              Activations
-            </Link>
             
             {/* What We Offer Dropdown */}
             <div className="relative">
@@ -166,6 +163,9 @@ export default function Navigation() {
                 </div>
               )}
             </div>
+            <Link href="/services" className="text-slate-300 hover:text-blue-400">
+              Activations
+            </Link>
             
             <Link href="/contact" className="text-slate-300 hover:text-blue-400">
               Contact

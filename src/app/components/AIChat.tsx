@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, X, MessageCircle, Loader, Volume2, VolumeX, RefreshCw } from 'lucide-react';
 import { chatConfig, formatTimestamp, isValidMessage } from '@/lib/chatConfig';
 import ChatIndicator from './ChatIndicator';
+import { useMobile } from '../hooks/useMobile';
 
 // Message type definition
 interface Message {
@@ -16,6 +17,8 @@ interface Message {
 }
 
 export default function AIChat() {
+  const { isMobile } = useMobile();
+  
   // State for chat messages and UI control
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -218,6 +221,11 @@ export default function AIChat() {
     
     setInputMessage(e.target.value);
   };
+  
+  // Hide on mobile devices - render nothing
+  if (isMobile) {
+    return null;
+  }
   
   return (
     <div className="fixed bottom-4 right-4 z-50">
