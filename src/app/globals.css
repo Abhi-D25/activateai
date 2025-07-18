@@ -497,6 +497,20 @@
   }
 
   .gradient-bg::after,
+  
+  /* Laptop-specific hero spacing */
+  .laptop-hero-spacing {
+    padding-top: 5rem !important; /* 80px */
+    padding-bottom: 10rem !important; /* 160px */
+  }
+  
+  /* Reset for larger screens */
+  @media (min-width: 1280px) {
+    .laptop-hero-spacing {
+      padding-top: 10rem !important; /* 160px - back to original */
+      padding-bottom: 10rem !important; /* 160px */
+    }
+  }
   .gradient-bg-dark::after {
     content: "";
     @apply absolute inset-0 bg-black/40 pointer-events-none;

@@ -244,7 +244,7 @@ export default function Contact() {
                 }}
               >
                 <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-                <p className="text-slate-300">info@activateai.com</p>
+                <p className="text-slate-300">info@acti-vate.ai</p>
               </div>
               <div 
                 className="text-center bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6"
