@@ -51,14 +51,13 @@ async function saveClickToAirtable(clickData: {
         records: [
           {
             fields: {
+              'Click Timestamp': clickData.clickTimestamp,
               'Lead Email': clickData.leadEmail,
+              'Name (from Lead Email)': '', // This will auto-populate from the lookup
               'Email Type': clickData.emailType,
               'Link Clicked': clickData.linkClicked,
               'Tracking URL': clickData.trackingUrl,
-              'Click Timestamp': clickData.clickTimestamp,
-              'Campaign Batch ID': clickData.campaignBatchId,
-              'User Agent': clickData.userAgent || '',
-              'IP Address': clickData.ipAddress || ''
+              'Campaign Batch ID': clickData.campaignBatchId
             }
           }
         ]
