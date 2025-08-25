@@ -41,28 +41,39 @@ async function saveClickToAirtable(clickData: {
   ipAddress?: string;
 }) {
   try {
+    console.log('Attempting to save to Airtable with config:', {
+      baseId: AIRTABLE_BASE_ID,
+      tableName: AIRTABLE_CLICK_TRACKING_TABLE,
+      hasApiKey: !!AIRTABLE_API_KEY
+    });
+
+    const requestBody = {
+      records: [
+        {
+          fields: {
+            'Click Timestamp': clickData.clickTimestamp,
+            'Lead Email': clickData.leadEmail,
+            'Email Type': clickData.emailType,
+            'Link Clicked': clickData.linkClicked,
+            'Tracking URL': clickData.trackingUrl,
+            'Campaign Batch ID': clickData.campaignBatchId
+          }
+        }
+      ]
+    };
+
+    console.log('Airtable request body:', JSON.stringify(requestBody, null, 2));
+
     const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_CLICK_TRACKING_TABLE}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        records: [
-          {
-            fields: {
-              'Click Timestamp': clickData.clickTimestamp,
-              'Lead Email': clickData.leadEmail,
-              'Name (from Lead Email)': '', // This will auto-populate from the lookup
-              'Email Type': clickData.emailType,
-              'Link Clicked': clickData.linkClicked,
-              'Tracking URL': clickData.trackingUrl,
-              'Campaign Batch ID': clickData.campaignBatchId
-            }
-          }
-        ]
-      })
+      body: JSON.stringify(requestBody)
     });
+
+    console.log('Airtable response status:', response.status);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -70,6 +81,8 @@ async function saveClickToAirtable(clickData: {
       return false;
     }
 
+    const responseData = await response.json();
+    console.log('Airtable success response:', responseData);
     return true;
   } catch (error) {
     console.error('Error saving click to Airtable:', error);
@@ -175,13 +188,13 @@ export async function GET(request: NextRequest) {
       ipAddress: ip
     };
 
-    // Save click data to Airtable (don't wait for completion to avoid redirect delays)
-    Promise.all([
-      saveClickToAirtable(clickData),
-      updateLeadClickCount(leadEmail)
-    ]).catch(error => {
-      console.error('Background tracking operations failed:', error);
-    });
+    // Save click data to Airtable (wait for completion to see any errors)
+    const saveResult = await saveClickToAirtable(clickData);
+    console.log('Airtable save result:', saveResult);
+    
+    // Also try to update lead click count
+    const updateResult = await updateLeadClickCount(leadEmail);
+    console.log('Lead click count update result:', updateResult);
 
     // Log the click for debugging
     console.log('Click tracked:', {
