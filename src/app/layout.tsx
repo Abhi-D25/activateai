@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import MobileLayout from "./components/MobileLayout";
 import { Providers } from './providers';
-import AIChat from './components/AIChat';
+// import AIChat from './components/AIChat';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,7 +59,7 @@ export default function RootLayout({
         <Providers>
           <MobileLayout>
             {children}
-            <AIChat />
+            {/* <AIChat /> */}
           </MobileLayout>
         </Providers>
       </body>
