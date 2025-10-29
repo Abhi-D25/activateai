@@ -132,7 +132,7 @@ export default function Connect() {
                     
                     {/* Description */}
                     <p className="text-slate-300 text-center mb-6 text-lg">
-                      Schedule a personalized consultation with Abhi to discuss your specific technical needs.
+                      Schedule an info session with Abhi to learn more about our services and discuss your specific technical needs.
                     </p>
                     
                     {/* Benefits List */}
