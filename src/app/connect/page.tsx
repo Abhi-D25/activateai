@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleBackground from '../components/ParticleBackground';
 import PageTransition from '../components/PageTransition';
 import { 
@@ -70,9 +71,11 @@ END:VCARD`;
                 {/* Profile Photo */}
                 <div className="relative -mt-20 flex justify-center px-6">
                   <div className="relative w-32 h-32 rounded-full border-4 border-slate-800 bg-slate-700 overflow-hidden shadow-xl">
-                    <img 
+                    <Image 
                       src="/business_card.jpg"
                       alt="Abhirup Dutta"
+                      width={128}
+                      height={128}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -120,7 +123,7 @@ END:VCARD`;
                         </div>
                         <div className="text-left">
                           <div className="font-semibold text-white">Schedule Free Consultation</div>
-                          <div className="text-xs text-slate-400">Let's grow together</div>
+                          <div className="text-xs text-slate-400">Let&apos;s grow together</div>
                         </div>
                       </div>
                       <ArrowRightIcon className="w-5 h-5 text-slate-400 group-hover:text-green-400 group-hover:translate-x-1 transition-all" />
