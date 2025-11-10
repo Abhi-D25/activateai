@@ -65,10 +65,16 @@ const ParticleBackground = () => {
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Draw particle
+        // Draw particle with glow effect
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.6)'; // Brighter blue particles
+        ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.8)';
+        ctx.fill();
+        
+        // Add subtle glow
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
         ctx.fill();
 
         // Connect particles with lines
@@ -78,12 +84,13 @@ const ParticleBackground = () => {
           const dy = particle.y - particle2.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
+          if (distance < 180) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(particle2.x, particle2.y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 - distance / 1500})`; // Adjusted line opacity
-            ctx.lineWidth = 0.5; // Thinner lines
+            const opacity = (180 - distance) / 180 * 0.3;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         });
