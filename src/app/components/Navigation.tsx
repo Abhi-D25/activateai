@@ -6,56 +6,6 @@ import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isWhoWeServeOpen, setIsWhoWeServeOpen] = useState(false);
-  const [isWhatWeOfferOpen, setIsWhatWeOfferOpen] = useState(false);
-  const whoWeServeDropdownRef = useRef<HTMLDivElement>(null);
-  const whatWeOfferDropdownRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isWhoWeServeOpen && !isWhatWeOfferOpen) return;
-
-      const nav = navRef.current;
-      const whoWeServeDropdown = whoWeServeDropdownRef.current;
-      const whatWeOfferDropdown = whatWeOfferDropdownRef.current;
-      
-      if (!nav) return;
-
-      const navRect = nav.getBoundingClientRect();
-      const whoWeServeRect = whoWeServeDropdown?.getBoundingClientRect();
-      const whatWeOfferRect = whatWeOfferDropdown?.getBoundingClientRect();
-      
-      // Check if mouse is within navbar or dropdown areas
-      const isInNav = e.clientY >= navRect.top && e.clientY <= navRect.bottom &&
-                     e.clientX >= navRect.left && e.clientX <= navRect.right;
-      
-      const isInWhoWeServe = whoWeServeRect && 
-        e.clientY >= whoWeServeRect.top && e.clientY <= whoWeServeRect.bottom &&
-        e.clientX >= whoWeServeRect.left && e.clientX <= whoWeServeRect.right;
-      
-      const isInWhatWeOffer = whatWeOfferRect && 
-        e.clientY >= whatWeOfferRect.top && e.clientY <= whatWeOfferRect.bottom &&
-        e.clientX >= whatWeOfferRect.left && e.clientX <= whatWeOfferRect.right;
-      
-      // Close dropdowns if mouse is outside all areas
-      if (!isInNav && !isInWhoWeServe) {
-        setIsWhoWeServeOpen(false);
-      }
-      
-      if (!isInNav && !isInWhatWeOffer) {
-        setIsWhatWeOfferOpen(false);
-      }
-    };
-
-    if (isWhoWeServeOpen || isWhatWeOfferOpen) {
-      document.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [isWhoWeServeOpen, isWhatWeOfferOpen]);
 
   return (
     <nav ref={navRef} className="glassmorphism shadow-sm fixed w-full z-50">
