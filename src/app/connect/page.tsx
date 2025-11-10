@@ -61,12 +61,26 @@ END:VCARD`;
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl"
+                whileHover={{ y: -5 }}
+                className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
               >
-                {/* Header with gradient */}
-                <div className="h-32 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 relative">
+                {/* Header with animated gradient */}
+                <motion.div 
+                  className="h-32 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 relative"
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{
+                    backgroundSize: '200% 200%'
+                  }}
+                >
                   <div className="absolute inset-0 bg-black/20" />
-                </div>
+                </motion.div>
 
                 {/* Profile Photo */}
                 <div className="relative -mt-20 flex justify-center px-6">
