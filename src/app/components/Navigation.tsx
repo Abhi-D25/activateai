@@ -167,6 +167,10 @@ export default function Navigation() {
               Activations
             </Link>
             
+            <Link href="/pricing" className="text-slate-300 hover:text-blue-400">
+              Pricing
+            </Link>
+            
             <Link href="/contact" className="text-slate-300 hover:text-blue-400">
               Contact
             </Link>
