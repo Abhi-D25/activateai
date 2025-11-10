@@ -229,41 +229,42 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+              className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
             >
-              <div 
-                className="text-center bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)'
-                }}
+              <motion.div 
+                className="text-center bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-xl p-6 hover:border-blue-400/60 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
               >
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <EnvelopeIcon className="w-6 h-6 text-white" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-                <p className="text-slate-300">info@acti-vate.ai</p>
-              </div>
-              <div 
-                className="text-center bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)'
-                }}
+                <a href="mailto:info@acti-vate.ai" className="text-blue-400 hover:text-blue-300 transition-colors">
+                  info@acti-vate.ai
+                </a>
+              </motion.div>
+              <motion.div 
+                className="text-center bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-md rounded-2xl border border-purple-400/30 shadow-xl p-6 hover:border-purple-400/60 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
               >
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <PhoneIcon className="w-6 h-6 text-white" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-                <p className="text-slate-300">+1 (972) 754-1499</p>
-              </div>
-              <div 
-                className="text-center bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)'
-                }}
+                <a href="tel:+19727541499" className="text-purple-400 hover:text-purple-300 transition-colors">
+                  +1 (972) 754-1499
+                </a>
+              </motion.div>
+              <motion.div 
+                className="text-center bg-gradient-to-br from-green-900/30 to-green-800/20 backdrop-blur-md rounded-2xl border border-green-400/30 shadow-xl p-6 hover:border-green-400/60 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)" }}
               >
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPinIcon className="w-6 h-6 text-white" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
-                <p className="text-slate-300">Wherever You Are</p>
-              </div>
+                <p className="text-green-400">Wherever You Are</p>
+              </motion.div>
             </motion.div>
           </div>
         </section>
