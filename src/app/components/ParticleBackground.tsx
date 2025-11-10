@@ -32,14 +32,14 @@ const ParticleBackground = () => {
     // Initialize particles
     const initParticles = () => {
       const particles: Particle[] = [];
-      const numParticles = 75; // Increased number of particles
+      const numParticles = 100; // Increased for better coverage
 
       for (let i = 0; i < numParticles; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
+          vx: (Math.random() - 0.5) * 0.5, // Slightly faster movement
+          vy: (Math.random() - 0.5) * 0.5,
         });
       }
       particlesRef.current = particles;
