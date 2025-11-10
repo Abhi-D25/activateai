@@ -109,77 +109,43 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="sm:hidden glassmorphism">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
+              <Link 
+                href="/" 
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Home
               </Link>
-              <Link href="/services" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
-                Services
-              </Link>
               
-              <Link href="/pricing" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
+              <Link 
+                href="/pricing" 
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Pricing
               </Link>
               
-              {/* Mobile What We Offer */}
-              <div className="px-3 py-2">
-                <div className="text-slate-300 font-medium mb-2 text-sm">What We Offer</div>
-                <div className="pl-4 space-y-1">
-                  <Link 
-                    href="/what-we-offer/sales" 
-                    className="block text-slate-400 hover:text-yellow-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Sales
-                  </Link>
-                  <Link 
-                    href="/what-we-offer/operations" 
-                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Operations
-                  </Link>
-                  <Link 
-                    href="/what-we-offer/admin" 
-                    className="block text-slate-400 hover:text-purple-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Admin
-                  </Link>
-                  <Link 
-                    href="/what-we-offer/support" 
-                    className="block text-slate-400 hover:text-green-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Support
-                  </Link>
-                </div>
-              </div>
-              
-              {/* Mobile Who We Serve */}
-              <div className="px-3 py-2">
-                <div className="text-slate-300 font-medium mb-2 text-sm">Who We Serve</div>
-                <div className="pl-4 space-y-1">
-                  <Link 
-                    href="/case-studies/solo-preneur" 
-                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Solo-preneur
-                  </Link>
-                  <Link 
-                    href="/case-studies/growing-business" 
-                    className="block text-slate-400 hover:text-blue-400 py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Growing Business
-                  </Link>
-                </div>
-              </div>
-              
-              <Link href="/contact" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
+              <Link 
+                href="/contact" 
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Contact
               </Link>
-              <Link href="/contact" className="block w-full text-left px-3 py-2 text-blue-400">
+              
+              <Link 
+                href="/connect" 
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Connect
+              </Link>
+              
+              <Link 
+                href="/contact" 
+                className="block w-full text-left px-3 py-2 text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Book Consultation
               </Link>
             </div>
