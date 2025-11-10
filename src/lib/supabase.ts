@@ -18,16 +18,13 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
 // Check if environment variables are loaded
 if (!supabaseUrl || !supabaseKey) {
-  console.error('Missing Supabase environment variables:', {
-    url: supabaseUrl ? 'Set' : 'Missing',
-    key: supabaseKey ? 'Set' : 'Missing'
-  });
+  console.warn('Supabase environment variables not configured. Supabase features will be disabled.');
 }
 
-// Create the Supabase client
+// Create the Supabase client (with fallback dummy values if not configured)
 export const supabase = createClient<Database>(
-  supabaseUrl,
-  supabaseKey
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseKey || 'placeholder-key'
 );
 
 // Export function for server-side admin access
