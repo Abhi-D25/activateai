@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
