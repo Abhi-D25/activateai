@@ -92,24 +92,20 @@ export default function Contact() {
   return (
     <PageTransition variant="slideUp">
       <div className="bg-black min-h-screen">
-        <section className="py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0 gradient-bg opacity-30" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="max-w-3xl mx-auto text-center mb-16"
             >
-              <h1 
-                className="text-4xl sm:text-5xl font-bold text-white mb-6"
-                style={{
-                  textShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.1)'
-                }}
-              >
-                Contact Us
+              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+                Let's <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Transform</span> Your Business
               </h1>
               <p className="text-xl text-slate-300">
-                Get in touch to learn how we can help your business
+                Ready to embrace AI? We're here to help. Reach out and let's start the conversation.
               </p>
             </motion.div>
 
