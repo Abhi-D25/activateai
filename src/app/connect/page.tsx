@@ -84,7 +84,11 @@ END:VCARD`;
 
                 {/* Profile Photo */}
                 <div className="relative -mt-20 flex justify-center px-6">
-                  <div className="relative w-32 h-32 rounded-full border-4 border-slate-800 bg-slate-700 overflow-hidden shadow-xl">
+                  <motion.div 
+                    className="relative w-32 h-32 rounded-full border-4 border-slate-800 bg-slate-700 overflow-hidden shadow-xl"
+                    whileHover={{ scale: 1.05, borderColor: 'rgba(59, 130, 246, 0.5)' }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <Image 
                       src="/business_card.jpg"
                       alt="Abhirup Dutta"
@@ -92,7 +96,8 @@ END:VCARD`;
                       height={128}
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
                 </div>
 
                 {/* Contact Info */}
