@@ -78,101 +78,16 @@ export default function Navigation() {
               Home
             </Link>
             
-            {/* What We Offer Dropdown */}
-            <div className="relative">
-              <Link
-                href="/what-we-offer"
-                className="flex items-center text-slate-300 hover:text-blue-400 transition-colors"
-                onMouseEnter={() => setIsWhatWeOfferOpen(true)}
-              >
-                What We Offer
-                <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform ${isWhatWeOfferOpen ? 'rotate-180' : ''}`} />
-              </Link>
-              
-              {isWhatWeOfferOpen && (
-                <div 
-                  ref={whatWeOfferDropdownRef}
-                  className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg"
-                >
-                  <div className="py-2">
-                    <Link 
-                      href="/what-we-offer/sales" 
-                      className="block px-4 py-2 text-slate-300 hover:text-yellow-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhatWeOfferOpen(false)}
-                    >
-                      Sales
-                    </Link>
-                    <Link 
-                      href="/what-we-offer/operations" 
-                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhatWeOfferOpen(false)}
-                    >
-                      Operations
-                    </Link>
-                    <Link 
-                      href="/what-we-offer/admin" 
-                      className="block px-4 py-2 text-slate-300 hover:text-purple-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhatWeOfferOpen(false)}
-                    >
-                      Admin
-                    </Link>
-                    <Link 
-                      href="/what-we-offer/support" 
-                      className="block px-4 py-2 text-slate-300 hover:text-green-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhatWeOfferOpen(false)}
-                    >
-                      Support
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            {/* Who We Serve Dropdown */}
-            <div className="relative">
-              <Link
-                href="/case-studies"
-                className="flex items-center text-slate-300 hover:text-blue-400 transition-colors"
-                onMouseEnter={() => setIsWhoWeServeOpen(true)}
-              >
-                Who We Serve
-                <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform ${isWhoWeServeOpen ? 'rotate-180' : ''}`} />
-              </Link>
-              
-              {isWhoWeServeOpen && (
-                <div 
-                  ref={whoWeServeDropdownRef}
-                  className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg"
-                >
-                  <div className="py-2">
-                    <Link 
-                      href="/case-studies/solo-preneur" 
-                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhoWeServeOpen(false)}
-                    >
-                      Solo-preneur
-                    </Link>
-                    <Link 
-                      href="/case-studies/growing-business" 
-                      className="block px-4 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700 transition-colors"
-                      onClick={() => setIsWhoWeServeOpen(false)}
-                    >
-                      Growing Business
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-            <Link href="/services" className="text-slate-300 hover:text-blue-400">
-              Activations
-            </Link>
-            
             <Link href="/pricing" className="text-slate-300 hover:text-blue-400">
               Pricing
             </Link>
             
             <Link href="/contact" className="text-slate-300 hover:text-blue-400">
               Contact
+            </Link>
+            
+            <Link href="/connect" className="text-slate-300 hover:text-blue-400">
+              Connect
             </Link>
           </div>
           <div className="hidden sm:flex sm:items-center">
