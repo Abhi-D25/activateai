@@ -8,24 +8,28 @@ import ScrollReveal from './ScrollReveal';
 
 const faqs = [
   {
-    question: "How long does it take to set up?",
-    answer: "Most businesses are up and running within 2 days of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
+    question: "Do I need technical knowledge to use this?",
+    answer: "Not at all! We handle all the technical setup and integration. You just tell us how your business works, and we make the AI fit seamlessly into your existing processes. No coding, no complicated software to learn."
+  },
+  {
+    question: "How long does setup take?",
+    answer: "Most businesses are up and running within 2 days of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools, so you can focus on your business."
+  },
+  {
+    question: "Can I customize the AI tools?",
+    answer: "Absolutely! Every business is unique. During onboarding, we learn about your services, pricing, availability, policies, and communication style. The AI is trained to work exactly how you need it to, representing your business authentically."
+  },
+  {
+    question: "What's included in the Starter Pack?",
+    answer: "The Starter Pack includes automated lead management, a modern professional website, basic workflow automation, and email/chat support. It's perfect for businesses just getting started with AI automation at an affordable $199/month."
   },
   {
     question: "Will it work with my existing systems?",
-    answer: "Yes! ActivateAI is designed to integrate with the tools you already use. We support all major calendar systems (Google, Outlook, Apple), phone systems, and can connect with most industry-specific software."
+    answer: "Yes! ActivateAI is designed to integrate with the tools you already use. We support all major calendar systems (Google, Outlook, Apple), phone systems, CRMs, and can connect with most industry-specific software. No need to change what's working."
   },
   {
-    question: "What results can I expect in the first 30 days?",
-    answer: "Most businesses see immediate benefits in three areas: 1) Captured after-hours leads that would have been missed, 2) Reduced time spent on scheduling and admin tasks, and 3) Increased customer satisfaction from faster response times."
-  },
-  {
-    question: "How does the AI know my business rules and policies?",
-    answer: "During onboarding, we gather your specific business information through our questionnaire. This includes your services, pricing, availability, cancellation policies, and communication style. We train your AI Employees on these rules so they accurately represent your business."
-  },
-  {
-    question: "What happens if the AI can't handle a situation?",
-    answer: "Your AI Employees are programmed to recognize when a situation requires human attention. For complex or unusual requests, the AI will gracefully let the customer know a team member will follow up shortly, and you'll receive an immediate notification with all relevant details."
+    question: "Do you provide ongoing support?",
+    answer: "Yes! All plans include support to help you get the most out of your AI tools. Starter Pack includes email and chat support, while Pro Pack includes a dedicated account manager for priority assistance and strategic guidance."
   }
 ];
 
