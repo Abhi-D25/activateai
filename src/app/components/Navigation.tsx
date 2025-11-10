@@ -201,6 +201,10 @@ export default function Navigation() {
                 Services
               </Link>
               
+              <Link href="/pricing" className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400">
+                Pricing
+              </Link>
+              
               {/* Mobile What We Offer */}
               <div className="px-3 py-2">
                 <div className="text-slate-300 font-medium mb-2 text-sm">What We Offer</div>
