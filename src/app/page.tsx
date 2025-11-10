@@ -1,44 +1,24 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   ChartBarIcon, 
   SparklesIcon, 
   UserGroupIcon, 
-  ArrowPathIcon,
+  CogIcon,
+  BookOpenIcon,
   LightBulbIcon,
-  AcademicCapIcon,
-  StarIcon
+  ArrowRightIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline';
-import TestimonialsCarousel from './components/TestimonialsCarousel';
-import CaseStudiesSection from './components/CaseStudiesSection';
-import ServicesSection from './components/ServicesSection';
-import FAQSection from './components/FAQSection';
-import QuizButton from './components/QuizButton';
-import FuturisticText from './components/FuturisticText';
 import ParticleBackground from '../app/components/ParticleBackground';
 import PageTransition from './components/PageTransition';
-import { Helmet } from 'react-helmet';
-import TypewriterText from './components/TypewriterText';
-import ArtOfPossibleSection from './components/ArtOfPossibleSection';
+import FAQSection from './components/FAQSection';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,757 +32,538 @@ export default function Home() {
     setCurrentSlide(index);
   };
 
+  const offerings = [
+    {
+      icon: ChartBarIcon,
+      title: 'Lead Manager',
+      description: 'Automate lead capture, follow-ups, and CRM updates. Never miss an opportunity again.',
+      gradient: 'from-blue-500 to-cyan-500',
+      image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&q=80'
+    },
+    {
+      icon: SparklesIcon,
+      title: 'Website Modernization',
+      description: 'Refresh your business website with modern design and performance that converts.',
+      gradient: 'from-purple-500 to-pink-500',
+      image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80'
+    },
+    {
+      icon: CogIcon,
+      title: 'Operations Coordinator',
+      description: 'Streamline client onboarding, scheduling, invoicing, and support with AI.',
+      gradient: 'from-green-500 to-teal-500',
+      image: 'https://images.unsplash.com/photo-1593937505566-64f33d148915?w=800&q=80'
+    },
+    {
+      icon: BookOpenIcon,
+      title: 'Knowledge Base',
+      description: 'Centralize business documents and team know-how for instant access.',
+      gradient: 'from-orange-500 to-yellow-500',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'
+    },
+    {
+      icon: LightBulbIcon,
+      title: 'Business Intelligence',
+      description: 'Get insights from your data with simple dashboards and reports.',
+      gradient: 'from-indigo-500 to-purple-500',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
+    }
+  ];
+
   return (
     <PageTransition variant="fade">
-      <>
-        <Helmet>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How long does it take to set up?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Most businesses are up and running within 2 days of completing our intake questionnaire. We handle all the technical setup and integration with your existing tools."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Will it work with my existing systems?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes! ActivateAI is designed to integrate with the tools you already use. We support all major calendar systems (Google, Outlook, Apple), phone systems, and can connect with most industry-specific software."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What results can I expect in the first 30 days?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Most businesses see immediate benefits in three areas: 1) Captured after-hours leads that would have been missed, 2) Reduced time spent on scheduling and admin tasks, and 3) Increased customer satisfaction from faster response times."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How does the AI know my business rules and policies?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "During onboarding, we gather your specific business information through our questionnaire. This includes your services, pricing, availability, cancellation policies, and communication style. We train your AI Employees on these rules so they accurately represent your business."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What happens if the AI can't handle a situation?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Your AI Employees are programmed to recognize when a situation requires human attention. For complex or unusual requests, the AI will gracefully let the customer know a team member will follow up shortly, and you'll receive an immediate notification with all relevant details."
-                  }
-                }
-              ]
-            })}
-          </script>
-        </Helmet>
-        
-        <div className="bg-black">
-          {/* Hero Section */}
-          <section className="relative min-h-screen overflow-hidden">
-            <div className="absolute inset-0 gradient-bg opacity-50" />
-            <ParticleBackground />
-            <div className="container relative z-10 mx-auto px-4 py-8 md:py-12 lg:py-40 laptop-hero-spacing">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-4 items-center"
-              >
-                {/* Left Content - 60% */}
-                <div className="lg:col-span-3 order-2 lg:order-1">
-                  <motion.h1 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl italic text-white mb-4 md:mb-6 text-center lg:text-left"
-                  >
-                    Making AI Effortless for Everyday Businesses
-                  </motion.h1>
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl italic text-white mb-4 md:mb-6 text-center lg:text-left"
-                  >
-                    —without changing a thing.
-                  </motion.h2>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-lg md:text-xl text-slate-300 mb-6 md:mb-8 text-center lg:text-left px-4 lg:px-0"
-                  >
-                    We plug AI into the way you already work—no new apps, no disruption. Just less busywork, and more time for what really matters: growth.
-                  </motion.p>
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-12 justify-center lg:justify-start"
-                  >
-                   <Link href="/services" className="px-6 md:px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center font-medium whitespace-nowrap btn-primary">
-                      See Current Activations
-                    </Link>
-                    <QuizButton />
-                  </motion.div>
-                </div>
-                {/* Right Content - 40% - Hidden on mobile, shown on desktop */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+      <div className="bg-black">
+        {/* Hero Section */}
+        <section className="relative min-h-screen overflow-hidden flex items-center">
+          <div className="absolute inset-0 gradient-bg opacity-50" />
+          <ParticleBackground />
+          <div className="container relative z-10 mx-auto px-4 py-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center"
+            >
+              {/* Left Content - 60% */}
+              <div className="lg:col-span-3 text-center lg:text-left">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
+                >
+                  Making AI <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Effortless</span>
+                  <br />for Everyday Businesses
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="lg:col-span-2 order-1 lg:order-2 mb-8 lg:mb-0 hidden lg:block"
+                  className="text-xl md:text-2xl text-slate-300 mb-4"
                 >
-                  <motion.div 
-                    className="aspect-[3/2] bg-transparent rounded-lg overflow-hidden relative hero-image-overlay"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                    }}
+                  We help small and medium businesses <span className="text-blue-400 font-semibold">digitize, automate, and integrate AI</span> into their workflows.
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="text-lg text-slate-400 mb-8"
+                >
+                  No new apps. No disruption. Just less busywork, and more time for growth.
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                >
+                  <a 
+                    href="#offerings" 
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    data-testid="view-offerings-btn"
                   >
-                    <motion.img 
-                      src="/hero-video.jpg" 
-                      alt="Hero video thumbnail" 
-                      className="w-full h-full object-contain"
-                      initial={{ scale: 1.1, opacity: 0.8 }}
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        opacity: 1
-                      }}
-                      transition={{ 
-                        duration: 1.2, 
-                        delay: 0.6,
-                        repeat: Infinity,
-                        repeatDelay: 3,
-                        ease: "easeInOut"
-                      }}
-                      whileHover={{ scale: 1.05 }}
-                      onError={(e) => {
-                        // Fallback to placeholder if image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                  </motion.div>
+                    Explore Our Offerings
+                  </a>
+                  <Link 
+                    href="/contact"
+                    className="px-8 py-4 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-all duration-300 text-center font-semibold"
+                    data-testid="get-started-btn"
+                  >
+                    Get Started
+                  </Link>
                 </motion.div>
-              </motion.div>
+              </div>
 
-              {/* Value Props Banner - 4 Floating Bubble Cards */}
+              {/* Right Content - 40% - Hero Image with Animation */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-              >
-                {/* Reclaim Your Time */}
-                <motion.div 
-                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-4 md:p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
-                  whileHover={{ 
-                    y: -8,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-                    scale: 1.02
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
-                >
-                  <h3 className="text-base md:text-lg font-semibold text-blue-400 mb-2">Reclaim Your Time</h3>
-                  <p className="text-blue-300 text-sm">Free yourself from repetitive tasks and late-night catch-up.</p>
-                </motion.div>
-
-                {/* Run Smarter, Not Harder */}
-                <motion.div 
-                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-4 md:p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
-                  whileHover={{ 
-                    y: -8,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-                    scale: 1.02
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
-                >
-                 <h3 className="text-base md:text-lg font-semibold text-blue-400 mb-2">Run Smarter, Not Harder</h3>
-                  <p className="text-blue-300 text-sm">Automate where it counts—without changing how you work.</p>
-                </motion.div>
-
-                {/* No Overhaul. No New Tools. */}
-                <motion.div 
-                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-4 md:p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
-                  whileHover={{ 
-                    y: -8,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-                    scale: 1.02
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.1 }}
-                >
-                  <h3 className="text-base md:text-lg font-semibold text-blue-400 mb-2">No Overhaul. No New Tools.</h3>
-                  <p className="text-blue-300 text-sm">We plug into your existing systems and processes.</p>
-                </motion.div>
-
-                {/* Built for the Work You Love */}
-                <motion.div 
-                  className="bg-blue-900/30 backdrop-blur-sm border border-blue-500/20 rounded-xl p-4 md:p-6 text-center hover:bg-blue-900/40 transition-all duration-300"
-                  whileHover={{ 
-                    y: -8,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-                    scale: 1.02
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                >
-                  <h3 className="text-base md:text-lg font-semibold text-blue-400 mb-2">Built for the Work You Love</h3>
-                  <p className="text-blue-300 text-sm">You stay focused on clients, growth, and your craft—we handle the rest.</p>
-                </motion.div>
-              </motion.div>
-
-              {/* Mobile Image - Shown only on mobile, below value props */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
-                className="mt-8 lg:hidden"
+                initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{ duration: 1.2, delay: 0.4 }}
+                className="lg:col-span-2 hidden lg:block"
               >
                 <motion.div 
-                  className="aspect-[3/2] bg-transparent rounded-lg overflow-hidden relative hero-image-overlay"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                  }}
+                  className="relative aspect-square rounded-2xl overflow-hidden"
+                  whileHover={{ scale: 1.05, rotateY: 5 }}
+                  transition={{ duration: 0.5 }}
                 >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl"
+                    animate={{
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
                   <motion.img 
-                    src="/hero-video.jpg" 
-                    alt="Hero video thumbnail" 
-                    className="w-full h-full object-contain"
+                    src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80" 
+                    alt="AI Technology" 
+                    className="w-full h-full object-cover rounded-2xl"
                     initial={{ scale: 1.1, opacity: 0.8 }}
                     animate={{ 
-                      scale: [1, 1.05, 1],
+                      scale: [1, 1.08, 1],
                       opacity: 1
                     }}
                     transition={{ 
-                      duration: 1.2, 
-                      delay: 0.6,
+                      duration: 5, 
                       repeat: Infinity,
-                      repeatDelay: 3,
                       ease: "easeInOut"
                     }}
-                    whileHover={{ scale: 1.05 }}
-                    onError={(e) => {
-                      // Fallback to placeholder if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.nextElementSibling?.classList.remove('hidden');
-                    }}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl" />
                 </motion.div>
               </motion.div>
-            </div>
-          </section>
+            </motion.div>
+          </div>
+        </section>
 
-          <ArtOfPossibleSection />
+        {/* Offerings Section */}
+        <section id="offerings" className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+          <ParticleBackground />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                  What We Offer
+                </span>
+              </h2>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                Tailored AI solutions designed to help your business work smarter, not harder
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full" />
+            </motion.div>
 
-          {/* What We Offer Section */}
-          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <ParticleBackground />
-            <div className="container mx-auto px-4 relative z-10">
-              {/* Futuristic Header */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-center mb-8 md:mb-16"
-              >
-                <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 px-4">
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-                    Where We Can Help?
-                  </span>
-                </h1>
-                <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
-              </motion.div>
-
-              {/* Container 1: Sales (Image Left, Text Right) */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20"
-              >
-                <div className="order-2 lg:order-1">
-                  <motion.div 
-                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img 
-                      src="/sales-visual.jpg" 
-                      alt="Sales automation visual" 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {offerings.map((offering, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="group relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+                  data-testid={`offering-${offering.title.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {/* Image Background */}
+                  <div className="relative h-48 overflow-hidden">
+                    <motion.img
+                      src={offering.image}
+                      alt={offering.title}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
                     />
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <motion.div
-                        initial={{ opacity: 0.7 }}
-                        whileHover={{ opacity: 1 }}
-                        className="relative z-10"
-                      >
-                        Sales Visual Placeholder
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="order-1 lg:order-2 text-center lg:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">
-                    <span className="bg-red-600/20 backdrop-blur-sm border border-red-500/30 px-3 md:px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(239,68,68,0.3)]">
-                      Sales
-                    </span>
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300">
-                    Following up with leads, remembering who came from where, jumping between forms and DMs—it&apos;s too much. We help make sure nothing slips, and everything moves forward. So you can focus on the conversations that actually grow your business.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Container 2: Operations (Image Right, Text Left) */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20"
-              >
-                <div className="order-2">
-                  <motion.div 
-                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img 
-                      src="/operations-visual.jpg" 
-                      alt="Operations automation visual" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <motion.div
-                        initial={{ opacity: 0.7 }}
-                        whileHover={{ opacity: 1 }}
-                        className="relative z-10"
-                      >
-                        Operations Visual Placeholder
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="order-1 text-center lg:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">
-                    <span className="bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 px-3 md:px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                      Operations
-                    </span>
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300">
-                    There&apos;s always one more thing—rescheduling, chasing confirmations, reminding someone to do something. We help simplify the small, repeating stuff. So your day feels a little less reactive—and a lot more in control.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Container 3: Admin (Image Left, Text Right) */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20"
-              >
-                <div className="order-2 lg:order-1">
-                  <motion.div 
-                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img 
-                      src="/admin-visual.jpg" 
-                      alt="Admin automation visual" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <motion.div
-                        initial={{ opacity: 0.7 }}
-                        whileHover={{ opacity: 1 }}
-                        className="relative z-10"
-                      >
-                        Admin Visual Placeholder
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="order-1 lg:order-2 text-center lg:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">
-                    <span className="bg-green-600/20 backdrop-blur-sm border border-green-500/30 px-3 md:px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.3)]">
-                      Admin
-                    </span>
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300">
-                    You know that pile of things you meant to do? The inboxes, the forms, the copy-paste chaos? We quietly take care of what drains you most. So you have space to breathe, think, and move your business forward.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Container 4: Support (Image Right, Text Left) */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12"
-              >
-                <div className="order-2">
-                  <motion.div 
-                    className="aspect-video bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img 
-                      src="/support-visual.jpg" 
-                      alt="Support automation visual" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <motion.div
-                        initial={{ opacity: 0.7 }}
-                        whileHover={{ opacity: 1 }}
-                        className="relative z-10"
-                      >
-                        Support Visual Placeholder
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="order-1 text-center lg:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">
-                    <span className="bg-yellow-600/20 backdrop-blur-sm border border-yellow-500/30 px-3 md:px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(234,179,8,0.3)]">
-                      Support
-                    </span>
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300">
-                    Your customers deserve quick, helpful responses—even when you&apos;re busy or unavailable. We help ensure they get the information they need, when they need it, so you can focus on delivering exceptional service.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Sales Snapshot Section */}
-          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <ParticleBackground />
-            <div className="container mx-auto px-4 relative z-10">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="max-w-6xl mx-auto"
-              >
-                {/* Header */}
-                <div className="text-center mb-8 md:mb-12">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
-                    From Missed Leads to Instant Demos
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto px-4">
-                    A 5-person SaaS team was juggling a shared inbox and manual follow-ups. We automated their lead capture, routing, and demo booking—without changing a thing in their CRM.
-                  </p>
-                </div>
-
-                {/* Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-8">
-                  {/* Left Column - Content */}
-                  <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
-                    {/* What We Delivered */}
-                    <div className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/30 rounded-xl p-6 md:p-8 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">
-                        What We Delivered
-                      </h3>
-                      <div className="space-y-3 md:space-y-4">
-                        <div className="flex items-start space-x-3">
-                          <span className="text-green-400 text-lg md:text-xl mt-1">✅</span>
-                          <p className="text-slate-300 text-sm md:text-base">Instant lead alert & routing</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-green-400 text-lg md:text-xl mt-1">✅</span>
-                          <p className="text-slate-300 text-sm md:text-base">Automated 3-touch follow-up (3, 7, 14 days)</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-green-400 text-lg md:text-xl mt-1">✅</span>
-                          <p className="text-slate-300 text-sm md:text-base">Calendar-integrated booking flow</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-green-400 text-lg md:text-xl mt-1">✅</span>
-                          <p className="text-slate-300 text-sm md:text-base">AI-powered pre-qualification form</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* The Results */}
-                    <div className="bg-gray-800/50 backdrop-blur-sm border border-green-500/30 rounded-xl p-6 md:p-8 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">
-                        The Results
-                      </h3>
-                      <div className="space-y-3 md:space-y-4">
-                        <div className="flex items-start space-x-3">
-                          <span className="text-blue-400 text-lg md:text-xl mt-1">🔹</span>
-                          <p className="text-slate-300 text-sm md:text-base">32% more demos booked</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-blue-400 text-lg md:text-xl mt-1">🔹</span>
-                          <p className="text-slate-300 text-sm md:text-base">5–7 hours saved weekly</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-blue-400 text-lg md:text-xl mt-1">🔹</span>
-                          <p className="text-slate-300 text-sm md:text-base">100% CRM sync—zero manual entry</p>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <span className="text-blue-400 text-lg md:text-xl mt-1">🔹</span>
-                          <p className="text-slate-300 text-sm md:text-base">Zero new tools added</p>
-                        </div>
-                      </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent" />
+                    <div className={`absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br ${offering.gradient} flex items-center justify-center shadow-lg`}>
+                      <offering.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
 
-                  {/* Right Column - Image Placeholder */}
-                  <div className="flex items-center order-1 lg:order-2">
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {offering.title}
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed">
+                      {offering.description}
+                    </p>
+                    <motion.div
+                      className="mt-4 flex items-center text-blue-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
+                      whileHover={{ x: 5 }}
+                    >
+                      Learn More <ArrowRightIcon className="w-5 h-5 ml-2" />
+                    </motion.div>
+                  </div>
+
+                  {/* Glow Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${offering.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+          <ParticleBackground />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  What Our Clients Say
+                </h2>
+                <p className="text-xl text-slate-300">
+                  Real results from real businesses using ActivateAI
+                </p>
+              </div>
+
+              <div className="relative overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-1000 ease-in-out" 
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {/* Testimonial 1 & 2 */}
+                  <div className="flex flex-col md:flex-row gap-6 min-w-full">
                     <motion.div 
-                      className="w-full aspect-[4/3] bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 overflow-hidden"
-                      whileHover={{ 
-                        scale: 1.02,
-                        boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)"
-                      }}
+                      className="flex-1 bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 shadow-xl"
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
                       transition={{ duration: 0.3 }}
                     >
-                      <img 
-                        src="/sales-snapshot.jpg" 
-                        alt="Sales snapshot case study visual" 
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          target.nextElementSibling?.classList.remove('hidden');
-                        }}
-                      />
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg relative group hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <motion.div
-                          initial={{ opacity: 0.7 }}
-                          whileHover={{ opacity: 1 }}
-                          className="relative z-10 text-center"
-                        >
-                          <div className="text-3xl md:text-4xl mb-4">📊</div>
-                          <p className="text-sm md:text-base">Sales Snapshot</p>
-                          <p className="text-xs text-gray-500">Case Study Visual</p>
-                        </motion.div>
+                      <div className="text-blue-400 text-4xl mb-4">&quot;</div>
+                      <p className="text-slate-300 mb-4 italic text-lg">
+                        I didn&apos;t have to change a single thing. They worked around how I already run my business. Things just started getting done.
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-white font-bold text-xl mr-4">
+                          M
+                        </div>
+                        <div>
+                          <div className="text-blue-400 font-semibold">Maya G.</div>
+                          <div className="text-slate-400 text-sm">Nutrition Coach</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                    <motion.div 
+                      className="flex-1 bg-gradient-to-br from-green-900/30 to-green-800/20 backdrop-blur-sm border border-green-500/30 rounded-2xl p-6 shadow-xl"
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="text-green-400 text-4xl mb-4">&quot;</div>
+                      <p className="text-slate-300 mb-4 italic text-lg">
+                        My leads actually get followed up now. Before ActivateAI, I&apos;d lose track of half the people who reached out.
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-400 flex items-center justify-center text-white font-bold text-xl mr-4">
+                          A
+                        </div>
+                        <div>
+                          <div className="text-green-400 font-semibold">Andre L.</div>
+                          <div className="text-slate-400 text-sm">Independent Realtor</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Testimonial 3 & 4 */}
+                  <div className="flex flex-col md:flex-row gap-6 min-w-full">
+                    <motion.div 
+                      className="flex-1 bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 shadow-xl"
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="text-purple-400 text-4xl mb-4">&quot;</div>
+                      <p className="text-slate-300 mb-4 italic text-lg">
+                        It feels like I hired an assistant—without the cost. Messages get answered, appointments get booked.
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl mr-4">
+                          S
+                        </div>
+                        <div>
+                          <div className="text-purple-400 font-semibold">Sarah K.</div>
+                          <div className="text-slate-400 text-sm">Freelance Designer</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                    <motion.div 
+                      className="flex-1 bg-gradient-to-br from-orange-900/30 to-orange-800/20 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-6 shadow-xl"
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(249, 115, 22, 0.3)" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="text-orange-400 text-4xl mb-4">&quot;</div>
+                      <p className="text-slate-300 mb-4 italic text-lg">
+                        The setup was so smooth. They asked about my business and just made everything work better. No learning curve.
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-yellow-400 flex items-center justify-center text-white font-bold text-xl mr-4">
+                          M
+                        </div>
+                        <div>
+                          <div className="text-orange-400 font-semibold">Mike R.</div>
+                          <div className="text-slate-400 text-sm">Small Business Owner</div>
+                        </div>
                       </div>
                     </motion.div>
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className="text-center">
-                  <Link 
-                    href="/case-studies"
-                    className="inline-block bg-blue-600 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-                  >
-                    Read Full Case Study →
-                  </Link>
+                {/* Navigation Dots */}
+                <div className="flex justify-center mt-8 space-x-3">
+                  <button
+                    onClick={() => showSlide(0)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentSlide === 0 ? 'bg-blue-500 w-8' : 'bg-gray-600'
+                    }`}
+                    aria-label="Show testimonials 1-2"
+                  />
+                  <button
+                    onClick={() => showSlide(1)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentSlide === 1 ? 'bg-blue-500 w-8' : 'bg-gray-600'
+                    }`}
+                    aria-label="Show testimonials 3-4"
+                  />
                 </div>
-              </motion.div>
-            </div>
-          </section>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-          {/* Testimonial Carousel Section */}
-          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <ParticleBackground />
-            <div className="container mx-auto px-4 relative z-10">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="max-w-6xl mx-auto"
-              >
-                {/* Header */}
-                <div className="text-center mb-8 md:mb-12">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
-                    What Our Clients Say
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300">
-                    Real results from real businesses using ActivateAI
-                  </p>
-                </div>
+        {/* Pricing Preview Section */}
+        <section className="relative py-20 bg-black">
+          <ParticleBackground />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+                Choose the plan that fits your business needs
+              </p>
+            </motion.div>
 
-                {/* Testimonial Carousel */}
-                <div className="relative overflow-hidden">
-                  <div 
-                    className="flex transition-transform duration-1000 ease-in-out" 
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {/* Testimonial 1 & 2 */}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 min-w-full">
-                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-blue-500/30 rounded-xl p-4 md:p-6 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                        <div className="text-blue-400 text-xl md:text-2xl mb-3 md:mb-4">&quot;</div>
-                        <p className="text-slate-300 mb-3 md:mb-4 italic text-sm md:text-base">
-                          I didn&apos;t have to change a single thing. They worked around how I already run my business. I didn&apos;t have to install new tools or learn anything new—things just started getting done.
-                        </p>
-                        <div className="text-blue-400 font-semibold text-sm md:text-base">
-                          — Maya G., Nutrition Coach
-                        </div>
-                      </div>
-                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-green-500/30 rounded-xl p-4 md:p-6 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-                        <div className="text-green-400 text-xl md:text-2xl mb-3 md:mb-4">&quot;</div>
-                        <p className="text-slate-300 mb-3 md:mb-4 italic text-sm md:text-base">
-                          My leads actually get followed up now. Before ActivateAI, I&apos;d lose track of half the people who reached out. Now it&apos;s all automated, and I just show up to the calls.
-                        </p>
-                        <div className="text-green-400 font-semibold text-sm md:text-base">
-                          — Andre L., Independent Realtor
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Testimonial 3 & 4 */}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 min-w-full">
-                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-purple-500/30 rounded-xl p-4 md:p-6 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
-                        <div className="text-purple-400 text-xl md:text-2xl mb-3 md:mb-4">&quot;</div>
-                        <p className="text-slate-300 mb-3 md:mb-4 italic text-sm md:text-base">
-                          It feels like I hired an assistant—without the cost. Messages get answered, appointments get booked, and I can finally focus on the work I care about.
-                        </p>
-                        <div className="text-purple-400 font-semibold text-sm md:text-base">
-                          — Sarah K., Freelance Designer
-                        </div>
-                      </div>
-                      <div className="flex-1 bg-gray-800/50 backdrop-blur-sm border border-orange-500/30 rounded-xl p-4 md:p-6 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-                        <div className="text-orange-400 text-xl md:text-2xl mb-3 md:mb-4">&quot;</div>
-                        <p className="text-slate-300 mb-3 md:mb-4 italic text-sm md:text-base">
-                          The setup was so smooth. They asked about my business, I told them how I work, and they just made everything work better. No learning curve at all.
-                        </p>
-                        <div className="text-orange-400 font-semibold text-sm md:text-base">
-                          — Mike R., Small Business Owner
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Navigation Dots */}
-                  <div className="flex justify-center mt-6 md:mt-8 space-x-2">
-                    <button
-                      onClick={() => showSlide(0)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        currentSlide === 0 ? 'bg-blue-500' : 'bg-gray-600'
-                      }`}
-                    />
-                    <button
-                      onClick={() => showSlide(1)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        currentSlide === 1 ? 'bg-blue-500' : 'bg-gray-600'
-                      }`}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Final CTA Section */}
-          <section className="relative py-8 md:py-12 bg-gray-900/50 backdrop-blur-sm">
-            <ParticleBackground />
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Starter Pack */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="max-w-6xl mx-auto text-center"
+                transition={{ duration: 0.6 }}
+                className="relative bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 40px rgba(59, 130, 246, 0.3)" }}
+                data-testid="starter-pack-card"
               >
-                <div className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6 md:p-8"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)'
-                  }}
+                <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
+                  Popular
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2 mt-4">Starter Pack</h3>
+                <div className="mb-6">
+                  <span className="text-5xl font-bold text-blue-400">$199</span>
+                  <span className="text-slate-400 text-xl">/month</span>
+                </div>
+                <p className="text-slate-300 mb-6">
+                  Perfect for new businesses looking to get started with AI automation
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Lead Manager setup</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Modern website design</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Basic automation workflows</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Email & chat support</span>
+                  </li>
+                </ul>
+                <Link 
+                  href="/pricing"
+                  className="block w-full py-3 text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  data-testid="view-starter-details-btn"
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">
-                    What Are You Ready to Offload?
-                  </h2>
-                  <p className="text-lg md:text-xl text-slate-300 mb-6 md:mb-8 px-4">
-                    Embrace convenience by activating AI for your business—on your terms, in your time. <br className="hidden md:block" /> You weren&apos;t meant to do it all yourself.
-                  </p>
+                  Get Started
+                </Link>
+              </motion.div>
+
+              {/* Pro Pack */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 40px rgba(168, 85, 247, 0.3)" }}
+                data-testid="pro-pack-card"
+              >
+                <h3 className="text-3xl font-bold text-white mb-2">Pro Pack</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-purple-400">Custom Pricing</span>
+                </div>
+                <p className="text-slate-300 mb-6">
+                  Tailored solutions for businesses ready to scale with advanced AI
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Everything in Starter Pack</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Custom AI workflows</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Business intelligence dashboards</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Dedicated support team</span>
+                  </li>
+                </ul>
+                <Link 
+                  href="/pricing"
+                  className="block w-full py-3 text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  data-testid="view-pro-details-btn"
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center mt-12"
+            >
+              <Link 
+                href="/pricing"
+                className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold text-lg"
+              >
+                View Detailed Pricing <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+          <ParticleBackground />
+          <div className="relative z-10">
+            <FAQSection />
+          </div>
+        </section>
+
+        {/* Final CTA Section */}
+        <section className="relative py-16 bg-black">
+          <ParticleBackground />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-md rounded-3xl border border-blue-400/30 shadow-2xl p-8 md:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Ready to Transform Your Business?
+                </h2>
+                <p className="text-lg md:text-xl text-slate-300 mb-8">
+                  Join hundreds of businesses that have activated AI to work smarter, not harder.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     href="/contact"
-                    className="inline-block bg-blue-600 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    data-testid="cta-contact-btn"
                   >
-                    See What&apos;s Possible →
+                    Get Started Today
                   </Link>
+                  <a 
+                    href="https://calendar.app.google/cdb8imp4GAqRnWQT8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-all duration-300 text-center font-semibold"
+                    data-testid="cta-schedule-btn"
+                  >
+                    Schedule a Call
+                  </a>
                 </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* FAQ Section */}
-          <section className="relative py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
-            <ParticleBackground />
-            <div className="relative z-10">
-              <FAQSection />
-            </div>
-          </section>
-
-        </div>
-      </>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </PageTransition>
   );
-} 
+}
