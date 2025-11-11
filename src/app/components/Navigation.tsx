@@ -32,18 +32,23 @@ export default function Navigation() {
               Pricing
             </Link>
             
+            <Link href="/services" className="text-slate-300 hover:text-blue-400">
+              Services
+            </Link>
+
             <Link href="/contact" className="text-slate-300 hover:text-blue-400">
               Contact
             </Link>
-            
-            <Link href="/connect" className="text-slate-300 hover:text-blue-400">
-              Connect
-            </Link>
           </div>
           <div className="hidden sm:flex sm:items-center">
-            <Link href="/contact" className="btn-secondary">
+            <a 
+              href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
               Book Consultation
-            </Link>
+            </a>
           </div>
           <div className="sm:hidden flex items-center">
             <button
@@ -91,13 +96,15 @@ export default function Navigation() {
                 Connect
               </Link>
               
-              <Link 
-                href="/contact" 
+              <a 
+                href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full text-left px-3 py-2 text-blue-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book Consultation
-              </Link>
+              </a>
             </div>
           </div>
         )}

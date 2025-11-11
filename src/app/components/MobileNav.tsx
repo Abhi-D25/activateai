@@ -246,13 +246,15 @@ const MobileNav = () => {
 
                 {/* Additional CTA */}
                 <div className="mt-6 pt-4">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full text-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
                     onClick={closeMenu}
                   >
                     Book Consultation
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

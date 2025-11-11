@@ -14,6 +14,7 @@ import {
 import ParticleBackground from '../app/components/ParticleBackground';
 import PageTransition from './components/PageTransition';
 import FAQSection from './components/FAQSection';
+import InteractiveDemoForm from './components/InteractiveDemoForm';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -75,7 +76,7 @@ export default function Home() {
       <div className="bg-black">
         {/* Hero Section */}
         <section className="relative min-h-screen overflow-hidden flex items-center">
-          <div className="absolute inset-0 gradient-bg opacity-50" />
+          <div className="absolute inset-0" />
           <ParticleBackground />
           <div className="container relative z-10 mx-auto px-4 py-20">
             <motion.div 
@@ -101,7 +102,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-xl md:text-2xl text-slate-300 mb-4"
                 >
-                  We help small and medium businesses <span className="text-blue-400 font-semibold">digitize, automate, and integrate AI</span> into their workflows.
+                  We help small and medium businesses <span className="text-blue-400 font-semibold">digitize, automate, and integrate AI</span> into their everyday workflows.
                 </motion.p>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
@@ -124,64 +125,40 @@ export default function Home() {
                   >
                     Explore Our Offerings
                   </a>
-                  <Link 
-                    href="/contact"
+                  <a 
+                    href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-4 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-all duration-300 text-center font-semibold"
                     data-testid="get-started-btn"
                   >
                     Get Started
-                  </Link>
+                  </a>
                 </motion.div>
               </div>
 
-              {/* Right Content - 40% - Hero Image with Animation */}
-              <motion.div 
+              {/* Right Content - 40% - Interactive Demo Form */}
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ duration: 1.2, delay: 0.4 }}
                 className="lg:col-span-2 hidden lg:block"
               >
-                <motion.div 
-                  className="relative aspect-square rounded-2xl overflow-hidden"
-                  whileHover={{ scale: 1.05, rotateY: 5 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl"
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                      scale: [1, 1.05, 1]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  <motion.img 
-                    src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80" 
-                    alt="AI Technology" 
-                    className="w-full h-full object-cover rounded-2xl"
-                    initial={{ scale: 1.1, opacity: 0.8 }}
-                    animate={{ 
-                      scale: [1, 1.08, 1],
-                      opacity: 1
-                    }}
-                    transition={{ 
-                      duration: 5, 
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl" />
-                </motion.div>
+                <InteractiveDemoForm />
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* Offerings Section */}
-        <section id="offerings" className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+        <motion.section
+          id="offerings"
+          className="relative py-20 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
@@ -202,8 +179,9 @@ export default function Home() {
               <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full" />
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {offerings.map((offering, index) => (
+            {/* First Row - 3 Items */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-8">
+              {offerings.slice(0, 3).map((offering, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -250,11 +228,67 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Second Row - 2 Items (Centered, Upside-down Triangle Layout) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {offerings.slice(3, 5).map((offering, index) => (
+                <motion.div
+                  key={index + 3}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="group relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+                  data-testid={`offering-${offering.title.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {/* Image Background */}
+                  <div className="relative h-48 overflow-hidden">
+                    <motion.img
+                      src={offering.image}
+                      alt={offering.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent" />
+                    <div className={`absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br ${offering.gradient} flex items-center justify-center shadow-lg`}>
+                      <offering.icon className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {offering.title}
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed">
+                      {offering.description}
+                    </p>
+                    <motion.div
+                      className="mt-4 flex items-center text-blue-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
+                      whileHover={{ x: 5 }}
+                    >
+                      Learn More <ArrowRightIcon className="w-5 h-5 ml-2" />
+                    </motion.div>
+                  </div>
+
+                  {/* Glow Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${offering.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`} />
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Testimonials Section */}
-        <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+        <motion.section
+          className="relative py-20 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div 
@@ -266,7 +300,9 @@ export default function Home() {
             >
               <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  What Our Clients Say
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    What Our Clients Say
+                  </span>
                 </h2>
                 <p className="text-xl text-slate-300">
                   Real results from real businesses using ActivateAI
@@ -383,10 +419,16 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Pricing Preview Section */}
-        <section className="relative py-20 bg-black">
+        <motion.section
+          className="relative py-20 bg-black"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
@@ -397,7 +439,9 @@ export default function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Simple, Transparent Pricing
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                  Simple, Transparent Pricing
+                </span>
               </h2>
               <p className="text-xl text-slate-300 max-w-2xl mx-auto">
                 Choose the plan that fits your business needs
@@ -416,35 +460,36 @@ export default function Home() {
                 data-testid="starter-pack-card"
               >
                 <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
-                  Popular
+                  Getting Started
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-2 mt-4">Starter Pack</h3>
                 <div className="mb-6">
+                  <span className="text-lg text-blue-400 block mb-1">Starting at</span>
                   <span className="text-5xl font-bold text-blue-400">$199</span>
                   <span className="text-slate-400 text-xl">/month</span>
                 </div>
                 <p className="text-slate-300 mb-6">
-                  Perfect for new businesses looking to get started with AI automation
+                  Perfect for businesses getting started. Choose one or both services to fit your needs.
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Lead Manager setup</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Basic Lead Manager</strong> - AI Receptionist supporting voice, text, and all major social media
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Modern website design</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Website Modernization</strong> - Creation or revamp of your business website
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Basic automation workflows</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Email & chat support</span>
+                    <span className="text-slate-300">Flexible options: Choose both or pick one to start</span>
                   </li>
                 </ul>
-                <Link 
+                <Link
                   href="/pricing"
                   className="block w-full py-3 text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   data-testid="view-starter-details-btn"
@@ -463,32 +508,47 @@ export default function Home() {
                 whileHover={{ y: -5, boxShadow: "0 0 40px rgba(168, 85, 247, 0.3)" }}
                 data-testid="pro-pack-card"
               >
-                <h3 className="text-3xl font-bold text-white mb-2">Pro Pack</h3>
+                <div className="absolute top-0 right-0 bg-gradient-to-br from-purple-500 to-pink-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
+                  Most Popular
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2 mt-4">Pro Pack</h3>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-purple-400">Custom Pricing</span>
                 </div>
                 <p className="text-slate-300 mb-6">
-                  Tailored solutions for businesses ready to scale with advanced AI
+                  Complete AI transformation customized to your business. Pricing based on scope.
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Everything in Starter Pack</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Advanced Lead Manager</strong> - Full automation and CRM integration
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Custom AI workflows</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Operations Coordinator</strong> - Automated scheduling, invoicing, and support
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Business intelligence dashboards</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Knowledge Base</strong> - Centralized business documentation
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
-                    <span className="text-slate-300">Dedicated support team</span>
+                    <div className="text-slate-300">
+                      <strong className="text-white">Business Intelligence</strong> - Custom dashboards and analytics
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                    <span className="text-slate-300">Everything tailored to your business needs</span>
                   </li>
                 </ul>
-                <Link 
+                <Link
                   href="/pricing"
                   className="block w-full py-3 text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                   data-testid="view-pro-details-btn"
@@ -513,18 +573,30 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* FAQ Section */}
-        <section className="relative py-20 bg-gray-900/50 backdrop-blur-sm">
+        <motion.section
+          className="relative py-20 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <ParticleBackground />
           <div className="relative z-10">
             <FAQSection />
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA Section */}
-        <section className="relative py-16 bg-black">
+        <motion.section
+          className="relative py-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
@@ -550,7 +622,7 @@ export default function Home() {
                     Get Started Today
                   </Link>
                   <a 
-                    href="https://calendar.app.google/cdb8imp4GAqRnWQT8"
+                    href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-all duration-300 text-center font-semibold"
@@ -562,7 +634,7 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </section>
+        </motion.section>
       </div>
     </PageTransition>
   );
