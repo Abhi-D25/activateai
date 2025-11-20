@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import ButtonAnimation from '../components/ButtonAnimation';
 import PageTransition from '../components/PageTransition';
+import ParticleBackground from '../components/ParticleBackground';
 import type { ContactFormData, ApiResponse } from '@/types/forms';
 
 export default function Contact() {
@@ -94,6 +95,7 @@ export default function Contact() {
       <div className="bg-black min-h-screen">
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 gradient-bg opacity-30" />
+          <ParticleBackground />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -102,10 +104,10 @@ export default function Contact() {
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-                Let's <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Transform</span> Your Business
+                Let&apos;s <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Transform</span> Your Business
               </h1>
               <p className="text-xl text-slate-300">
-                Ready to embrace AI? We're here to help. Reach out and let's start the conversation.
+                Ready to embrace AI? We&apos;re here to help. Reach out and let&apos;s start the conversation.
               </p>
             </motion.div>
 

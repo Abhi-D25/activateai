@@ -21,37 +21,62 @@ const ParticleBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size to match window size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
     // Initialize particles
     const initParticles = () => {
       const particles: Particle[] = [];
-      const numParticles = 100; // Increased for better coverage
+      
+      // Calculate density: maintain consistent spacing regardless of container size
+      // Reference: 100 particles for a standard 1920x1080 viewport (~2M pixels)
+      // Density factor = Area / Particles => 2000000 / 100 = 20000 pixels per particle
+      
+      const width = canvas.width;
+      const height = canvas.height;
+      const area = width * height;
+      
+      // Ensure we have valid dimensions
+      if (area <= 0) return;
+
+      const densityFactor = 20000; 
+      // Clamp particle count to reasonable limits (min 30, max 300 to prevent perf issues on huge screens)
+      const numParticles = Math.min(Math.max(Math.floor(area / densityFactor), 30), 300);
 
       for (let i = 0; i < numParticles; i++) {
         particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5, // Slightly faster movement
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5, 
           vy: (Math.random() - 0.5) * 0.5,
         });
       }
       particlesRef.current = particles;
     };
 
+    // Set canvas size to match container size exactly (1:1 resolution)
+    const resizeCanvas = () => {
+      // Get the display size of the canvas
+      const { width, height } = canvas.getBoundingClientRect();
+      
+      // If dimensions changed, update and re-init
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        initParticles();
+      }
+    };
+    
+    // Initial resize
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
     // Animation loop
     const animate = () => {
       if (!ctx || !canvas) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0)'; // Transparent background
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Transparent background
+      // ctx.fillStyle = 'rgba(0, 0, 0, 0)'; 
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
       const particles = particlesRef.current;
@@ -65,19 +90,19 @@ const ParticleBackground = () => {
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Draw particle with glow effect
+        // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.8)';
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.8)'; // Blue-500ish
         ctx.fill();
         
-        // Add subtle glow
+        // Draw Glow
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, 4, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
         ctx.fill();
 
-        // Connect particles with lines
+        // Connect particles
         particles.forEach((particle2, j) => {
           if (i === j) return;
           const dx = particle.x - particle2.x;
@@ -99,11 +124,8 @@ const ParticleBackground = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    // Initialize and start animation
-    initParticles();
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       if (animationFrameRef.current) {
@@ -115,10 +137,10 @@ const ParticleBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full"
+      className="absolute inset-0 w-full h-full pointer-events-none"
       style={{ background: 'transparent' }}
     />
   );
 };
 
-export default ParticleBackground; 
+export default ParticleBackground;

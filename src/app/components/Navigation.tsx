@@ -8,14 +8,14 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="glassmorphism shadow-sm fixed w-full z-50">
+    <nav className="fixed w-full z-50 backdrop-blur-md bg-black/30 border-b border-white/10 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <img 
-                src="/navbarLogo.jpg" 
-                alt="ActivateAI Logo" 
+              <img
+                src="/navbarLogo.jpg"
+                alt="ActivateAI Logo"
                 className="h-10 w-auto mr-4 mb-1"
               />
               <span className="text-2xl font-bold text-white hidden sm:block">
@@ -27,21 +27,21 @@ export default function Navigation() {
             <Link href="/" className="text-slate-300 hover:text-blue-400">
               Home
             </Link>
-            
+
             <Link href="/pricing" className="text-slate-300 hover:text-blue-400">
               Pricing
             </Link>
-            
-            <Link href="/services" className="text-slate-300 hover:text-blue-400">
-              Services
+
+            <Link href="/solutions" className="text-slate-300 hover:text-blue-400 font-medium transition-colors">
+              Solutions
             </Link>
 
-            <Link href="/contact" className="text-slate-300 hover:text-blue-400">
+            <Link href="/contact" className="text-slate-300 hover:text-blue-400 font-medium transition-colors">
               Contact
             </Link>
           </div>
           <div className="hidden sm:flex sm:items-center">
-            <a 
+            <a
               href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
               target="_blank"
               rel="noopener noreferrer"
@@ -59,44 +59,52 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile menu */}
         {isMenuOpen && (
           <div className="sm:hidden glassmorphism">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
-              
-              <Link 
-                href="/pricing" 
+
+              <Link
+                href="/pricing"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Pricing
               </Link>
-              
-              <Link 
-                href="/contact" 
+
+              <Link
+                href="/solutions"
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Solutions
+              </Link>
+
+              <Link
+                href="/contact"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
-              
-              <Link 
-                href="/connect" 
+
+              <Link
+                href="/connect"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Connect
               </Link>
-              
-              <a 
+
+              <a
                 href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
                 target="_blank"
                 rel="noopener noreferrer"

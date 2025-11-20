@@ -1,11 +1,21 @@
 import type { Metadata } from 'next';
-import { Inter } from "next/font/google";
+import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
-import MobileLayout from "./components/MobileLayout";
+
 import { Providers } from './providers';
 // import AIChat from './components/AIChat';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://acti-vate.ai'),
@@ -54,13 +64,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} mobile-scroll`}>
+    <html lang="en" className={`${inter.variable} ${dmSans.variable}`}>
+      <body className={`${inter.className} mobile-scroll antialiased selection:bg-blue-500/30`}>
         <Providers>
-          <MobileLayout>
-            {children}
-            {/* <AIChat /> */}
-          </MobileLayout>
+          {children}
         </Providers>
       </body>
     </html>
