@@ -11,10 +11,10 @@ import {
   ArrowRightIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
-import ParticleBackground from '../components/ParticleBackground';
-import PageTransition from '../components/PageTransition';
-import FAQSection from '../components/FAQSection';
-import InteractiveDemoForm from '../components/InteractiveDemoForm';
+import ParticleBackground from '@/app/components/ParticleBackground';
+import PageTransition from '@/app/components/PageTransition';
+import FAQSection from '@/app/components/FAQSection';
+import InteractiveDemoForm from '@/app/components/InteractiveDemoForm';
 import Link from 'next/link';
 import { services, Service } from '@/data/services';
 import ServiceModal from '@/components/ServiceModal';

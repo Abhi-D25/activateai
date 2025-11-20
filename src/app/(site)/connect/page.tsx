@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import ParticleBackground from '../components/ParticleBackground';
-import PageTransition from '../components/PageTransition';
+import ParticleBackground from '@/app/components/ParticleBackground';
+import PageTransition from '@/app/components/PageTransition';
 import { 
   ArrowRightIcon,
   EnvelopeIcon,

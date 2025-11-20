@@ -8,9 +8,9 @@ import {
   UserGroupIcon 
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import FuturisticText from '../components/FuturisticText';
-import ScrollReveal from '../components/ScrollReveal';
-import QuizButton from '../components/QuizButton';
+import FuturisticText from '@/app/components/FuturisticText';
+import ScrollReveal from '@/app/components/ScrollReveal';
+import QuizButton from '@/app/components/QuizButton';
 
 export default function AboutPage() {
   return (

@@ -7,8 +7,8 @@ import {
   SparklesIcon,
   RocketLaunchIcon
 } from '@heroicons/react/24/outline';
-import ParticleBackground from '../components/ParticleBackground';
-import PageTransition from '../components/PageTransition';
+import ParticleBackground from '@/app/components/ParticleBackground';
+import PageTransition from '@/app/components/PageTransition';
 import Link from 'next/link';
 import { useState } from 'react';
 

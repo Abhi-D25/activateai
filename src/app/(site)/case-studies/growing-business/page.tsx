@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import FuturisticText from '../../components/FuturisticText';
+import FuturisticText from '@/app/components/FuturisticText';
 
 export default function GrowingBusinessPage() {
   return (

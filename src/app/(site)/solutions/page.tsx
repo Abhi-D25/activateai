@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { BeakerIcon, WindowIcon, ChatBubbleLeftRightIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
-import PageTransition from '../../components/PageTransition';
-import ParticleBackground from '../../components/ParticleBackground';
+import PageTransition from '@/app/components/PageTransition';
+import ParticleBackground from '@/app/components/ParticleBackground';
 import InteractiveDemoModal from '@/components/InteractiveDemoModal';
 import PortfolioModal from '@/components/PortfolioModal';
 import { useState } from 'react';

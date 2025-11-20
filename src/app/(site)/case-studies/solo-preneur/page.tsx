@@ -4,8 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import FuturisticText from '../../components/FuturisticText';
-import QuizButton from '../../components/QuizButton';
+import FuturisticText from '@/app/components/FuturisticText';
+import QuizButton from '@/app/components/QuizButton';
 
 export default function SoloPreneurPage() {
   return (

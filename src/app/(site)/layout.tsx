@@ -1,4 +1,4 @@
-import MobileLayout from "../components/MobileLayout";
+import MobileLayout from "@/app/components/MobileLayout";
 
 export default function SiteLayout({
     children,

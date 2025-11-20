@@ -8,9 +8,9 @@ import {
   PhoneIcon, 
   MapPinIcon 
 } from '@heroicons/react/24/outline';
-import ButtonAnimation from '../components/ButtonAnimation';
-import PageTransition from '../components/PageTransition';
-import ParticleBackground from '../components/ParticleBackground';
+import ButtonAnimation from '@/app/components/ButtonAnimation';
+import PageTransition from '@/app/components/PageTransition';
+import ParticleBackground from '@/app/components/ParticleBackground';
 import type { ContactFormData, ApiResponse } from '@/types/forms';
 
 export default function Contact() {
