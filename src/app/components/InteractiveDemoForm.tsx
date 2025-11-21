@@ -35,7 +35,7 @@ export default function InteractiveDemoForm() {
     };
 
     try {
-      const webhookUrl = 'https://hooks.newo.ai/gNYovQF8xLdmmXDYnI-fOQ';
+      const webhookUrl = 'https://hooks.newo.ai/IFclaQpn8udxG4TTo6qksw';
 
       // Uncomment when webhook URL is available
       await fetch(webhookUrl, {
