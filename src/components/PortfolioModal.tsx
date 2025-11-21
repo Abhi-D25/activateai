@@ -83,8 +83,8 @@ export default function PortfolioModal({ isOpen, onClose }: PortfolioModalProps)
               </div>
 
               {/* Content */}
-              <div className="p-8 overflow-y-auto custom-scrollbar">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-4 sm:p-8 overflow-y-auto custom-scrollbar flex-grow">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {industries.map((industry, index) => (
                     <motion.button
                       key={industry.id}
@@ -94,30 +94,37 @@ export default function PortfolioModal({ isOpen, onClose }: PortfolioModalProps)
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleIndustryClick(industry.id)}
-                      className="text-left bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-6 transition-all duration-300 group"
+                      className="text-left bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-4 sm:p-6 transition-all duration-300 group flex flex-row md:flex-col items-center md:items-start gap-4"
                     >
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center text-3xl shadow-lg group-hover:shadow-xl transition-shadow`}>
-                          {industry.icon}
-                        </div>
-                        <div className="flex items-center text-slate-400 group-hover:text-blue-400 transition-colors">
-                          <span className="text-sm font-medium mr-1">View</span>
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center text-2xl sm:text-3xl shadow-lg group-hover:shadow-xl transition-shadow flex-shrink-0`}>
+                        {industry.icon}
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                        {industry.name}
-                      </h3>
-                      <p className="text-slate-400 text-sm">
-                        {industry.description}
-                      </p>
+                      <div className="flex-grow">
+                        <div className="flex items-center justify-between md:mb-4">
+                          <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                            {industry.name}
+                          </h3>
+                          <div className="hidden md:flex items-center text-slate-400 group-hover:text-blue-400 transition-colors">
+                            <span className="text-sm font-medium mr-1">View</span>
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <p className="text-slate-400 text-xs sm:text-sm mt-1 md:mt-0">
+                          {industry.description}
+                        </p>
+                      </div>
+                      <div className="md:hidden text-slate-400 group-hover:text-blue-400 transition-colors">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </motion.button>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-slate-800 text-center">
+                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-slate-800 text-center">
                   <p className="text-slate-400 text-sm">
                     Don&apos;t see your industry? <a href="/contact" className="text-blue-400 hover:text-blue-300 font-medium">Contact us</a> for custom solutions.
                   </p>

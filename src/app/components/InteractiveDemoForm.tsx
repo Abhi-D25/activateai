@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 
 const INDUSTRIES = [
@@ -21,6 +21,7 @@ const INDUSTRIES = [
 ];
 
 export default function InteractiveDemoForm() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -78,6 +79,9 @@ export default function InteractiveDemoForm() {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitting(false);
+        if (containerRef.current) {
+          containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }, 1000);
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -211,6 +215,7 @@ export default function InteractiveDemoForm() {
 
   return (
     <motion.div
+      ref={containerRef}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -271,7 +276,7 @@ export default function InteractiveDemoForm() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full pl-11 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="John Doe"
               />
             </div>
@@ -294,7 +299,7 @@ export default function InteractiveDemoForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full pl-11 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -317,7 +322,7 @@ export default function InteractiveDemoForm() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full pl-11 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="john@example.com"
               />
             </div>
@@ -339,7 +344,7 @@ export default function InteractiveDemoForm() {
                 value={formData.industry}
                 onChange={handleChange}
                 required
-                className="w-full pl-11 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none appearance-none cursor-pointer"
+                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none appearance-none cursor-pointer"
               >
                 <option value="" disabled className="bg-gray-900 text-slate-400">Select your industry</option>
                 {INDUSTRIES.map((industry) => (

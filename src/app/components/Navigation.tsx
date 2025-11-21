@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
 export default function Navigation() {
@@ -13,33 +14,36 @@ export default function Navigation() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <img
-                src="/navbarLogo.jpg"
-                alt="ActivateAI Logo"
-                className="h-10 w-auto mr-4 mb-1"
-              />
+              <div className="h-10 w-auto mr-4 mb-1 relative" style={{ width: '40px', height: '40px' }}>
+                <Image
+                  src="/navbarLogo.jpg"
+                  alt="ActivateAI Logo"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               <span className="text-2xl font-bold text-white hidden sm:block">
                 ActivateAI
               </span>
             </Link>
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
-            <Link href="/" className="text-slate-300 hover:text-blue-400">
+            <Link href="/" className="text-slate-300 hover:text-blue-400 transition-colors">
               Home
             </Link>
-
-            <Link href="/pricing" className="text-slate-300 hover:text-blue-400">
+            <Link href="/pricing" className="text-slate-300 hover:text-blue-400 transition-colors">
               Pricing
             </Link>
-
-            <Link href="/solutions" className="text-slate-300 hover:text-blue-400 font-medium transition-colors">
+            <Link href="/solutions" className="text-slate-300 hover:text-blue-400 transition-colors">
               Solutions
             </Link>
-
-            <Link href="/contact" className="text-slate-300 hover:text-blue-400 font-medium transition-colors">
+            <Link href="/contact" className="text-slate-300 hover:text-blue-400 transition-colors">
               Contact
             </Link>
           </div>
+          
           <div className="hidden sm:flex sm:items-center">
             <a
               href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
@@ -60,7 +64,7 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu fallback */}
         {isMenuOpen && (
           <div className="sm:hidden glassmorphism">
             <div className="px-2 pt-2 pb-3 space-y-1">
@@ -71,7 +75,6 @@ export default function Navigation() {
               >
                 Home
               </Link>
-
               <Link
                 href="/pricing"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
@@ -79,7 +82,6 @@ export default function Navigation() {
               >
                 Pricing
               </Link>
-
               <Link
                 href="/solutions"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
@@ -87,7 +89,6 @@ export default function Navigation() {
               >
                 Solutions
               </Link>
-
               <Link
                 href="/contact"
                 className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
@@ -95,24 +96,6 @@ export default function Navigation() {
               >
                 Contact
               </Link>
-
-              <Link
-                href="/connect"
-                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Connect
-              </Link>
-
-              <a
-                href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-left px-3 py-2 text-blue-400"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Book Consultation
-              </a>
             </div>
           </div>
         )}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MobileHeader() {
   return (
@@ -8,11 +9,14 @@ export default function MobileHeader() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center h-16">
           <Link href="/" className="flex items-center">
-            <img 
-              src="/navbarLogo.jpg" 
-              alt="ActivateAI Logo" 
-              className="h-8 w-auto mr-2"
-            />
+            <div className="h-8 w-auto mr-2 relative" style={{ width: '32px', height: '32px' }}>
+              <Image 
+                src="/navbarLogo.jpg" 
+                alt="ActivateAI Logo" 
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
             <span className="text-2xl font-bold text-white">
               ActivateAI
             </span>

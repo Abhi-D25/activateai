@@ -4,14 +4,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMobile } from '../hooks/useMobile';
 import Link from 'next/link';
-import { Bars3Icon, PhoneIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const MobileNav = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isWhatWeOfferOpen, setIsWhatWeOfferOpen] = useState(false);
-  const [isWhoWeServeOpen, setIsWhoWeServeOpen] = useState(false);
   const { isMobile } = useMobile();
 
   useEffect(() => {
@@ -37,19 +35,7 @@ const MobileNav = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setIsWhatWeOfferOpen(false);
-    setIsWhoWeServeOpen(false);
     document.body.style.overflow = 'unset';
-  };
-
-  const toggleWhatWeOffer = () => {
-    setIsWhatWeOfferOpen(!isWhatWeOfferOpen);
-    setIsWhoWeServeOpen(false);
-  };
-
-  const toggleWhoWeServe = () => {
-    setIsWhoWeServeOpen(!isWhoWeServeOpen);
-    setIsWhatWeOfferOpen(false);
   };
 
   if (!isMobile) return null;
@@ -124,7 +110,6 @@ const MobileNav = () => {
                 </div>
 
                 <nav className="space-y-4">
-                  {/* Home */}
                   <Link
                     href="/"
                     className="block text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3 border-b border-slate-700"
@@ -133,108 +118,22 @@ const MobileNav = () => {
                     Home
                   </Link>
 
-                  {/* What We Offer Dropdown */}
-                  <div className="border-b border-slate-700">
-                    <button
-                      onClick={toggleWhatWeOffer}
-                      className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3"
-                    >
-                      What We Offer
-                      <ChevronDownIcon className={`h-5 w-5 transition-transform ${isWhatWeOfferOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    <AnimatePresence>
-                      {isWhatWeOfferOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pl-4 space-y-2 pb-3">
-                            <Link 
-                              href="/what-we-offer/sales" 
-                              className="block text-slate-400 hover:text-yellow-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Sales
-                            </Link>
-                            <Link 
-                              href="/what-we-offer/operations" 
-                              className="block text-slate-400 hover:text-blue-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Operations
-                            </Link>
-                            <Link 
-                              href="/what-we-offer/admin" 
-                              className="block text-slate-400 hover:text-purple-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Admin
-                            </Link>
-                            <Link 
-                              href="/what-we-offer/support" 
-                              className="block text-slate-400 hover:text-green-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Support
-                            </Link>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Who We Serve Dropdown */}
-                  <div className="border-b border-slate-700">
-                    <button
-                      onClick={toggleWhoWeServe}
-                      className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3"
-                    >
-                      Who We Serve
-                      <ChevronDownIcon className={`h-5 w-5 transition-transform ${isWhoWeServeOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    <AnimatePresence>
-                      {isWhoWeServeOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pl-4 space-y-2 pb-3">
-                            <Link 
-                              href="/case-studies/solo-preneur" 
-                              className="block text-slate-400 hover:text-blue-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Solo-preneur
-                            </Link>
-                            <Link 
-                              href="/case-studies/growing-business" 
-                              className="block text-slate-400 hover:text-blue-400 py-2 text-base"
-                              onClick={closeMenu}
-                            >
-                              Growing Business
-                            </Link>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Activations */}
                   <Link
-                    href="/services"
+                    href="/pricing"
                     className="block text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3 border-b border-slate-700"
                     onClick={closeMenu}
                   >
-                    Activations
+                    Pricing
                   </Link>
 
-                  {/* Contact */}
+                  <Link
+                    href="/solutions"
+                    className="block text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3 border-b border-slate-700"
+                    onClick={closeMenu}
+                  >
+                    Solutions
+                  </Link>
+
                   <Link
                     href="/contact"
                     className="block text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3 border-b border-slate-700"
@@ -265,4 +164,4 @@ const MobileNav = () => {
   );
 };
 
-export default MobileNav; 
+export default MobileNav;

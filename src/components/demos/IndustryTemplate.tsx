@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import { IndustryData } from '@/app/demos/data';
 import {
     PhoneIcon,
@@ -16,7 +17,8 @@ import {
     ClockIcon,
     CalendarIcon,
     CakeIcon,
-    WifiIcon
+    WifiIcon,
+    ArrowLeftIcon
 } from '@heroicons/react/24/outline';
 
 interface IndustryTemplateProps {
@@ -56,7 +58,22 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
             <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? `${theme.primary} shadow-lg py-3` : 'bg-transparent py-6'
                 }`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
-                    <h1 className={`text-2xl font-bold text-white tracking-tight`}>{name}</h1>
+                    <div className="flex items-center gap-6">
+                        <a 
+                            href="/solutions"
+                            className="flex items-center gap-2 text-white/90 hover:text-white transition-all group bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10"
+                        >
+                            <motion.div
+                                animate={{ x: [0, -4, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                className="flex items-center justify-center"
+                            >
+                                <ArrowLeftIcon className="w-4 h-4" />
+                            </motion.div>
+                            <span className="text-sm font-medium hidden sm:inline-block">Go Back</span>
+                        </a>
+                        <h1 className={`text-2xl font-bold text-white tracking-tight`}>{name}</h1>
+                    </div>
                     <div className="hidden md:flex space-x-8 text-white/90 font-medium">
                         <a href="#home" className="hover:text-white transition-colors">Home</a>
                         <a href="#about" className="hover:text-white transition-colors">About</a>
@@ -73,10 +90,12 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
             {/* Hero Section */}
             <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
                 <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
-                    <img
+                    <Image
                         src={hero.image}
                         alt="Hero Background"
-                        className="w-full h-full object-cover scale-110"
+                        fill
+                        className="object-cover scale-110"
+                        priority
                     />
                     <div className={`absolute inset-0 ${theme.primary} opacity-70 mix-blend-multiply`}></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -128,15 +147,18 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                             transition={{ duration: 0.8 }}
                             className="w-full md:w-1/2"
                         >
-                            <div className="relative">
-                                <div className={`absolute -top-4 -left-4 w-24 h-24 ${theme.primary} opacity-10 rounded-full`}></div>
-                                <div className={`absolute -bottom-4 -right-4 w-32 h-32 ${theme.accent} opacity-10 rounded-full`}></div>
-                                <img
-                                    src={about.image}
-                                    alt="About Us"
-                                    className="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-[4/3]"
-                                />
-                            </div>
+                            {about.image && (
+                                <div className="relative h-[400px] w-full">
+                                    <div className={`absolute -top-4 -left-4 w-24 h-24 ${theme.primary} opacity-10 rounded-full`}></div>
+                                    <div className={`absolute -bottom-4 -right-4 w-32 h-32 ${theme.accent} opacity-10 rounded-full`}></div>
+                                    <Image
+                                        src={about.image}
+                                        alt="About Us"
+                                        fill
+                                        className="rounded-2xl shadow-2xl relative z-10 object-cover"
+                                    />
+                                </div>
+                            )}
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
