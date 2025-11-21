@@ -34,7 +34,7 @@ const demos = [
     icon: BeakerIcon,
     link: '#',
     gradient: 'from-green-500 to-teal-500',
-    status: 'Coming Soon'
+    status: 'Live Demo Coming Soon'
   },
   {
     id: 'smart-dashboard',
@@ -43,7 +43,7 @@ const demos = [
     icon: WindowIcon,
     link: '#',
     gradient: 'from-purple-500 to-pink-500',
-    status: 'Interactive Mockup'
+    status: 'Live Demo Coming Soon'
   }
 ];
 
@@ -54,7 +54,10 @@ export default function SolutionsPage() {
 
   const handleDemoClick = (e: React.MouseEvent, demoId: string, status: string) => {
     e.preventDefault();
-    if (status === 'Coming Soon') return;
+    if (status === 'Live Demo Coming Soon') {
+      window.location.href = '/book-appointment';
+      return;
+    }
 
     if (demoId === 'voice-agent') {
       setSelectedDemo(demoId);
@@ -102,7 +105,7 @@ export default function SolutionsPage() {
 
             {/* Interactive Demos Section - FIRST */}
             <div className="mb-24">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
                 {demos.map((demo, index) => (
                   <motion.div
                     key={demo.id}
@@ -116,16 +119,18 @@ export default function SolutionsPage() {
                     {/* Gradient Border Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
 
-                    <div className="p-8">
+                    <div className="p-6 sm:p-8">
                       <div className="flex items-start justify-between mb-6">
                         <div className={`p-3 rounded-xl bg-gradient-to-br ${demo.gradient} bg-opacity-10`}>
                           <demo.icon className="w-8 h-8 text-white" />
                         </div>
                         <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${demo.status === 'Live Demo'
                           ? 'border-green-500 text-green-400 bg-green-500/10'
-                          : demo.status === 'Interactive Mockup'
-                            ? 'border-purple-500 text-purple-400 bg-purple-500/10'
-                            : 'border-slate-600 text-slate-400 bg-slate-800'
+                          : demo.status === 'Live Demo Coming Soon'
+                            ? 'border-yellow-500 text-yellow-400 bg-yellow-500/10'
+                            : demo.status === 'Interactive Mockup'
+                              ? 'border-purple-500 text-purple-400 bg-purple-500/10'
+                              : 'border-slate-600 text-slate-400 bg-slate-800'
                           }`}>
                           {demo.status}
                         </span>
@@ -141,13 +146,9 @@ export default function SolutionsPage() {
 
                       <button
                         onClick={(e) => handleDemoClick(e, demo.id, demo.status)}
-                        className={`inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${demo.status === 'Coming Soon'
-                          ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                          : 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20'
-                          }`}
-                        disabled={demo.status === 'Coming Soon'}
+                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20"
                       >
-                        {demo.status === 'Coming Soon' ? 'Coming Soon' : 'Open Demo'}
+                        {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : 'Open Demo'}
                       </button>
                     </div>
                   </motion.div>

@@ -118,8 +118,8 @@ export default function Contact() {
               className="max-w-2xl mx-auto"
             >
               {/* Light Blue Glass Container */}
-              <div 
-                className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-8"
+              <div
+                className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-6 sm:p-8"
                 style={{
                   background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
                   backdropFilter: 'blur(20px)',

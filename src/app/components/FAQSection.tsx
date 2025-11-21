@@ -68,8 +68,8 @@ export default function FAQSection() {
         </ScrollReveal>
         
         <div className="max-w-4xl mx-auto">
-          <div 
-            className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-8"
+          <div
+            className="bg-blue-900/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-2xl shadow-blue-500/10 p-4 sm:p-6 md:p-8"
             style={{
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(59, 130, 246, 0.1) 100%)',
               backdropFilter: 'blur(20px)',
@@ -90,10 +90,10 @@ export default function FAQSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <button
-                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors"
                       onClick={() => toggleFAQ(index)}
                     >
-                      <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
+                      <h3 className="text-base sm:text-lg font-semibold text-white pr-2">{faq.question}</h3>
                       <ChevronDownIcon
                         className={`h-5 w-5 text-blue-400 transition-transform duration-300 ${
                           openIndex === index ? 'transform rotate-180' : ''
@@ -109,8 +109,8 @@ export default function FAQSection() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-4 mt-4">
-                            <p className="text-slate-300">{faq.answer}</p>
+                          <div className="px-4 sm:px-6 pb-3 sm:pb-4 mt-2 sm:mt-4">
+                            <p className="text-sm sm:text-base text-slate-300">{faq.answer}</p>
                           </div>
                         </motion.div>
                       )}

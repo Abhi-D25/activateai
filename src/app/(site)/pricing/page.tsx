@@ -70,7 +70,7 @@ export default function Pricing() {
         <section className="relative py-20 backdrop-blur-sm">
           <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
               
               {/* Starter Pack */}
               <motion.div
@@ -88,13 +88,13 @@ export default function Pricing() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/30 backdrop-blur-sm rounded-3xl p-8 md:p-10 border-2 border-blue-500/50 hover:border-blue-400/70 transition-all duration-300 h-full shadow-2xl">
+                <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-blue-500/50 hover:border-blue-400/70 transition-all duration-300 h-full shadow-2xl">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-white mb-4">Starter Pack</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Starter Pack</h2>
                     <div className="mb-4">
-                      <span className="text-xl text-blue-400 block mb-2">Starting at</span>
-                      <span className="text-6xl font-bold text-blue-400">$199</span>
-                      <span className="text-2xl text-slate-400">/month</span>
+                      <span className="text-lg sm:text-xl text-blue-400 block mb-2">Starting at</span>
+                      <span className="text-5xl sm:text-6xl font-bold text-blue-400">$199</span>
+                      <span className="text-xl sm:text-2xl text-slate-400">/month</span>
                     </div>
                     <p className="text-lg text-slate-300">
                       Perfect for businesses getting started. Choose one or both services to fit your needs.
@@ -194,12 +194,12 @@ export default function Pricing() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/30 backdrop-blur-sm rounded-3xl p-8 md:p-10 border-2 border-purple-500/50 hover:border-purple-400/70 transition-all duration-300 h-full shadow-2xl">
+                <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-purple-500/50 hover:border-purple-400/70 transition-all duration-300 h-full shadow-2xl">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-white mb-4">Pro Pack</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Pro Pack</h2>
                     <div className="mb-4">
-                      <span className="text-5xl font-bold text-purple-400">Custom</span>
-                      <span className="text-xl text-slate-400 block mt-2">Pricing Based on Scope</span>
+                      <span className="text-4xl sm:text-5xl font-bold text-purple-400">Custom</span>
+                      <span className="text-base sm:text-xl text-slate-400 block mt-2">Pricing Based on Scope</span>
                     </div>
                     <p className="text-lg text-slate-300">
                       Complete AI transformation customized to your business

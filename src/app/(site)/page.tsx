@@ -2,12 +2,6 @@
 
 import { motion } from 'framer-motion';
 import {
-  ChartBarIcon,
-  SparklesIcon,
-  UserGroupIcon,
-  CogIcon,
-  BookOpenIcon,
-  LightBulbIcon,
   ArrowRightIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
@@ -66,10 +60,10 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center"
+                className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center"
               >
                 {/* Left Content - 60% */}
-                <div className="lg:col-span-3 text-center lg:text-left">
+                <div className="lg:col-span-3 text-center lg:text-left order-1 lg:order-1">
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -125,7 +119,7 @@ export default function Home() {
                   initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                   transition={{ duration: 1.2, delay: 0.4 }}
-                  className="lg:col-span-2 hidden lg:block"
+                  className="lg:col-span-2 w-full order-2 lg:order-2"
                 >
                   <InteractiveDemoForm />
                 </motion.div>
@@ -163,7 +157,7 @@ export default function Home() {
               </motion.div>
 
               {/* First Row - 3 Items */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-8">
                 {services.slice(0, 3).map((offering, index) => (
                   <motion.div
                     key={offering.id}
@@ -214,7 +208,7 @@ export default function Home() {
               </div>
 
               {/* Second Row - 2 Items (Centered, Upside-down Triangle Layout) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
                 {services.slice(3, 5).map((offering, index) => (
                   <motion.div
                     key={offering.id}
@@ -431,25 +425,25 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
                 {/* Starter Pack */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="relative bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300"
+                  className="relative bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300"
                   whileHover={{ y: -5, boxShadow: "0 0 40px rgba(59, 130, 246, 0.3)" }}
                   data-testid="starter-pack-card"
                 >
                   <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
                     Getting Started
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-2 mt-4">Starter Pack</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Starter Pack</h3>
                   <div className="mb-6">
-                    <span className="text-lg text-blue-400 block mb-1">Starting at</span>
-                    <span className="text-5xl font-bold text-blue-400">$199</span>
-                    <span className="text-slate-400 text-xl">/month</span>
+                    <span className="text-base sm:text-lg text-blue-400 block mb-1">Starting at</span>
+                    <span className="text-4xl sm:text-5xl font-bold text-blue-400">$199</span>
+                    <span className="text-slate-400 text-lg sm:text-xl">/month</span>
                   </div>
                   <p className="text-slate-300 mb-6">
                     Perfect for businesses getting started. Choose one or both services to fit your needs.
@@ -487,16 +481,16 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="relative bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300"
+                  className="relative bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300"
                   whileHover={{ y: -5, boxShadow: "0 0 40px rgba(168, 85, 247, 0.3)" }}
                   data-testid="pro-pack-card"
                 >
                   <div className="absolute top-0 right-0 bg-gradient-to-br from-purple-500 to-pink-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
                     Most Popular
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-2 mt-4">Pro Pack</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Pro Pack</h3>
                   <div className="mb-6">
-                    <span className="text-4xl font-bold text-purple-400">Custom Pricing</span>
+                    <span className="text-3xl sm:text-4xl font-bold text-purple-400">Custom Pricing</span>
                   </div>
                   <p className="text-slate-300 mb-6">
                     Complete AI transformation customized to your business. Pricing based on scope.
@@ -589,7 +583,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="max-w-4xl mx-auto text-center"
               >
-                <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-md rounded-3xl border border-blue-400/30 shadow-2xl p-8 md:p-12">
+                <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-blue-400/30 shadow-2xl p-6 sm:p-8 md:p-12">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                     Ready to Transform Your Business?
                   </h2>

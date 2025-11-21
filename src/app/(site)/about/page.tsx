@@ -51,7 +51,7 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-24">
             <div className="relative aspect-square">
               <Image
                 src="/team.webp"
@@ -87,8 +87,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-            <div className="bg-slate-800 p-8 rounded-xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-24">
+            <div className="bg-slate-800 p-6 sm:p-8 rounded-xl">
               <FuturisticText
                 text="Our Mission"
                 className="text-2xl font-bold text-white mb-4"
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 To empower small and medium businesses with AI solutions that drive growth, improve efficiency, and create competitive advantages.
               </p>
             </div>
-            <div className="bg-slate-800 p-8 rounded-xl">
+            <div className="bg-slate-800 p-6 sm:p-8 rounded-xl">
               <FuturisticText
                 text="Our Vision"
                 className="text-2xl font-bold text-white mb-4"
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 A world where every business, regardless of size, can harness the power of AI to achieve their full potential.
               </p>
             </div>
-            <div className="bg-slate-800 p-8 rounded-xl">
+            <div className="bg-slate-800 p-6 sm:p-8 rounded-xl">
               <FuturisticText
                 text="Our Values"
                 className="text-2xl font-bold text-white mb-4"
