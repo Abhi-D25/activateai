@@ -35,17 +35,16 @@ export default function InteractiveDemoForm() {
     };
 
     try {
-      // TODO: Replace with actual webhook URL
-      const webhookUrl = 'PLACEHOLDER_WEBHOOK_URL';
+      const webhookUrl = 'https://hooks.newo.ai/gNYovQF8xLdmmXDYnI-fOQ';
 
       // Uncomment when webhook URL is available
-      // await fetch(webhookUrl, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(payload)
-      // });
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
       console.log('Webhook payload:', payload);
 
