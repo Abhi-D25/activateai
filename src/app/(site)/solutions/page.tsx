@@ -32,7 +32,7 @@ const demos = [
     title: 'Internal Knowledge Bot',
     description: 'Ask questions about company policies and get instant, accurate answers from your document base.',
     icon: BeakerIcon,
-    link: '#',
+    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
     gradient: 'from-green-500 to-teal-500',
     status: 'Live Demo Coming Soon'
   },
@@ -41,7 +41,7 @@ const demos = [
     title: 'Business Intelligence Dashboard',
     description: 'Interactive dashboard showing real-time business metrics, lead tracking, and conversion analytics.',
     icon: WindowIcon,
-    link: '#',
+    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
     gradient: 'from-purple-500 to-pink-500',
     status: 'Live Demo Coming Soon'
   }
@@ -52,8 +52,13 @@ export default function SolutionsPage() {
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
 
-  const handleDemoClick = (e: React.MouseEvent, demoId: string, status: string) => {
+  const handleDemoClick = (e: React.MouseEvent, demoId: string, status: string, link: string) => {
     e.preventDefault();
+    if (link.startsWith('http')) {
+      window.open(link, '_blank');
+      return;
+    }
+
     if (status === 'Live Demo Coming Soon') {
       window.location.href = '/book-appointment';
       return;
@@ -114,7 +119,7 @@ export default function SolutionsPage() {
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                     whileHover={{ y: -5 }}
                     className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
-                    onClick={(e) => handleDemoClick(e, demo.id, demo.status)}
+                    onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
                   >
                     {/* Gradient Border Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -145,7 +150,7 @@ export default function SolutionsPage() {
                       </p>
 
                       <button
-                        onClick={(e) => handleDemoClick(e, demo.id, demo.status)}
+                        onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
                         className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20"
                       >
                         {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : 'Open Demo'}

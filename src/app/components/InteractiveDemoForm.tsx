@@ -248,12 +248,12 @@ export default function InteractiveDemoForm() {
             </div>
           </motion.div>
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Get a call <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">RIGHT NOW!</span>
+            Try it out <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">RIGHT NOW!</span>
           </h3>
-          <p className="text-base sm:text-lg text-slate-300 mb-2">
+          <p className="text-base sm:text-lg text-slate-300 mb-2 hidden sm:block">
             Know more about ActivateAI through a live call!
           </p>
-          <p className="text-base sm:text-lg text-blue-300 font-semibold">
+          <p className="text-base sm:text-lg text-blue-300 font-semibold sm:block hidden">
             BTW Your business can have this too! 👀
           </p>
         </motion.div>

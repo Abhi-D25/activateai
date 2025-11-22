@@ -43,13 +43,22 @@ const iconMap: Record<string, any> = {
 export default function IndustryTemplate({ data }: IndustryTemplateProps) {
     const { theme, hero, services, testimonials, contact, name, about, stats } = data;
     const [scrolled, setScrolled] = useState(false);
+    const [showGoBack, setShowGoBack] = useState(false);
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+
+        const timer = setTimeout(() => {
+            setShowGoBack(true);
+        }, 5000);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            clearTimeout(timer);
+        };
     }, []);
 
     return (
@@ -58,22 +67,7 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
             <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? `${theme.primary} shadow-lg py-3` : 'bg-transparent py-6'
                 }`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
-                    <div className="flex items-center gap-6">
-                        <a 
-                            href="/solutions"
-                            className="flex items-center gap-2 text-white/90 hover:text-white transition-all group bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10"
-                        >
-                            <motion.div
-                                animate={{ x: [0, -4, 0] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                className="flex items-center justify-center"
-                            >
-                                <ArrowLeftIcon className="w-4 h-4" />
-                            </motion.div>
-                            <span className="text-sm font-medium hidden sm:inline-block">Go Back</span>
-                        </a>
-                        <h1 className={`text-2xl font-bold text-white tracking-tight`}>{name}</h1>
-                    </div>
+                    <h1 className={`text-2xl font-bold text-white tracking-tight mt-1`}>{name}</h1>
                     <div className="hidden md:flex space-x-8 text-white/90 font-medium">
                         <a href="#home" className="hover:text-white transition-colors">Home</a>
                         <a href="#about" className="hover:text-white transition-colors">About</a>
@@ -86,6 +80,37 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                     </button>
                 </div>
             </nav>
+
+            {/* Floating Go Back Button */}
+            {showGoBack && (
+                <motion.div
+                    initial={{ opacity: 0, y: -20, x: "-50%" }}
+                    animate={{
+                        opacity: 1,
+                        y: 0,
+                        x: "-50%",
+                        scale: [1, 1.05, 1]
+                    }}
+                    transition={{
+                        opacity: { duration: 0.5 },
+                        y: { duration: 0.5 },
+                        scale: {
+                            repeat: Infinity,
+                            duration: 2,
+                            ease: "easeInOut"
+                        }
+                    }}
+                    className="fixed top-28 left-1/2 z-[60]"
+                >
+                    <a
+                        href="/solutions"
+                        className="flex items-center gap-2 text-white bg-black/50 hover:bg-black/70 px-6 py-3 rounded-full backdrop-blur-md border border-white/20 shadow-xl transition-all"
+                    >
+                        <ArrowLeftIcon className="w-4 h-4" />
+                        <span className="font-medium">Go Back</span>
+                    </a>
+                </motion.div>
+            )}
 
             {/* Hero Section */}
             <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -169,7 +194,7 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                         >
                             <h2 className={`text-sm font-bold uppercase tracking-widest mb-4 ${theme.accent}`}>About Us</h2>
                             <h3 className={`text-4xl md:text-5xl font-bold mb-8 ${theme.heading}`}>{about.title}</h3>
-                            <p className="text-lg leading-relaxed opacity-80 mb-8">
+                            <p className={`text-lg leading-relaxed mb-8 ${theme.heading}`}>
                                 {about.content}
                             </p>
                             <button className={`text-lg font-semibold ${theme.accent} hover:opacity-80 transition-opacity flex items-center group`}>
@@ -206,7 +231,7 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                                         <IconComponent className={`w-8 h-8 ${theme.accent}`} />
                                     </div>
                                     <h4 className={`text-2xl font-bold mb-4 ${theme.heading}`}>{service.title}</h4>
-                                    <p className="leading-relaxed opacity-70">
+                                    <p className={`leading-relaxed ${theme.heading}`}>
                                         {service.description}
                                     </p>
                                 </motion.div>

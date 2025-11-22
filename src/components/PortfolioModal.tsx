@@ -68,55 +68,54 @@ export default function PortfolioModal({ isOpen, onClose }: PortfolioModalProps)
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[90vh] flex flex-col"
+              className="w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[calc(100vh-180px)] flex flex-col my-auto"
             >
               {/* Header */}
-              <div className="relative bg-gradient-to-r from-orange-500 to-yellow-500 p-8">
+              <div className="relative bg-gradient-to-r from-orange-500 to-yellow-500 p-6">
                 <button
                   onClick={onClose}
                   className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-sm"
                 >
                   <XMarkIcon className="w-6 h-6" />
                 </button>
-                <h2 className="text-3xl font-bold text-white mb-2">Website Portfolio</h2>
-                <p className="text-white/90">Choose an industry to explore our website designs</p>
+                <h2 className="text-2xl font-bold text-white mb-1">Website Portfolio</h2>
+                <p className="text-white/90 text-sm">Choose an industry to explore our website designs</p>
               </div>
 
               {/* Content */}
-              <div className="p-4 sm:p-8 overflow-y-auto custom-scrollbar flex-grow">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="p-4 overflow-y-auto custom-scrollbar flex-grow">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {industries.map((industry, index) => (
                     <motion.button
                       key={industry.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleIndustryClick(industry.id)}
-                      className="text-left bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-4 sm:p-6 transition-all duration-300 group flex flex-row md:flex-col items-center md:items-start gap-4"
+                      className="text-left bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-3 transition-all duration-300 group flex items-center gap-3"
                     >
-                      <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center text-2xl sm:text-3xl shadow-lg group-hover:shadow-xl transition-shadow flex-shrink-0`}>
+                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${industry.gradient} flex items-center justify-center text-xl shadow-lg group-hover:shadow-xl transition-shadow flex-shrink-0`}>
                         {industry.icon}
                       </div>
-                      <div className="flex-grow">
-                        <div className="flex items-center justify-between md:mb-4">
-                          <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                      <div className="flex-grow min-w-0">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors truncate pr-2">
                             {industry.name}
                           </h3>
-                          <div className="hidden md:flex items-center text-slate-400 group-hover:text-blue-400 transition-colors">
-                            <span className="text-sm font-medium mr-1">View</span>
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="hidden md:flex items-center text-slate-400 group-hover:text-blue-400 transition-colors flex-shrink-0">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                           </div>
                         </div>
-                        <p className="text-slate-400 text-xs sm:text-sm mt-1 md:mt-0">
+                        <p className="text-slate-400 text-xs truncate">
                           {industry.description}
                         </p>
                       </div>
-                      <div className="md:hidden text-slate-400 group-hover:text-blue-400 transition-colors">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="md:hidden text-slate-400 group-hover:text-blue-400 transition-colors flex-shrink-0">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
@@ -124,8 +123,8 @@ export default function PortfolioModal({ isOpen, onClose }: PortfolioModalProps)
                   ))}
                 </div>
 
-                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-slate-800 text-center">
-                  <p className="text-slate-400 text-sm">
+                <div className="mt-4 pt-4 border-t border-slate-800 text-center">
+                  <p className="text-slate-400 text-xs">
                     Don&apos;t see your industry? <a href="/contact" className="text-blue-400 hover:text-blue-300 font-medium">Contact us</a> for custom solutions.
                   </p>
                 </div>

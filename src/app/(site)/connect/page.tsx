@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import PageTransition from '@/app/components/PageTransition';
-import { 
+import {
   ArrowRightIcon,
   EnvelopeIcon,
   PhoneIcon,
@@ -15,7 +15,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function Connect() {
-  
+
   // Function to generate and download vCard
   const handleSaveContact = () => {
     const vCardData = `BEGIN:VCARD
@@ -24,7 +24,7 @@ FN:Abhi Dutta
 N:Dutta;Abhi;;;
 ORG:ActivateAI
 TITLE:Founder & CEO
-TEL;TYPE=CELL:(972) 754-1499
+TEL;TYPE=CELL:+1 (972) 456-9326
 EMAIL:dutta@acti-vate.ai
 URL:https://acti-vate.ai
 URL;TYPE=LinkedIn:https://www.linkedin.com/in/abhirup-dutta-1a92601b0/
@@ -48,9 +48,9 @@ END:VCARD`;
         <section className="relative min-h-screen overflow-hidden">
           <div className="absolute inset-0 gradient-bg opacity-30" />
           <ParticleBackground />
-          
+
           <div className="container relative z-10 mx-auto px-4 py-8 md:py-12">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -65,7 +65,7 @@ END:VCARD`;
                 className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
               >
                 {/* Header with animated gradient */}
-                <motion.div 
+                <motion.div
                   className="h-32 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 relative"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
@@ -84,12 +84,12 @@ END:VCARD`;
 
                 {/* Profile Photo */}
                 <div className="relative -mt-20 flex justify-center px-6">
-                  <motion.div 
+                  <motion.div
                     className="relative w-32 h-32 rounded-full border-4 border-slate-800 bg-slate-700 overflow-hidden shadow-xl"
                     whileHover={{ scale: 1.05, borderColor: 'rgba(59, 130, 246, 0.5)' }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Image 
+                    <Image
                       src="/business_card.jpg"
                       alt="Abhirup Dutta"
                       width={128}
@@ -126,9 +126,9 @@ END:VCARD`;
                     <h3 className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">
                       Quick Links
                     </h3>
-                    
+
                     {/* Book Appointment */}
-                    <a 
+                    <a
                       href="https://calendar.app.google/cdb8imp4GAqRnWQT8"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -148,9 +148,9 @@ END:VCARD`;
                       <ArrowRightIcon className="w-5 h-5 text-slate-400 group-hover:text-green-400 group-hover:translate-x-1 transition-all" />
                     </a>
 
-                    
+
                     {/* Visit Website */}
-                    <Link 
+                    <Link
                       href="/"
                       className="flex items-center justify-between p-4 bg-slate-800/50 hover:bg-slate-800 rounded-xl transition-all group border border-slate-700/50 hover:border-blue-500/50"
                     >
@@ -166,7 +166,7 @@ END:VCARD`;
                       <ArrowRightIcon className="w-5 h-5 text-slate-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
                     </Link>
                   </div>
-                  
+
                   {/* Social Links */}
                   <div className="border-t border-slate-700 pt-6 mb-6">
                     <h3 className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">
@@ -181,10 +181,10 @@ END:VCARD`;
                         aria-label="Personal LinkedIn"
                       >
                         <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                       </a>
-                      
+
                       {/* <a
                         href="https://www.linkedin.com/company/acti-vateai"
                         target="_blank"

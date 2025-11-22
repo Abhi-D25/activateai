@@ -22,18 +22,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/what-we-offer" className="text-slate-300 hover:text-blue-400">
-                  What We Offer
+                <Link href="/pricing" className="text-slate-300 hover:text-blue-400">
+                  Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-slate-300 hover:text-blue-400">
-                  Who We Serve
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-slate-300 hover:text-blue-400">
-                  Activations
+                <Link href="/solutions" className="text-slate-300 hover:text-blue-400">
+                  Solutions
                 </Link>
               </li>
               <li>
@@ -47,7 +42,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-blue-300 mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="text-slate-300">info@acti-vate.ai</li>
-              <li className="text-slate-300">+1 (972) 754-1499</li>
+              <li className="text-slate-300">+1 (972) 456-9326</li>
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start">

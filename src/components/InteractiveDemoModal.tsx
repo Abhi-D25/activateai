@@ -28,19 +28,21 @@ export default function InteractiveDemoModal({ isOpen, onClose, title = "AI Voic
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="w-full max-w-2xl relative pointer-events-auto"
+              className="w-full max-w-2xl relative pointer-events-auto max-h-[calc(100vh-180px)] flex flex-col my-auto bg-slate-900/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-700 shadow-2xl overflow-hidden"
             >
-                <div className="absolute -top-12 right-0 md:-right-12">
-                    <button
-                    onClick={onClose}
-                    className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm"
-                    >
-                    <XMarkIcon className="w-6 h-6" />
-                    </button>
-                </div>
-                
+              <div className="absolute top-4 right-4 z-50">
+                <button
+                  onClick={onClose}
+                  className="p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-sm"
+                >
+                  <XMarkIcon className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="overflow-y-auto custom-scrollbar p-6 sm:p-8">
                 <InteractiveDemoForm />
-                
+              </div>
+
             </motion.div>
           </div>
         </>

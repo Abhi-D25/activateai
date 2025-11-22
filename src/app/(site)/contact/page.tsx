@@ -3,10 +3,10 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  EnvelopeIcon, 
-  PhoneIcon, 
-  MapPinIcon 
+import {
+  EnvelopeIcon,
+  PhoneIcon,
+  MapPinIcon
 } from '@heroicons/react/24/outline';
 import ButtonAnimation from '@/app/components/ButtonAnimation';
 import PageTransition from '@/app/components/PageTransition';
@@ -21,7 +21,7 @@ export default function Contact() {
     company: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
   const [formSuccess, setFormSuccess] = useState('');
@@ -36,24 +36,24 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       setFormError('Name, email and message are required');
       return;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setFormError('Please enter a valid email address');
       return;
     }
-    
+
     setIsSubmitting(true);
     setFormError('');
     setFormSuccess('');
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -97,7 +97,7 @@ export default function Contact() {
           <div className="absolute inset-0 gradient-bg opacity-30" />
           <ParticleBackground />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -111,7 +111,7 @@ export default function Contact() {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -135,7 +135,7 @@ export default function Contact() {
                     {formSuccess}
                   </motion.div>
                 )}
-                
+
                 {formError && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -145,7 +145,7 @@ export default function Contact() {
                     {formError}
                   </motion.div>
                 )}
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -215,9 +215,9 @@ export default function Contact() {
                       required
                     ></textarea>
                   </div>
-                  <ButtonAnimation 
-                    type="submit" 
-                    className="w-full" 
+                  <ButtonAnimation
+                    type="submit"
+                    className="w-full"
                     variant="secondary"
                     disabled={isSubmitting}
                   >
@@ -227,13 +227,13 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
             >
-              <motion.div 
+              <motion.div
                 className="text-center bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-xl p-6 hover:border-blue-400/60 transition-all duration-300"
                 whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
               >
@@ -245,7 +245,7 @@ export default function Contact() {
                   info@acti-vate.ai
                 </a>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="text-center bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-md rounded-2xl border border-purple-400/30 shadow-xl p-6 hover:border-purple-400/60 transition-all duration-300"
                 whileHover={{ y: -5, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
               >
@@ -254,10 +254,10 @@ export default function Contact() {
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
                 <a href="tel:+19727541499" className="text-purple-400 hover:text-purple-300 transition-colors">
-                  +1 (972) 754-1499
+                  +1 (972) 456-9326
                 </a>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="text-center bg-gradient-to-br from-green-900/30 to-green-800/20 backdrop-blur-md rounded-2xl border border-green-400/30 shadow-xl p-6 hover:border-green-400/60 transition-all duration-300"
                 whileHover={{ y: -5, boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)" }}
               >
