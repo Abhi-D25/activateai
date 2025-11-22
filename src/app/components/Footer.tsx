@@ -42,7 +42,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-blue-300 mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="text-slate-300">info@acti-vate.ai</li>
-              <li className="text-slate-300">+1 (972) 456-9326</li>
+              <li className="text-slate-300">+1 (972) 476-8582</li>
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start">

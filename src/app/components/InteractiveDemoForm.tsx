@@ -31,6 +31,43 @@ export default function InteractiveDemoForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Normalize phone number to 1XXXXXXXXXX format
+  const normalizePhoneNumber = (phone: string): string => {
+    // Remove all non-digit characters
+    const digits = phone.replace(/\D/g, '');
+    
+    // If empty, return as is
+    if (!digits) return phone;
+    
+    // If it already starts with 1 and has 11 digits, return as is
+    if (digits.length === 11 && digits.startsWith('1')) {
+      return digits;
+    }
+    
+    // If it has 10 digits (US number without country code), prepend 1
+    if (digits.length === 10) {
+      return `1${digits}`;
+    }
+    
+    // If it has 11 digits but doesn't start with 1, take last 10 and prepend 1
+    if (digits.length === 11 && !digits.startsWith('1')) {
+      return `1${digits.slice(-10)}`;
+    }
+    
+    // If it has more than 11 digits, take the last 11 if it starts with 1, otherwise last 10 + 1
+    if (digits.length > 11) {
+      const last11 = digits.slice(-11);
+      if (last11.startsWith('1')) {
+        return last11;
+      }
+      // Take last 10 digits and prepend 1
+      return `1${digits.slice(-10)}`;
+    }
+    
+    // For cases with less than 10 digits, return as is (invalid format, backend will handle)
+    return digits;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -43,6 +80,9 @@ export default function InteractiveDemoForm() {
     setIsSubmitting(true);
 
     try {
+      // Normalize phone number before sending
+      const normalizedPhone = normalizePhoneNumber(formData.phone);
+      
       // Call both webhooks in parallel
       const [demoCallResponse, emailResponse] = await Promise.all([
         fetch('/api/demo-call', {
@@ -52,7 +92,7 @@ export default function InteractiveDemoForm() {
           },
           body: JSON.stringify({
             name: formData.name,
-            phone: formData.phone,
+            phone: normalizedPhone,
             email: formData.email,
             industry: formData.industry,
           })
@@ -300,7 +340,7 @@ export default function InteractiveDemoForm() {
                 onChange={handleChange}
                 required
                 className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
-                placeholder="+1 (555) 123-4567"
+                placeholder="+1 (972) 476-8582"
               />
             </div>
           </motion.div>
