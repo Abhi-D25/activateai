@@ -6,6 +6,7 @@ import PageTransition from '@/app/components/PageTransition';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import InteractiveDemoModal from '@/components/InteractiveDemoModal';
 import PortfolioModal from '@/components/PortfolioModal';
+import ClientChannelsBanner from '@/components/ClientChannelsBanner';
 import { useState } from 'react';
 
 const demos = [
@@ -158,6 +159,11 @@ export default function SolutionsPage() {
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Client Channels Banner */}
+              <div className="mb-24 w-full">
+                <ClientChannelsBanner />
               </div>
             </div>
 

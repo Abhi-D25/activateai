@@ -12,6 +12,8 @@ import InteractiveDemoForm from '@/app/components/InteractiveDemoForm';
 import Link from 'next/link';
 import { services, Service } from '@/data/services';
 import ServiceModal from '@/components/ServiceModal';
+import MarketingFeatures from '@/components/MarketingFeatures';
+import ClientChannelsBanner from '@/components/ClientChannelsBanner';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -52,15 +54,15 @@ export default function Home() {
         <div className="bg-black">
 
           {/* Hero Section */}
-          <section className="relative min-h-screen overflow-hidden flex items-center">
+          <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
             <div className="absolute inset-0" />
             <ParticleBackground />
-            <div className="container relative z-10 mx-auto px-4 py-20">
+            <div className="container relative z-10 mx-auto px-4 py-20 flex-grow flex items-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center"
+                className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center w-full"
               >
                 {/* Left Content - 60% */}
                 <div className="lg:col-span-3 text-center lg:text-left order-1 lg:order-1">
@@ -124,6 +126,11 @@ export default function Home() {
                   <InteractiveDemoForm />
                 </motion.div>
               </motion.div>
+            </div>
+
+            {/* Client Channels Banner */}
+            <div className="w-full relative z-20 mt-12">
+              <ClientChannelsBanner />
             </div>
           </section>
 
@@ -612,8 +619,8 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.section>
-        </div>
-      </PageTransition>
+        </div >
+      </PageTransition >
     </>
   );
 }

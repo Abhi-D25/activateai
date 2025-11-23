@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon, GiftIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
 const INDUSTRIES = [
   'Professional Services',
@@ -35,25 +35,25 @@ export default function InteractiveDemoForm() {
   const normalizePhoneNumber = (phone: string): string => {
     // Remove all non-digit characters
     const digits = phone.replace(/\D/g, '');
-    
+
     // If empty, return as is
     if (!digits) return phone;
-    
+
     // If it already starts with 1 and has 11 digits, return as is
     if (digits.length === 11 && digits.startsWith('1')) {
       return digits;
     }
-    
+
     // If it has 10 digits (US number without country code), prepend 1
     if (digits.length === 10) {
       return `1${digits}`;
     }
-    
+
     // If it has 11 digits but doesn't start with 1, take last 10 and prepend 1
     if (digits.length === 11 && !digits.startsWith('1')) {
       return `1${digits.slice(-10)}`;
     }
-    
+
     // If it has more than 11 digits, take the last 11 if it starts with 1, otherwise last 10 + 1
     if (digits.length > 11) {
       const last11 = digits.slice(-11);
@@ -63,7 +63,7 @@ export default function InteractiveDemoForm() {
       // Take last 10 digits and prepend 1
       return `1${digits.slice(-10)}`;
     }
-    
+
     // For cases with less than 10 digits, return as is (invalid format, backend will handle)
     return digits;
   };
@@ -82,7 +82,7 @@ export default function InteractiveDemoForm() {
     try {
       // Normalize phone number before sending
       const normalizedPhone = normalizePhoneNumber(formData.phone);
-      
+
       // Call both webhooks in parallel
       const [demoCallResponse, emailResponse] = await Promise.all([
         fetch('/api/demo-call', {
@@ -176,6 +176,18 @@ export default function InteractiveDemoForm() {
           </motion.p>
 
           <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.55 }}
+            className="mb-6 bg-purple-500/10 border border-purple-400/20 rounded-xl p-3 flex items-center gap-3"
+          >
+            <GiftIcon className="w-6 h-6 text-purple-400 flex-shrink-0" />
+            <p className="text-purple-200 text-sm font-medium">
+              Your <span className="text-purple-300 font-bold">1 Month Free Trial</span> has been activated!
+            </p>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -265,6 +277,21 @@ export default function InteractiveDemoForm() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl animate-pulse" />
 
       <div className="relative bg-gradient-to-br from-blue-900/60 to-purple-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-blue-500/50 shadow-2xl">
+        {/* Badges */}
+        <div className="absolute -top-3 -left-3 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-300 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 z-20">
+          <ShieldCheckIcon className="w-4 h-4" />
+          <span>HIPAA & SOC2 Compliant</span>
+        </div>
+
+        <motion.div
+          animate={{ opacity: [1, 0.75, 1], scale: [1, 1.25, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-3 -right-3 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-sm font-bold px-4 py-2 rounded-full shadow-lg flex items-center gap-2 z-20"
+        >
+          <GiftIcon className="w-5 h-5" />
+          <span>1 Month Free Trial</span>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -448,6 +475,6 @@ export default function InteractiveDemoForm() {
           ease: "easeInOut"
         }}
       />
-    </motion.div>
+    </motion.div >
   );
 }
