@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Script from "next/script";
 
 export default function Footer() {
   return (
@@ -61,6 +62,13 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} ActivateAI. All rights reserved.</p>
         </div>
       </div>
+      <Script
+        src="https://static.newo.ai/newo-chat/web-chat.js"
+        // @ts-expect-error: name is not in ScriptProps but required by vendor
+        name="web-chat"
+        data-client-secret="ba74f3e0-48c4-492b-9c05-b1a0160a3a24"
+        strategy="lazyOnload"
+      />
     </footer>
   );
 } 
