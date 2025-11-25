@@ -69,6 +69,14 @@ export default function InteractiveDemoForm() {
     return digits;
   };
 
+  // Validate domain format (must have a suffix like .com, .in, etc.)
+  const isValidDomain = (domain: string): boolean => {
+    if (!domain.trim()) return true; // Empty is valid (optional field)
+    // Check if it has a valid domain suffix (at least 2 characters after the last dot)
+    const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z]{2,})+$/;
+    return domainPattern.test(domain.trim());
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -83,6 +91,12 @@ export default function InteractiveDemoForm() {
     try {
       // Normalize phone number before sending
       const normalizedPhone = normalizePhoneNumber(formData.phone);
+
+      // Normalize website - add https:// if it's just a domain
+      let normalizedWebsite = formData.website.trim();
+      if (normalizedWebsite && !normalizedWebsite.match(/^https?:\/\//i)) {
+        normalizedWebsite = `https://${normalizedWebsite}`;
+      }
 
       // Call both webhooks in parallel
       const [demoCallResponse, emailResponse] = await Promise.all([
@@ -107,7 +121,7 @@ export default function InteractiveDemoForm() {
             name: formData.name,
             phone: normalizedPhone,
             email: formData.email,
-            website: formData.website,
+            website: normalizedWebsite,
             industry: formData.industry,
           })
         })
@@ -179,21 +193,9 @@ export default function InteractiveDemoForm() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.55 }}
-            className="mb-6 bg-purple-500/10 border border-purple-400/20 rounded-xl p-3 flex items-center gap-3"
-          >
-            <GiftIcon className="w-6 h-6 text-purple-400 flex-shrink-0" />
-            <p className="text-purple-200 text-sm font-medium">
-              Your <span className="text-purple-300 font-bold">1 Month Free Trial</span> has been activated!
-            </p>
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.55 }}
             className="space-y-3 mb-6"
           >
             <div className="flex items-start gap-3 bg-green-500/10 border border-green-400/20 rounded-xl p-3">
@@ -236,7 +238,7 @@ export default function InteractiveDemoForm() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.7 }}
             className="border-t border-green-400/20 pt-4"
           >
             <p className="text-green-200 text-center mb-3 text-xs">
@@ -409,13 +411,17 @@ export default function InteractiveDemoForm() {
             <div className="relative">
               <GlobeAltIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
-                type="url"
+                type="text"
                 id="website"
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
-                className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
-                placeholder="https://example.com"
+                className={`w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none ${
+                  formData.website && !isValidDomain(formData.website)
+                    ? 'border-red-500 focus:border-red-500'
+                    : 'border-gray-600 focus:border-blue-500'
+                }`}
+                placeholder="example.com"
               />
             </div>
           </motion.div>
