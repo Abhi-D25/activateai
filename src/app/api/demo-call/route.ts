@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       arguments: [
         {
           name: "content",
-          value: `In a British accent, call ${body.name} in ${body.industry} industry at ${body.phone}. Greet the user: 'Hey! This is Axel from ActivateAI! Is this ${body.name}?'`
+          value: `Call ${body.name} in ${body.industry} industry at ${body.phone}. Greet the user: 'Hey! This is Axel from ActivateAI! Is this ${body.name}?'. Once user confirms, start scenario: **Outbound Call**.`
         }
       ]
     };

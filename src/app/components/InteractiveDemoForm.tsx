@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon, GiftIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon, GiftIcon, ShieldCheckIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 const INDUSTRIES = [
   'Professional Services',
@@ -26,6 +26,7 @@ export default function InteractiveDemoForm() {
     name: '',
     phone: '',
     email: '',
+    website: '',
     industry: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -104,7 +105,9 @@ export default function InteractiveDemoForm() {
           },
           body: JSON.stringify({
             name: formData.name,
+            phone: normalizedPhone,
             email: formData.email,
+            website: formData.website,
             industry: formData.industry,
           })
         })
@@ -276,19 +279,19 @@ export default function InteractiveDemoForm() {
       {/* Video-like Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl animate-pulse" />
 
-      <div className="relative bg-gradient-to-br from-blue-900/60 to-purple-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-blue-500/50 shadow-2xl">
+      <div className="relative bg-gradient-to-br from-blue-900/60 to-purple-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-blue-500/50 shadow-2xl">
         {/* Badges */}
-        <div className="absolute -top-3 -left-3 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-300 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 z-20">
-          <ShieldCheckIcon className="w-4 h-4" />
+        <div className="absolute -top-2 -left-2 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-300 text-[10px] font-bold px-2 py-1 rounded-full shadow-lg flex items-center gap-1 z-20">
+          <ShieldCheckIcon className="w-3 h-3" />
           <span>HIPAA & SOC2 Compliant</span>
         </div>
 
         <motion.div
           animate={{ opacity: [1, 0.75, 1], scale: [1, 1.25, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-3 -right-3 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-sm font-bold px-4 py-2 rounded-full shadow-lg flex items-center gap-2 z-20"
+          className="absolute -top-3 -right-3 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg flex items-center gap-2 z-20"
         >
-          <GiftIcon className="w-5 h-5" />
+          <GiftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>1 Month Free Trial</span>
         </motion.div>
 
@@ -296,7 +299,7 @@ export default function InteractiveDemoForm() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-6"
+          className="text-center mb-4"
         >
           <motion.div
             animate={{
@@ -310,32 +313,32 @@ export default function InteractiveDemoForm() {
             }}
             className="inline-block"
           >
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center shadow-lg">
-              <PhoneIcon className="w-8 h-8 text-white" />
+            <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center shadow-lg">
+              <PhoneIcon className="w-6 h-6 text-white" />
             </div>
           </motion.div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
             Try it out <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">RIGHT NOW!</span>
           </h3>
-          <p className="text-base sm:text-lg text-slate-300 mb-2 hidden sm:block">
+          <p className="text-sm sm:text-base text-slate-300 mb-1 hidden sm:block">
             Know more about ActivateAI through a live call!
           </p>
-          <p className="text-base sm:text-lg text-blue-300 font-semibold sm:block hidden">
+          <p className="text-sm sm:text-base text-blue-300 font-semibold sm:block hidden">
             BTW Your business can have this too! 👀
           </p>
         </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2">
+            <label htmlFor="name" className="block text-xs font-semibold text-slate-300 mb-1">
               Your Name
             </label>
             <div className="relative">
-              <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <UserIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 id="name"
@@ -343,7 +346,7 @@ export default function InteractiveDemoForm() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="John Doe"
               />
             </div>
@@ -354,11 +357,11 @@ export default function InteractiveDemoForm() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <label htmlFor="phone" className="block text-sm font-semibold text-slate-300 mb-2">
+            <label htmlFor="phone" className="block text-xs font-semibold text-slate-300 mb-1">
               Phone Number
             </label>
             <div className="relative">
-              <PhoneIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <PhoneIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="tel"
                 id="phone"
@@ -366,7 +369,7 @@ export default function InteractiveDemoForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="+1 (972) 476-8582"
               />
             </div>
@@ -377,11 +380,11 @@ export default function InteractiveDemoForm() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2">
+            <label htmlFor="email" className="block text-xs font-semibold text-slate-300 mb-1">
               Email Address
             </label>
             <div className="relative">
-              <EnvelopeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <EnvelopeIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="email"
                 id="email"
@@ -389,7 +392,7 @@ export default function InteractiveDemoForm() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
                 placeholder="john@example.com"
               />
             </div>
@@ -398,20 +401,43 @@ export default function InteractiveDemoForm() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.55 }}
           >
-            <label htmlFor="industry" className="block text-sm font-semibold text-slate-300 mb-2">
+            <label htmlFor="website" className="block text-xs font-semibold text-slate-300 mb-1">
+              Business Website
+            </label>
+            <div className="relative">
+              <GlobeAltIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="url"
+                id="website"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                placeholder="https://example.com"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mb-4"
+          >
+            <label htmlFor="industry" className="block text-xs font-semibold text-slate-300 mb-1">
               Industry
             </label>
             <div className="relative">
-              <BriefcaseIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <BriefcaseIcon className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
               <select
                 id="industry"
                 name="industry"
                 value={formData.industry}
                 onChange={handleChange}
                 required
-                className="w-full pl-14 pr-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none appearance-none cursor-pointer"
+                className="w-full pl-10 pr-8 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none appearance-none cursor-pointer"
               >
                 <option value="" disabled className="bg-gray-900 text-slate-400">Select your industry</option>
                 {INDUSTRIES.map((industry) => (
@@ -420,8 +446,8 @@ export default function InteractiveDemoForm() {
                   </option>
                 ))}
               </select>
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute right-2.5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -436,11 +462,11 @@ export default function InteractiveDemoForm() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-bold text-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-bold text-base hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -456,7 +482,7 @@ export default function InteractiveDemoForm() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-xs text-slate-400 text-center mt-4"
+          className="text-xs text-slate-400 text-center mt-2"
         >
           By submitting, you agree to receive a demo call from ActivateAI
         </motion.p>

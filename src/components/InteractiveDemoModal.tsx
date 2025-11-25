@@ -39,7 +39,7 @@ export default function InteractiveDemoModal({ isOpen, onClose, title = "AI Voic
                 </button>
               </div>
 
-              <div className="overflow-y-auto custom-scrollbar p-6 sm:p-8">
+              <div className="overflow-y-auto custom-scrollbar p-4 sm:p-5 mt-4">
                 <InteractiveDemoForm />
               </div>
 
