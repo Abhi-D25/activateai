@@ -27,7 +27,7 @@ export default function Navigation() {
               </span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
             <Link href="/" className="text-slate-300 hover:text-blue-400 transition-colors">
@@ -39,11 +39,14 @@ export default function Navigation() {
             <Link href="/solutions" className="text-slate-300 hover:text-blue-400 transition-colors">
               Solutions
             </Link>
+            <Link href="/integrations" className="text-slate-300 hover:text-blue-400 transition-colors">
+              Integrations
+            </Link>
             <Link href="/contact" className="text-slate-300 hover:text-blue-400 transition-colors">
               Contact
             </Link>
           </div>
-          
+
           <div className="hidden sm:flex sm:items-center">
             <a
               href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
@@ -88,6 +91,13 @@ export default function Navigation() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Solutions
+              </Link>
+              <Link
+                href="/integrations"
+                className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Integrations
               </Link>
               <Link
                 href="/contact"

@@ -88,7 +88,7 @@ const MobileNav = () => {
               className="fixed inset-0 bg-black/50 z-40 md:hidden"
               onClick={closeMenu}
             />
-            
+
             {/* Menu Panel - Slides up from bottom */}
             <motion.div
               initial={{ y: '100%' }}
@@ -132,6 +132,14 @@ const MobileNav = () => {
                     onClick={closeMenu}
                   >
                     Solutions
+                  </Link>
+
+                  <Link
+                    href="/integrations"
+                    className="block text-lg font-medium text-slate-300 hover:text-blue-400 transition-colors py-3 border-b border-slate-700"
+                    onClick={closeMenu}
+                  >
+                    Integrations
                   </Link>
 
                   <Link
