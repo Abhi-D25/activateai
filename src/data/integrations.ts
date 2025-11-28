@@ -42,12 +42,6 @@ export const integrations: Integration[] = [
         description: "All-in-one software for home service professionals.",
     },
     {
-        name: "Newo Chat",
-        type: "Text Messaging",
-        industry: ["All Industries"],
-        description: "Integrated chat solution.",
-    },
-    {
         name: "Telegram",
         type: "Text Messaging",
         industry: ["All Industries"],
@@ -64,12 +58,6 @@ export const integrations: Integration[] = [
         type: "CRM",
         industry: ["Home Service"],
         description: "Business management software for roofing contractors.",
-    },
-    {
-        name: "Bitrix",
-        type: "CRM",
-        industry: ["All Industries"],
-        description: "Social enterprise software.",
     },
     {
         name: "athenahealth",
