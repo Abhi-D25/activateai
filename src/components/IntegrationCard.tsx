@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Integration } from '@/data/integrations';
 
 interface IntegrationCardProps {
@@ -9,9 +10,20 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({ integration }) => {
     return (
         <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group h-full flex flex-col">
             <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-blue-500/20 transition-all">
-                    {integration.name.charAt(0)}
-                </div>
+                {integration.logo ? (
+                    <div className={`w-12 h-12 relative overflow-hidden flex items-center justify-center ${integration.logoShape === 'square' ? 'rounded-lg' : 'rounded-full bg-white p-2 shadow-sm'}`}>
+                        <Image
+                            src={integration.logo}
+                            alt={`${integration.name} logo`}
+                            fill
+                            className={`object-contain ${integration.name === 'Cal.com' ? 'p-1.75' : (integration.logoShape === 'square' ? '' : 'p-1.5')}`}
+                        />
+                    </div>
+                ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-blue-500/20 transition-all">
+                        {integration.name.charAt(0)}
+                    </div>
+                )}
                 <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
                     {integration.type}
                 </span>
