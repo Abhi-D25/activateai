@@ -198,7 +198,7 @@ export default function SolutionsPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8"
               >
-                We&apos;re not here to just automate a few tasks. We partner with you to future-proof your business—on your terms.
+                We&apos;re not here to just automate a few tasks. We partner with you to future-proof your business on your terms.
               </motion.p>
 
               <motion.div
@@ -230,7 +230,6 @@ export default function SolutionsPage() {
                   transition={{ duration: 0.6 }}
                   className="bg-slate-900/50 border border-blue-500/20 rounded-xl p-8 hover:border-blue-500/40 transition-colors"
                 >
-                  <div className="text-4xl mb-6">🔍</div>
                   <h3 className="text-2xl font-bold text-white mb-2">1. Discover</h3>
                   <p className="text-blue-400 font-semibold mb-4">We start by listening</p>
                   <p className="text-slate-400 mb-6">
@@ -251,7 +250,6 @@ export default function SolutionsPage() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-slate-900/50 border border-green-500/20 rounded-xl p-8 hover:border-green-500/40 transition-colors"
                 >
-                  <div className="text-4xl mb-6">🛠</div>
                   <h3 className="text-2xl font-bold text-white mb-2">2. Connect</h3>
                   <p className="text-green-400 font-semibold mb-4">Build AI Readiness</p>
                   <p className="text-slate-400 mb-6">
@@ -272,11 +270,10 @@ export default function SolutionsPage() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="bg-slate-900/50 border border-purple-500/20 rounded-xl p-8 hover:border-purple-500/40 transition-colors"
                 >
-                  <div className="text-4xl mb-6">🤖</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">3. AI Enablement</h3>
-                  <p className="text-purple-400 font-semibold mb-4">Layer in intelligence</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">3. Enable</h3>
+                  <p className="text-purple-400 font-semibold mb-4">Activate the intelligence</p>
                   <p className="text-slate-400 mb-6">
-                    Once workflows are running, we add AI where it makes the biggest difference.
+                    Once workflows are running, we can add AI where it makes the biggest difference.
                   </p>
                   <ul className="space-y-2 text-sm text-slate-300">
                     <li className="flex items-start"><span className="mr-2 text-purple-500">✓</span>Qualify leads by tone</li>

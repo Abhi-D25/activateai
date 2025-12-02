@@ -25,31 +25,40 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
             onClick={onClose}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
           />
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+          <div className="fixed inset-0 z-[70] flex items-start justify-center p-4 pt-24 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[90vh] flex flex-col"
+              className="w-[95%] md:w-full md:max-w-4xl lg:max-w-5xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[85vh] flex flex-col"
             >
               {/* Header */}
               <div className={`relative h-32 sm:h-40 bg-gradient-to-r ${service.gradient}`}>
+                {service.image && (
+                  <>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-60`} />
+                  </>
+                )}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-sm"
+                  className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-sm z-10"
                 >
                   <XMarkIcon className="w-6 h-6" />
                 </button>
-                <div className="absolute -bottom-8 left-8 p-4 bg-slate-900 rounded-xl border border-slate-700 shadow-lg">
+                <div className="absolute -bottom-8 left-8 p-4 bg-slate-900 rounded-xl border border-slate-700 shadow-lg z-10">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-8 pt-12 overflow-y-auto custom-scrollbar">
+              <div className="p-5 md:p-8 pt-12 overflow-y-auto custom-scrollbar flex-1">
                 <h2 className="text-3xl font-bold text-white mb-2">{service.title}</h2>
-                <p className="text-lg text-blue-400 mb-6">{service.description}</p>
-                
+
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-3">Overview</h3>
@@ -70,7 +79,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                         ))}
                       </ul>
                     </div>
-                    
+
                     {service.benefits && (
                       <div>
                         <h3 className="text-xl font-semibold text-white mb-3">Benefits</h3>
@@ -89,7 +98,8 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                   </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-slate-800 flex justify-end">
+                {/* Desktop Footer (Scrolls with content) */}
+                <div className="mt-8 pt-8 border-t border-slate-800 hidden md:flex justify-end">
                   <button
                     onClick={onClose}
                     className="px-6 py-2 text-slate-400 hover:text-white transition-colors mr-4"
@@ -103,6 +113,22 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     Get Started
                   </a>
                 </div>
+              </div>
+
+              {/* Mobile Sticky Footer */}
+              <div className="p-4 border-t border-slate-800 bg-slate-900 md:hidden flex justify-end shrink-0 z-20">
+                <button
+                  onClick={onClose}
+                  className="px-6 py-2 text-slate-400 hover:text-white transition-colors mr-4"
+                >
+                  Close
+                </button>
+                <a
+                  href="/contact"
+                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-blue-900/20"
+                >
+                  Get Started
+                </a>
               </div>
             </motion.div>
           </div>
