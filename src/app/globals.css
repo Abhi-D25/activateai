@@ -524,7 +524,7 @@
   }
 
   .btn-secondary {
-    @apply bg-blue-500 text-black border border-white/50 px-6 py-3 rounded-lg font-medium transition-all duration-200 ease-out;
+    @apply bg-blue-500 text-white border border-black/50 px-6 py-3 rounded-lg font-medium transition-all duration-200 ease-out;
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
   

@@ -1,18 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BeakerIcon, WindowIcon, ChatBubbleLeftRightIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, WindowIcon, ChatBubbleLeftRightIcon, GlobeAltIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import PageTransition from '@/app/components/PageTransition';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import InteractiveDemoModal from '@/components/InteractiveDemoModal';
 import PortfolioModal from '@/components/PortfolioModal';
 import ClientChannelsBanner from '@/components/ClientChannelsBanner';
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 const demos = [
   {
     id: 'voice-agent',
-    title: 'AI Voice Receptionist',
+    title: 'Smart Lead Manager',
     description: 'Experience a natural conversation with our AI voice agent that can schedule appointments and qualify leads.',
     icon: ChatBubbleLeftRightIcon,
     link: '#',
@@ -21,7 +22,7 @@ const demos = [
   },
   {
     id: 'website-modernization',
-    title: 'Website Modernization',
+    title: 'New Era, New Website',
     description: 'Explore our collection of high-converting, modern websites tailored for various industries.',
     icon: GlobeAltIcon,
     link: '#',
@@ -30,7 +31,7 @@ const demos = [
   },
   {
     id: 'knowledge-bot',
-    title: 'Internal Knowledge Bot',
+    title: 'The Business Brain',
     description: 'Ask questions about company policies and get instant, accurate answers from your document base.',
     icon: BeakerIcon,
     link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
@@ -39,19 +40,40 @@ const demos = [
   },
   {
     id: 'smart-dashboard',
-    title: 'Business Intelligence Dashboard',
-    description: 'Interactive dashboard showing real-time business metrics, lead tracking, and conversion analytics.',
+    title: 'Operations Coordinator',
+    description: 'Automated scheduling, invoicing, and customer updates that keep your day on track.',
     icon: WindowIcon,
     link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
     gradient: 'from-purple-500 to-pink-500',
     status: 'Live Demo Coming Soon'
+  },
+  {
+    id: 'intelligent-insights',
+    title: 'Intelligent Insights',
+    description: 'Instant clarity on what\'s working and what needs attention so you can make smarter decisions without digging through numbers.',
+    icon: LightBulbIcon,
+    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
+    gradient: 'from-indigo-500 to-purple-500',
+    status: 'Contact Us'
   }
 ];
 
-export default function SolutionsPage() {
+function SolutionsContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+
+  // Handle demo query parameter to auto-open modals
+  useEffect(() => {
+    const demoParam = searchParams.get('demo');
+    if (demoParam === 'voice-agent') {
+      setSelectedDemo('voice-agent');
+      setIsModalOpen(true);
+    } else if (demoParam === 'website-modernization') {
+      setIsPortfolioModalOpen(true);
+    }
+  }, [searchParams]);
 
   const handleDemoClick = (e: React.MouseEvent, demoId: string, status: string, link: string) => {
     e.preventDefault();
@@ -111,21 +133,22 @@ export default function SolutionsPage() {
 
             {/* Interactive Demos Section - FIRST */}
             <div className="mb-24">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
-                {demos.map((demo, index) => (
+              {/* First row - 2 demos */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto mb-8">
+                {demos.slice(0, 2).map((demo, index) => (
                   <motion.div
                     key={demo.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                     whileHover={{ y: -5 }}
-                    className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
+                    className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer flex flex-col"
                     onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
                   >
                     {/* Gradient Border Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
 
-                    <div className="p-6 sm:p-8">
+                    <div className="p-6 sm:p-8 flex flex-col flex-1">
                       <div className="flex items-start justify-between mb-6">
                         <div className={`p-3 rounded-xl bg-gradient-to-br ${demo.gradient} bg-opacity-10`}>
                           <demo.icon className="w-8 h-8 text-white" />
@@ -146,13 +169,13 @@ export default function SolutionsPage() {
                         {demo.title}
                       </h3>
 
-                      <p className="text-slate-400 mb-8 leading-relaxed">
+                      <p className="text-slate-400 mb-8 leading-relaxed flex-1">
                         {demo.description}
                       </p>
 
                       <button
                         onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
-                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20"
+                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20 mt-auto"
                       >
                         {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : 'Open Demo'}
                       </button>
@@ -161,8 +184,59 @@ export default function SolutionsPage() {
                 ))}
               </div>
 
+              {/* Second row - 3 demos with Intelligent Insights in the center */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+                {[demos[2], demos[4], demos[3]].map((demo, index) => (
+                  <motion.div
+                    key={demo.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: (index + 2) * 0.1 + 0.3 }}
+                    whileHover={{ y: -5 }}
+                    className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer flex flex-col"
+                    onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
+                  >
+                    {/* Gradient Border Effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+
+                    <div className="p-6 sm:p-8 flex flex-col flex-1">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${demo.gradient} bg-opacity-10`}>
+                          <demo.icon className="w-8 h-8 text-white" />
+                        </div>
+                        <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${demo.status === 'Live Demo'
+                          ? 'border-green-500 text-green-400 bg-green-500/10'
+                          : demo.status === 'Live Demo Coming Soon'
+                            ? 'border-yellow-500 text-yellow-400 bg-yellow-500/10'
+                            : demo.status === 'Contact Us'
+                              ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                              : 'border-slate-600 text-slate-400 bg-slate-800'
+                          }`}>
+                          {demo.status}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                        {demo.title}
+                      </h3>
+
+                      <p className="text-slate-400 mb-8 leading-relaxed flex-1">
+                        {demo.description}
+                      </p>
+
+                      <button
+                        onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
+                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20 mt-auto"
+                      >
+                        {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : demo.status === 'Contact Us' ? 'Contact Us' : 'Open Demo'}
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
               {/* Client Channels Banner */}
-              <div className="mb-24 w-full">
+              <div className="mt-16 mb-24 w-full">
                 <ClientChannelsBanner />
               </div>
             </div>
@@ -299,7 +373,6 @@ export default function SolutionsPage() {
                   whileHover={{ y: -5 }}
                   className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/20 p-8 rounded-2xl"
                 >
-                  <div className="text-4xl mb-4">🎯</div>
                   <h4 className="text-white font-bold mb-2">Benefits Without Effort</h4>
                   <p className="text-slate-400 text-sm">Experience automation without changing how you work</p>
                 </motion.div>
@@ -307,7 +380,6 @@ export default function SolutionsPage() {
                   whileHover={{ y: -5 }}
                   className="bg-gradient-to-br from-green-900/30 to-blue-900/30 border border-green-500/20 p-8 rounded-2xl"
                 >
-                  <div className="text-4xl mb-4">🚀</div>
                   <h4 className="text-white font-bold mb-2">Future-Proof Business</h4>
                   <p className="text-slate-400 text-sm">Systems that scale and adapt as your business grows</p>
                 </motion.div>
@@ -315,7 +387,6 @@ export default function SolutionsPage() {
                   whileHover={{ y: -5 }}
                   className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-500/20 p-8 rounded-2xl"
                 >
-                  <div className="text-4xl mb-4">❤️</div>
                   <h4 className="text-white font-bold mb-2">More Time for You</h4>
                   <p className="text-slate-400 text-sm">Focus on the work that energizes you, not the drain</p>
                 </motion.div>
@@ -325,5 +396,17 @@ export default function SolutionsPage() {
         </div>
       </PageTransition>
     </>
+  );
+}
+
+export default function SolutionsPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-black min-h-screen pt-24 pb-20 flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    }>
+      <SolutionsContent />
+    </Suspense>
   );
 }

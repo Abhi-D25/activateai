@@ -2,6 +2,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 
+// Mark this route as dynamic since it uses headers()
+export const dynamic = 'force-dynamic';
+
 // Airtable configuration
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;

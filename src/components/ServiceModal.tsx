@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { XMarkIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, CheckCircleIcon, PlayIcon } from '@heroicons/react/24/outline';
 import { Service } from '@/data/services';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface ServiceModalProps {
   isOpen: boolean;
@@ -11,8 +13,14 @@ interface ServiceModalProps {
   service: Service | null;
 }
 
+// Services that have live demos on the Solutions page
+const servicesWithDemo = ['lead-manager', 'website-modernization'];
+
 export default function ServiceModal({ isOpen, onClose, service }: ServiceModalProps) {
   if (!service) return null;
+
+  const hasDemo = servicesWithDemo.includes(service.id);
+  const demoParam = service.id === 'lead-manager' ? 'voice-agent' : 'website-modernization';
 
   return (
     <AnimatePresence>
@@ -36,10 +44,11 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
               <div className={`relative h-32 sm:h-40 bg-gradient-to-r ${service.gradient}`}>
                 {service.image && (
                   <>
-                    <img
+                    <Image
                       src={service.image}
                       alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-60`} />
                   </>
@@ -99,13 +108,23 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                 </div>
 
                 {/* Desktop Footer (Scrolls with content) */}
-                <div className="mt-8 pt-8 border-t border-slate-800 hidden md:flex justify-end">
+                <div className="mt-8 pt-8 border-t border-slate-800 hidden md:flex justify-end items-center">
                   <button
                     onClick={onClose}
                     className="px-6 py-2 text-slate-400 hover:text-white transition-colors mr-4"
                   >
                     Close
                   </button>
+                  {hasDemo && (
+                    <Link
+                      href={`/solutions?demo=${demoParam}`}
+                      onClick={onClose}
+                      className="px-6 py-2 bg-transparent border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 rounded-lg font-semibold transition-colors mr-4 inline-flex items-center"
+                    >
+                      <PlayIcon className="w-5 h-5 mr-2" />
+                      Try it Yourself
+                    </Link>
+                  )}
                   <a
                     href="/contact"
                     className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-blue-900/20"
@@ -116,19 +135,33 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
               </div>
 
               {/* Mobile Sticky Footer */}
-              <div className="p-4 border-t border-slate-800 bg-slate-900 md:hidden flex justify-end shrink-0 z-20">
-                <button
-                  onClick={onClose}
-                  className="px-6 py-2 text-slate-400 hover:text-white transition-colors mr-4"
-                >
-                  Close
-                </button>
-                <a
-                  href="/contact"
-                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-blue-900/20"
-                >
-                  Get Started
-                </a>
+              <div className="p-4 border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-20">
+                <div className="flex flex-col gap-3">
+                  {hasDemo && (
+                    <Link
+                      href={`/solutions?demo=${demoParam}`}
+                      onClick={onClose}
+                      className="px-6 py-2 bg-transparent border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+                    >
+                      <PlayIcon className="w-5 h-5 mr-2" />
+                      Try it Yourself
+                    </Link>
+                  )}
+                  <div className="flex justify-end">
+                    <button
+                      onClick={onClose}
+                      className="px-6 py-2 text-slate-400 hover:text-white transition-colors mr-4"
+                    >
+                      Close
+                    </button>
+                    <a
+                      href="/contact"
+                      className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-blue-900/20"
+                    >
+                      Get Started
+                    </a>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

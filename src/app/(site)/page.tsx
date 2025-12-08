@@ -72,8 +72,8 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
                   >
-                    Making AI <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Effortless</span>
-                    <br />for Everyday Businesses
+                    {' '}
+                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Making AI work</span> for everyday businesses.
                   </motion.h1>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-xl md:text-2xl text-slate-300 mb-4"
                   >
-                    We help small and medium businesses <span className="text-blue-400 font-semibold">digitize, automate, and integrate AI</span> into their everyday workflows.
+                    We design <span className="text-blue-400 font-semibold">simple solutions</span> to save you time and money every week.
                   </motion.p>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.5 }}
                     className="text-lg text-slate-400 mb-8"
                   >
-                    No new apps. No disruption. Just less busywork, and more time for growth.
+                    No new apps. No disruption. Just less busywork, and more time for growth & customers.
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -154,11 +154,11 @@ export default function Home() {
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                   <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-                    What We Offer
+                    How We Help
                   </span>
                 </h2>
                 <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                  Tailored AI solutions designed to help your business work smarter, not harder
+                  Setting up simple AI to make your business faster, easier, and more profitable.
                 </p>
                 <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full" />
               </motion.div>
@@ -214,7 +214,7 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Second Row - 2 Items (Centered, Upside-down Triangle Layout) */}
+              {/* Second Row - 2 Items (Centered) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
                 {services.slice(3, 5).map((offering, index) => (
                   <motion.div

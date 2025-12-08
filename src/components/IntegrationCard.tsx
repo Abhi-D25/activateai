@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import { Integration } from '@/data/integrations';
+import { Integration, typeColors } from '@/data/integrations';
 
 interface IntegrationCardProps {
     integration: Integration;
 }
 
 const IntegrationCard: React.FC<IntegrationCardProps> = ({ integration }) => {
+    const colors = typeColors[integration.type] || { bg: "bg-slate-800", text: "text-slate-400", border: "border-slate-700" };
+
     return (
         <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group h-full flex flex-col">
             <div className="flex items-start justify-between mb-4">
@@ -24,7 +26,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({ integration }) => {
                         {integration.name.charAt(0)}
                     </div>
                 )}
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${colors.bg} ${colors.text} border ${colors.border}`}>
                     {integration.type}
                 </span>
             </div>

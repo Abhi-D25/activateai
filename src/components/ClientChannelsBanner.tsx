@@ -31,7 +31,7 @@ export default function ClientChannelsBanner() {
         <div className="w-full py-8 bg-black/30 backdrop-blur-sm border-y border-white/5 overflow-hidden">
             <div className="container mx-auto px-4">
                 <p className="text-center text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">
-                    Available on all your favorite channels
+                    1 assistant across all channels - always on
                 </p>
 
                 <div className="relative flex overflow-x-hidden group">

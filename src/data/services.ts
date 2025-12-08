@@ -1,6 +1,6 @@
-import { 
-  ChartBarIcon, 
-  SparklesIcon, 
+import {
+  ChartBarIcon,
+  SparklesIcon,
   CogIcon,
   BookOpenIcon,
   LightBulbIcon,
@@ -24,8 +24,8 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'lead-manager',
-    title: 'Lead Manager',
-    description: 'Automate lead capture, follow-ups, and CRM updates. Never miss an opportunity again.',
+    title: 'Smart Lead Manager',
+    description: 'Never miss a call, message, or inquiry. More customers in the door without hiring anyone new.',
     fullDescription: 'Our AI-powered Lead Manager acts as your 24/7 receptionist and sales development representative. It handles incoming inquiries across voice, text, and social media, qualifies leads based on your criteria, and schedules appointments directly into your calendar.',
     icon: ChartBarIcon,
     gradient: 'from-blue-500 to-cyan-500',
@@ -45,8 +45,8 @@ export const services: Service[] = [
   },
   {
     id: 'website-modernization',
-    title: 'Website Modernization',
-    description: 'Refresh your business website with modern design and performance that converts.',
+    title: 'New Era, New Website',
+    description: 'A clean, modern site that builds trust instantly and gives customers a smooth, premium experience from the first click.',
     fullDescription: 'We transform outdated websites into modern, high-performance conversion engines. Our modernization process focuses on speed, mobile responsiveness, and user experience design that turns visitors into customers.',
     icon: SparklesIcon,
     gradient: 'from-purple-500 to-pink-500',
@@ -67,7 +67,7 @@ export const services: Service[] = [
   {
     id: 'operations-coordinator',
     title: 'Operations Coordinator',
-    description: 'Streamline client onboarding, scheduling, invoicing, and support with AI.',
+    description: 'Smooth, efficient operations with automated scheduling, reminders, and customer updates that keep your day on track.',
     fullDescription: 'The Operations Coordinator is your digital office manager. It connects your disparate tools to automate the boring stuff: sending invoices, onboarding new clients, scheduling meetings, and managing project timelines.',
     icon: CogIcon,
     gradient: 'from-green-500 to-teal-500',
@@ -87,8 +87,8 @@ export const services: Service[] = [
   },
   {
     id: 'knowledge-base',
-    title: 'Knowledge Base',
-    description: 'Centralize business documents and team know-how for instant access.',
+    title: 'The Business Brain',
+    description: 'All your team\'s knowledge in one easy place, accessible anytime by anyone. A mentor for every employee.',
     fullDescription: 'Stop answering the same questions over and over. Our Knowledge Base solution centralizes your standard operating procedures, training materials, and business documents into an AI-searchable hub that your team can access instantly.',
     icon: BookOpenIcon,
     gradient: 'from-orange-500 to-yellow-500',
@@ -108,8 +108,8 @@ export const services: Service[] = [
   },
   {
     id: 'business-intelligence',
-    title: 'Business Intelligence',
-    description: 'Get insights from your data with simple dashboards and reports.',
+    title: 'Intelligent Insights',
+    description: 'Instant clarity on what\'s working and what needs attention so you can make smarter decisions without digging through numbers.',
     fullDescription: 'Turn your messy data into clear insights. We build custom dashboards that track your most important KPIs, giving you a real-time view of your business health without the need for complex spreadsheets.',
     icon: LightBulbIcon,
     gradient: 'from-indigo-500 to-purple-500',
