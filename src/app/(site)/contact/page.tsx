@@ -6,12 +6,30 @@ import { motion } from 'framer-motion';
 import {
   EnvelopeIcon,
   PhoneIcon,
-  MapPinIcon
+  MapPinIcon,
+  GlobeAltIcon,
+  BriefcaseIcon
 } from '@heroicons/react/24/outline';
 import ButtonAnimation from '@/app/components/ButtonAnimation';
 import PageTransition from '@/app/components/PageTransition';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import type { ContactFormData, ApiResponse } from '@/types/forms';
+
+const INDUSTRIES = [
+  'Professional Services',
+  'Spa & Wellness',
+  'Restaurant & Food Service',
+  'Dental Clinic',
+  'Medical Practice',
+  'Legal Services',
+  'Real Estate',
+  'Home Services',
+  'Salon & Beauty',
+  'Fitness & Gym',
+  'Automotive Services',
+  'Financial Services',
+  'Other'
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -19,6 +37,8 @@ export default function Contact() {
     email: '',
     phone: '',
     company: '',
+    website: '',
+    industry: '',
     message: ''
   });
 
@@ -26,7 +46,7 @@ export default function Contact() {
   const [formError, setFormError] = useState('');
   const [formSuccess, setFormSuccess] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -38,8 +58,8 @@ export default function Contact() {
     e.preventDefault();
 
     // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setFormError('Name, email and message are required');
+    if (!formData.name || !formData.email || !formData.phone || !formData.company || !formData.website || !formData.message) {
+      setFormError('Name, email, phone, company, website, and message are required');
       return;
     }
 
@@ -77,6 +97,8 @@ export default function Contact() {
           email: '',
           phone: '',
           company: '',
+          website: '',
+          industry: '',
           message: ''
         });
       } else {
@@ -177,7 +199,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-                      Phone
+                      Phone <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -186,11 +208,12 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      required
                     />
                   </div>
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
-                      Company
+                      Company <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -199,7 +222,42 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      required
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="website" className="block text-sm font-medium text-white mb-2">
+                      Website <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      placeholder="example.com"
+                      className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="industry" className="block text-sm font-medium text-white mb-2">
+                      Industry
+                    </label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 appearance-none cursor-pointer"
+                    >
+                      <option value="" className="bg-slate-800 text-slate-400">Select your industry</option>
+                      {INDUSTRIES.map((industry) => (
+                        <option key={industry} value={industry} className="bg-slate-800 text-white">
+                          {industry}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
