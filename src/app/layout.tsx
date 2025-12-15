@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter, DM_Sans } from "next/font/google";
+import { Suspense } from 'react';
 import "./globals.css";
 
 import { Providers } from './providers';
+import ClickTracker from '@/components/ClickTracker';
 // import AIChat from './components/AIChat';
 
 const inter = Inter({
@@ -67,6 +69,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${dmSans.variable}`}>
       <body className={`${inter.className} mobile-scroll antialiased selection:bg-blue-500/30`}>
         <Providers>
+          <Suspense fallback={null}>
+            <ClickTracker />
+          </Suspense>
           {children}
         </Providers>
       </body>
