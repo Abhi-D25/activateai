@@ -8,7 +8,7 @@ export default function ClickTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const leadId = searchParams.get('leadId');
+    const leadId = searchParams.get('leadId') || searchParams.get('lead_id');
     const utmSource = searchParams.get('utm_source');
     const utmMedium = searchParams.get('utm_medium');
 
