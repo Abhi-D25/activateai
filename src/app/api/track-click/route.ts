@@ -30,15 +30,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const webhookUrl = process.env.N8N_WEBHOOK_EMAIL_TRACKING_URL;
-
-    if (!webhookUrl) {
-      console.error('N8N_WEBHOOK_EMAIL_TRACKING_URL is not configured');
-      return NextResponse.json(
-        { success: false, error: 'Webhook URL not configured' },
-        { status: 500, headers: corsHeaders }
-      );
-    }
+    const webhookUrl = 'https://cartersunny.app.n8n.cloud/webhook/email_click_tracker';
 
     // Forward to n8n webhook
     const n8nResponse = await fetch(webhookUrl, {
