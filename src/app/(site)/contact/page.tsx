@@ -311,8 +311,8 @@ export default function Contact() {
                   <PhoneIcon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-                <a href="tel:+19724768582" className="text-purple-400 hover:text-purple-300 transition-colors">
-                  +1 (972) 476-8582
+                <a href="tel:+19728958256" className="text-purple-400 hover:text-purple-300 transition-colors">
+                  +1 (972) 895-8256
                 </a>
               </motion.div>
               <motion.div

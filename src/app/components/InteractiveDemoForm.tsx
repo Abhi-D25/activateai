@@ -372,7 +372,7 @@ export default function InteractiveDemoForm() {
                 onChange={handleChange}
                 required
                 className="w-full pl-10 pr-3 py-2 text-sm bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
-                placeholder="+1 (972) 476-8582"
+                placeholder="+1 (972) 895-8256"
               />
             </div>
           </motion.div>

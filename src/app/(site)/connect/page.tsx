@@ -24,7 +24,7 @@ FN:Abhi Dutta
 N:Dutta;Abhi;;;
 ORG:ActivateAI
 TITLE:Founder & CEO
-TEL;TYPE=CELL:+1 (972) 476-8582
+TEL;TYPE=CELL:+19728958256
 EMAIL:dutta@acti-vate.ai
 URL:https://acti-vate.ai
 URL;TYPE=LinkedIn:https://www.linkedin.com/in/abhirup-dutta-1a92601b0/
