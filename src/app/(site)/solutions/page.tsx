@@ -20,6 +20,8 @@ import Link from 'next/link';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+const CALENDAR_URL = 'https://calendar.app.google/mzfrpoUiWW9UFvzp6';
+
 const leaksWePlugDesc = [
   {
     id: 'missed-calls',
@@ -28,8 +30,8 @@ const leaksWePlugDesc = [
     outcome: 'Every call gets a response, even at 2am. Callbacks happen automatically.',
     icon: PhoneIcon,
     image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&q=80',
-    ctaType: 'checkup' as const,
-    ctaLabel: 'Book Free Checkup',
+    ctaType: 'demo' as const,
+    ctaLabel: 'Try the Demo',
   },
   {
     id: 'stuck-leads',
@@ -38,7 +40,7 @@ const leaksWePlugDesc = [
     outcome: 'Leads get routed, tagged, and followed up. Nothing sits forgotten.',
     icon: UserGroupIcon,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    ctaType: 'checkup' as const,
+    ctaType: 'calendar' as const,
     ctaLabel: 'Book Free Checkup',
   },
   {
@@ -48,7 +50,7 @@ const leaksWePlugDesc = [
     outcome: 'Real-time visibility. Alerts before you run low.',
     icon: CubeIcon,
     image: 'https://images.unsplash.com/photo-1593937505566-64f33d148915?w=800&q=80',
-    ctaType: 'checkup' as const,
+    ctaType: 'calendar' as const,
     ctaLabel: 'Book Free Checkup',
   },
   {
@@ -58,7 +60,7 @@ const leaksWePlugDesc = [
     outcome: 'Repeatable work runs in the background. You focus on what matters.',
     icon: ChartBarIcon,
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-    ctaType: 'checkup' as const,
+    ctaType: 'calendar' as const,
     ctaLabel: 'Book Free Checkup',
   },
   {
@@ -89,11 +91,13 @@ function SolutionsContent() {
     }
   }, [searchParams]);
 
-  const handleCardCTA = (ctaType: 'checkup' | 'portfolio') => {
+  const handleCardCTA = (ctaType: 'demo' | 'calendar' | 'portfolio') => {
     if (ctaType === 'portfolio') {
       setIsPortfolioModalOpen(true);
-    } else {
+    } else if (ctaType === 'demo') {
       setIsModalOpen(true);
+    } else if (ctaType === 'calendar') {
+      window.open(CALENDAR_URL, '_blank');
     }
   };
 
