@@ -24,10 +24,11 @@ export const features = [
   {
     id: 'trial',
     icon: GiftIcon,
-    text: '1 Month Free Trial',
-    color: 'text-purple-400',
-    bg: 'bg-purple-400/10',
-    border: 'border-purple-400/20'
+    text: 'Free technical checkup',
+    subtext: 'We find where money\'s leaking.',
+    color: 'text-blue-400',
+    bg: 'bg-blue-400/10',
+    border: 'border-blue-400/20'
   }
 ];
 
