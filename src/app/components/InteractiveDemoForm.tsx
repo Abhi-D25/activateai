@@ -278,10 +278,10 @@ export default function InteractiveDemoForm() {
       transition={{ duration: 0.8 }}
       className="relative"
     >
-      {/* Video-like Background Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl animate-pulse" />
+      {/* Background Effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-blue-800/10 rounded-3xl blur-xl" />
 
-      <div className="relative bg-gradient-to-br from-blue-900/60 to-purple-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-blue-500/50 shadow-2xl">
+      <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-700 shadow-2xl">
         {/* Badges */}
         <div className="absolute -top-2 -left-2 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-300 text-[10px] font-bold px-2 py-1 rounded-full shadow-lg flex items-center gap-1 z-20">
           <ShieldCheckIcon className="w-3 h-3" />
@@ -497,19 +497,6 @@ export default function InteractiveDemoForm() {
         </motion.p>
       </div>
 
-      {/* Animated Glow Effect */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-3xl opacity-20 blur-2xl -z-10"
-        animate={{
-          opacity: [0.1, 0.3, 0.1],
-          scale: [1, 1.05, 1]
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
     </motion.div >
   );
 }

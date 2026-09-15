@@ -7,7 +7,6 @@ import {
   SparklesIcon,
   RocketLaunchIcon
 } from '@heroicons/react/24/outline';
-import ParticleBackground from '@/app/components/ParticleBackground';
 import PageTransition from '@/app/components/PageTransition';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -47,8 +46,7 @@ export default function Pricing() {
       <div className="bg-black min-h-screen">
         {/* Hero Section */}
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 opacity-50" />
-          <ParticleBackground />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-black" />
           <div className="container relative z-10 mx-auto px-4">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -57,7 +55,7 @@ export default function Pricing() {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Curated for <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Every Stage</span>
+                Curated for <span className="text-blue-400">Every Stage</span>
               </h1>
               <p className="text-xl text-slate-300">
                 Start small or go big. Either way, you get the power of AI working for you.
@@ -67,8 +65,7 @@ export default function Pricing() {
         </section>
 
         {/* Pricing Cards Section */}
-        <section className="relative py-20 backdrop-blur-sm">
-          <ParticleBackground />
+        <section className="relative py-20 bg-slate-950">
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
               
@@ -291,7 +288,6 @@ export default function Pricing() {
 
         {/* Comparison Table Section */}
         <section className="relative py-20 bg-black">
-          <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -368,8 +364,7 @@ export default function Pricing() {
         </section>
 
         {/* Pricing FAQ Section */}
-        <section className="relative py-20 backdrop-blur-sm">
-          <ParticleBackground />
+        <section className="relative py-20 bg-slate-950">
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -429,7 +424,6 @@ export default function Pricing() {
 
         {/* CTA Section */}
         <section className="relative py-16 bg-black">
-          <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -438,7 +432,7 @@ export default function Pricing() {
               transition={{ duration: 0.8 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-md rounded-3xl border border-blue-400/30 shadow-2xl p-8 md:p-12">
+              <div className="bg-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-800 shadow-2xl p-8 md:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Still Have Questions?
                 </h2>

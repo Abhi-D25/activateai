@@ -23,7 +23,7 @@ const channels = [
     { name: 'TikTok', path: '/logos/tiktok.svg', color: 'text-black dark:text-white' },
     { name: 'Telegram', path: '/logos/telegram.svg', color: 'text-blue-500' },
     { name: 'Facebook', path: '/logos/facebook.svg', color: 'text-blue-600' },
-    { name: 'Webchat', icon: ChatBubbleLeftRightIcon, color: 'text-purple-400' },
+    { name: 'Webchat', icon: ChatBubbleLeftRightIcon, color: 'text-blue-400' },
 ];
 
 export default function ClientChannelsBanner() {
@@ -31,7 +31,7 @@ export default function ClientChannelsBanner() {
         <div className="w-full py-8 bg-black/30 backdrop-blur-sm border-y border-white/5 overflow-hidden">
             <div className="container mx-auto px-4">
                 <p className="text-center text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">
-                    1 assistant across all channels - always on
+                    Your channels, tools, and busywork. Covered.
                 </p>
 
                 <div className="relative flex overflow-x-hidden group">

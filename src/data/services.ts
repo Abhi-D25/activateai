@@ -49,7 +49,7 @@ export const services: Service[] = [
     description: 'A clean, modern site that builds trust instantly and gives customers a smooth, premium experience from the first click.',
     fullDescription: 'We transform outdated websites into modern, high-performance conversion engines. Our modernization process focuses on speed, mobile responsiveness, and user experience design that turns visitors into customers.',
     icon: SparklesIcon,
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-blue-500 to-blue-600',
     image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80',
     features: [
       'Modern, Responsive Design',
@@ -91,7 +91,7 @@ export const services: Service[] = [
     description: 'All your team\'s knowledge in one easy place, accessible anytime by anyone. A mentor for every employee.',
     fullDescription: 'Stop answering the same questions over and over. Our Knowledge Base solution centralizes your standard operating procedures, training materials, and business documents into an AI-searchable hub that your team can access instantly.',
     icon: BookOpenIcon,
-    gradient: 'from-orange-500 to-yellow-500',
+    gradient: 'from-blue-400 to-blue-600',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
     features: [
       'Centralized Document Storage',
@@ -112,7 +112,7 @@ export const services: Service[] = [
     description: 'Instant clarity on what\'s working and what needs attention so you can make smarter decisions without digging through numbers.',
     fullDescription: 'Turn your messy data into clear insights. We build custom dashboards that track your most important KPIs, giving you a real-time view of your business health without the need for complex spreadsheets.',
     icon: LightBulbIcon,
-    gradient: 'from-indigo-500 to-purple-500',
+    gradient: 'from-blue-500 to-slate-600',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
     features: [
       'Custom Executive Dashboards',
