@@ -37,8 +37,8 @@ export default function Pricing() {
       answer: "The Basic Lead Manager (AI Receptionist) in the Starter Pack supports voice calls, text messaging, and all major social media platforms including Facebook, Instagram, LinkedIn, and more. It captures leads, responds to inquiries, and ensures no opportunity slips through the cracks."
     },
     {
-      question: "Do you offer a free trial or consultation?",
-      answer: "We offer a free consultation where we'll demonstrate how our solutions work specifically for your business. This gives you a clear picture of the value before committing. During the consultation, we'll help you understand which pack best fits your needs. Contact us to schedule your demo."
+      question: "Do you offer a free consultation?",
+      answer: "Yes! We offer a free technical checkup where we find where money's leaking in your business. This gives you a clear picture of the value before committing. During the consultation, we'll help you understand which pack best fits your needs. Contact us to schedule yours."
     }
   ];
 

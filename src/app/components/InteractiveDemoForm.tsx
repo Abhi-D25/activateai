@@ -289,12 +289,15 @@ export default function InteractiveDemoForm() {
         </div>
 
         <motion.div
-          animate={{ opacity: [1, 0.75, 1], scale: [1, 1.25, 1] }}
+          animate={{ opacity: [1, 0.75, 1], scale: [1, 1.02, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-3 -right-3 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg flex items-center gap-2 z-20"
+          className="absolute -top-3 -right-3 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 text-blue-300 text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-lg flex flex-col items-center text-center z-20"
         >
-          <GiftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span>1 Month Free Trial</span>
+          <span className="flex items-center gap-1">
+            <GiftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            Free technical checkup
+          </span>
+          <span className="text-[10px] sm:text-xs font-normal text-blue-200/80">We find where money&apos;s leaking.</span>
         </motion.div>
 
         <motion.div
