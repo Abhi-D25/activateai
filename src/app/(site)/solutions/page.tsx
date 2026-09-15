@@ -28,6 +28,8 @@ const leaksWePlugDesc = [
     outcome: 'Every call gets a response, even at 2am. Callbacks happen automatically.',
     icon: PhoneIcon,
     image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&q=80',
+    ctaType: 'checkup' as const,
+    ctaLabel: 'Book Free Checkup',
   },
   {
     id: 'stuck-leads',
@@ -36,6 +38,8 @@ const leaksWePlugDesc = [
     outcome: 'Leads get routed, tagged, and followed up. Nothing sits forgotten.',
     icon: UserGroupIcon,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    ctaType: 'checkup' as const,
+    ctaLabel: 'Book Free Checkup',
   },
   {
     id: 'inventory-blind',
@@ -44,6 +48,8 @@ const leaksWePlugDesc = [
     outcome: 'Real-time visibility. Alerts before you run low.',
     icon: CubeIcon,
     image: 'https://images.unsplash.com/photo-1593937505566-64f33d148915?w=800&q=80',
+    ctaType: 'checkup' as const,
+    ctaLabel: 'Book Free Checkup',
   },
   {
     id: 'busywork',
@@ -52,6 +58,8 @@ const leaksWePlugDesc = [
     outcome: 'Repeatable work runs in the background. You focus on what matters.',
     icon: ChartBarIcon,
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    ctaType: 'checkup' as const,
+    ctaLabel: 'Book Free Checkup',
   },
   {
     id: 'outdated-website',
@@ -60,6 +68,8 @@ const leaksWePlugDesc = [
     outcome: 'A clean, modern site that builds trust from the first click.',
     icon: GlobeAltIcon,
     image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80',
+    ctaType: 'portfolio' as const,
+    ctaLabel: 'See Examples',
   },
 ];
 
@@ -78,6 +88,14 @@ function SolutionsContent() {
       setIsPortfolioModalOpen(true);
     }
   }, [searchParams]);
+
+  const handleCardCTA = (ctaType: 'checkup' | 'portfolio') => {
+    if (ctaType === 'portfolio') {
+      setIsPortfolioModalOpen(true);
+    } else {
+      setIsModalOpen(true);
+    }
+  };
 
   return (
     <>
@@ -147,7 +165,7 @@ function SolutionsContent() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-blue-500/30 rounded-2xl overflow-hidden transition-all duration-300 group"
+                    className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-blue-500/30 rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col"
                   >
                     {/* Image with blue/black overlay */}
                     <div className="relative h-40 overflow-hidden">
@@ -164,13 +182,20 @@ function SolutionsContent() {
                       </div>
                     </div>
                     {/* Content */}
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-grow">
                       <h3 className="text-xl font-bold text-white mb-3">{leak.title}</h3>
                       <p className="text-slate-400 text-sm mb-4">{leak.description}</p>
-                      <div className="pt-4 border-t border-slate-800">
+                      <div className="pt-4 border-t border-slate-800 mb-4">
                         <p className="text-blue-400 text-sm font-medium">After we fix it:</p>
                         <p className="text-slate-300 text-sm mt-1">{leak.outcome}</p>
                       </div>
+                      {/* CTA Button */}
+                      <button
+                        onClick={() => handleCardCTA(leak.ctaType)}
+                        className="mt-auto w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+                      >
+                        {leak.ctaLabel}
+                      </button>
                     </div>
                   </motion.div>
                 ))}
