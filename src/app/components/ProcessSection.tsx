@@ -13,6 +13,7 @@ import {
   ExclamationTriangleIcon,
   ArrowTrendingUpIcon
 } from '@heroicons/react/24/outline';
+import ParticleBackground from '@/app/components/ParticleBackground';
 
 const FindMockup = () => (
   <div className="bg-slate-900/80 rounded-xl border border-slate-700/50 p-4 shadow-xl">
@@ -196,6 +197,7 @@ export default function ProcessSection() {
   return (
     <section className="relative py-24 bg-slate-950">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-black" />
+      <ParticleBackground />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

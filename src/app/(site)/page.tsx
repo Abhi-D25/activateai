@@ -9,6 +9,7 @@ import PageTransition from '@/app/components/PageTransition';
 import FAQSection from '@/app/components/FAQSection';
 import HeroSection from '@/app/components/HeroSection';
 import ProcessSection from '@/app/components/ProcessSection';
+import ParticleBackground from '@/app/components/ParticleBackground';
 import ClientChannelsBanner from '@/components/ClientChannelsBanner';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -46,6 +47,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-black" />
+          <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -176,6 +178,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-black" />
+          <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -322,6 +325,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black to-slate-950" />
+          <ParticleBackground />
           <div className="relative z-10">
             <FAQSection />
           </div>
@@ -335,6 +339,7 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
+          <ParticleBackground />
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
