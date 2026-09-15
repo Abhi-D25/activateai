@@ -1,61 +1,61 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BeakerIcon, WindowIcon, ChatBubbleLeftRightIcon, GlobeAltIcon, LightBulbIcon } from '@heroicons/react/24/outline';
+import { 
+  PhoneIcon, 
+  GlobeAltIcon, 
+  CubeIcon,
+  UserGroupIcon,
+  ChartBarIcon,
+  MagnifyingGlassIcon,
+  WrenchScrewdriverIcon,
+  RocketLaunchIcon
+} from '@heroicons/react/24/outline';
 import PageTransition from '@/app/components/PageTransition';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import InteractiveDemoModal from '@/components/InteractiveDemoModal';
 import PortfolioModal from '@/components/PortfolioModal';
 import ClientChannelsBanner from '@/components/ClientChannelsBanner';
+import Link from 'next/link';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-const demos = [
+const leaksWePlugDesc = [
   {
-    id: 'voice-agent',
-    title: 'Smart Lead Manager',
-    description: 'Experience a natural conversation with our AI voice agent that can schedule appointments and qualify leads.',
-    icon: ChatBubbleLeftRightIcon,
-    link: '#',
-    gradient: 'from-blue-500 to-cyan-500',
-    status: 'Live Demo'
+    id: 'missed-calls',
+    title: 'Missed Calls',
+    description: 'After-hours calls go unanswered. Voicemails pile up. Leads slip away before you even know they called.',
+    outcome: 'Every call gets a response, even at 2am. Callbacks happen automatically.',
+    icon: PhoneIcon,
   },
   {
-    id: 'website-modernization',
-    title: 'New Era, New Website',
-    description: 'Explore our collection of high-converting, modern websites tailored for various industries.',
+    id: 'stuck-leads',
+    title: 'Leads Stuck in Tools',
+    description: 'Inquiries sit in forms, inboxes, and apps nobody checks. Follow-ups fall through the cracks.',
+    outcome: 'Leads get routed, tagged, and followed up. Nothing sits forgotten.',
+    icon: UserGroupIcon,
+  },
+  {
+    id: 'inventory-blind',
+    title: 'Inventory You Can\'t See',
+    description: 'Stock levels live in spreadsheets or someone\'s head. You find out too late when something runs out.',
+    outcome: 'Real-time visibility. Alerts before you run low.',
+    icon: CubeIcon,
+  },
+  {
+    id: 'busywork',
+    title: 'Busywork in Your Head',
+    description: 'Scheduling, reminders, invoices, updates. Manual tasks that only you know how to do.',
+    outcome: 'Repeatable work runs in the background. You focus on what matters.',
+    icon: ChartBarIcon,
+  },
+  {
+    id: 'outdated-website',
+    title: 'Outdated Website',
+    description: 'Your site doesn\'t reflect your business today. Visitors bounce. Trust is lost before they even call.',
+    outcome: 'A clean, modern site that builds trust from the first click.',
     icon: GlobeAltIcon,
-    link: '#',
-    gradient: 'from-orange-500 to-yellow-500',
-    status: 'Live Demo'
   },
-  {
-    id: 'knowledge-bot',
-    title: 'The Business Brain',
-    description: 'Ask questions about company policies and get instant, accurate answers from your document base.',
-    icon: BeakerIcon,
-    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
-    gradient: 'from-green-500 to-teal-500',
-    status: 'Live Demo Coming Soon'
-  },
-  {
-    id: 'smart-dashboard',
-    title: 'Operations Coordinator',
-    description: 'Automated scheduling, invoicing, and customer updates that keep your day on track.',
-    icon: WindowIcon,
-    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
-    gradient: 'from-purple-500 to-pink-500',
-    status: 'Live Demo Coming Soon'
-  },
-  {
-    id: 'intelligent-insights',
-    title: 'Intelligent Insights',
-    description: 'Instant clarity on what\'s working and what needs attention so you can make smarter decisions without digging through numbers.',
-    icon: LightBulbIcon,
-    link: 'https://calendar.app.google/mzfrpoUiWW9UFvzp6',
-    gradient: 'from-indigo-500 to-purple-500',
-    status: 'Contact Us'
-  }
 ];
 
 function SolutionsContent() {
@@ -64,7 +64,6 @@ function SolutionsContent() {
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
   const searchParams = useSearchParams();
 
-  // Handle demo query parameter to auto-open modals
   useEffect(() => {
     const demoParam = searchParams.get('demo');
     if (demoParam === 'voice-agent') {
@@ -74,26 +73,6 @@ function SolutionsContent() {
       setIsPortfolioModalOpen(true);
     }
   }, [searchParams]);
-
-  const handleDemoClick = (e: React.MouseEvent, demoId: string, status: string, link: string) => {
-    e.preventDefault();
-    if (link.startsWith('http')) {
-      window.open(link, '_blank');
-      return;
-    }
-
-    if (status === 'Live Demo Coming Soon') {
-      window.location.href = '/book-appointment';
-      return;
-    }
-
-    if (demoId === 'voice-agent') {
-      setSelectedDemo(demoId);
-      setIsModalOpen(true);
-    } else if (demoId === 'website-modernization') {
-      setIsPortfolioModalOpen(true);
-    }
-  };
 
   return (
     <>
@@ -119,279 +98,163 @@ function SolutionsContent() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-6xl font-bold text-white mb-6"
               >
-                Our <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Solutions</span>
+                The Leaks We <span className="text-blue-400">Plug</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-slate-300"
+                className="text-xl text-slate-300 mb-6"
               >
-                Experience our solutions firsthand. Try our interactive demos and explore our portfolio.
+                Tech gaps cost you money every day. Missed calls, leads stuck in tools nobody opens, inventory you can&apos;t see, busywork that only lives in your head.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-blue-400 font-semibold text-lg"
+              >
+                We find them. We fix them. We free you.
               </motion.p>
             </div>
 
-            {/* Interactive Demos Section - FIRST */}
+            {/* Channels Banner */}
+            <div className="mb-20">
+              <ClientChannelsBanner />
+            </div>
+
+            {/* Leaks We Plug Section */}
             <div className="mb-24">
-              {/* First row - 2 demos */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto mb-8">
-                {demos.slice(0, 2).map((demo, index) => (
-                  <motion.div
-                    key={demo.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                    whileHover={{ y: -5 }}
-                    className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer flex flex-col"
-                    onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
-                  >
-                    {/* Gradient Border Effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-
-                    <div className="p-6 sm:p-8 flex flex-col flex-1">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className={`p-3 rounded-xl bg-gradient-to-br ${demo.gradient} bg-opacity-10`}>
-                          <demo.icon className="w-8 h-8 text-white" />
-                        </div>
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${demo.status === 'Live Demo'
-                          ? 'border-green-500 text-green-400 bg-green-500/10'
-                          : demo.status === 'Live Demo Coming Soon'
-                            ? 'border-yellow-500 text-yellow-400 bg-yellow-500/10'
-                            : demo.status === 'Interactive Mockup'
-                              ? 'border-purple-500 text-purple-400 bg-purple-500/10'
-                              : 'border-slate-600 text-slate-400 bg-slate-800'
-                          }`}>
-                          {demo.status}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                        {demo.title}
-                      </h3>
-
-                      <p className="text-slate-400 mb-8 leading-relaxed flex-1">
-                        {demo.description}
-                      </p>
-
-                      <button
-                        onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
-                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20 mt-auto"
-                      >
-                        {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : 'Open Demo'}
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Second row - 3 demos with Intelligent Insights in the center */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-                {[demos[2], demos[4], demos[3]].map((demo, index) => (
-                  <motion.div
-                    key={demo.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: (index + 2) * 0.1 + 0.3 }}
-                    whileHover={{ y: -5 }}
-                    className="group relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-slate-600 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer flex flex-col"
-                    onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
-                  >
-                    {/* Gradient Border Effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${demo.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-
-                    <div className="p-6 sm:p-8 flex flex-col flex-1">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className={`p-3 rounded-xl bg-gradient-to-br ${demo.gradient} bg-opacity-10`}>
-                          <demo.icon className="w-8 h-8 text-white" />
-                        </div>
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${demo.status === 'Live Demo'
-                          ? 'border-green-500 text-green-400 bg-green-500/10'
-                          : demo.status === 'Live Demo Coming Soon'
-                            ? 'border-yellow-500 text-yellow-400 bg-yellow-500/10'
-                            : demo.status === 'Contact Us'
-                              ? 'border-blue-500 text-blue-400 bg-blue-500/10'
-                              : 'border-slate-600 text-slate-400 bg-slate-800'
-                          }`}>
-                          {demo.status}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                        {demo.title}
-                      </h3>
-
-                      <p className="text-slate-400 mb-8 leading-relaxed flex-1">
-                        {demo.description}
-                      </p>
-
-                      <button
-                        onClick={(e) => handleDemoClick(e, demo.id, demo.status, demo.link)}
-                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/20 mt-auto"
-                      >
-                        {demo.status === 'Live Demo Coming Soon' ? 'Book to know more' : demo.status === 'Contact Us' ? 'Contact Us' : 'Open Demo'}
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Client Channels Banner */}
-              <div className="mt-16 mb-24 w-full">
-                <ClientChannelsBanner />
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="max-w-4xl mx-auto mb-24">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-800"></div>
-                </div>
-                <div className="relative flex justify-center">
-                  <span className="px-6 bg-black text-slate-500 text-sm font-medium">
-                    Our Approach
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Journey Section */}
-            <div className="max-w-4xl mx-auto text-center mb-20">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-3xl md:text-5xl font-bold text-white mb-6"
+                className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
               >
-                The Journey to Smarter Business
+                Where Money Leaks
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-slate-300 mb-8"
-              >
-                We&apos;re not here to just automate a few tasks. We partner with you to future-proof your business on your terms.
-              </motion.p>
-
-              <motion.div
-                className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-2xl p-8 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
-                <p className="text-lg text-slate-300 mb-6">
-                  Whether or not you choose AI today, you&apos;ll be ready when it matters.
-                </p>
-                <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
-                  <span className="text-blue-400 font-medium flex items-center"><span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>Start where you are</span>
-                  <span className="text-purple-400 font-medium flex items-center"><span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>Build the foundation</span>
-                  <span className="text-cyan-400 font-medium flex items-center"><span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Activate when it&apos;s time</span>
-                </div>
-              </motion.div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {leaksWePlugDesc.map((leak, index) => (
+                  <motion.div
+                    key={leak.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-blue-500/30 rounded-2xl p-6 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+                      <leak.icon className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">{leak.title}</h3>
+                    <p className="text-slate-400 text-sm mb-4">{leak.description}</p>
+                    <div className="pt-4 border-t border-slate-800">
+                      <p className="text-blue-400 text-sm font-medium">After we fix it:</p>
+                      <p className="text-slate-300 text-sm mt-1">{leak.outcome}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            {/* Process Steps */}
+            {/* Process Section - Find / Fix / Free You */}
             <div className="mb-24">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  How We Work
+                </h2>
+                <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                  Digitize, automate, then let it run. You focus on the work that matters.
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {/* Find */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="bg-slate-900/50 border border-blue-500/20 rounded-xl p-8 hover:border-blue-500/40 transition-colors"
+                  className="bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-blue-500/30 transition-colors"
                 >
-                  <h3 className="text-2xl font-bold text-white mb-2">1. Discover</h3>
-                  <p className="text-blue-400 font-semibold mb-4">We start by listening</p>
-                  <p className="text-slate-400 mb-6">
-                    No intake forms or audits. Just a conversation to understand how your business actually runs.
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+                    <MagnifyingGlassIcon className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Find</h3>
+                  <p className="text-blue-400 font-semibold mb-4 text-sm">Map the leaks</p>
+                  <p className="text-slate-400 text-sm">
+                    We look at calls, follow-up, inventory, and tools nobody opens. No intake forms or long meetings. Just a conversation about how your business actually runs.
                   </p>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex items-start"><span className="mr-2 text-blue-500">•</span>What&apos;s eating your time?</li>
-                    <li className="flex items-start"><span className="mr-2 text-blue-500">•</span>Where are things falling through?</li>
-                    <li className="flex items-start"><span className="mr-2 text-blue-500">•</span>What&apos;s been too annoying to fix?</li>
-                  </ul>
                 </motion.div>
 
-                {/* Step 2 */}
+                {/* Fix */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-slate-900/50 border border-green-500/20 rounded-xl p-8 hover:border-green-500/40 transition-colors"
+                  className="bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-blue-500/30 transition-colors"
                 >
-                  <h3 className="text-2xl font-bold text-white mb-2">2. Connect</h3>
-                  <p className="text-green-400 font-semibold mb-4">Build AI Readiness</p>
-                  <p className="text-slate-400 mb-6">
-                    Before jumping to AI, we build foundational automations that create immediate value.
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+                    <WrenchScrewdriverIcon className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Fix</h3>
+                  <p className="text-blue-400 font-semibold mb-4 text-sm">Digitize the messy parts</p>
+                  <p className="text-slate-400 text-sm">
+                    We connect what&apos;s disconnected. Leads get routed. Inventory gets tracked. Busywork gets handled. The right people can actually use the data.
                   </p>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex items-start"><span className="mr-2 text-green-500">✓</span>Route leads instantly</li>
-                    <li className="flex items-start"><span className="mr-2 text-green-500">✓</span>Automated reminders</li>
-                    <li className="flex items-start"><span className="mr-2 text-green-500">✓</span>Real-time updates</li>
-                  </ul>
                 </motion.div>
 
-                {/* Step 3 */}
+                {/* Free You */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="bg-slate-900/50 border border-purple-500/20 rounded-xl p-8 hover:border-purple-500/40 transition-colors"
+                  className="bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-blue-500/30 transition-colors"
                 >
-                  <h3 className="text-2xl font-bold text-white mb-2">3. Enable</h3>
-                  <p className="text-purple-400 font-semibold mb-4">Activate the intelligence</p>
-                  <p className="text-slate-400 mb-6">
-                    Once workflows are running, we can add AI where it makes the biggest difference.
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+                    <RocketLaunchIcon className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Free you</h3>
+                  <p className="text-blue-400 font-semibold mb-4 text-sm">Run it in the background</p>
+                  <p className="text-slate-400 text-sm">
+                    The repeats run automatically. Calls answered, follow-ups sent, alerts triggered. You get time back for the work you love.
                   </p>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex items-start"><span className="mr-2 text-purple-500">✓</span>Qualify leads by tone</li>
-                    <li className="flex items-start"><span className="mr-2 text-purple-500">✓</span>Draft updates in your voice</li>
-                    <li className="flex items-start"><span className="mr-2 text-purple-500">✓</span>Summarize for speed</li>
-                  </ul>
                 </motion.div>
               </div>
             </div>
 
-            {/* Outcomes */}
-            <div className="text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-3xl font-bold text-white mb-12"
-              >
-                Where This Leads
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/20 p-8 rounded-2xl"
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center max-w-2xl mx-auto"
+            >
+              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  Free Technical Checkup
+                </h2>
+                <p className="text-slate-300 mb-6">
+                  We find where money&apos;s leaking. No strings, no pressure. Just clarity on what&apos;s costing you.
+                </p>
+                <a
+                  href="https://calendar.app.google/mzfrpoUiWW9UFvzp6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold shadow-lg shadow-blue-500/20"
                 >
-                  <h4 className="text-white font-bold mb-2">Benefits Without Effort</h4>
-                  <p className="text-slate-400 text-sm">Experience automation without changing how you work</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  className="bg-gradient-to-br from-green-900/30 to-blue-900/30 border border-green-500/20 p-8 rounded-2xl"
-                >
-                  <h4 className="text-white font-bold mb-2">Future-Proof Business</h4>
-                  <p className="text-slate-400 text-sm">Systems that scale and adapt as your business grows</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-500/20 p-8 rounded-2xl"
-                >
-                  <h4 className="text-white font-bold mb-2">More Time for You</h4>
-                  <p className="text-slate-400 text-sm">Focus on the work that energizes you, not the drain</p>
-                </motion.div>
+                  Book Free Checkup
+                </a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </PageTransition>

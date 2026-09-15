@@ -126,10 +126,10 @@ export default function Contact() {
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-                Let&apos;s <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Transform</span> Your Business
+                Let&apos;s <span className="text-blue-400">Find the Leaks</span>
               </h1>
               <p className="text-xl text-slate-300">
-                Ready to embrace AI? We&apos;re here to help. Reach out and let&apos;s start the conversation.
+                Free technical checkup. We find where money&apos;s leaking and show you how to fix it.
               </p>
             </motion.div>
 
@@ -292,11 +292,11 @@ export default function Contact() {
               className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
             >
               <motion.div
-                className="text-center bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-md rounded-2xl border border-blue-400/30 shadow-xl p-6 hover:border-blue-400/60 transition-all duration-300"
-                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
+                className="text-center bg-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl p-6 hover:border-blue-500/30 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.2)" }}
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <EnvelopeIcon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <EnvelopeIcon className="w-6 h-6 text-blue-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
                 <a href="mailto:info@acti-vate.ai" className="text-blue-400 hover:text-blue-300 transition-colors">
@@ -304,26 +304,26 @@ export default function Contact() {
                 </a>
               </motion.div>
               <motion.div
-                className="text-center bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-md rounded-2xl border border-purple-400/30 shadow-xl p-6 hover:border-purple-400/60 transition-all duration-300"
-                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                className="text-center bg-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl p-6 hover:border-blue-500/30 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.2)" }}
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <PhoneIcon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <PhoneIcon className="w-6 h-6 text-blue-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-                <a href="tel:+19728958256" className="text-purple-400 hover:text-purple-300 transition-colors">
+                <a href="tel:+19728958256" className="text-blue-400 hover:text-blue-300 transition-colors">
                   +1 (972) 895-8256
                 </a>
               </motion.div>
               <motion.div
-                className="text-center bg-gradient-to-br from-green-900/30 to-green-800/20 backdrop-blur-md rounded-2xl border border-green-400/30 shadow-xl p-6 hover:border-green-400/60 transition-all duration-300"
-                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)" }}
+                className="text-center bg-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl p-6 hover:border-blue-500/30 transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 0 30px rgba(59, 130, 246, 0.2)" }}
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPinIcon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPinIcon className="w-6 h-6 text-blue-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
-                <p className="text-green-400">Wherever You Are</p>
+                <p className="text-blue-400">Wherever You Are</p>
               </motion.div>
             </motion.div>
           </div>

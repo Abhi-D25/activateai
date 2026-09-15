@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-semibold text-blue-300 mb-4">ActivateAI</h3>
             <p className="text-slate-300 max-w-xs">
-              Empowering SMBs with AI to streamline operations and boost growth.
+              We find where money&apos;s leaking and fix it. Tech gaps plugged, time reclaimed.
             </p>
           </div>
           <div className="flex flex-col items-center md:items-start">
