@@ -24,7 +24,7 @@ export default function IntegrationsPage() {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
                             Integrations
                         </span>
                     </h1>

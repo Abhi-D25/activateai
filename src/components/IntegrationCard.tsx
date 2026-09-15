@@ -22,7 +22,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({ integration }) => {
                         />
                     </div>
                 ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-blue-500/20 transition-all">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-blue-500/20 transition-all">
                         {integration.name.charAt(0)}
                     </div>
                 )}

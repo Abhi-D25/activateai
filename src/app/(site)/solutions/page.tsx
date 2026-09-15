@@ -27,6 +27,7 @@ const leaksWePlugDesc = [
     description: 'After-hours calls go unanswered. Voicemails pile up. Leads slip away before you even know they called.',
     outcome: 'Every call gets a response, even at 2am. Callbacks happen automatically.',
     icon: PhoneIcon,
+    image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&q=80',
   },
   {
     id: 'stuck-leads',
@@ -34,6 +35,7 @@ const leaksWePlugDesc = [
     description: 'Inquiries sit in forms, inboxes, and apps nobody checks. Follow-ups fall through the cracks.',
     outcome: 'Leads get routed, tagged, and followed up. Nothing sits forgotten.',
     icon: UserGroupIcon,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
   },
   {
     id: 'inventory-blind',
@@ -41,6 +43,7 @@ const leaksWePlugDesc = [
     description: 'Stock levels live in spreadsheets or someone\'s head. You find out too late when something runs out.',
     outcome: 'Real-time visibility. Alerts before you run low.',
     icon: CubeIcon,
+    image: 'https://images.unsplash.com/photo-1593937505566-64f33d148915?w=800&q=80',
   },
   {
     id: 'busywork',
@@ -48,6 +51,7 @@ const leaksWePlugDesc = [
     description: 'Scheduling, reminders, invoices, updates. Manual tasks that only you know how to do.',
     outcome: 'Repeatable work runs in the background. You focus on what matters.',
     icon: ChartBarIcon,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   },
   {
     id: 'outdated-website',
@@ -55,6 +59,7 @@ const leaksWePlugDesc = [
     description: 'Your site doesn\'t reflect your business today. Visitors bounce. Trust is lost before they even call.',
     outcome: 'A clean, modern site that builds trust from the first click.',
     icon: GlobeAltIcon,
+    image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80',
   },
 ];
 
@@ -142,16 +147,30 @@ function SolutionsContent() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-blue-500/30 rounded-2xl p-6 transition-all duration-300"
+                    className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-blue-500/30 rounded-2xl overflow-hidden transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
-                      <leak.icon className="w-6 h-6 text-blue-400" />
+                    {/* Image with blue/black overlay */}
+                    <div className="relative h-40 overflow-hidden">
+                      <img
+                        src={leak.image}
+                        alt={leak.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-blue-900/30" />
+                      <div className="absolute bottom-4 left-4">
+                        <div className="w-10 h-10 rounded-lg bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center">
+                          <leak.icon className="w-5 h-5 text-blue-400" />
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{leak.title}</h3>
-                    <p className="text-slate-400 text-sm mb-4">{leak.description}</p>
-                    <div className="pt-4 border-t border-slate-800">
-                      <p className="text-blue-400 text-sm font-medium">After we fix it:</p>
-                      <p className="text-slate-300 text-sm mt-1">{leak.outcome}</p>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-3">{leak.title}</h3>
+                      <p className="text-slate-400 text-sm mb-4">{leak.description}</p>
+                      <div className="pt-4 border-t border-slate-800">
+                        <p className="text-blue-400 text-sm font-medium">After we fix it:</p>
+                        <p className="text-slate-300 text-sm mt-1">{leak.outcome}</p>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
