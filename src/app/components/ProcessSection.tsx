@@ -1,153 +1,194 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { PhoneIcon, ChatBubbleLeftRightIcon, CalendarDaysIcon, CheckIcon } from '@heroicons/react/24/outline';
+import { 
+  MagnifyingGlassIcon, 
+  WrenchScrewdriverIcon, 
+  RocketLaunchIcon,
+  CheckIcon,
+  PhoneIcon,
+  CubeIcon,
+  UserGroupIcon,
+  CalendarDaysIcon,
+  ExclamationTriangleIcon,
+  ArrowTrendingUpIcon
+} from '@heroicons/react/24/outline';
 
-interface ProofMockup {
-  id: string;
-  title: string;
-  subtitle: string;
-  icon: React.ElementType;
-  mockup: React.ReactNode;
-}
-
-const PhoneMockup = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative mx-auto w-full max-w-[280px]">
-    <div className="bg-slate-900 rounded-[2rem] p-2 shadow-2xl border border-slate-700/50">
-      <div className="bg-slate-950 rounded-[1.5rem] overflow-hidden">
-        <div className="h-6 bg-slate-900 flex items-center justify-center">
-          <div className="w-16 h-1 bg-slate-700 rounded-full" />
+const FindMockup = () => (
+  <div className="bg-slate-900/80 rounded-xl border border-slate-700/50 p-4 shadow-xl">
+    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-800">
+      <MagnifyingGlassIcon className="w-4 h-4 text-blue-400" />
+      <span className="text-white text-sm font-medium">Tech Gap Scan</span>
+    </div>
+    
+    <div className="space-y-3">
+      <div className="flex items-center gap-3 bg-red-500/10 rounded-lg p-3 border border-red-500/20">
+        <ExclamationTriangleIcon className="w-5 h-5 text-red-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">47 missed calls this month</p>
+          <p className="text-slate-400 text-xs">After-hours, no voicemail</p>
         </div>
-        <div className="p-4 min-h-[200px]">
-          {children}
+      </div>
+      
+      <div className="flex items-center gap-3 bg-amber-500/10 rounded-lg p-3 border border-amber-500/20">
+        <CubeIcon className="w-5 h-5 text-amber-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Inventory blind spots</p>
+          <p className="text-slate-400 text-xs">12 items out of sync</p>
+        </div>
+      </div>
+      
+      <div className="flex items-center gap-3 bg-amber-500/10 rounded-lg p-3 border border-amber-500/20">
+        <UserGroupIcon className="w-5 h-5 text-amber-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">23 leads stuck in old tool</p>
+          <p className="text-slate-400 text-xs">No one checks it</p>
         </div>
       </div>
     </div>
   </div>
 );
 
-const CatchMockup = () => (
-  <PhoneMockup>
+const FixMockup = () => (
+  <div className="bg-slate-900/80 rounded-xl border border-slate-700/50 p-4 shadow-xl">
+    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-800">
+      <WrenchScrewdriverIcon className="w-4 h-4 text-blue-400" />
+      <span className="text-white text-sm font-medium">Digitized Dashboard</span>
+    </div>
+    
     <div className="space-y-3">
-      <div className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
-        <div className="flex items-center gap-2 text-red-400 text-xs mb-1">
-          <PhoneIcon className="w-3 h-3" />
-          <span>Missed Call</span>
+      <motion.div 
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="flex items-center gap-3 bg-blue-500/10 rounded-lg p-3 border border-blue-500/20"
+      >
+        <PhoneIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Calls routed to your team</p>
+          <p className="text-slate-400 text-xs">After-hours covered</p>
         </div>
-        <p className="text-white text-sm font-medium">Sarah Johnson</p>
-        <p className="text-slate-400 text-xs">2 min ago</p>
-      </div>
+        <CheckIcon className="w-4 h-4 text-blue-400" />
+      </motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.35 }}
+        className="flex items-center gap-3 bg-blue-500/10 rounded-lg p-3 border border-blue-500/20"
+      >
+        <CubeIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Inventory synced</p>
+          <p className="text-slate-400 text-xs">Real-time visibility</p>
+        </div>
+        <CheckIcon className="w-4 h-4 text-blue-400" />
+      </motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5 }}
+        className="flex items-center gap-3 bg-blue-500/10 rounded-lg p-3 border border-blue-500/20"
+      >
+        <UserGroupIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Lead opened in CRM</p>
+          <p className="text-slate-400 text-xs">Auto-imported, tagged</p>
+        </div>
+        <CheckIcon className="w-4 h-4 text-blue-400" />
+      </motion.div>
+    </div>
+  </div>
+);
+
+const FreeYouMockup = () => (
+  <div className="bg-slate-900/80 rounded-xl border border-slate-700/50 p-4 shadow-xl">
+    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-800">
+      <RocketLaunchIcon className="w-4 h-4 text-blue-400" />
+      <span className="text-white text-sm font-medium">Running in Background</span>
+    </div>
+    
+    <div className="space-y-3">
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50"
+      >
+        <CalendarDaysIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Tuesday 10am booked</p>
+          <p className="text-slate-400 text-xs">Client: Sarah M.</p>
+        </div>
+        <span className="text-blue-400 text-xs">auto</span>
+      </motion.div>
       
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="bg-blue-600/20 rounded-xl p-3 border border-blue-500/30"
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.35 }}
+        className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50"
       >
-        <div className="flex items-center gap-2 text-blue-400 text-xs mb-1">
-          <CheckIcon className="w-3 h-3" />
-          <span>Auto-Response Sent</span>
+        <CubeIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Low stock alert sent</p>
+          <p className="text-slate-400 text-xs">Widget A below 10 units</p>
         </div>
-        <p className="text-white text-sm">
-          &ldquo;Hi Sarah! Thanks for calling. How can I help you today?&rdquo;
-        </p>
-        <p className="text-blue-400 text-xs mt-1">Sent via SMS</p>
+        <span className="text-blue-400 text-xs">auto</span>
       </motion.div>
-    </div>
-  </PhoneMockup>
-);
-
-const FollowUpMockup = () => (
-  <PhoneMockup>
-    <div className="space-y-3">
-      <div className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-slate-400 text-xs">Lead Activity</span>
-          <span className="text-xs text-slate-500">3 days ago</span>
-        </div>
-        <p className="text-white text-sm font-medium">Mike D. requested quote</p>
-      </div>
       
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="bg-blue-600/20 rounded-xl p-3 border border-blue-500/30"
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5 }}
+        className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50"
       >
-        <div className="flex items-center gap-2 text-blue-400 text-xs mb-1">
-          <ChatBubbleLeftRightIcon className="w-3 h-3" />
-          <span>Follow-up Sent</span>
+        <ArrowTrendingUpIcon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+        <div className="flex-1">
+          <p className="text-white text-sm font-medium">Follow-up sent</p>
+          <p className="text-slate-400 text-xs">Mike D. got quote reminder</p>
         </div>
-        <p className="text-white text-sm">
-          &ldquo;Hey Mike, just checking in on that quote. Ready to move forward?&rdquo;
-        </p>
-        <p className="text-slate-400 text-xs mt-2 flex items-center gap-1">
-          <CheckIcon className="w-3 h-3 text-blue-400" />
-          Delivered
-        </p>
+        <span className="text-blue-400 text-xs">auto</span>
       </motion.div>
     </div>
-  </PhoneMockup>
-);
-
-const BookMockup = () => (
-  <PhoneMockup>
-    <div className="space-y-3">
-      <div className="text-center mb-2">
-        <p className="text-slate-400 text-xs">New Appointment</p>
-      </div>
-      
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="bg-blue-600/20 rounded-xl p-4 border border-blue-500/30"
-      >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-            <CalendarDaysIcon className="w-5 h-5 text-blue-400" />
-          </div>
-          <div>
-            <p className="text-white font-semibold">Tuesday 10am</p>
-            <p className="text-slate-400 text-xs">Consultation Call</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 text-blue-400 text-sm">
-          <CheckIcon className="w-4 h-4" />
-          <span>Confirmed &amp; on your calendar</span>
-        </div>
-      </motion.div>
-      
-      <div className="bg-slate-800/30 rounded-lg p-2 text-center">
-        <p className="text-slate-400 text-xs">
-          Client: James Wilson
-        </p>
+    
+    <div className="mt-4 pt-3 border-t border-slate-800">
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400 text-xs">Your time back this week</span>
+        <span className="text-blue-400 font-bold">8+ hours</span>
       </div>
     </div>
-  </PhoneMockup>
+  </div>
 );
 
-const processSteps: ProofMockup[] = [
+const processSteps = [
   {
-    id: 'catch',
-    title: 'Catch',
-    subtitle: 'Missed calls get answered',
-    icon: PhoneIcon,
-    mockup: <CatchMockup />
+    id: 'find',
+    title: 'Find',
+    subtitle: 'Map the leaks across calls, follow-up, inventory, and tools nobody opens',
+    icon: MagnifyingGlassIcon,
+    mockup: <FindMockup />
   },
   {
-    id: 'follow-up',
-    title: 'Follow up',
-    subtitle: 'Leads don\'t go cold',
-    icon: ChatBubbleLeftRightIcon,
-    mockup: <FollowUpMockup />
+    id: 'fix',
+    title: 'Fix',
+    subtitle: 'Digitize the messy parts so the right people can actually use them',
+    icon: WrenchScrewdriverIcon,
+    mockup: <FixMockup />
   },
   {
-    id: 'book',
-    title: 'Book',
-    subtitle: 'Tuesday 10am on the calendar',
-    icon: CalendarDaysIcon,
-    mockup: <BookMockup />
+    id: 'free-you',
+    title: 'Free you',
+    subtitle: 'Run the repeats in the background so you get time back for the work you love',
+    icon: RocketLaunchIcon,
+    mockup: <FreeYouMockup />
   }
 ];
 
@@ -165,14 +206,14 @@ export default function ProcessSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            How It Works
+            How We Help
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            See what happens when a lead comes in. No AI jargon, just results.
+            Digitize, automate, then let it run. You focus on the work that matters.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
           {processSteps.map((step, index) => (
             <motion.div
               key={step.id}
@@ -183,15 +224,15 @@ export default function ProcessSection() {
               className="group"
             >
               <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-800 hover:border-blue-500/30 transition-all duration-300 h-full">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                     <step.icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                    <p className="text-sm text-slate-400">{step.subtitle}</p>
+                    <h3 className="text-2xl font-bold text-white">{step.title}</h3>
                   </div>
                 </div>
+                <p className="text-sm text-slate-400 mb-6">{step.subtitle}</p>
                 
                 <div className="relative">
                   {step.mockup}

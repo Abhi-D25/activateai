@@ -9,7 +9,7 @@ import PageTransition from '@/app/components/PageTransition';
 import FAQSection from '@/app/components/FAQSection';
 import HeroSection from '@/app/components/HeroSection';
 import ProcessSection from '@/app/components/ProcessSection';
-import IntegrationsSection from '@/app/components/IntegrationsSection';
+import ClientChannelsBanner from '@/components/ClientChannelsBanner';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -32,7 +32,8 @@ export default function Home() {
       <div className="bg-black">
         <HeroSection />
         
-        <IntegrationsSection />
+        {/* Channels Carousel */}
+        <ClientChannelsBanner />
 
         <ProcessSection />
 
