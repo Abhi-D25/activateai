@@ -4,7 +4,6 @@ import { ReactNode } from 'react';
 import { useMobile } from '../hooks/useMobile';
 import Navigation from './Navigation';
 import MobileNav from './MobileNav';
-import MobileParticleBackground from './MobileParticleBackground';
 import Footer from './Footer';
 import { usePathname } from 'next/navigation';
 import MobileHeader from './MobileHeader';
@@ -24,7 +23,6 @@ const MobileLayout = ({ children }: MobileLayoutProps) => {
 
   return (
     <>
-      <MobileParticleBackground />
       {isMobile ? (
         <>
           <MobileHeader />

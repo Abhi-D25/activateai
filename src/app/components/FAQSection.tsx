@@ -61,9 +61,7 @@ export default function FAQSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="slideUp" className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-              Frequently Asked Questions
-            </span>
+            Frequently Asked Questions
           </h2>
         </ScrollReveal>
         

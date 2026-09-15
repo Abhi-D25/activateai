@@ -23,7 +23,7 @@ const channels = [
     { name: 'TikTok', path: '/logos/tiktok.svg', color: 'text-black dark:text-white' },
     { name: 'Telegram', path: '/logos/telegram.svg', color: 'text-blue-500' },
     { name: 'Facebook', path: '/logos/facebook.svg', color: 'text-blue-600' },
-    { name: 'Webchat', icon: ChatBubbleLeftRightIcon, color: 'text-purple-400' },
+    { name: 'Webchat', icon: ChatBubbleLeftRightIcon, color: 'text-blue-400' },
 ];
 
 export default function ClientChannelsBanner() {

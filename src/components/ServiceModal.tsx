@@ -119,7 +119,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     <Link
                       href={`/solutions?demo=${demoParam}`}
                       onClick={onClose}
-                      className="px-6 py-2 bg-transparent border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 rounded-lg font-semibold transition-colors mr-4 inline-flex items-center"
+                      className="px-6 py-2 bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 rounded-lg font-semibold transition-colors mr-4 inline-flex items-center"
                     >
                       <PlayIcon className="w-5 h-5 mr-2" />
                       Try it Yourself
@@ -141,7 +141,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     <Link
                       href={`/solutions?demo=${demoParam}`}
                       onClick={onClose}
-                      className="px-6 py-2 bg-transparent border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+                      className="px-6 py-2 bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
                     >
                       <PlayIcon className="w-5 h-5 mr-2" />
                       Try it Yourself
