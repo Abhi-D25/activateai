@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ActivateAI - Empowering SMBs with AI Solutions",
-  description: "Streamline operations and boost growth with tailored AI solutions for small and medium businesses.",
+  title: "ActivateAI | Free technical checkup for small businesses",
+  description: "We find where money's leaking through missed calls, follow-ups, and after-hours chaos.",
 }; 

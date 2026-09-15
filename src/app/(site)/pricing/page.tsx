@@ -17,28 +17,28 @@ export default function Pricing() {
 
   const pricingFAQs = [
     {
-      question: "What's included in the Starter Pack?",
-      answer: "The Starter Pack offers flexibility for businesses just getting started. You can choose either the Basic Lead Manager (an AI Receptionist supporting voice, text, and all major social media) OR Website Modernization (creation or complete revamp). You can also choose both services if you need them. This pack is designed to help you start your AI journey without overwhelming your business."
+      question: "What's included in Get Covered?",
+      answer: "Get Covered handles phone, text, and message follow-up so leads don't die. You can also add a website refresh if you need one. It's designed to plug the most common leaks without overwhelming your business."
     },
     {
-      question: "What makes the Pro Pack different?",
-      answer: "The Pro Pack is our most popular option because it provides everything you need for complete digital transformation. It includes advanced Lead Manager, Operations Coordinator, Knowledge Base, Business Intelligence, and custom AI workflows—all tailored to your specific business. Pricing is based on the scope of your transformation and what your business actually needs."
+      question: "What makes Full Fix different?",
+      answer: "Full Fix plugs the biggest leaks across calls, follow-up, scheduling, and paperwork. It includes advanced lead management, operations coordination, knowledge base, business intelligence, and custom workflows, all tailored to how you already work."
     },
     {
-      question: "How does custom pricing work for Pro Pack?",
-      answer: "Pro Pack pricing depends on the scope of your business transformation. After a free consultation, we'll assess your specific needs, workflows, integrations, and business size to provide a custom quote. Every business is different, so pricing reflects what you'll actually use and benefit from. Book a call to get your personalized pricing."
+      question: "How does custom pricing work for Full Fix?",
+      answer: "Full Fix pricing depends on the scope of your business. After a free checkup, we'll assess your specific needs, workflows, and integrations to provide a custom quote. Every business is different, so pricing reflects what you'll actually use. Book a call to get your personalized pricing."
     },
     {
-      question: "Can I upgrade from Starter to Pro later?",
-      answer: "Absolutely! Many businesses start with the Starter Pack to get their feet wet, then upgrade to Pro Pack as they see the value and want more comprehensive automation. We'll seamlessly transition your existing setup and add the advanced features you need."
+      question: "Can I upgrade from Get Covered to Full Fix later?",
+      answer: "Absolutely! Many businesses start with Get Covered to plug the obvious leaks, then upgrade to Full Fix as they see the value. We'll seamlessly transition your existing setup and add the advanced features you need."
     },
     {
-      question: "What channels does the Basic Lead Manager support?",
-      answer: "The Basic Lead Manager (AI Receptionist) in the Starter Pack supports voice calls, text messaging, and all major social media platforms including Facebook, Instagram, LinkedIn, and more. It captures leads, responds to inquiries, and ensures no opportunity slips through the cracks."
+      question: "What channels does Get Covered handle?",
+      answer: "Get Covered handles voice calls, text messaging, and all major social media platforms including Facebook, Instagram, LinkedIn, and more. It captures leads, responds to inquiries, and ensures no opportunity slips through the cracks."
     },
     {
-      question: "Do you offer a free consultation?",
-      answer: "Yes! We offer a free technical checkup where we find where money's leaking in your business. This gives you a clear picture of the value before committing. During the consultation, we'll help you understand which pack best fits your needs. Contact us to schedule yours."
+      question: "Do you offer a free checkup?",
+      answer: "Yes! We offer a free technical checkup where we find where money's leaking in your business. This gives you a clear picture of the value before committing. During the checkup, we'll help you understand which option best fits your needs. Contact us to schedule yours."
     }
   ];
 
@@ -90,14 +90,14 @@ export default function Pricing() {
 
                 <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-blue-500/50 hover:border-blue-400/70 transition-all duration-300 h-full shadow-2xl">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Starter Pack</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Get Covered</h2>
                     <div className="mb-4">
-                      <span className="text-lg sm:text-xl text-blue-400 block mb-2">Starting at</span>
+                      <span className="text-lg sm:text-xl text-blue-400 block mb-2">From</span>
                       <span className="text-5xl sm:text-6xl font-bold text-blue-400">$199</span>
-                      <span className="text-xl sm:text-2xl text-slate-400">/month</span>
+                      <span className="text-xl sm:text-2xl text-slate-400">/mo</span>
                     </div>
                     <p className="text-lg text-slate-300">
-                      Perfect for businesses getting started. Choose one or both services to fit your needs.
+                      Phone, text, and message follow-up so leads don&apos;t die. Website refresh if you need it.
                     </p>
                   </div>
 
@@ -188,77 +188,77 @@ export default function Pricing() {
                 data-testid="pro-pack-pricing"
               >
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center">
+                  <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center">
                     <RocketLaunchIcon className="w-4 h-4 mr-2" />
                     Most Popular
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-purple-500/50 hover:border-purple-400/70 transition-all duration-300 h-full shadow-2xl">
+                <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-blue-500/50 hover:border-blue-400/70 transition-all duration-300 h-full shadow-2xl">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Pro Pack</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Full Fix</h2>
                     <div className="mb-4">
-                      <span className="text-4xl sm:text-5xl font-bold text-purple-400">Custom</span>
+                      <span className="text-4xl sm:text-5xl font-bold text-blue-400">Custom</span>
                       <span className="text-base sm:text-xl text-slate-400 block mt-2">Pricing Based on Scope</span>
                     </div>
                     <p className="text-lg text-slate-300">
-                      Complete AI transformation customized to your business
+                      Plug the biggest leaks across calls, follow-up, scheduling, and paperwork. Built around how you already work.
                     </p>
                   </div>
 
                   <div className="space-y-6 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                        <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-2" />
+                        <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-2" />
                         Everything Customized for You:
                       </h3>
                       <ul className="space-y-4">
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
                             <strong className="text-white">Advanced Lead Manager</strong>
                             <p className="mt-1 text-sm">Full CRM integration with advanced automation and analytics</p>
                           </div>
                         </li>
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
                             <strong className="text-white">Operations Coordinator</strong>
                             <p className="mt-1 text-sm">Streamline client onboarding, scheduling, invoicing, and support</p>
                           </div>
                         </li>
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
                             <strong className="text-white">Knowledge Base</strong>
                             <p className="mt-1 text-sm">Centralize business documents and team knowledge for instant access</p>
                           </div>
                         </li>
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
                             <strong className="text-white">Business Intelligence</strong>
                             <p className="mt-1 text-sm">Custom dashboards, reports, and data insights for informed decisions</p>
                           </div>
                         </li>
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
-                            <strong className="text-white">Custom AI Workflows</strong>
+                            <strong className="text-white">Custom Workflows</strong>
                             <p className="mt-1 text-sm">Tailored automation for your unique business processes</p>
                           </div>
                         </li>
                         <li className="flex items-start">
-                          <CheckCircleIcon className="w-5 h-5 text-purple-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0 mt-0.5" />
                           <div className="text-slate-300">
-                            <strong className="text-white">Dedicated Support & Strategic Consultation</strong>
+                            <strong className="text-white">Dedicated Support</strong>
                             <p className="mt-1 text-sm">Priority support with account manager and regular optimization sessions</p>
                           </div>
                         </li>
                       </ul>
-                      <div className="mt-4 p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
-                        <p className="text-purple-300 text-sm font-semibold">
-                          Pricing depends on your specific transformation scope. Book a consultation to discuss your needs!
+                      <div className="mt-4 p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-blue-300 text-sm font-semibold">
+                          Pricing depends on your specific transformation scope. Book a checkup to discuss your needs!
                         </p>
                       </div>
                     </div>
@@ -269,14 +269,14 @@ export default function Pricing() {
                       href="https://calendar.app.google/cdb8imp4GAqRnWQT8"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full py-4 text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
-                      data-testid="book-consultation-pro-btn"
+                      className="block w-full py-4 text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                      data-testid="book-checkup-pro-btn"
                     >
-                      Book Free Consultation
+                      Book Free Checkup
                     </a>
                     <Link
                       href="/contact"
-                      className="block w-full py-3 text-center bg-transparent border-2 border-purple-400 text-purple-400 rounded-xl font-semibold hover:bg-purple-400/10 transition-all duration-300"
+                      className="block w-full py-3 text-center bg-transparent border-2 border-blue-400 text-blue-400 rounded-xl font-semibold hover:bg-blue-400/10 transition-all duration-300"
                       data-testid="contact-pro-btn"
                     >
                       Contact Us
@@ -309,55 +309,55 @@ export default function Pricing() {
                     <thead>
                       <tr className="border-b border-gray-700">
                         <th className="text-left p-4 text-slate-300 font-semibold">Feature</th>
-                        <th className="text-center p-4 text-blue-400 font-semibold">Starter Pack</th>
-                        <th className="text-center p-4 text-purple-400 font-semibold">Pro Pack</th>
+                        <th className="text-center p-4 text-blue-400 font-semibold">Get Covered</th>
+                        <th className="text-center p-4 text-blue-400 font-semibold">Full Fix</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-700/50">
                       <tr>
                         <td className="p-4 text-slate-300">Lead Manager</td>
                         <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Website Modernization</td>
                         <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Basic Automation</td>
                         <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Email & Chat Support</td>
                         <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
-                        <td className="p-4 text-slate-300">Custom AI Workflows</td>
+                        <td className="p-4 text-slate-300">Custom Workflows</td>
                         <td className="text-center p-4"><XCircleIcon className="w-6 h-6 text-slate-500 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Operations Coordinator</td>
                         <td className="text-center p-4"><XCircleIcon className="w-6 h-6 text-slate-500 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Knowledge Base</td>
                         <td className="text-center p-4"><XCircleIcon className="w-6 h-6 text-slate-500 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Business Intelligence</td>
                         <td className="text-center p-4"><XCircleIcon className="w-6 h-6 text-slate-500 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                       <tr>
                         <td className="p-4 text-slate-300">Dedicated Account Manager</td>
                         <td className="text-center p-4"><XCircleIcon className="w-6 h-6 text-slate-500 mx-auto" /></td>
-                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-purple-400 mx-auto" /></td>
+                        <td className="text-center p-4"><CheckCircleIcon className="w-6 h-6 text-blue-400 mx-auto" /></td>
                       </tr>
                     </tbody>
                   </table>
@@ -443,16 +443,16 @@ export default function Pricing() {
                   Still Have Questions?
                 </h2>
                 <p className="text-lg md:text-xl text-slate-300 mb-8">
-                  Schedule a free consultation to discuss which plan is right for your business.
+                  Schedule a free checkup to discuss which plan is right for your business.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a 
                     href="https://calendar.app.google/cdb8imp4GAqRnWQT8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
                   >
-                    Book Free Consultation
+                    Book Free Checkup
                   </a>
                   <Link 
                     href="/contact"
