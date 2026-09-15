@@ -54,7 +54,7 @@ export default function Navigation() {
               rel="noopener noreferrer"
               className="btn-secondary"
             >
-              Book Consultation
+              Book Free Checkup
             </a>
           </div>
           <div className="sm:hidden flex items-center">

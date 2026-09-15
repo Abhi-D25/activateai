@@ -22,10 +22,10 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://acti-vate.ai'),
   title: {
-    default: 'ActivateAI - AI Solutions for Small & Medium Businesses',
+    default: 'ActivateAI | Free technical checkup for small businesses',
     template: '%s | ActivateAI',
   },
-  description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
+  description: "We find where money's leaking through missed calls, follow-ups, and after-hours chaos.",
   icons: {
     icon: [
       { url: '/logo.png' },
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://activateai.com/',
     siteName: 'ActivateAI',
-    title: 'ActivateAI - AI Solutions for Small & Medium Businesses',
-    description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
+    title: 'ActivateAI | Free technical checkup for small businesses',
+    description: "We find where money's leaking through missed calls, follow-ups, and after-hours chaos.",
     images: [
       {
         url: '/logo.png',
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ActivateAI - AI Solutions for Small & Medium Businesses',
-    description: 'ActivateAI helps SMBs leverage artificial intelligence to automate workflows, enhance productivity, and drive growth through customized AI solutions.',
+    title: 'ActivateAI | Free technical checkup for small businesses',
+    description: "We find where money's leaking through missed calls, follow-ups, and after-hours chaos.",
     creator: '@activateai',
     images: ['/logo.png'],
   },

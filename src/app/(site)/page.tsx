@@ -72,24 +72,15 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
                   >
-                    {' '}
-                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">Making AI work</span> for everyday businesses.
+                    <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Stop money leaking</span> through missed calls and cold leads.
                   </motion.h1>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-slate-300 mb-4"
+                    className="text-xl md:text-2xl text-slate-300 mb-8"
                   >
-                    We design <span className="text-blue-400 font-semibold">simple solutions</span> to save you time and money every week.
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="text-lg text-slate-400 mb-8"
-                  >
-                    No new apps. No disruption. Just less busywork, and more time for growth & customers.
+                    We check your tech, find the gaps, and fix what costs you.
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -351,7 +342,7 @@ export default function Home() {
                       >
                         <div className="text-purple-400 text-4xl mb-4">&quot;</div>
                         <p className="text-slate-300 mb-4 italic text-lg">
-                          It feels like I hired an assistant—without the cost. Messages get answered, appointments get booked.
+                          It feels like I hired an assistant without the cost. Messages get answered, appointments get booked.
                         </p>
                         <div className="flex items-center">
                           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl mr-4">
@@ -446,31 +437,31 @@ export default function Home() {
                   <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
                     Getting Started
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Starter Pack</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Get Covered</h3>
                   <div className="mb-6">
-                    <span className="text-base sm:text-lg text-blue-400 block mb-1">Starting at</span>
+                    <span className="text-base sm:text-lg text-blue-400 block mb-1">From</span>
                     <span className="text-4xl sm:text-5xl font-bold text-blue-400">$199</span>
-                    <span className="text-slate-400 text-lg sm:text-xl">/month</span>
+                    <span className="text-slate-400 text-lg sm:text-xl">/mo</span>
                   </div>
                   <p className="text-slate-300 mb-6">
-                    Perfect for businesses getting started. Choose one or both services to fit your needs.
+                    Phone, text, and message follow-up so leads don&apos;t die. Website refresh if you need it.
                   </p>
                   <ul className="space-y-4 mb-8">
                     <li className="flex items-start">
                       <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
-                        <strong className="text-white">Basic Lead Manager</strong> - AI Receptionist supporting voice, text, and all major social media
+                        <strong className="text-white">Lead Follow-up</strong> - Voice, text, and social message handling so nothing slips
                       </div>
                     </li>
                     <li className="flex items-start">
                       <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
-                        <strong className="text-white">Website Modernization</strong> - Creation or revamp of your business website
+                        <strong className="text-white">Website Refresh</strong> - Modern site if you need one
                       </div>
                     </li>
                     <li className="flex items-start">
                       <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
-                      <span className="text-slate-300">Flexible options: Choose both or pick one to start</span>
+                      <span className="text-slate-300">Choose both or pick one to start</span>
                     </li>
                   </ul>
                   <Link
@@ -488,53 +479,53 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="relative bg-gradient-to-br from-purple-900/30 to-purple-800/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300"
-                  whileHover={{ y: -5, boxShadow: "0 0 40px rgba(168, 85, 247, 0.3)" }}
+                  className="relative bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300"
+                  whileHover={{ y: -5, boxShadow: "0 0 40px rgba(59, 130, 246, 0.3)" }}
                   data-testid="pro-pack-card"
                 >
-                  <div className="absolute top-0 right-0 bg-gradient-to-br from-purple-500 to-pink-500 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
+                  <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-500 to-blue-600 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-semibold">
                     Most Popular
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Pro Pack</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 mt-4">Full Fix</h3>
                   <div className="mb-6">
-                    <span className="text-3xl sm:text-4xl font-bold text-purple-400">Custom Pricing</span>
+                    <span className="text-3xl sm:text-4xl font-bold text-blue-400">Custom</span>
                   </div>
                   <p className="text-slate-300 mb-6">
-                    Complete AI transformation customized to your business. Pricing based on scope.
+                    Plug the biggest leaks across calls, follow-up, scheduling, and paperwork. Built around how you already work.
                   </p>
                   <ul className="space-y-4 mb-8">
                     <li className="flex items-start">
-                      <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                      <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
                         <strong className="text-white">Advanced Lead Manager</strong> - Full automation and CRM integration
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                      <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
-                        <strong className="text-white">Operations Coordinator</strong> - Automated scheduling, invoicing, and support
+                        <strong className="text-white">Operations Coordinator</strong> - Scheduling, invoicing, and support
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                      <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
                         <strong className="text-white">Knowledge Base</strong> - Centralized business documentation
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                      <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <div className="text-slate-300">
                         <strong className="text-white">Business Intelligence</strong> - Custom dashboards and analytics
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircleIcon className="w-6 h-6 text-purple-400 mr-3 flex-shrink-0" />
+                      <CheckCircleIcon className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                       <span className="text-slate-300">Everything tailored to your business needs</span>
                     </li>
                   </ul>
                   <Link
                     href="/pricing"
-                    className="block w-full py-3 text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="block w-full py-3 text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                     data-testid="view-pro-details-btn"
                   >
                     Contact Us

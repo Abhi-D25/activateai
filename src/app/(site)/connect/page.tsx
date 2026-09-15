@@ -141,7 +141,7 @@ END:VCARD`;
                           </svg>
                         </div>
                         <div className="text-left">
-                          <div className="font-semibold text-white">Schedule Free Consultation</div>
+                          <div className="font-semibold text-white">Schedule Free Checkup</div>
                           <div className="text-xs text-slate-400">Let&apos;s grow together</div>
                         </div>
                       </div>
