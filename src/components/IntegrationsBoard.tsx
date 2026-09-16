@@ -29,13 +29,13 @@ const IntegrationsBoard = () => {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12">
 
                 {/* Industry Filter */}
-                <div className="w-full lg:w-auto overflow-x-auto pb-6 lg:pb-0 custom-scrollbar">
-                    <div className="flex space-x-2">
+                <div className="w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+                    <div className="flex gap-2 min-w-max">
                         {industries.map((industry) => (
                             <button
                                 key={industry}
                                 onClick={() => setSelectedIndustry(industry)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${selectedIndustry === industry
+                                className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${selectedIndustry === industry
                                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
                                     : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-700/50'
                                     }`}

@@ -60,22 +60,22 @@ export default function PortfolioModal({ isOpen, onClose }: PortfolioModalProps)
             onClick={onClose}
             className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60]"
           />
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pt-16 sm:pt-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[calc(100vh-120px)] flex flex-col my-auto"
+              className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto max-h-[calc(100vh-80px)] sm:max-h-[calc(100vh-120px)] flex flex-col my-auto"
             >
               {/* Header */}
-              <div className="relative px-6 pt-6 pb-4 border-b border-slate-800">
+              <div className="relative px-4 sm:px-6 pt-4 pb-3 sm:pt-5 sm:pb-4 border-b border-slate-800 flex-shrink-0">
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors z-10"
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
-                <h2 className="text-2xl font-bold text-white">Site examples</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-white pr-10">Site examples</h2>
                 <p className="text-slate-400 text-sm mt-1">Real layouts. Pick one to peek.</p>
               </div>
 
