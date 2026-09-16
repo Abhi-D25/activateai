@@ -10,8 +10,8 @@ export interface Integration {
 // Color mapping for integration types
 export const typeColors: Record<string, { bg: string; text: string; border: string }> = {
     "Scheduling": { bg: "bg-blue-500/20", text: "text-blue-400", border: "border-blue-500/30" },
-    "CRM/PMS": { bg: "bg-purple-500/20", text: "text-purple-400", border: "border-purple-500/30" },
-    "Automation": { bg: "bg-yellow-500/20", text: "text-yellow-400", border: "border-yellow-500/30" },
+    "CRM/PMS": { bg: "bg-slate-500/20", text: "text-slate-300", border: "border-slate-500/30" },
+    "Automation": { bg: "bg-blue-400/20", text: "text-blue-300", border: "border-blue-400/30" },
 };
 
 export const industries = [

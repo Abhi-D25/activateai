@@ -45,9 +45,9 @@ export default function AboutPage() {
                 },
                 filter: { duration: 1 }
               }}
-              className="text-xl text-slate-300 mx-auto px-4" // Removed mr-24 and added mx-auto with padding
+              className="text-xl text-slate-300 mx-auto px-4"
             >
-              We&apos;re on a mission to democratize AI for small and medium businesses
+              We help small businesses plug the tech gaps that cost them money every day
             </motion.div>
           </div>
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="text-slate-300 mb-6"
               >
-                Founded in 2023, ActivateAI emerged from a simple observation: while large corporations were leveraging AI to transform their operations, small and medium businesses were being left behind due to the complexity and cost of AI implementation.
+                Founded in 2023, ActivateAI emerged from a simple observation: small businesses lose money every day through tech gaps. Missed calls, leads stuck in tools nobody opens, inventory you can&apos;t see, busywork that only lives in the owner&apos;s head.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="text-slate-300"
               >
-                We believe that AI should be accessible to businesses of all sizes. Our team of AI experts and business consultants work together to create practical, cost-effective AI solutions that deliver real results for our clients.
+                We believe fixing these gaps shouldn&apos;t require a massive tech overhaul. Our team works with you to digitize what&apos;s messy, automate what&apos;s repetitive, and free you to focus on the work you love.
               </motion.p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 delay={0.9}
               />
               <p className="text-slate-300">
-                To empower small and medium businesses with AI solutions that drive growth, improve efficiency, and create competitive advantages.
+                To find where money&apos;s leaking in your business and fix it. Digitize, automate, free you up for the work that matters.
               </p>
             </div>
             <div className="bg-slate-800 p-6 sm:p-8 rounded-xl">
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 delay={1.1}
               />
               <p className="text-slate-300">
-                A world where every business, regardless of size, can harness the power of AI to achieve their full potential.
+                A world where small businesses don&apos;t lose money to disconnected tools and manual busywork. Tech gaps plugged, time reclaimed.
               </p>
             </div>
             <div className="bg-slate-800 p-6 sm:p-8 rounded-xl">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                 delay={1.3}
               />
               <p className="text-slate-300">
-                Innovation, accessibility, and practical results drive everything we do. We believe in creating solutions that work for real businesses.
+                Practical results over fancy tech. We work around how you already run your business, not the other way around.
               </p>
             </div>
           </div>

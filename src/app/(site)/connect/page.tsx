@@ -64,23 +64,10 @@ END:VCARD`;
                 whileHover={{ y: -5 }}
                 className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
               >
-                {/* Header with animated gradient */}
-                <motion.div
-                  className="h-32 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 relative"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  style={{
-                    backgroundSize: '200% 200%'
-                  }}
-                >
+                {/* Header with gradient */}
+                <div className="h-32 bg-gradient-to-br from-blue-600 to-blue-800 relative">
                   <div className="absolute inset-0 bg-black/20" />
-                </motion.div>
+                </div>
 
                 {/* Profile Photo */}
                 <div className="relative -mt-20 flex justify-center px-6">
@@ -114,7 +101,7 @@ END:VCARD`;
                     onClick={handleSaveContact}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transition-all mb-8"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transition-all mb-8"
                   >
                     <ArrowDownTrayIcon className="w-5 h-5" />
                     <span>Save Contact</span>

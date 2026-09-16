@@ -46,12 +46,12 @@ export default function CaseStudiesPage() {
               className="group"
             >
               <Link href="/case-studies/solo-preneur">
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-purple-600/20 border border-blue-500/30 p-8 hover:border-blue-400/50 transition-all duration-300 cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 p-8 hover:border-blue-500/30 transition-all duration-300 cursor-pointer">
                   {/* Glow effect on hover */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-blue-500/50 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <div className="absolute -inset-1 bg-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                   
                   <div className="relative z-10">
-                    <div className="flex items-center justify-center w-16 h-16 bg-blue-500/20 rounded-xl mb-6 mx-auto">
+                    <div className="flex items-center justify-center w-16 h-16 bg-blue-500/10 border border-blue-500/20 rounded-xl mb-6 mx-auto">
                       <UserIcon className="h-8 w-8 text-blue-400" />
                     </div>
                     
@@ -68,7 +68,7 @@ export default function CaseStudiesPage() {
                     </div>
                     
                     {/* Preview metrics */}
-                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-blue-500/20">
+                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
                       <div className="text-center">
                         <div className="text-lg font-semibold text-blue-400">2-5x</div>
                         <div className="text-sm text-slate-400">Revenue Growth</div>
@@ -91,13 +91,13 @@ export default function CaseStudiesPage() {
               className="group"
             >
               <Link href="/case-studies/growing-business">
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-600/20 via-green-500/10 to-emerald-600/20 border border-green-500/30 p-8 hover:border-green-400/50 transition-all duration-300 cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 p-8 hover:border-blue-500/30 transition-all duration-300 cursor-pointer">
                   {/* Glow effect on hover */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500 via-green-500/50 to-emerald-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <div className="absolute -inset-1 bg-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                   
                   <div className="relative z-10">
-                    <div className="flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-xl mb-6 mx-auto">
-                      <BuildingOfficeIcon className="h-8 w-8 text-green-400" />
+                    <div className="flex items-center justify-center w-16 h-16 bg-blue-500/10 border border-blue-500/20 rounded-xl mb-6 mx-auto">
+                      <BuildingOfficeIcon className="h-8 w-8 text-blue-400" />
                     </div>
                     
                     <h2 className="text-2xl font-bold text-white mb-4 text-center">Growing Businesses</h2>
@@ -106,20 +106,20 @@ export default function CaseStudiesPage() {
                     </p>
                     
                     <div className="text-center">
-                      <div className="inline-flex items-center text-green-400 group-hover:text-green-300 transition-colors">
+                      <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
                         <span className="mr-2">View Growing Business Stories</span>
                         <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                     
                     {/* Preview metrics */}
-                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-green-500/20">
+                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-green-400">40%</div>
+                        <div className="text-lg font-semibold text-blue-400">40%</div>
                         <div className="text-sm text-slate-400">Efficiency Gain</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-green-400">$50K+</div>
+                        <div className="text-lg font-semibold text-blue-400">$50K+</div>
                         <div className="text-sm text-slate-400">Annual Savings</div>
                       </div>
                     </div>
