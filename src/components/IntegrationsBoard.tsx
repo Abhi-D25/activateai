@@ -29,20 +29,28 @@ const IntegrationsBoard = () => {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12">
 
                 {/* Industry Filter */}
-                <div className="w-full lg:w-auto overflow-x-auto pb-6 lg:pb-0 custom-scrollbar">
-                    <div className="flex space-x-2">
-                        {industries.map((industry) => (
-                            <button
-                                key={industry}
-                                onClick={() => setSelectedIndustry(industry)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${selectedIndustry === industry
-                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
-                                    : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-700/50'
-                                    }`}
-                            >
-                                {industry}
-                            </button>
-                        ))}
+                <div className="w-full lg:w-auto relative">
+                    <div className="overflow-x-auto pb-2 lg:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+                        <div className="flex gap-2 min-w-max pr-8 sm:pr-0">
+                            {industries.map((industry) => (
+                                <button
+                                    key={industry}
+                                    onClick={() => setSelectedIndustry(industry)}
+                                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${selectedIndustry === industry
+                                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                                        : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-700/50'
+                                        }`}
+                                >
+                                    {industry}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    {/* Scroll fade indicator - mobile only */}
+                    <div className="absolute right-0 top-0 bottom-2 lg:hidden w-12 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none flex items-center justify-end pr-1">
+                        <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                     </div>
                 </div>
 
