@@ -12,22 +12,8 @@ import ProcessSection from '@/app/components/ProcessSection';
 import ParticleBackground from '@/app/components/ParticleBackground';
 import ClientChannelsBanner from '@/components/ClientChannelsBanner';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 2);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const showSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   return (
     <PageTransition variant="fade">
       <div className="bg-black">
@@ -38,7 +24,7 @@ export default function Home() {
 
         <ProcessSection />
 
-        {/* Testimonials Section */}
+        {/* How We Work Section */}
         <motion.section
           className="relative py-20 bg-slate-950"
           initial={{ opacity: 0, y: 50 }}
@@ -58,112 +44,50 @@ export default function Home() {
             >
               <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  What Our Clients Say
+                  How We Work
                 </h2>
                 <p className="text-xl text-slate-400">
-                  Real results from real businesses
+                  We find where money&apos;s leaking.
                 </p>
               </div>
 
-              <div className="relative overflow-hidden">
-                <div
-                  className="flex transition-transform duration-1000 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <motion.div
+                  className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
                 >
-                  {/* Testimonial 1 & 2 */}
-                  <div className="flex flex-col md:flex-row gap-6 min-w-full">
-                    <motion.div
-                      className="flex-1 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-blue-400 text-4xl mb-4">&quot;</div>
-                      <p className="text-slate-300 mb-4 italic text-lg">
-                        I didn&apos;t have to change a single thing. They worked around how I already run my business. Things just started getting done.
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl mr-4 border border-blue-500/30">
-                          M
-                        </div>
-                        <div>
-                          <div className="text-white font-semibold">Maya G.</div>
-                          <div className="text-slate-400 text-sm">Nutrition Coach</div>
-                        </div>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="flex-1 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-blue-400 text-4xl mb-4">&quot;</div>
-                      <p className="text-slate-300 mb-4 italic text-lg">
-                        My leads actually get followed up now. Before, I&apos;d lose track of half the people who reached out.
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl mr-4 border border-blue-500/30">
-                          A
-                        </div>
-                        <div>
-                          <div className="text-white font-semibold">Andre L.</div>
-                          <div className="text-slate-400 text-sm">Independent Realtor</div>
-                        </div>
-                      </div>
-                    </motion.div>
+                  <div className="flex items-center justify-center w-14 h-14 bg-blue-500/20 rounded-xl mb-4 mx-auto border border-blue-500/30">
+                    <span className="text-blue-400 font-bold text-xl">1</span>
                   </div>
-
-                  {/* Testimonial 3 & 4 */}
-                  <div className="flex flex-col md:flex-row gap-6 min-w-full">
-                    <motion.div
-                      className="flex-1 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-blue-400 text-4xl mb-4">&quot;</div>
-                      <p className="text-slate-300 mb-4 italic text-lg">
-                        It feels like I hired an assistant without the cost. Messages get answered, appointments get booked.
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl mr-4 border border-blue-500/30">
-                          S
-                        </div>
-                        <div>
-                          <div className="text-white font-semibold">Sarah K.</div>
-                          <div className="text-slate-400 text-sm">Freelance Designer</div>
-                        </div>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="flex-1 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-blue-400 text-4xl mb-4">&quot;</div>
-                      <p className="text-slate-300 mb-4 italic text-lg">
-                        The setup was so smooth. They asked about my business and just made everything work better. No learning curve.
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl mr-4 border border-blue-500/30">
-                          M
-                        </div>
-                        <div>
-                          <div className="text-white font-semibold">Mike R.</div>
-                          <div className="text-slate-400 text-sm">Small Business Owner</div>
-                        </div>
-                      </div>
-                    </motion.div>
+                  <h3 className="text-xl font-bold text-white mb-3 text-center">Find</h3>
+                  <p className="text-slate-300 text-center">
+                    We look at how leads reach you, what happens when you miss a call, and where follow-up falls through the cracks.
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="flex items-center justify-center w-14 h-14 bg-blue-500/20 rounded-xl mb-4 mx-auto border border-blue-500/30">
+                    <span className="text-blue-400 font-bold text-xl">2</span>
                   </div>
-                </div>
-
-                {/* Navigation Dots */}
-                <div className="flex justify-center mt-8 space-x-3">
-                  <button
-                    onClick={() => showSlide(0)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === 0 ? 'bg-blue-500 w-8' : 'bg-slate-700'}`}
-                    aria-label="Show testimonials 1-2"
-                  />
-                  <button
-                    onClick={() => showSlide(1)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === 1 ? 'bg-blue-500 w-8' : 'bg-slate-700'}`}
-                    aria-label="Show testimonials 3-4"
-                  />
-                </div>
+                  <h3 className="text-xl font-bold text-white mb-3 text-center">Fix</h3>
+                  <p className="text-slate-300 text-center">
+                    We show you which gaps are costing you the most and map out exactly how automation can plug them.
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-blue-500/30 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="flex items-center justify-center w-14 h-14 bg-blue-500/20 rounded-xl mb-4 mx-auto border border-blue-500/30">
+                    <span className="text-blue-400 font-bold text-xl">3</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 text-center">Free You</h3>
+                  <p className="text-slate-300 text-center">
+                    You walk away with a clear picture of what to tackle first and what it would take to get started.
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -353,7 +277,7 @@ export default function Home() {
                   Ready to Stop the Leaks?
                 </h2>
                 <p className="text-lg md:text-xl text-slate-300 mb-8">
-                  Join hundreds of businesses that have plugged the gaps and started capturing more revenue.
+                  Book a free technical checkup and find out where your business is losing money.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a

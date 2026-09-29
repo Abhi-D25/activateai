@@ -78,7 +78,7 @@ export default function OperationsPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <StarIcon className="h-5 w-5 mr-2" />
-              <span className="font-medium">Save 5-8 hours per week in ops admin time</span>
+              <span className="font-medium">Automate the busywork you do every day</span>
             </motion.div>
           </div>
 
@@ -257,26 +257,26 @@ export default function OperationsPage() {
             </div>
           </motion.div>
 
-          {/* Results Section */}
+          {/* What You Get Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">The Results</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">What You Get</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-cyan-600/10 border border-blue-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">30%</div>
-                <div className="text-slate-300 text-sm">Fewer Project Delays</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">Auto</div>
+                <div className="text-slate-300 text-sm">Status Updates</div>
               </div>
               <div className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-cyan-600/10 border border-blue-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">5-8</div>
-                <div className="text-slate-300 text-sm">Hours Saved Weekly</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">Smart</div>
+                <div className="text-slate-300 text-sm">Onboarding Flows</div>
               </div>
               <div className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-cyan-600/10 border border-blue-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">2x</div>
-                <div className="text-slate-300 text-sm">Faster Onboarding</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">Clear</div>
+                <div className="text-slate-300 text-sm">Team Visibility</div>
               </div>
               <div className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-cyan-600/10 border border-blue-500/20 rounded-xl p-6 text-center">
                 <div className="text-3xl font-bold text-blue-400 mb-2">✅</div>
@@ -290,21 +290,29 @@ export default function OperationsPage() {
             </div>
           </motion.div>
 
-          {/* Case Study */}
+          {/* What a Free Technical Checkup Covers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
             className="bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-cyan-600/10 border border-blue-500/20 rounded-xl p-8 mb-16"
           >
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Client Success</h2>
-            <div className="max-w-2xl mx-auto text-center">
-              <blockquote className="text-lg text-slate-300 mb-4 italic">
-                &ldquo;We used to lose track of projects all the time. Now everything&apos;s visible and nothing falls through.&rdquo;
-              </blockquote>
-              <div className="text-blue-400 font-medium">
-                — Studio Ops Manager, Boutique Creative Agency
-              </div>
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">What a Free Technical Checkup Covers</h2>
+            <div className="max-w-2xl mx-auto">
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We review your current onboarding and project handoff processes
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We identify where manual tasks are eating up your time
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                  You get a clear picture of what to automate first
+                </li>
+              </ul>
             </div>
           </motion.div>
 

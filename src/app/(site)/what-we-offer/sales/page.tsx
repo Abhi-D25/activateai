@@ -79,7 +79,7 @@ export default function SalesPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <StarIcon className="h-5 w-5 mr-2" />
-              <span className="font-medium">32% more demos booked on average</span>
+              <span className="font-medium">Never miss a lead again</span>
             </motion.div>
           </div>
 
@@ -224,26 +224,26 @@ export default function SalesPage() {
             </div>
           </motion.div>
 
-          {/* Results Section */}
+          {/* What You Get Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">The Results</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">What You Get</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="bg-gradient-to-br from-yellow-600/10 via-yellow-500/5 to-amber-600/10 border border-yellow-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-400 mb-2">32%</div>
-                <div className="text-slate-300 text-sm">More Demos Booked</div>
+                <div className="text-3xl font-bold text-yellow-400 mb-2">24/7</div>
+                <div className="text-slate-300 text-sm">Lead Capture</div>
               </div>
               <div className="bg-gradient-to-br from-yellow-600/10 via-yellow-500/5 to-amber-600/10 border border-yellow-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-400 mb-2">5-7</div>
-                <div className="text-slate-300 text-sm">Hours Saved Weekly</div>
+                <div className="text-3xl font-bold text-yellow-400 mb-2">Auto</div>
+                <div className="text-slate-300 text-sm">Follow-up Sequences</div>
               </div>
               <div className="bg-gradient-to-br from-yellow-600/10 via-yellow-500/5 to-amber-600/10 border border-yellow-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-400 mb-2">0</div>
-                <div className="text-slate-300 text-sm">Missed Leads</div>
+                <div className="text-3xl font-bold text-yellow-400 mb-2">Smart</div>
+                <div className="text-slate-300 text-sm">Lead Routing</div>
               </div>
               <div className="bg-gradient-to-br from-yellow-600/10 via-yellow-500/5 to-amber-600/10 border border-yellow-500/20 rounded-xl p-6 text-center">
                 <div className="text-3xl font-bold text-yellow-400 mb-2">✅</div>
@@ -257,21 +257,29 @@ export default function SalesPage() {
             </div>
           </motion.div>
 
-          {/* Case Study */}
+          {/* What a Free Technical Checkup Covers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
             className="bg-gradient-to-br from-yellow-600/10 via-yellow-500/5 to-amber-600/10 border border-yellow-500/20 rounded-xl p-8 mb-16"
           >
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Client Success</h2>
-            <div className="max-w-2xl mx-auto text-center">
-              <blockquote className="text-lg text-slate-300 mb-4 italic">
-                &ldquo;Our follow-up rate went from 30% to 95%. We don&apos;t lose leads anymore.&rdquo;
-              </blockquote>
-              <div className="text-yellow-400 font-medium">
-                — Sales Director, Tech Startup
-              </div>
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">What a Free Technical Checkup Covers</h2>
+            <div className="max-w-2xl mx-auto">
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We review how leads currently reach you and where they fall through
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We identify which gaps are costing you the most
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
+                  You get a clear picture of what to tackle first
+                </li>
+              </ul>
             </div>
           </motion.div>
 

@@ -142,13 +142,13 @@ export default function WhatWeOfferPage() {
               className="group"
             >
               <Link href="/what-we-offer/admin">
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-600/20 via-purple-500/10 to-indigo-600/20 border border-purple-500/30 p-8 hover:border-purple-400/50 transition-all duration-300 cursor-pointer h-full">
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-cyan-600/20 border border-blue-500/30 p-8 hover:border-blue-400/50 transition-all duration-300 cursor-pointer h-full">
                   {/* Glow effect on hover */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-purple-500/50 to-indigo-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-blue-500/50 to-cyan-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                   
                   <div className="relative z-10 h-full flex flex-col">
-                    <div className="flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-xl mb-6 mx-auto">
-                      <ClipboardDocumentListIcon className="h-8 w-8 text-purple-400" />
+                    <div className="flex items-center justify-center w-16 h-16 bg-blue-500/20 rounded-xl mb-6 mx-auto">
+                      <ClipboardDocumentListIcon className="h-8 w-8 text-blue-400" />
                     </div>
                     
                     <h2 className="text-2xl font-bold text-white mb-4 text-center">Admin</h2>
@@ -157,20 +157,20 @@ export default function WhatWeOfferPage() {
                     </p>
                     
                     <div className="text-center mt-auto">
-                      <div className="inline-flex items-center text-purple-400 group-hover:text-purple-300 transition-colors">
+                      <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
                         <span className="mr-2">Explore Admin Solutions</span>
                         <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                     
                     {/* Preview features */}
-                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-purple-500/20">
+                    <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-blue-500/20">
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-purple-400">Task Automation</div>
+                        <div className="text-lg font-semibold text-blue-400">Task Automation</div>
                         <div className="text-sm text-slate-400">Document Management</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-purple-400">Organization</div>
+                        <div className="text-lg font-semibold text-blue-400">Organization</div>
                         <div className="text-sm text-slate-400">Streamlined Processes</div>
                       </div>
                     </div>

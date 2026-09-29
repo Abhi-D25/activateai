@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon, GiftIcon, ShieldCheckIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon, UserIcon, CalendarIcon, CheckCircleIcon, BriefcaseIcon, GiftIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 const INDUSTRIES = [
   'Professional Services',
@@ -282,12 +282,6 @@ export default function InteractiveDemoForm() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-blue-800/10 rounded-3xl blur-xl" />
 
       <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-700 shadow-2xl">
-        {/* Badges */}
-        <div className="absolute -top-2 -left-2 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-300 text-[10px] font-bold px-2 py-1 rounded-full shadow-lg flex items-center gap-1 z-20">
-          <ShieldCheckIcon className="w-3 h-3" />
-          <span>HIPAA & SOC2 Compliant</span>
-        </div>
-
         <motion.div
           animate={{ opacity: [1, 0.75, 1], scale: [1, 1.02, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

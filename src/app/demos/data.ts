@@ -71,8 +71,8 @@ export const industryData: Record<string, IndustryData> = {
         stats: [
             { label: 'Years Experience', value: '25+' },
             { label: 'Global Offices', value: '12' },
-            { label: 'Fortune 500 Clients', value: '150+' },
-            { label: 'Success Rate', value: '98%' }
+            { label: 'Services', value: '15+' },
+            { label: 'Industries', value: '8+' }
         ],
         about: {
             title: 'Defining the Future of Business',
@@ -96,18 +96,7 @@ export const industryData: Record<string, IndustryData> = {
                 iconName: 'DocumentTextIcon'
             }
         ],
-        testimonials: [
-            {
-                quote: "Sterling & Partners didn't just advise us; they transformed our entire operational model.",
-                author: "James Wilson",
-                role: "CEO, TechCorp"
-            },
-            {
-                quote: "The level of insight and dedication their team brings is simply unmatched in the industry.",
-                author: "Sarah Chen",
-                role: "Director, Global Ventures"
-            }
-        ],
+        testimonials: [],
         contact: {
             address: "123 Financial District, New York, NY 10005",
             phone: "+1 (212) 555-0123",
@@ -134,10 +123,10 @@ export const industryData: Record<string, IndustryData> = {
             image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80'
         },
         stats: [
-            { label: 'Happy Patients', value: '5,000+' },
             { label: 'Years Serving', value: '15' },
             { label: 'Specialists', value: '8' },
-            { label: '5-Star Reviews', value: '450+' }
+            { label: 'Services', value: '12+' },
+            { label: 'Locations', value: '3' }
         ],
         about: {
             title: 'Caring for Your Smile, Caring for You',
@@ -161,18 +150,7 @@ export const industryData: Record<string, IndustryData> = {
                 iconName: 'HeartIcon'
             }
         ],
-        testimonials: [
-            {
-                quote: "I used to be terrified of the dentist, but the team here made me feel so at ease.",
-                author: "Emily Rodriguez",
-                role: "Patient"
-            },
-            {
-                quote: "My kids actually look forward to their appointments. The pediatric wing is amazing!",
-                author: "Michael Brown",
-                role: "Parent"
-            }
-        ],
+        testimonials: [],
         contact: {
             address: "456 Wellness Blvd, Beverly Hills, CA 90210",
             phone: "+1 (310) 555-0199",
@@ -199,10 +177,10 @@ export const industryData: Record<string, IndustryData> = {
             image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80'
         },
         stats: [
-            { label: 'Michelin Stars', value: '1' },
             { label: 'Wines on List', value: '200+' },
             { label: 'Years Open', value: '10' },
-            { label: 'Seasonal Dishes', value: '12' }
+            { label: 'Seasonal Dishes', value: '12' },
+            { label: 'Private Rooms', value: '2' }
         ],
         about: {
             title: 'Tradition Meets Innovation',
@@ -226,18 +204,7 @@ export const industryData: Record<string, IndustryData> = {
                 iconName: 'ClockIcon'
             }
         ],
-        testimonials: [
-            {
-                quote: "The duck confit was absolute perfection. A true gem in the city.",
-                author: "David Laurent",
-                role: "Food Critic"
-            },
-            {
-                quote: "Beautiful atmosphere and impeccable service. Perfect for date night.",
-                author: "Jessica Lee",
-                role: "Guest"
-            }
-        ],
+        testimonials: [],
         contact: {
             address: "789 Culinary Way, Chicago, IL 60611",
             phone: "+1 (312) 555-0888",
@@ -267,7 +234,7 @@ export const industryData: Record<string, IndustryData> = {
             { label: 'Expert Therapists', value: '20+' },
             { label: 'Treatments', value: '50+' },
             { label: 'Relaxation Rooms', value: '10' },
-            { label: 'Organic Products', value: '100%' }
+            { label: 'Years Open', value: '8+' }
         ],
         about: {
             title: 'Your Sanctuary in the City',
@@ -291,18 +258,7 @@ export const industryData: Record<string, IndustryData> = {
                 iconName: 'UserGroupIcon'
             }
         ],
-        testimonials: [
-            {
-                quote: "I left feeling like a completely new person. The massage was heavenly.",
-                author: "Amanda White",
-                role: "Client"
-            },
-            {
-                quote: "The best salon experience I've had. They really listen to what you want.",
-                author: "Jennifer Wu",
-                role: "Client"
-            }
-        ],
+        testimonials: [],
         contact: {
             address: "321 Relaxation Rd, Miami, FL 33139",
             phone: "+1 (305) 555-0777",
@@ -356,18 +312,7 @@ export const industryData: Record<string, IndustryData> = {
                 iconName: 'CalendarIcon'
             }
         ],
-        testimonials: [
-            {
-                quote: "An absolute paradise. The staff went above and beyond for us.",
-                author: "Robert Taylor",
-                role: "Guest"
-            },
-            {
-                quote: "The views are unmatched and the amenities are top-notch.",
-                author: "Lisa Anderson",
-                role: "Travel Blogger"
-            }
-        ],
+        testimonials: [],
         contact: {
             address: "555 Coastal Hwy, Malibu, CA 90265",
             phone: "+1 (310) 555-0999",
