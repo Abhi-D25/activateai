@@ -10,6 +10,15 @@ import QuizButton from '@/app/components/QuizButton';
 export default function SoloPreneurPage() {
   return (
     <div className="bg-black min-h-screen">
+      {/* Example Scenario Notice */}
+      <div className="bg-slate-900/80 border-b border-slate-700">
+        <div className="container mx-auto px-4 py-3 text-center">
+          <p className="text-slate-400 text-sm">
+            This is an illustrative example of the kinds of problems we fix, not a real client story.
+          </p>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-50" />
@@ -114,7 +123,7 @@ export default function SoloPreneurPage() {
               glowColor="#ef4444"
             />
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              As a solo entrepreneur, you wear every hat in your business. But some of those hats are keeping you from wearing the one that matters most—the expert delivering exceptional results.
+              As a solo entrepreneur, you wear every hat in your business. But some of those hats are keeping you from wearing the one that matters most: the expert delivering exceptional results.
             </p>
           </motion.div>
 
@@ -129,7 +138,7 @@ export default function SoloPreneurPage() {
             >
               <div className="text-3xl mb-4">📱</div>
               <h3 className="text-xl font-semibold mb-2 text-white">Constant interruptions</h3>
-              <p className="text-slate-300">Phone calls during client sessions, text messages while teaching a class—your focus gets fractured just when your clients need you most.</p>
+              <p className="text-slate-300">Phone calls during client sessions, text messages while teaching a class. Your focus gets fractured just when your clients need you most.</p>
             </motion.div>
 
             <motion.div
@@ -197,7 +206,7 @@ export default function SoloPreneurPage() {
               glowColor="#60a5fa"
             />
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              Solo entrepreneurs typically serve clients in two ways—and many successful businesses blend both approaches. Your AI concierge team adapts to however you choose to structure your services.
+              Solo entrepreneurs typically serve clients in two ways, and many successful businesses blend both approaches. Your AI concierge team adapts to however you choose to structure your services.
             </p>
           </motion.div>
 
@@ -293,7 +302,7 @@ export default function SoloPreneurPage() {
               glowColor="#60a5fa"
             />
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              However you choose to serve your clients—individually, in groups, or both—your dedicated concierge team adapts to your business model and handles the complexity behind the scenes.
+              However you choose to serve your clients, individually, in groups, or both, your dedicated concierge team adapts to your business model and handles the complexity behind the scenes.
             </p>
           </motion.div>
 
@@ -311,7 +320,7 @@ export default function SoloPreneurPage() {
               
               <div className="mb-4">
                 <div className="text-blue-400 mb-2">🎨 For Individual Services:</div>
-                <p className="text-slate-300">&quot;Hi, I&apos;m interested in bridal makeup for next June...&quot; Your Lead Manager captures the details, checks your availability, and schedules a consultation—all while you&apos;re with another client.</p>
+                <p className="text-slate-300">&quot;Hi, I&apos;m interested in bridal makeup for next June...&quot; Your Lead Manager captures the details, checks your availability, and schedules a consultation, all while you&apos;re with another client.</p>
               </div>
               
               <div className="mb-4">
@@ -340,7 +349,7 @@ export default function SoloPreneurPage() {
               
               <div className="mb-4">
                 <div className="text-blue-400 mb-2">🏃‍♀️ Group Classes:</div>
-                <p className="text-slate-300">Manages your Monday evening yoga class enrollments while coordinating individual training sessions throughout the week—no conflicts, no confusion.</p>
+                <p className="text-slate-300">Manages your Monday evening yoga class enrollments while coordinating individual training sessions throughout the week. No conflicts, no confusion.</p>
               </div>
               
               <p className="text-green-400">A perfectly orchestrated schedule that maximizes your revenue opportunities across all service types.</p>
@@ -364,7 +373,7 @@ export default function SoloPreneurPage() {
               
               <div className="mb-4">
                 <div className="text-blue-400 mb-2">📢 Group Communications:</div>
-                <p className="text-slate-300">Sends class participants information about upcoming workshops, schedule changes, or new program offerings—keeping your community engaged.</p>
+                <p className="text-slate-300">Sends class participants information about upcoming workshops, schedule changes, or new program offerings, keeping your community engaged.</p>
               </div>
               
               <p className="text-green-400">Stronger relationships that lead to repeat business, referrals, and a thriving community around your services.</p>

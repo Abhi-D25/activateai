@@ -72,7 +72,9 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                         <a href="#home" className="hover:text-white transition-colors">Home</a>
                         <a href="#about" className="hover:text-white transition-colors">About</a>
                         <a href="#services" className="hover:text-white transition-colors">Services</a>
-                        <a href="#testimonials" className="hover:text-white transition-colors">Stories</a>
+                        {testimonials && testimonials.length > 0 && (
+                            <a href="#testimonials" className="hover:text-white transition-colors">Stories</a>
+                        )}
                         <a href="#contact" className="hover:text-white transition-colors">Contact</a>
                     </div>
                     <button className={`px-6 py-2.5 rounded-full bg-white ${theme.accent} font-bold hover:shadow-lg hover:scale-105 transition-all duration-300`}>
@@ -241,43 +243,45 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
-            <section id="testimonials" className="py-32 bg-white relative overflow-hidden">
-                <div className={`absolute top-0 right-0 w-1/3 h-full ${theme.secondary} opacity-30 skew-x-12 translate-x-20`}></div>
+            {/* Testimonials Section - only show if testimonials exist */}
+            {testimonials && testimonials.length > 0 && (
+                <section id="testimonials" className="py-32 bg-white relative overflow-hidden">
+                    <div className={`absolute top-0 right-0 w-1/3 h-full ${theme.secondary} opacity-30 skew-x-12 translate-x-20`}></div>
 
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-20">
-                        <h2 className={`text-sm font-bold uppercase tracking-widest mb-4 ${theme.accent}`}>Testimonials</h2>
-                        <h3 className={`text-4xl md:text-5xl font-bold ${theme.heading}`}>Client Stories</h3>
-                    </div>
+                    <div className="container mx-auto px-6 relative z-10">
+                        <div className="text-center mb-20">
+                            <h2 className={`text-sm font-bold uppercase tracking-widest mb-4 ${theme.accent}`}>Stories</h2>
+                            <h3 className={`text-4xl md:text-5xl font-bold ${theme.heading}`}>Example Scenarios</h3>
+                        </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                        {testimonials.map((testimonial, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                className="p-10 rounded-3xl bg-white border border-slate-100 shadow-xl relative"
-                            >
-                                <div className={`text-8xl absolute -top-6 left-8 ${theme.accent} opacity-10 font-serif`}>&quot;</div>
-                                <p className={`text-xl italic mb-8 relative z-10 ${theme.heading} font-light`}>
-                                    {testimonial.quote}
-                                </p>
-                                <div className="flex items-center border-t border-slate-100 pt-6">
-                                    <div className={`w-12 h-12 rounded-full ${theme.primary} flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md`}>
-                                        {testimonial.author[0]}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                            {testimonials.map((testimonial, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    className="p-10 rounded-3xl bg-white border border-slate-100 shadow-xl relative"
+                                >
+                                    <div className={`text-8xl absolute -top-6 left-8 ${theme.accent} opacity-10 font-serif`}>&quot;</div>
+                                    <p className={`text-xl italic mb-8 relative z-10 ${theme.heading} font-light`}>
+                                        {testimonial.quote}
+                                    </p>
+                                    <div className="flex items-center border-t border-slate-100 pt-6">
+                                        <div className={`w-12 h-12 rounded-full ${theme.primary} flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md`}>
+                                            {testimonial.author[0]}
+                                        </div>
+                                        <div>
+                                            <h4 className={`font-bold text-lg ${theme.heading}`}>{testimonial.author}</h4>
+                                            <p className={`text-sm ${theme.accent} font-medium`}>{testimonial.role}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 className={`font-bold text-lg ${theme.heading}`}>{testimonial.author}</h4>
-                                        <p className={`text-sm ${theme.accent} font-medium`}>{testimonial.role}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* Contact Section */}
             <section id="contact" className={`py-32 ${theme.primary} text-white relative overflow-hidden`}>

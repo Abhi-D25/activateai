@@ -67,7 +67,7 @@ export default function SupportPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Stop firefighting every inbox. Automate responses, catch issues early, and keep client experiences consistent—without growing your support team.
+              Stop firefighting every inbox. Automate responses, catch issues early, and keep client experiences consistent, without growing your support team.
             </motion.p>
             
             <motion.div 
@@ -77,7 +77,7 @@ export default function SupportPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <StarIcon className="h-5 w-5 mr-2" />
-              <span className="font-medium">Save 4-8 hours weekly on support</span>
+              <span className="font-medium">Respond faster without more staff</span>
             </motion.div>
           </div>
 
@@ -219,26 +219,26 @@ export default function SupportPage() {
             </div>
           </motion.div>
 
-          {/* Results Section */}
+          {/* What You Get Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">The Results</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">What You Get</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-emerald-600/10 border border-green-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">4-8</div>
-                <div className="text-slate-300 text-sm">Hours Saved Weekly</div>
+                <div className="text-3xl font-bold text-green-400 mb-2">Smart</div>
+                <div className="text-slate-300 text-sm">Request Routing</div>
               </div>
               <div className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-emerald-600/10 border border-green-500/20 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">40%</div>
-                <div className="text-slate-300 text-sm">Fewer Manual Updates</div>
+                <div className="text-3xl font-bold text-green-400 mb-2">Auto</div>
+                <div className="text-slate-300 text-sm">Status Updates</div>
               </div>
               <div className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-emerald-600/10 border border-green-500/20 rounded-xl p-6 text-center">
                 <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
-                <div className="text-slate-300 text-sm">Automated Responses</div>
+                <div className="text-slate-300 text-sm">Response Capability</div>
               </div>
               <div className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-emerald-600/10 border border-green-500/20 rounded-xl p-6 text-center">
                 <div className="text-3xl font-bold text-green-400 mb-2">✅</div>
@@ -252,21 +252,29 @@ export default function SupportPage() {
             </div>
           </motion.div>
 
-          {/* Case Study */}
+          {/* What a Free Technical Checkup Covers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
             className="bg-gradient-to-br from-green-600/10 via-green-500/5 to-emerald-600/10 border border-green-500/20 rounded-xl p-8 mb-16"
           >
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Client Success</h2>
-            <div className="max-w-2xl mx-auto text-center">
-              <blockquote className="text-lg text-slate-300 mb-4 italic">
-                &ldquo;We used to get 50 &lsquo;Where&apos;s my order?&rsquo; emails a day. Now our system answers them automatically.&rdquo;
-              </blockquote>
-              <div className="text-green-400 font-medium">
-                — Founder, Boutique Logistics Firm
-              </div>
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">What a Free Technical Checkup Covers</h2>
+            <div className="max-w-2xl mx-auto">
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We review how support requests currently reach you and who handles them
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                  We identify where response times lag or clients fall through
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-5 w-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                  You get a clear picture of what to automate first
+                </li>
+              </ul>
             </div>
           </motion.div>
 

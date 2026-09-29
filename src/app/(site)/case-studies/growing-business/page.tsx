@@ -9,6 +9,15 @@ import FuturisticText from '@/app/components/FuturisticText';
 export default function GrowingBusinessPage() {
   return (
     <div className="bg-black min-h-screen">
+      {/* Example Scenario Notice */}
+      <div className="bg-slate-900/80 border-b border-slate-700">
+        <div className="container mx-auto px-4 py-3 text-center">
+          <p className="text-slate-400 text-sm">
+            This is an illustrative example of the kinds of problems we fix, not a real client story.
+          </p>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-50" />
@@ -39,7 +48,7 @@ export default function GrowingBusinessPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl text-slate-300 mb-6"
               >
-                You&apos;ve built something special—a team that delivers exceptional results and a business model that works. But growth brings complexity, and complexity threatens the very quality that made you successful.
+                You&apos;ve built something special: a team that delivers exceptional results and a business model that works. But growth brings complexity, and complexity threatens the very quality that made you successful.
               </motion.p>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -184,7 +193,7 @@ export default function GrowingBusinessPage() {
               glowColor="#2563eb"
             />
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              While your competitors struggle with the operational overhead of growth, your AI concierge team ensures every client interaction maintains your signature quality—regardless of scale.
+              While your competitors struggle with the operational overhead of growth, your AI concierge team ensures every client interaction maintains your signature quality, regardless of scale.
             </p>
           </motion.div>
 

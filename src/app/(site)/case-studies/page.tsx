@@ -23,16 +23,23 @@ export default function CaseStudiesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Who We Serve
+              Example Scenarios
             </motion.h1>
             <motion.p 
-              className="text-xl text-slate-300 mb-12"
+              className="text-xl text-slate-300 mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Discover how businesses like yours have transformed their operations with AI. 
-              Choose your business type to see relevant success stories.
+              These are illustrative examples of the kinds of problems we fix, not real client stories.
+            </motion.p>
+            <motion.p 
+              className="text-lg text-slate-400 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              Choose your business type to explore relevant scenarios.
             </motion.p>
           </div>
 
@@ -62,20 +69,20 @@ export default function CaseStudiesPage() {
                     
                     <div className="text-center">
                       <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                        <span className="mr-2">View Solo-preneur Stories</span>
+                        <span className="mr-2">View Solo-preneur Examples</span>
                         <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                     
-                    {/* Preview metrics */}
+                    {/* How we help */}
                     <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-blue-400">2-5x</div>
-                        <div className="text-sm text-slate-400">Revenue Growth</div>
+                        <div className="text-lg font-semibold text-blue-400">Find</div>
+                        <div className="text-sm text-slate-400">The gaps</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-blue-400">15+ hrs</div>
-                        <div className="text-sm text-slate-400">Saved Weekly</div>
+                        <div className="text-lg font-semibold text-blue-400">Fix</div>
+                        <div className="text-sm text-slate-400">The leaks</div>
                       </div>
                     </div>
                   </div>
@@ -107,20 +114,20 @@ export default function CaseStudiesPage() {
                     
                     <div className="text-center">
                       <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                        <span className="mr-2">View Growing Business Stories</span>
+                        <span className="mr-2">View Growing Business Examples</span>
                         <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                     
-                    {/* Preview metrics */}
+                    {/* How we help */}
                     <div className="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-blue-400">40%</div>
-                        <div className="text-sm text-slate-400">Efficiency Gain</div>
+                        <div className="text-lg font-semibold text-blue-400">Scale</div>
+                        <div className="text-sm text-slate-400">Operations</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-blue-400">$50K+</div>
-                        <div className="text-sm text-slate-400">Annual Savings</div>
+                        <div className="text-lg font-semibold text-blue-400">Free</div>
+                        <div className="text-sm text-slate-400">Your team</div>
                       </div>
                     </div>
                   </div>

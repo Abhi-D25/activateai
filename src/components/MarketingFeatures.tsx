@@ -1,17 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShieldCheckIcon, ChatBubbleLeftRightIcon, GiftIcon } from '@heroicons/react/24/outline';
+import { ChatBubbleLeftRightIcon, GiftIcon } from '@heroicons/react/24/outline';
 
 export const features = [
-  {
-    id: 'compliance',
-    icon: ShieldCheckIcon,
-    text: 'HIPAA & SOC2 Compliant',
-    color: 'text-green-400',
-    bg: 'bg-green-400/10',
-    border: 'border-green-400/20'
-  },
   {
     id: 'channels',
     icon: ChatBubbleLeftRightIcon,
@@ -34,7 +26,7 @@ export const features = [
 
 interface MarketingFeaturesProps {
   className?: string;
-  filter?: (string | 'compliance' | 'channels' | 'trial')[];
+  filter?: (string | 'channels' | 'trial')[];
 }
 
 export default function MarketingFeatures({ className = '', filter }: MarketingFeaturesProps) {
