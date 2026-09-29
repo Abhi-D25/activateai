@@ -67,7 +67,7 @@ export default function SupportPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Stop firefighting every inbox. Automate responses, catch issues early, and keep client experiences consistent—without growing your support team.
+              Stop firefighting every inbox. Automate responses, catch issues early, and keep client experiences consistent, without growing your support team.
             </motion.p>
             
             <motion.div 

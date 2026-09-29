@@ -297,7 +297,7 @@ export default function ArtOfPossibleSection() {
           className="text-center mt-8 md:mt-12"
         >
           <p className="text-lg md:text-xl text-slate-300 italic max-w-3xl mx-auto px-4">
-            Your AI concierge team handles these automatically, so you can focus on what truly matters—growing your business and serving your customers.
+            Your AI concierge team handles these automatically, so you can focus on what truly matters: growing your business and serving your customers.
           </p>
         </motion.div>
       </div>

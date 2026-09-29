@@ -107,7 +107,7 @@ export default function OperationsPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Smart Onboarding</h3>
                 <p className="text-slate-300 mb-4 text-sm">
-                  Start every project with clarity—without chasing files or writing the same emails.
+                  Start every project with clarity, without chasing files or writing the same emails.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center">
@@ -232,7 +232,7 @@ export default function OperationsPage() {
             </div>
             <h2 className="text-3xl font-bold text-white mb-6 text-center">Automated Document Delivery</h2>
             <p className="text-lg text-slate-300 text-center mb-8 max-w-2xl mx-auto">
-              Create seamless welcome experiences. The moment a client or contractor is confirmed, they automatically receive contracts, SOPs, access guides, and tool links—consistently and on-brand.
+              Create seamless welcome experiences. The moment a client or contractor is confirmed, they automatically receive contracts, SOPs, access guides, and tool links, consistently and on-brand.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">

@@ -39,7 +39,7 @@ export default function GrowingBusinessPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl text-slate-300 mb-6"
               >
-                You&apos;ve built something special—a team that delivers exceptional results and a business model that works. But growth brings complexity, and complexity threatens the very quality that made you successful.
+                You&apos;ve built something special: a team that delivers exceptional results and a business model that works. But growth brings complexity, and complexity threatens the very quality that made you successful.
               </motion.p>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -184,7 +184,7 @@ export default function GrowingBusinessPage() {
               glowColor="#2563eb"
             />
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              While your competitors struggle with the operational overhead of growth, your AI concierge team ensures every client interaction maintains your signature quality—regardless of scale.
+              While your competitors struggle with the operational overhead of growth, your AI concierge team ensures every client interaction maintains your signature quality, regardless of scale.
             </p>
           </motion.div>
 

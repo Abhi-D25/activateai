@@ -108,7 +108,7 @@ export default function SalesPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Smart Lead Capture</h3>
                 <p className="text-slate-300 mb-4">
-                  Never miss an inquiry—capture and route leads instantly from any source.
+                  Never miss an inquiry. Capture and route leads instantly from any source.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center">

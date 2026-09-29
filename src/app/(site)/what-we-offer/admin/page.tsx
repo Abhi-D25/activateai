@@ -68,7 +68,7 @@ export default function AdminPage1() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Stop chasing signatures and missed deadlines. We build admin systems that run quietly in the background—so nothing slips through the cracks.
+              Stop chasing signatures and missed deadlines. We build admin systems that run quietly in the background, so nothing slips through the cracks.
             </motion.p>
             
             <motion.div 
@@ -91,7 +91,7 @@ export default function AdminPage1() {
           >
             <h2 className="text-3xl font-bold text-white mb-4 text-center">Our Admin Automation Pillars</h2>
             <p className="text-lg text-slate-300 text-center mb-12 max-w-3xl mx-auto">
-              We organize your invisible work—so requests get routed, documents get filed, and compliance stays on track.
+              We organize your invisible work, so requests get routed, documents get filed, and compliance stays on track.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -128,7 +128,7 @@ export default function AdminPage1() {
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-3">Status Updates Without Syncs</h3>
                 <p className="text-slate-300 mb-4 text-sm">
-                  Start each week with a clear picture—no meetings or manual updates needed.
+                  Start each week with a clear picture. No meetings or manual updates needed.
                 </p>
                 <ul className="space-y-1 text-sm text-slate-300">
                   <li>• Auto-compiled admin digest</li>
@@ -298,7 +298,7 @@ export default function AdminPage1() {
             <div className="bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-cyan-600/20 border border-blue-500/30 rounded-xl p-8 max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-4">Want admin to just… work?</h2>
               <p className="text-xl text-slate-300 mb-8">
-                We&apos;ll help you automate the pieces eating up your week—one clean workflow at a time.
+                We&apos;ll help you automate the pieces eating up your week, one clean workflow at a time.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
