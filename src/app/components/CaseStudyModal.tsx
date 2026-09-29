@@ -62,7 +62,7 @@ export default function CaseStudyModal({ isOpen, onClose, caseStudy }: CaseStudy
               {/* Project details */}
               <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                 <div>
-                  <p className="text-slate-400">Client</p>
+                  <p className="text-slate-400">Business Type</p>
                   <p className="text-white">{caseStudy.client}</p>
                 </div>
                 <div>

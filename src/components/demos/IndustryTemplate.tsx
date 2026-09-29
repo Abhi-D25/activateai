@@ -251,7 +251,7 @@ export default function IndustryTemplate({ data }: IndustryTemplateProps) {
                     <div className="container mx-auto px-6 relative z-10">
                         <div className="text-center mb-20">
                             <h2 className={`text-sm font-bold uppercase tracking-widest mb-4 ${theme.accent}`}>Stories</h2>
-                            <h3 className={`text-4xl md:text-5xl font-bold ${theme.heading}`}>Client Stories</h3>
+                            <h3 className={`text-4xl md:text-5xl font-bold ${theme.heading}`}>Example Scenarios</h3>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">

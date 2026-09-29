@@ -9,6 +9,15 @@ import FuturisticText from '@/app/components/FuturisticText';
 export default function GrowingBusinessPage() {
   return (
     <div className="bg-black min-h-screen">
+      {/* Example Scenario Notice */}
+      <div className="bg-slate-900/80 border-b border-slate-700">
+        <div className="container mx-auto px-4 py-3 text-center">
+          <p className="text-slate-400 text-sm">
+            This is an illustrative example of the kinds of problems we fix, not a real client story.
+          </p>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-50" />

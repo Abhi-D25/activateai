@@ -57,7 +57,8 @@ export default function CaseStudiesSection({ noContainer = false }: CaseStudiesS
   const content = (
     <>
       <ScrollReveal animation="slideUp" className="text-center mb-16">
-        <h2 className="section-title">Current Activations</h2>
+        <h2 className="section-title">Example Scenarios</h2>
+        <p className="text-slate-400 mt-4 max-w-2xl mx-auto">These are illustrative examples of the kinds of problems we fix, not real client stories.</p>
       </ScrollReveal>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {caseStudies.map((caseStudy, index) => (
