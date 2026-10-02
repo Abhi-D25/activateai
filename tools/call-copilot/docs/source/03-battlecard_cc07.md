@@ -1,4 +1,4 @@
-# 🛡️ Battlecard: us vs voice AI resellers (draft) — Source: https://app.notion.com/p/3ed897612acd81dd8624e1e7f0c6590f
+# Battlecard: us vs voice AI resellers (draft) - Source: https://app.notion.com/p/3ed897612acd81dd8624e1e7f0c6590f
 
 **DRAFT. Internal only. Never name competitors in anything client-facing.**
 

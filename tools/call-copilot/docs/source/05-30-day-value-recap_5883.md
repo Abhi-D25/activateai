@@ -1,4 +1,4 @@
-# 📈 30-day value recap template (draft) — Source: https://app.notion.com/p/3ed897612acd81f19336d43b3467174e
+# 30-day value recap template (draft) - Source: https://app.notion.com/p/3ed897612acd81f19336d43b3467174e
 
 **DRAFT for Abhi's review. Internal. Nothing has been sent to any client.**  
 Send about 30 days after the fix is accepted. This is separate from sign-off: billing and acceptance never depend on it. Copy this page for each client, fill every blank from real logs, delete the INTERNAL section, then send by email or text.

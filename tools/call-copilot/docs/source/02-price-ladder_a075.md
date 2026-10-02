@@ -1,4 +1,4 @@
-# 💲 Price ladder: Get Covered and Full Fix (draft) — Source: https://app.notion.com/p/3ed897612acd81c485a7dd8c627b15a8
+# Price ladder: Get Covered and Full Fix (draft) - Source: https://app.notion.com/p/3ed897612acd81c485a7dd8c627b15a8
 
 <content>
 

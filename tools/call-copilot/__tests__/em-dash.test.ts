@@ -10,7 +10,7 @@ import * as path from 'path';
 
 const EM_DASH = '\u2014';
 const EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.json', '.md', '.css'];
-const IGNORE_DIRS = ['node_modules', '.next', '.git', 'coverage', '__tests__', 'docs'];
+const IGNORE_DIRS = ['node_modules', '.next', '.git', 'coverage', '__tests__'];
 
 function getAllFiles(dir: string, files: string[] = []): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

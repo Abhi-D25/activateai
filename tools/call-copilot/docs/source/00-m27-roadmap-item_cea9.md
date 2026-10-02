@@ -1,4 +1,4 @@
-# M27: Live sales call guide tool — Source: https://app.notion.com/p/3ed897612acd816ab3e4c7bf121f0f62
+# M27: Live sales call guide tool - Source: https://app.notion.com/p/3ed897612acd816ab3e4c7bf121f0f62
 
 ## Properties
 
@@ -10,8 +10,8 @@
 | Milestone | M27: Live sales call guide tool |
 | Owner | Abhi; Hormozi |
 | Status | Not started |
-| Done | — |
-| Original date | — |
+| Done | - |
+| Original date | - |
 | date:Done on:is_datetime | 0 |
 | date:Original date:is_datetime | 0 |
 | date:Target date:is_datetime | 0 |

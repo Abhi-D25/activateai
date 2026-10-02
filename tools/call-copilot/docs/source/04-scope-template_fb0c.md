@@ -1,4 +1,4 @@
-# 📝 Scope and Sign-off template (draft) — Source: https://app.notion.com/p/3ea897612acd81169fa2ca605874fe5a
+# Scope and Sign-off template (draft) - Source: https://app.notion.com/p/3ea897612acd81169fa2ca605874fe5a
 
 **DRAFT, Harvey-reviewed Sep 29. Waiting on Abhi's approval. Not legal advice.**
 

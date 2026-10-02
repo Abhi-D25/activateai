@@ -1,4 +1,4 @@
-# 📞 Free technical checkup call script (approved Sep 29) — Source: https://app.notion.com/p/3ea897612acd814daacdc739d4e2f02f
+# Free technical checkup call script (approved Sep 29) - Source: https://app.notion.com/p/3ea897612acd814daacdc739d4e2f02f
 
 ## Guarantee (Harvey-reviewed Sep 29)
 

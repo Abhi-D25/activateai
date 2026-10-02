@@ -22,18 +22,21 @@ The Call Copilot is **ephemeral by design**:
 **Data flow:** Audio streams directly from your browser to Deepgram's servers via WebSocket. Transcription results stream back. Audio never touches our server.
 
 **Retention policy with `mip_opt_out=true`:**
+
+We automatically add `mip_opt_out=true` to all API requests. Per Deepgram's documentation:
+
 > "Data from opted-out requests is retained only for the duration necessary to process the request."
 
-Source: [Deepgram Model Improvement Partnership Program](https://developers.deepgram.com/docs/the-deepgram-model-improvement-partnership-program)
-
-We automatically add `mip_opt_out=true` to all API requests. With this setting:
-- Audio is processed in real-time and not stored after the response is returned
-- Transcripts are not stored by Deepgram
+**What this means:**
+- Audio is processed in real-time and is not stored after the response is returned
+- Transcripts are not stored by Deepgram for opted-out requests
 - Data is not used for model training
 
-**What Deepgram still retains:**
+**What Deepgram still retains (even with mip_opt_out):**
 - Usage metadata (timestamps, duration, model used) for billing
-- Request logs for operational purposes
+- Request logs for operational purposes (connection info, not content)
+
+**Important:** The `mip_opt_out` setting is a policy commitment from Deepgram. Our code sends it, but enforcement depends on Deepgram honoring it. There is no cryptographic guarantee.
 
 **Docs referenced:**
 - https://developers.deepgram.com/docs/the-deepgram-model-improvement-partnership-program
@@ -44,30 +47,34 @@ We automatically add `mip_opt_out=true` to all API requests. With this setting:
 
 **What it does:** When an API key is provided, Claude can generate more contextual suggestions based on the conversation. Without a key, the copilot uses deterministic rule-based suggestions instead.
 
-**Data flow:** If enabled, transcript snippets are sent to Claude's API to generate suggestions. No audio is sent.
+**Data flow:** If enabled, transcript snippets (not audio) are sent to Claude's API to generate suggestions.
 
 **Standard API retention:**
-Anthropic's standard commercial API has data retention. Per their documentation:
-> "Under a ZDR [Zero Data Retention] arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned."
 
-However, ZDR is **not self-service**. You must contact Anthropic sales to enable it for your organization.
+Per Anthropic's documentation, the standard commercial API has data retention:
+- Prompts and responses may be retained for up to 30 days for trust and safety monitoring
+- Data is not used for model training on commercial API plans
 
-Source: [Anthropic API and Data Retention](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention)
+**Zero Data Retention (ZDR):**
 
-**What this means in practice:**
-- Standard API: Anthropic may retain prompts and responses for up to 30 days for safety monitoring
-- Data is not used for model training on commercial plans
-- For true zero retention, you must request ZDR from Anthropic sales
+Anthropic offers Zero Data Retention agreements:
+> "Under a ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned."
 
-**Recommendation for Abhi:**
-If client privacy is critical, either:
-1. Don't use the LLM features (rule-based suggestions work without any API key)
-2. Contact Anthropic sales to enable ZDR for your organization
-3. Use the LLM only for calls where the client has consented
+**Important:** ZDR is not self-service. You must contact Anthropic sales to enable it for your organization. It is not available through account settings.
+
+**What we guarantee vs. what depends on Anthropic:**
+- Guaranteed by our code: LLM features are optional; rule-based suggestions work without any API key; no audio is ever sent to Anthropic
+- Depends on Anthropic: The actual retention period and handling of data once sent
+
+**Recommendation:**
+If client privacy is critical:
+1. Do not enable LLM features (leave ANTHROPIC_API_KEY unset). Rule-based suggestions work fine.
+2. Or contact Anthropic sales to enable ZDR for your organization before using LLM features.
+3. Or use LLM features only for calls where the client has consented to standard Anthropic retention.
 
 **Docs referenced:**
-- https://platform.claude.com/docs/en/manage-claude/api-and-data-retention
-- https://privacy.claude.com/en/articles/8956058-i-have-a-zero-data-retention-agreement-with-anthropic-what-products-does-it-apply-to
+- https://support.anthropic.com/en/articles/7996866-how-long-does-anthropic-store-data
+- https://www.anthropic.com/legal/privacy
 
 ## What We Control
 

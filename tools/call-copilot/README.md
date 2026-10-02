@@ -66,27 +66,36 @@ Browser --> /api/token --> Deepgram credentials
 ```
 src/
   lib/
-    knowledge.ts      # Script, questions, objections, tier rules
-    calculator.ts     # Leak calculation formulas
-    extractor.ts      # Deterministic number/phrase extraction
-    suggestions.ts    # Rule-based suggestion engine
-    demo-scenarios.ts # Sample call transcripts
+    knowledge.ts        # Script, questions, objections, tier rules
+    calculator.ts       # Leak calculation formulas
+    extractor.ts        # Deterministic number/phrase extraction
+    suggestions.ts      # Rule-based suggestion engine
+    demo-scenarios.ts   # Sample call transcripts
+    deepgram-client.ts  # WebSocket client for Deepgram streaming
+    audio-capture.ts    # Audio capture manager (mic + tab audio)
+    audio-processor.ts  # AudioWorklet for PCM encoding
+  hooks/
+    useLiveTranscription.ts  # React hook for live transcription
   components/
-    LiveCopilot.tsx   # Main call interface
+    LiveCopilot.tsx     # Main call interface
     LeakCalculator.tsx
     PostCallView.tsx
   app/
-    api/token/route.ts # Token minting for Deepgram
+    api/token/route.ts  # Token minting for Deepgram (short-lived JWT)
+    api/suggest/route.ts # LLM suggestions (optional, falls back to rules)
 ```
 
 ### Data Flow
 
-1. Audio from mic and tab streams directly to Deepgram via WebSocket
-2. Transcripts arrive in real-time and are stored in React state (memory only)
-3. Extractor pulls numbers and detects objections from transcript text
-4. Suggestion engine generates contextual prompts based on script position
-5. Calculator computes leaks and tier recommendations
-6. On "End Call", post-call view appears; on close, all state is wiped
+1. `/api/token` mints a short-lived JWT (5 min) from Deepgram's grant endpoint
+2. AudioWorklet captures 48kHz audio, resamples to 16kHz Int16 PCM
+3. PCM streams via WebSocket to Deepgram with speaker labeling by source
+4. Transcripts arrive in real-time and are stored in React state (memory only)
+5. Extractor pulls numbers and detects objections from transcript text
+6. Suggestion engine generates contextual prompts (LLM optional, falls back to rules)
+7. Calculator computes leaks and tier recommendations using the 1/5 rule
+8. On "End Call", WebSocket connections close and post-call view appears
+9. On close, all state is wiped (nothing persists)
 
 ## Audio Capture on macOS
 
@@ -182,7 +191,9 @@ npm test
 Tests cover:
 - Leak calculators (using mock cases from the price ladder)
 - Tier recommendation logic (1/5 rule, all tier rules)
-- No-em-dash check (style requirement)
+- Deepgram WebSocket client (connection, transcript parsing, error handling)
+- Audio capture manager (mic, tab audio, cleanup)
+- No-em-dash check (all files including docs)
 
 ## Development
 
@@ -216,7 +227,7 @@ Since nobody was available to answer questions, I made these calls:
 
 3. **Tab audio capture** - Used browser-native `getDisplayMedia` rather than requiring an extension. May be less reliable but zero install required.
 
-4. **Founding prices default on** - The toggle defaults to founding prices since we're in the founding window.
+4. **Founding prices date-aware** - The toggle defaults to ON only when today's date is on or before Jan 31, 2027. After that date, it defaults to OFF and is visually marked as expired.
 
 5. **No external integrations** - Per requirements, no Notion/Airtable/Granola integrations in this app. Just copy buttons for the summaries.
 
