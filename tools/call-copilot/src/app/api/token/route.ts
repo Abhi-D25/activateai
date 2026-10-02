@@ -1,32 +1,48 @@
 /**
  * Token minting endpoint for Deepgram streaming API
  * 
- * This endpoint creates short-lived tokens so the long-lived API key
- * never reaches the browser. Protected by a shared access key.
+ * This endpoint mints short-lived JWT tokens via Deepgram's /v1/auth/grant
+ * endpoint so the long-lived API key never reaches the browser.
  * 
- * In production, you'd want more robust protection:
- * - Rate limiting
- * - Session validation
- * - IP allowlisting
+ * Security measures:
+ * - Constant-time comparison for access key
+ * - Short-lived tokens (300 seconds default, configurable)
+ * - No logging of request bodies or transcript text
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { timingSafeEqual } from 'crypto';
 
 const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY;
 const COPILOT_ACCESS_KEY = process.env.COPILOT_ACCESS_KEY;
 
+const TOKEN_TTL_SECONDS = 300;
+
+function constantTimeCompare(a: string, b: string): boolean {
+  if (typeof a !== 'string' || typeof b !== 'string') {
+    return false;
+  }
+  const aBuffer = Buffer.from(a, 'utf8');
+  const bBuffer = Buffer.from(b, 'utf8');
+  if (aBuffer.length !== bBuffer.length) {
+    const dummy = Buffer.alloc(aBuffer.length);
+    timingSafeEqual(aBuffer, dummy);
+    return false;
+  }
+  return timingSafeEqual(aBuffer, bBuffer);
+}
+
 export async function POST(request: NextRequest) {
-  // Check access key
-  const accessKey = request.headers.get('x-access-key');
+  const accessKey = request.headers.get('x-access-key') || '';
   
   if (!COPILOT_ACCESS_KEY) {
     return NextResponse.json(
-      { error: 'Server not configured - COPILOT_ACCESS_KEY not set' },
+      { error: 'Server not configured' },
       { status: 500 }
     );
   }
   
-  if (accessKey !== COPILOT_ACCESS_KEY) {
+  if (!constantTimeCompare(accessKey, COPILOT_ACCESS_KEY)) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -35,33 +51,58 @@ export async function POST(request: NextRequest) {
   
   if (!DEEPGRAM_API_KEY) {
     return NextResponse.json(
-      { error: 'Speech-to-text not configured - DEEPGRAM_API_KEY not set' },
+      { error: 'Speech-to-text not configured' },
       { status: 500 }
     );
   }
   
   try {
-    // Request a temporary key from Deepgram
-    // Note: Deepgram's API key can be used directly for WebSocket connections
-    // In a more secure setup, you'd use their temporary credentials API
-    // For now, we return a payload that the client can use
+    const grantResponse = await fetch('https://api.deepgram.com/v1/auth/grant', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token ${DEEPGRAM_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        time_to_live_in_seconds: TOKEN_TTL_SECONDS
+      })
+    });
     
-    const response = {
-      token: DEEPGRAM_API_KEY,
-      expiresIn: 3600, // 1 hour
+    if (!grantResponse.ok) {
+      const errorText = await grantResponse.text();
+      console.error('Deepgram grant error status:', grantResponse.status);
+      return NextResponse.json(
+        { error: 'Failed to mint temporary token' },
+        { status: 502 }
+      );
+    }
+    
+    const grantData = await grantResponse.json();
+    
+    if (!grantData.access_token) {
+      console.error('Deepgram grant response missing access_token');
+      return NextResponse.json(
+        { error: 'Invalid response from speech service' },
+        { status: 502 }
+      );
+    }
+    
+    return NextResponse.json({
+      token: grantData.access_token,
+      expiresIn: TOKEN_TTL_SECONDS,
       endpoint: 'wss://api.deepgram.com/v1/listen',
       params: {
-        model: 'nova-2',
+        model: 'nova-3',
         language: 'en',
         smart_format: true,
-        diarize: true,
-        mip_opt_out: true // Critical: opt out of model improvement program for privacy
+        encoding: 'linear16',
+        sample_rate: 16000,
+        channels: 1,
+        mip_opt_out: true
       }
-    };
-    
-    return NextResponse.json(response);
+    });
   } catch (error) {
-    console.error('Token generation error:', error);
+    console.error('Token generation failed');
     return NextResponse.json(
       { error: 'Failed to generate token' },
       { status: 500 }
@@ -70,7 +111,6 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  // Health check - just verify the endpoint exists
   return NextResponse.json({
     status: 'ok',
     configured: {
