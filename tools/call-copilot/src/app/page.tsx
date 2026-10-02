@@ -6,6 +6,13 @@ import { StartScreen } from '@/components/StartScreen';
 import { LiveCopilot } from '@/components/LiveCopilot';
 import { PostCallView } from '@/components/PostCallView';
 import { DEMO_SCENARIOS } from '@/lib/demo-scenarios';
+import { FOUNDING_PRICE_RULES } from '@/lib/knowledge';
+
+function isFoundingPeriodActive(): boolean {
+  const deadline = new Date(FOUNDING_PRICE_RULES.deadline);
+  const today = new Date();
+  return today <= deadline;
+}
 
 function createEmptySession(): CallSession {
   return {
@@ -32,11 +39,13 @@ function createEmptySession(): CallSession {
 export default function Home() {
   const [mode, setMode] = useState<AppMode>('idle');
   const [session, setSession] = useState<CallSession | null>(null);
-  const [useFoundingPrices, setUseFoundingPrices] = useState(true);
+  const [useFoundingPrices, setUseFoundingPrices] = useState(isFoundingPeriodActive);
   const [demoScenarioId, setDemoScenarioId] = useState<string | null>(null);
   const [transcriptHistory, setTranscriptHistory] = useState<TranscriptSegment[]>([]);
+  const [accessKey, setAccessKey] = useState('');
 
-  const handleStartLive = useCallback(() => {
+  const handleStartLive = useCallback((key: string) => {
+    setAccessKey(key);
     setSession(createEmptySession());
     setTranscriptHistory([]);
     setMode('live');
@@ -93,6 +102,7 @@ export default function Home() {
           demoScenarioId={demoScenarioId}
           useFoundingPrices={useFoundingPrices}
           transcriptHistory={transcriptHistory}
+          accessKey={accessKey}
           onUpdateSession={handleUpdateSession}
           onAddTranscript={handleAddTranscript}
           onEndCall={handleEndCall}

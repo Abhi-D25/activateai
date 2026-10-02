@@ -1,12 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import { DEMO_SCENARIOS } from '@/lib/demo-scenarios';
+import { FOUNDING_PRICE_RULES } from '@/lib/knowledge';
 
 interface StartScreenProps {
-  onStartLive: () => void;
+  onStartLive: (accessKey: string) => void;
   onStartDemo: (scenarioId: string) => void;
   useFoundingPrices: boolean;
   onToggleFoundingPrices: () => void;
+}
+
+function isFoundingPeriodActive(): boolean {
+  const deadline = new Date(FOUNDING_PRICE_RULES.deadline);
+  const today = new Date();
+  return today <= deadline;
 }
 
 export function StartScreen({
@@ -15,6 +23,13 @@ export function StartScreen({
   useFoundingPrices,
   onToggleFoundingPrices
 }: StartScreenProps) {
+  const [accessKey, setAccessKey] = useState('');
+  const foundingPeriodActive = isFoundingPeriodActive();
+
+  const handleStartLive = () => {
+    onStartLive(accessKey);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
       <div className="max-w-2xl w-full">
@@ -35,10 +50,12 @@ export function StartScreen({
               type="checkbox"
               checked={useFoundingPrices}
               onChange={onToggleFoundingPrices}
-              className="w-5 h-5 rounded bg-gray-700 border-gray-600 text-primary focus:ring-primary"
+              disabled={!foundingPeriodActive}
+              className="w-5 h-5 rounded bg-gray-700 border-gray-600 text-primary focus:ring-primary disabled:opacity-50"
             />
-            <span className="text-gray-300">
+            <span className={`${foundingPeriodActive ? 'text-gray-300' : 'text-gray-500'}`}>
               Use founding prices (first 5 clients, until Jan 31, 2027)
+              {!foundingPeriodActive && <span className="ml-2 text-yellow-500">(expired)</span>}
             </span>
           </label>
         </div>
@@ -50,16 +67,30 @@ export function StartScreen({
           </h2>
           <p className="text-gray-400 mb-4">
             Connect your mic and tab audio for real-time transcription during a
-            Google Meet call. Requires API keys for speech-to-text.
+            Google Meet call. Requires DEEPGRAM_API_KEY and COPILOT_ACCESS_KEY
+            environment variables on the server.
           </p>
+          <div className="mb-4">
+            <label htmlFor="accessKey" className="block text-sm text-gray-400 mb-2">
+              Access Key (COPILOT_ACCESS_KEY)
+            </label>
+            <input
+              id="accessKey"
+              type="password"
+              value={accessKey}
+              onChange={(e) => setAccessKey(e.target.value)}
+              placeholder="Enter access key to enable transcription"
+              className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary"
+            />
+          </div>
           <button
-            onClick={onStartLive}
+            onClick={handleStartLive}
             className="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white font-medium rounded-lg transition-colors"
           >
             Start Live Call
           </button>
           <p className="text-gray-500 text-sm mt-3 text-center">
-            Works best with Deepgram API key set
+            Leave access key empty to test UI without transcription
           </p>
         </div>
 

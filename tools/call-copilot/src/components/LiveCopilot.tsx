@@ -17,6 +17,7 @@ import {
 import { extractAll, trackQuestions, detectObjections } from '@/lib/extractor';
 import { generateSuggestions, createInitialCallState, CallState, Suggestion } from '@/lib/suggestions';
 import { getScenarioById } from '@/lib/demo-scenarios';
+import { useLiveTranscription, TranscriptionSegment } from '@/hooks/useLiveTranscription';
 import { ScriptProgress } from './ScriptProgress';
 import { SuggestionCard } from './SuggestionCard';
 import { LeakCalculator } from './LeakCalculator';
@@ -28,6 +29,7 @@ interface LiveCopilotProps {
   demoScenarioId: string | null;
   useFoundingPrices: boolean;
   transcriptHistory: TranscriptSegment[];
+  accessKey: string;
   onUpdateSession: (updates: Partial<CallSession>) => void;
   onAddTranscript: (segment: TranscriptSegment) => void;
   onEndCall: () => void;
@@ -39,6 +41,7 @@ export function LiveCopilot({
   demoScenarioId,
   useFoundingPrices,
   transcriptHistory,
+  accessKey,
   onUpdateSession,
   onAddTranscript,
   onEndCall
@@ -49,8 +52,40 @@ export function LiveCopilot({
   const [demoSpeed, setDemoSpeed] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [liveError, setLiveError] = useState<string | null>(null);
   const demoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLiveTranscript = useCallback((segment: TranscriptionSegment) => {
+    if (segment.isFinal && segment.text.trim()) {
+      onAddTranscript({
+        id: segment.id,
+        speaker: segment.speaker,
+        text: segment.text,
+        timestamp: segment.timestamp,
+        confidence: segment.confidence,
+        isFinal: segment.isFinal
+      });
+    }
+  }, [onAddTranscript]);
+
+  const handleLiveError = useCallback((error: string) => {
+    setLiveError(error);
+    setTimeout(() => setLiveError(null), 5000);
+  }, []);
+
+  const {
+    state: liveState,
+    startMicrophone,
+    startTabAudio,
+    stopMicrophone,
+    stopTabAudio,
+    stopAll
+  } = useLiveTranscription({
+    accessKey,
+    onTranscript: handleLiveTranscript,
+    onError: handleLiveError
+  });
 
   // Leak calculation inputs from session
   const frontEndInputs: FrontEndLeakInputs = {
@@ -218,12 +253,24 @@ export function LiveCopilot({
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const handleEndCall = useCallback(() => {
+    stopAll();
+    onEndCall();
+  }, [stopAll, onEndCall]);
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Error banner */}
+      {liveError && (
+        <div className="bg-red-900/80 text-red-100 px-4 py-2 text-sm">
+          {liveError}
+        </div>
+      )}
+
       {/* Header */}
       <header className="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className={`w-3 h-3 rounded-full ${mode === 'live' ? 'bg-red-500 pulse-dot' : 'bg-yellow-500'}`} />
+          <div className={`w-3 h-3 rounded-full ${mode === 'live' ? (liveState.micActive || liveState.tabAudioActive ? 'bg-red-500 pulse-dot' : 'bg-gray-500') : 'bg-yellow-500'}`} />
           <span className="font-medium">
             {mode === 'live' ? 'Live Call' : 'Demo Mode'}
             {session.businessName && ` - ${session.businessName}`}
@@ -231,6 +278,40 @@ export function LiveCopilot({
           <span className="text-gray-400">{formatTime(elapsedSeconds)}</span>
         </div>
         <div className="flex items-center gap-3">
+          {mode === 'live' && (
+            <>
+              <button
+                onClick={liveState.micActive ? stopMicrophone : startMicrophone}
+                disabled={liveState.isConnecting}
+                className={`px-3 py-1 rounded text-sm flex items-center gap-2 ${
+                  liveState.micActive 
+                    ? 'bg-green-600 hover:bg-green-700' 
+                    : 'bg-gray-700 hover:bg-gray-600'
+                } ${liveState.isConnecting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                title={liveState.micActive ? 'Stop microphone' : 'Start microphone (your voice)'}
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+                </svg>
+                {liveState.micActive ? 'Mic On' : 'Mic Off'}
+              </button>
+              <button
+                onClick={liveState.tabAudioActive ? stopTabAudio : startTabAudio}
+                disabled={liveState.isConnecting}
+                className={`px-3 py-1 rounded text-sm flex items-center gap-2 ${
+                  liveState.tabAudioActive 
+                    ? 'bg-blue-600 hover:bg-blue-700' 
+                    : 'bg-gray-700 hover:bg-gray-600'
+                } ${liveState.isConnecting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                title={liveState.tabAudioActive ? 'Stop tab audio' : 'Share tab audio (prospect voice from Meet/Zoom)'}
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                </svg>
+                {liveState.tabAudioActive ? 'Tab On' : 'Tab Off'}
+              </button>
+            </>
+          )}
           {mode === 'demo' && (
             <>
               <select
@@ -252,7 +333,7 @@ export function LiveCopilot({
             </>
           )}
           <button
-            onClick={onEndCall}
+            onClick={handleEndCall}
             className="px-4 py-1 bg-red-600 hover:bg-red-700 rounded text-sm font-medium"
           >
             End Call
